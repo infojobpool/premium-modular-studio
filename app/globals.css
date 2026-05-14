@@ -77,12 +77,8 @@
   }
 
   /**
-   * Brand digit in “In2erio”: match surrounding type (family, size, weight, baseline).
-   * Only the accent color differentiates the 2 — no alternate numeral styles that shift metrics.
-   */
-  /**
-   * Gold digit must stay readable on cream (hub hero) — slightly deeper gold + hairline
-   * ink halo so it does not “disappear” against light UI.
+   * Brand digit in “In2erio”: inherits surrounding display/body metrics by default.
+   * Gold is mixed with ink + soft shadow so it stays legible on cream.
    */
   .brand-in2-digit {
     font-family: inherit;
@@ -99,6 +95,21 @@
       0 0 0.06em color-mix(in oklab, var(--color-ink) 42%, transparent),
       0 0.08em 0.12em color-mix(in oklab, var(--color-ink) 12%, transparent),
       0 1px 0 color-mix(in oklab, #fff 55%, transparent);
+  }
+
+  /** Hub headline only: oversized “2” as a deliberate brand mark (not superscript). */
+  .hub-hero-title .brand-in2-digit {
+    font-size: 1.38em;
+    line-height: 0.78;
+    font-weight: 700;
+    letter-spacing: 0;
+    vertical-align: -0.07em;
+    display: inline-block;
+    margin-inline: 0.02em;
+    text-shadow:
+      0 0 0.08em color-mix(in oklab, var(--color-ink) 48%, transparent),
+      0 0.06em 0.14em color-mix(in oklab, var(--color-ink) 18%, transparent),
+      0 1px 0 color-mix(in oklab, #fff 60%, transparent);
   }
 }
 
