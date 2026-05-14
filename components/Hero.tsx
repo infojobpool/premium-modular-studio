@@ -3,8 +3,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useMemo } from "react";
-import { buildHeroSlides } from "@/lib/hero-media";
-import { HeroSlideStage } from "./HeroMedia";
+import { buildHeroSlides, pickHeroAmbientFrames } from "@/lib/hero-media";
+import { HeroAmbientImageRotator, HeroSlideStage } from "./HeroMedia";
 import { HeroQuickLinksCard } from "./HeroQuickLinksCard";
 import { withBrandHighlight } from "./BrandInline";
 import { useStudioLocation } from "./LocationProvider";
@@ -16,6 +16,7 @@ export function Hero() {
     [location.label, location.id],
   );
   const slide = slides[0];
+  const ambientFrames = useMemo(() => pickHeroAmbientFrames(slides), [slides]);
 
   return (
     <section className="relative isolate min-h-[100dvh] w-full overflow-x-clip bg-transparent">
@@ -90,7 +91,9 @@ export function Hero() {
           */}
           <div className="relative min-h-[360px] overflow-visible rounded-[2rem] border border-ink/10 bg-ink shadow-[0_30px_80px_-40px_rgba(0,0,0,0.45)] sm:min-h-[430px] md:min-h-[520px] md:rounded-none md:rounded-l-[2.4rem]">
             <div className="absolute inset-0 overflow-hidden rounded-[2rem] md:rounded-none md:rounded-l-[2.4rem]">
-              {slide ? (
+              {ambientFrames.length > 0 ? (
+                <HeroAmbientImageRotator frames={ambientFrames} />
+              ) : slide ? (
                 <HeroSlideStage
                   current={slide}
                   safeIndex={0}

@@ -1,7 +1,88 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
 import type { HeroSlide } from "@/lib/hero-media";
+
+const AMBIENT_INTERVAL_MS = 8500;
+const AMBIENT_FADE_MS = 1400;
+
+export function HeroAmbientImageRotator({ frames }: { frames: readonly { src: string; alt: string }[] }) {
+  const reduceMotion = useReducedMotion();
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    setActive(0);
+  }, [frames]);
+
+  useEffect(() => {
+    if (reduceMotion || frames.length < 2) return;
+    let id: ReturnType<typeof setInterval> | undefined;
+    const tick = () => setActive((a) => (a + 1) % frames.length);
+    const start = () => {
+      if (id) clearInterval(id);
+      id = setInterval(tick, AMBIENT_INTERVAL_MS);
+    };
+    const onVis = () => {
+      if (document.hidden) {
+        if (id) clearInterval(id);
+        id = undefined;
+      } else {
+        start();
+      }
+    };
+    start();
+    document.addEventListener("visibilitychange", onVis);
+    return () => {
+      document.removeEventListener("visibilitychange", onVis);
+      if (id) clearInterval(id);
+    };
+  }, [reduceMotion, frames.length]);
+
+  if (frames.length === 0) return null;
+
+  const current = frames[Math.min(active, frames.length - 1)]!;
+
+  if (frames.length === 1 || reduceMotion) {
+    return (
+      <div className="hero-slide-stage absolute inset-0 min-h-full min-w-full overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element -- Hero fills stage; Next/Image + preflight breaks fill */}
+        <img
+          src={current.src}
+          alt={current.alt}
+          sizes="(max-width: 1024px) 100vw, 55vw"
+          decoding="async"
+          fetchPriority="high"
+          className="absolute inset-0 block size-full object-cover"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/18 via-transparent to-ink/5" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="hero-slide-stage absolute inset-0 min-h-full min-w-full overflow-hidden">
+      {frames.map((frame, i) => (
+        // eslint-disable-next-line @next/next/no-img-element -- Hero fills stage; Next/Image + preflight breaks fill
+        <img
+          key={frame.src}
+          src={frame.src}
+          alt={i === active ? frame.alt : ""}
+          sizes="(max-width: 1024px) 100vw, 55vw"
+          decoding="async"
+          fetchPriority={i === 0 ? "high" : "low"}
+          loading={i === 0 ? "eager" : "lazy"}
+          aria-hidden={i !== active}
+          className={`absolute inset-0 block size-full object-cover transition-[opacity] ease-in-out ${
+            i === active ? "z-[2] opacity-100" : "z-[1] opacity-0"
+          }`}
+          style={{ transitionDuration: `${AMBIENT_FADE_MS}ms` }}
+        />
+      ))}
+      <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-ink/18 via-transparent to-ink/5" />
+    </div>
+  );
+}
 
 function Chevron({ dir }: { dir: "left" | "right" }) {
   return (

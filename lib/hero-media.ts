@@ -192,3 +192,17 @@ export function buildHeroSlides(
 
   return [...slides, ...imageFrames];
 }
+
+/** Distinct image stills for the city hero panel (slow crossfade), from an existing slide list. */
+export function pickHeroAmbientFrames(slides: HeroSlide[]): readonly { src: string; alt: string }[] {
+  const seen = new Set<string>();
+  const out: { src: string; alt: string }[] = [];
+  for (const slide of slides) {
+    if (slide.kind !== "image") continue;
+    if (seen.has(slide.src)) continue;
+    seen.add(slide.src);
+    out.push({ src: slide.src, alt: slide.alt });
+    if (out.length >= 6) break;
+  }
+  return out;
+}
