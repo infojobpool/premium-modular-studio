@@ -40,14 +40,17 @@ export function buildHeroSlides(
   const slides: HeroSlide[] = [];
 
   if (HERO_VIDEO_URL) {
+    const isBhub = cityId === "bhubaneswar";
     slides.push({
       kind: "video",
       src: HERO_VIDEO_URL,
       poster: interiorImages.hero,
       alt: "Studio walkthrough — ambient film",
       eyebrow: `Premium interiors · ${cityLabel}`,
-      headline: "Walk the space before the walls speak",
-      lead: "Silent loop of the studio and live sites—pause on hover, then explore still frames for detail and finish.",
+      headline: isBhub ? "Walk the Bhubaneswar studio and live sites" : "Walk the space before the walls speak",
+      lead: isBhub
+        ? "Silent loop of the Odisha studio and sites—pause on hover, then explore still frames for materials, joinery, and finish intent tuned to local climate."
+        : "Silent loop of the studio and live sites—pause on hover, then explore still frames for detail and finish.",
       statBadge: "Film · stills · sign-off",
     });
   }
@@ -118,11 +121,74 @@ export function buildHeroSlides(
     },
   ];
 
-  /** Bhubaneswar opens on a different still so the hero reel feels distinct when switching cities. */
-  const orderedFrames =
-    cityId === "bhubaneswar"
-      ? [...frames.slice(3), ...frames.slice(0, 3)]
-      : frames;
+  /** Bhubaneswar: same imagery, copy tuned to Odisha climate + local studio (not a reorder of Hyderabad lines). */
+  const bhubaneswarFrames: HeroSlide[] = [
+    {
+      kind: "image",
+      src: interiorImages.hero,
+      alt: `Premium residence living — ${cityLabel}`,
+      eyebrow: `${cityLabel} · Odisha`,
+      headline: `Premium & luxury interiors in ${cityLabel}`,
+      lead: "From the Puri Bypass studio we shape homes and workspaces for Odisha's light, monsoon cycles, and coastal humidity—layered interiors, modular kitchens and wardrobes, and English-led documentation with Hyderabad fabrication when your scope needs it.",
+      statBadge: "Studio by appointment",
+    },
+    {
+      kind: "image",
+      src: g[0]!,
+      alt: "Living and dining — Bhubaneswar residence",
+      eyebrow: "Living & dining",
+      headline: "Rooms that breathe through the humid months",
+      lead: "Cross-ventilation, ceiling rhythm, and finishes chosen for eastern light and heavy rain—so living and dining stay composed year-round.",
+      statBadge: "Patia · corridor homes",
+    },
+    {
+      kind: "image",
+      src: g[1]!,
+      alt: "Kitchen interior — warm materials",
+      eyebrow: "Kitchens & dining",
+      headline: "Kitchens built for heat, steam, and daily rhythm",
+      lead: "Modular cores, appliance integration, and surfaces that tolerate Odisha's kitchen load—signed off before procurement so site days stay predictable.",
+      statBadge: "Modular + bespoke",
+    },
+    {
+      kind: "image",
+      src: g[2]!,
+      alt: "Joinery and interior detail",
+      eyebrow: "Craft & detail",
+      headline: "Joinery you approve before it ships to site",
+      lead: "Mock-ups, samples, and lighting studies at the Bhubaneswar studio—then execution to agreed tolerances with one accountable team through handover.",
+      statBadge: "Mock-ups · QC",
+    },
+    {
+      kind: "image",
+      src: s[0]!,
+      alt: "Residential volume — architecture",
+      eyebrow: "Architecture & shell",
+      headline: "Plans that respect structure, sun, and monsoon",
+      lead: "Spatial clarity first—shell, services, and façade decisions documented together so interiors lock to a single roadmap for Bhubaneswar sites.",
+      statBadge: "Shell to styling",
+    },
+    {
+      kind: "image",
+      src: s[1]!,
+      alt: "Materials and finishes",
+      eyebrow: "Materials palette",
+      headline: "Finishes chosen for your climate, not a catalogue default",
+      lead: "Stone, timber, metal, and textiles selected for coastal heat and wet seasons—scheduled and sampled so swaps do not happen on the day of installation.",
+      statBadge: "Samples in studio",
+    },
+    {
+      kind: "image",
+      src: s[2]!,
+      alt: "Bedroom interior perspective",
+      eyebrow: "Visualisation",
+      headline: "Walk the interior before walls are wet",
+      lead: "Photoreal walkthroughs and stills that freeze choices—budgets, lead times, and trades stay aligned to what you signed off in Bhubaneswar.",
+      statBadge: "Renders · revisions",
+    },
+  ];
 
-  return [...slides, ...orderedFrames];
+  const imageFrames = cityId === "bhubaneswar" ? bhubaneswarFrames : frames;
+
+  return [...slides, ...imageFrames];
 }
