@@ -97,15 +97,16 @@
       0 1px 0 color-mix(in oklab, #fff 55%, transparent);
   }
 
-  /** Hub headline only: oversized “2” as a deliberate brand mark (not superscript). */
+  /** Hub headline only: oversized “2” — nudge up so baseline reads with caps in “In…erio”. */
   .hub-hero-title .brand-in2-digit {
     font-size: 1.38em;
-    line-height: 0.78;
+    line-height: 1;
     font-weight: 700;
     letter-spacing: 0;
-    vertical-align: -0.07em;
+    vertical-align: baseline;
     display: inline-block;
     margin-inline: 0.02em;
+    transform: translateY(-0.09em);
     text-shadow:
       0 0 0.08em color-mix(in oklab, var(--color-ink) 48%, transparent),
       0 0.06em 0.14em color-mix(in oklab, var(--color-ink) 18%, transparent),
