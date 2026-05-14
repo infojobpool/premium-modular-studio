@@ -34,7 +34,7 @@ export function WhyChoose() {
 
       <div className={`relative mx-auto ${CONTENT_MAX}`}>
         <Reveal className="max-w-3xl">
-          <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-accent">
+          <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-accent-strong">
             Why us
             <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
             Premium studio

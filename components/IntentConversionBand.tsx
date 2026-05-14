@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
-import { STUDIO_EMAIL_HREF, STUDIO_WHATSAPP_HREF } from "@/lib/locations";
+import { STUDIO_EMAIL_HREF, getStudioWhatsAppHref } from "@/lib/locations";
 import { trackEvent } from "@/lib/analytics";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
@@ -11,7 +11,7 @@ function IntentCardIcon({ index }: { index: number }) {
   if (index === 0) {
     // Studio visit
     return (
-      <svg viewBox="0 0 24 24" className="h-5 w-5 text-accent" fill="none" aria-hidden>
+      <svg viewBox="0 0 24 24" className="h-5 w-5 text-accent-strong" fill="none" aria-hidden>
         <path
           d="M12 20s6-4.3 6-10a6 6 0 10-12 0c0 5.7 6 10 6 10z"
           stroke="currentColor"
@@ -26,7 +26,7 @@ function IntentCardIcon({ index }: { index: number }) {
   if (index === 1) {
     // WhatsApp chat bubble
     return (
-      <svg viewBox="0 0 24 24" className="h-5 w-5 text-accent" fill="none" aria-hidden>
+      <svg viewBox="0 0 24 24" className="h-5 w-5 text-accent-strong" fill="none" aria-hidden>
         <path
           d="M7 18l-2 2 .7-3A8 8 0 1112 20c-1.8 0-3.5-.6-5-2z"
           stroke="currentColor"
@@ -40,7 +40,7 @@ function IntentCardIcon({ index }: { index: number }) {
   }
   // Process flow
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 text-accent" fill="none" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-5 w-5 text-accent-strong" fill="none" aria-hidden>
       <path
         d="M4 7h6M14 7h6M4 17h6M14 17h6M10 7l4 10"
         stroke="currentColor"
@@ -57,7 +57,7 @@ function IntentCardIcon({ index }: { index: number }) {
 
 export function IntentConversionBand() {
   const { location } = useStudioLocation();
-  const whatsappHref = `${STUDIO_WHATSAPP_HREF}?text=${encodeURIComponent(
+  const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
     `Hello — I'd like guidance on where to start (${location.label} studio).`,
   )}`;
 
@@ -137,7 +137,7 @@ export function IntentConversionBand() {
                     onClick={() => trackEvent(c.event, { city: location.id })}
                     className="group flex items-center gap-4 rounded-2xl border border-ink/12 bg-gradient-to-r from-[#f6f1df] to-[#f2ecda] px-4 py-4 shadow-[0_10px_24px_-20px_rgba(27,63,46,0.42)] transition-[transform,border-color,box-shadow] duration-400 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-[0_20px_36px_-24px_rgba(27,63,46,0.45)] sm:px-5"
                   >
-                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-canvas/70 text-accent">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-canvas/70 text-accent-strong">
                       <IntentCardIcon index={i} />
                     </span>
 
@@ -146,7 +146,7 @@ export function IntentConversionBand() {
                       <span className="mt-1 block text-sm leading-relaxed text-muted">{c.line}</span>
                     </span>
 
-                    <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
+                    <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
                       {c.cta} →
                     </span>
                   </a>

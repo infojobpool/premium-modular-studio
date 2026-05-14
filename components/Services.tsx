@@ -11,7 +11,7 @@ export function Services() {
     <section id="services" className="relative py-28">
       <div className={`mx-auto ${CONTENT_MAX} ${PAGE_GUTTER_X}`}>
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
             Services
           </p>
           <h2 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl md:text-6xl">
@@ -45,7 +45,7 @@ export function Services() {
             </div>
             <div className="relative p-8">
               <div className="pointer-events-none absolute -right-12 -top-24 h-36 w-36 rounded-full bg-accent/10 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-              <span className="font-display text-5xl text-accent/30 transition-colors duration-500 group-hover:text-accent/50">
+              <span className="font-display text-5xl text-accent-strong/40 transition-colors duration-500 group-hover:text-accent-strong/58">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-2 font-display text-xl text-ink sm:text-2xl">

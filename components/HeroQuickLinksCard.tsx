@@ -13,7 +13,7 @@ type QuickItem = {
 
 function IconBrush() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent" fill="none" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
       <path
         d="M4 20h4l10.5-10.5a2.5 2.5 0 00-3.5-3.5L4.5 16.5V20z"
         stroke="currentColor"
@@ -27,7 +27,7 @@ function IconBrush() {
 
 function IconGrid() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent" fill="none" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
       <path
         d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"
         stroke="currentColor"
@@ -39,7 +39,7 @@ function IconGrid() {
 
 function IconCube() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent" fill="none" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
       <path
         d="M12 2l9 5v10l-9 5-9-5V7l9-5z"
         stroke="currentColor"
@@ -53,7 +53,7 @@ function IconCube() {
 
 function IconEye() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent" fill="none" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
       <path
         d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z"
         stroke="currentColor"
@@ -66,7 +66,7 @@ function IconEye() {
 
 function IconPin() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent" fill="none" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
       <path
         d="M12 21s7-4.35 7-11a7 7 0 10-14 0c0 6.65 7 11 7 11z"
         stroke="currentColor"
@@ -80,7 +80,7 @@ function IconPin() {
 
 function IconChat() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent" fill="none" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
       <path
         d="M21 12a8 8 0 01-8 8H7l-4 3v-3.17A8 8 0 013 12a8 8 0 118 8z"
         stroke="currentColor"

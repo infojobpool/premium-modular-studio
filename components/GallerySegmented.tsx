@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { getGalleryImagesForProject } from "@/lib/gallery-segmented";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import type { StudioLocationId } from "@/lib/locations";
 import { withBrandHighlight } from "./BrandInline";
+import { ImageLightbox } from "./ImageLightbox";
 import { Reveal } from "./Reveal";
 
 type Props = {
@@ -19,18 +20,23 @@ export function GallerySegmented({ city, locationLabel }: Props) {
   const copy = CITY_PAGE_COPY[city];
   const projects = copy.galleryProjects;
   const [active, setActive] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const project = projects[active]!;
   const images = useMemo(
     () => getGalleryImagesForProject(city, project.slug),
     [city, project.slug],
   );
 
+  useEffect(() => {
+    setLightboxIndex(null);
+  }, [active, city, project.slug]);
+
   return (
     <section id="work" className="relative overflow-hidden py-24 sm:py-28">
       <div className={`mx-auto ${CONTENT_MAX} ${PAGE_GUTTER_X}`}>
         <Reveal key={city} className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
               Portfolio · {locationLabel}
             </p>
             <h2 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl md:text-6xl">
@@ -68,7 +74,7 @@ export function GallerySegmented({ city, locationLabel }: Props) {
 
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent/90">{project.tag}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-strong/90">{project.tag}</p>
             <p className="mt-2 text-sm leading-relaxed text-muted">{project.excerpt}</p>
           </div>
           <Link
@@ -87,9 +93,13 @@ export function GallerySegmented({ city, locationLabel }: Props) {
           aria-label={project.name}
         >
           {images.map((src, idx) => (
-            <div
+            <button
               key={`${project.slug}-${idx}-${src}`}
-              className="group relative aspect-square overflow-hidden bg-ink/[0.04]"
+              type="button"
+              onClick={() => setLightboxIndex(idx)}
+              aria-haspopup="dialog"
+              aria-label={`Open image ${idx + 1} of ${images.length} in viewer`}
+              className="group relative aspect-square cursor-[zoom-in] overflow-hidden border-0 bg-ink/[0.04] p-0 text-left transition hover:ring-2 hover:ring-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Image
                 src={src}
@@ -98,7 +108,7 @@ export function GallerySegmented({ city, locationLabel }: Props) {
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 14vw"
                 className="object-cover transition duration-500 ease-out group-hover:scale-[1.04]"
               />
-            </div>
+            </button>
           ))}
         </div>
       </div>
@@ -111,6 +121,14 @@ export function GallerySegmented({ city, locationLabel }: Props) {
           View all project stories
         </Link>
       </div>
+
+      <ImageLightbox
+        images={images}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onIndexChange={setLightboxIndex}
+        altForIndex={(i) => `${project.alt} — still ${i + 1}`}
+      />
     </section>
   );
 }

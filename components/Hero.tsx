@@ -19,7 +19,7 @@ export function Hero() {
 
   return (
     <section className="relative isolate min-h-[100dvh] w-full overflow-x-clip bg-transparent">
-      <div className="relative z-10 mx-auto grid min-h-[100dvh] w-full max-w-none grid-cols-1 items-center gap-8 px-0 pb-24 pt-[max(7rem,env(safe-area-inset-top)+5rem)] sm:pb-28 sm:pt-[max(8rem,env(safe-area-inset-top)+5.5rem)] md:grid-cols-2 md:gap-0 md:pb-20 md:pt-[max(6rem,env(safe-area-inset-top)+4.5rem)]">
+      <div className="relative z-10 mx-auto grid min-h-[100dvh] w-full max-w-none grid-cols-1 items-center gap-8 px-0 pb-24 pt-[max(8rem,env(safe-area-inset-top)+5.5rem)] sm:pb-28 sm:pt-[max(8.75rem,env(safe-area-inset-top)+5.75rem)] md:grid-cols-2 md:gap-0 md:pb-20 md:pt-[max(9.25rem,env(safe-area-inset-top)+5.75rem)] lg:pt-[max(9.5rem,env(safe-area-inset-top)+5.75rem)]">
         <div className="px-6 sm:px-10 md:pl-16 md:pr-10 xl:pl-24 2xl:pl-32 2xl:pr-14">
           <div className="max-w-xl">
             <AnimatePresence mode="wait">
@@ -32,7 +32,7 @@ export function Hero() {
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div className="mb-6 space-y-3">
-                    <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+                    <p className="inline-flex w-fit max-w-full rounded-lg border border-ink/14 bg-accent/[0.14] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-ink shadow-sm">
                       {slide.eyebrow}
                     </p>
                     {slide.statBadge ? (

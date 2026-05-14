@@ -10,7 +10,7 @@ function StudioHighlightIcon({ idx }: { idx: number }) {
   if (idx === 0) {
     // Delivery scale
     return (
-      <svg viewBox="0 0 24 24" className="h-7 w-7 text-accent" fill="none" aria-hidden>
+      <svg viewBox="0 0 24 24" className="h-7 w-7 text-accent-strong" fill="none" aria-hidden>
         <path
           d="M12 20s6-4.3 6-10a6 6 0 10-12 0c0 5.7 6 10 6 10z"
           stroke="currentColor"
@@ -25,7 +25,7 @@ function StudioHighlightIcon({ idx }: { idx: number }) {
   if (idx === 1) {
     // Joinery + lighting
     return (
-      <svg viewBox="0 0 24 24" className="h-7 w-7 text-accent" fill="none" aria-hidden>
+      <svg viewBox="0 0 24 24" className="h-7 w-7 text-accent-strong" fill="none" aria-hidden>
         <path
           d="M12 3.5l3.8 4.4H8.2L12 3.5zM9.5 11.5h5M8 15h8M6.5 18.5h11"
           stroke="currentColor"
@@ -38,7 +38,7 @@ function StudioHighlightIcon({ idx }: { idx: number }) {
   }
   // Accountability / single team
   return (
-    <svg viewBox="0 0 24 24" className="h-7 w-7 text-accent" fill="none" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-7 w-7 text-accent-strong" fill="none" aria-hidden>
       <path
         d="M12 3l7 3v5c0 4.8-3.1 8-7 10-3.9-2-7-5.2-7-10V6l7-3z"
         stroke="currentColor"
@@ -61,7 +61,7 @@ export function PressStrip() {
       className={`border-y border-ink/8 bg-panel/25 py-8 sm:py-9 ${PAGE_GUTTER_X}`}
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-accent">
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-accent-strong">
           Studio standards · {location.label}
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-3 sm:gap-8">
@@ -84,7 +84,7 @@ export function PressStrip() {
                 aria-hidden
               />
               <span
-                className="pointer-events-none absolute -right-2 -top-3 font-display text-5xl text-accent/[0.12] transition-colors duration-500 group-hover:text-accent/[0.2]"
+                className="pointer-events-none absolute -right-2 -top-3 font-display text-5xl text-accent-strong/[0.22] transition-colors duration-500 group-hover:text-accent-strong/[0.34]"
                 aria-hidden
               >
                 {String(i + 1).padStart(2, "0")}
@@ -102,7 +102,7 @@ export function PressStrip() {
                   </div>
                 ) : (
                   <div
-                    className="flex h-16 w-16 items-center justify-center rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/22 to-accent/8 text-accent shadow-[0_8px_20px_-14px_rgba(217,162,41,0.7)]"
+                    className="flex h-16 w-16 items-center justify-center rounded-2xl border border-accent-strong/45 bg-gradient-to-br from-accent/28 to-accent/10 text-accent-strong shadow-[0_8px_20px_-14px_rgba(92,69,16,0.35)]"
                     aria-hidden
                   >
                     <StudioHighlightIcon idx={i} />
@@ -110,7 +110,7 @@ export function PressStrip() {
                 )}
               </div>
               <div className="min-w-0 flex-1 text-left">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-accent/85">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-accent-strong">
                   Signature standard
                 </p>
                 <h3 className="mt-2 font-display text-[1.35rem] leading-snug text-ink">{item.title}</h3>

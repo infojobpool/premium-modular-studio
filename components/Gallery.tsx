@@ -3,10 +3,11 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { CONTENT_MAX, PAGE_GUTTER_X, resolveGalleryTileSrc } from "@/lib/interior-images";
 import { withBrandHighlight } from "./BrandInline";
+import { ImageLightbox } from "./ImageLightbox";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -17,6 +18,13 @@ export function Gallery() {
     ...p,
     src: resolveGalleryTileSrc(p, i),
   }));
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const lightboxSrcs = useMemo(() => projects.map((p) => p.src), [projects]);
+
+  useEffect(() => {
+    setLightboxIndex(null);
+  }, [location.id]);
+
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -34,7 +42,7 @@ export function Gallery() {
       <div className={`mx-auto ${CONTENT_MAX} ${PAGE_GUTTER_X}`}>
         <Reveal key={location.id} className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
               Signature work · {location.label}
             </p>
             <h2 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl md:text-6xl">
@@ -58,10 +66,7 @@ export function Gallery() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.85, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link
-                href={`/${location.id}/projects/${p.slug}`}
-                className="group relative block aspect-[4/5] overflow-hidden rounded-3xl border border-ink/8 bg-panel shadow-sm"
-              >
+              <div className="group relative block aspect-[4/5] overflow-hidden rounded-3xl border border-ink/8 bg-panel shadow-sm">
                 <Image
                   src={p.src}
                   alt={p.alt}
@@ -72,16 +77,25 @@ export function Gallery() {
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent" />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_50%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-                <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-7">
+                <button
+                  type="button"
+                  className="absolute left-0 right-0 top-0 z-20 h-[58%] cursor-[zoom-in] border-0 bg-transparent p-0"
+                  aria-label={`Open large preview: ${p.name}`}
+                  onClick={() => setLightboxIndex(i)}
+                />
+                <Link
+                  href={`/${location.id}/projects/${p.slug}`}
+                  className="absolute inset-x-0 bottom-0 top-[58%] z-30 flex flex-col justify-end bg-gradient-to-t from-ink/85 via-ink/25 to-transparent p-6 text-left no-underline sm:p-7"
+                >
                   <p className="text-xs font-semibold uppercase tracking-[0.25em] text-canvas/85">
                     {p.tag}
                   </p>
                   <p className="mt-2 font-display text-2xl text-canvas">{p.name}</p>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent-soft">
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
                     Case study →
                   </p>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </motion.div>
           ))}
       </div>
@@ -94,6 +108,14 @@ export function Gallery() {
           View all project stories
         </Link>
       </div>
+
+      <ImageLightbox
+        images={lightboxSrcs}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onIndexChange={setLightboxIndex}
+        altForIndex={(idx) => projects[idx]?.alt ?? `Case study ${idx + 1}`}
+      />
     </section>
   );
 }

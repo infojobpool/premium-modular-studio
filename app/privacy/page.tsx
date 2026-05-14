@@ -13,7 +13,7 @@ export default function PrivacyPage() {
   return (
     <main className={`min-h-dvh mesh-hero py-28 ${PAGE_GUTTER_X}`}>
       <article className={`mx-auto max-w-2xl ${CONTENT_MAX}`}>
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">Legal</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent-strong">Legal</p>
         <h1 className="mt-4 font-display text-4xl tracking-tight text-ink">Privacy</h1>
         <p className="mt-6 text-muted">
           This page describes how we treat information collected through this website. It is a

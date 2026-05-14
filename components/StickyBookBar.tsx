@@ -4,7 +4,7 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { STUDIO_WHATSAPP_HREF } from "@/lib/locations";
+import { getStudioWhatsAppHref } from "@/lib/locations";
 import { useStudioLocation } from "./LocationProvider";
 
 const CITY_PATH = /^\/(hyderabad|bhubaneswar)$/;
@@ -29,7 +29,7 @@ export function StickyBookBar() {
   if (!onCityHome) return null;
 
   const contactHref = `/${location.id}/contact`;
-  const wa = `${STUDIO_WHATSAPP_HREF}?text=${encodeURIComponent(
+  const wa = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
     `Hello — I'd like to book a studio visit (${location.label}).`,
   )}`;
 

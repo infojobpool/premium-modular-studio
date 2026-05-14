@@ -25,7 +25,7 @@ export function LocalBusinessJsonLd({ city }: { city: StudioLocationId }) {
     description,
     url,
     email: STUDIO_EMAIL,
-    telephone: "+918919176937",
+    telephone: loc.phoneHref.replace(/^tel:/, ""),
     priceRange: "$$$",
     address: {
       "@type": "PostalAddress",

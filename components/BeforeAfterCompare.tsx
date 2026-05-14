@@ -31,7 +31,7 @@ export function BeforeAfterCompare(props: Props) {
     <section className={`py-16 ${PAGE_GUTTER_X}`} aria-labelledby={labelId}>
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">Proof of craft</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">Proof of craft</p>
           <h2 id={labelId} className="mt-3 font-display text-3xl tracking-tight text-ink sm:text-4xl">
             {headline}
           </h2>

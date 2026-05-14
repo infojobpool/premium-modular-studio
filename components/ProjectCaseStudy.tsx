@@ -43,7 +43,7 @@ export function ProjectCaseStudy({
           <span className="text-ink">{project.name}</span>
         </nav>
 
-        <p className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-accent">
+        <p className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-accent-strong">
           {project.tag} · {cityLabel}
         </p>
 
@@ -72,7 +72,7 @@ export function ProjectCaseStudy({
                 key={f.label}
                 className="rounded-2xl border border-ink/10 bg-panel/40 px-5 py-4"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
                   {f.label}
                 </p>
                 <p className="mt-2 font-display text-xl text-ink">{f.value}</p>

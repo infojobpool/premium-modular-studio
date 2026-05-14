@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
-import { STUDIO_WHATSAPP_HREF } from "@/lib/locations";
+import { getStudioWhatsAppHref } from "@/lib/locations";
 import { useStudioLocation } from "./LocationProvider";
 
 const projectMultipliers = {
@@ -38,7 +38,7 @@ export function BudgetCalculator() {
   }, [area, finish, projectType, smartAddons]);
 
   const estimateText = `Estimated budget for ${location.label}: INR ${estimate.min.toLocaleString("en-IN")} - INR ${estimate.max.toLocaleString("en-IN")}`;
-  const whatsappHref = `${STUDIO_WHATSAPP_HREF}?text=${encodeURIComponent(
+  const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
     `${estimateText}\nProject: ${projectType}\nArea: ${area} sqft\nFinish: ${finish}\nSmart add-ons: ${smartAddons ? "Yes" : "No"}`,
   )}`;
 
@@ -102,7 +102,7 @@ export function BudgetCalculator() {
     <section id="budget-calculator" className={`border-y border-ink/10 bg-panel/35 py-12 sm:py-14 ${PAGE_GUTTER_X}`}>
       <div className={`mx-auto grid gap-10 ${CONTENT_MAX} lg:grid-cols-[minmax(0,1fr)_420px]`}>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">Budget planner</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent-strong">Budget planner</p>
           <h2 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl">
             Interior budget calculator
           </h2>
@@ -181,7 +181,7 @@ export function BudgetCalculator() {
         </div>
 
         <aside className="rounded-3xl border border-ink/12 bg-canvas p-7 shadow-sm">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent-strong">
             Estimated range · {location.label}
           </p>
           <div className="mt-4 flex flex-wrap items-end gap-2 text-ink">

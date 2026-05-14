@@ -18,7 +18,7 @@ export function Process() {
 
       <div className={`relative mx-auto ${CONTENT_MAX}`}>
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-soft">
+          <p className="inline-flex w-fit max-w-full rounded-lg border border-canvas/30 bg-canvas/[0.12] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-canvas shadow-sm">
             Our process
           </p>
           <h2 className="mt-4 max-w-4xl font-display text-4xl tracking-tight sm:text-5xl md:text-6xl">
@@ -42,7 +42,7 @@ export function Process() {
               <span className="absolute -left-[calc(2rem+1px)] top-1 flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full border border-accent/60 bg-ink sm:-left-[calc(3rem+1px)]">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent-soft">
+              <p className="inline-flex w-fit rounded-md border border-canvas/25 bg-canvas/10 px-2 py-1 text-[11px] font-bold uppercase tracking-[0.26em] text-canvas">
                 {step.num}
               </p>
               <h3 className="mt-2 font-display text-2xl sm:text-3xl">{step.title}</h3>

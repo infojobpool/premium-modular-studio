@@ -13,7 +13,7 @@ export function CityBlogPosts() {
     <section className={`py-24 ${PAGE_GUTTER_X}`}>
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">Blog</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">Blog</p>
           <h1 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl">
             Insights from the {location.label} studio
           </h1>
@@ -33,7 +33,7 @@ export function CityBlogPosts() {
                 href={post.href}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent"
+                className="mt-5 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong"
               >
                 Read article →
               </a>

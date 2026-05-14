@@ -42,8 +42,8 @@ export const STUDIO_LOCATIONS: Record<StudioLocationId, StudioLocation> = {
       "Plot No. 2165/8180, Puri Bypass, Mangaraj Point",
       "In front of Pallavi Mandap, Bhubaneswar, Odisha 751006",
     ],
-    phoneDisplay: "+91 89191 76937",
-    phoneHref: "tel:+918919176937",
+    phoneDisplay: "+91 78540 01410",
+    phoneHref: "tel:+917854001410",
     mapQuery:
       "Plot 2165/8180 Puri Bypass Mangaraj Point Pallavi Mandap Bhubaneswar 751006",
     hoursSummary: "Mon–Sat · 10:00–18:30 IST (by appointment)",
@@ -51,9 +51,17 @@ export const STUDIO_LOCATIONS: Record<StudioLocationId, StudioLocation> = {
   },
 };
 
-/** Same studio line as `phoneHref`; opens WhatsApp chat pre-filled for the city. */
+/** Hyderabad studio WhatsApp (digits only, no +). Use `getStudioWhatsAppHref` for city pages. */
 export const STUDIO_WHATSAPP_E164 = "918919176937";
 export const STUDIO_WHATSAPP_HREF = `https://wa.me/${STUDIO_WHATSAPP_E164}`;
+
+export function getStudioWhatsAppE164(city: StudioLocationId): string {
+  return city === "bhubaneswar" ? "917854001410" : STUDIO_WHATSAPP_E164;
+}
+
+export function getStudioWhatsAppHref(city: StudioLocationId): string {
+  return `https://wa.me/${getStudioWhatsAppE164(city)}`;
+}
 
 export const DEFAULT_STUDIO_LOCATION: StudioLocationId = "hyderabad";
 

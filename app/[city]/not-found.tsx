@@ -5,7 +5,7 @@ export default function CityNotFound() {
   return (
     <div className={`studio-atmosphere min-h-dvh ${PAGE_GUTTER_X} py-28`}>
       <div className={`mx-auto ${CONTENT_MAX} text-center`}>
-        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">404</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">404</p>
         <h1 className="mt-4 font-display text-3xl tracking-tight text-ink sm:text-4xl">
           This studio page isn’t here
         </h1>

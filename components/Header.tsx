@@ -72,7 +72,9 @@ export function Header() {
       className={`fixed inset-x-0 top-0 z-40 pt-2 sm:pt-3 ${PAGE_GUTTER_X}`}
     >
       <div
-        className={`mx-auto flex w-full max-w-[92rem] flex-wrap items-center justify-between gap-2 rounded-2xl border px-3 py-2 transition-[background,box-shadow,border-color] duration-500 sm:gap-4 sm:rounded-full sm:px-7 sm:py-3 ${
+        className={`isolate mx-auto flex w-full max-w-[92rem] flex-wrap items-center justify-between gap-2 border px-3 py-2 transition-[background,box-shadow,border-color,border-radius] duration-500 sm:gap-4 sm:px-7 sm:py-3 ${
+          mobileMenuOpen ? "rounded-2xl" : "rounded-2xl lg:rounded-full"
+        } ${
           solid
             ? "border-ink/18 bg-canvas/86 shadow-[0_12px_46px_-16px_rgba(27,63,46,0.28)] backdrop-blur-xl"
             : "border-ink/10 bg-canvas/70 shadow-[0_8px_34px_-18px_rgba(27,63,46,0.18)] backdrop-blur-md"
@@ -152,15 +154,15 @@ export function Header() {
         </button>
 
         {mobileMenuOpen ? (
-          <div className="order-6 mt-2 w-full rounded-xl border border-ink/10 bg-canvas/92 p-3 shadow-[0_20px_40px_-28px_rgba(27,63,46,0.35)] lg:hidden">
-            <div className="mb-3 flex items-center justify-between gap-2">
-              <LocationSwitcher compact layoutGroup="hdr-mobile" />
+          <div className="order-6 relative z-10 mt-2 w-full rounded-xl border border-ink/12 bg-canvas p-3 shadow-[0_20px_48px_-28px_rgba(27,63,46,0.42)] ring-1 ring-ink/[0.06] backdrop-blur-md lg:hidden">
+            <div className="mb-3 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+              <LocationSwitcher compact wide layoutGroup="hdr-mobile" />
               <button
                 type="button"
                 onClick={openConsultationPopup}
-                className="inline-flex items-center justify-center rounded-full bg-ink px-3.5 py-1.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)]"
+                className="inline-flex w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 sm:w-auto sm:px-3.5 sm:py-1.5 sm:text-[9px] sm:tracking-[0.16em]"
               >
-                Book Consultation
+                Book consultation
               </button>
             </div>
 

@@ -13,7 +13,7 @@ export function CityCareers() {
     <section className={`py-24 ${PAGE_GUTTER_X}`}>
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">Careers</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">Careers</p>
           <h1 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl">
             Build your career in luxury design & architecture
           </h1>
@@ -27,7 +27,7 @@ export function CityCareers() {
           {vividCareerOpenings.map((job) => (
             <li key={job.role} className="rounded-2xl border border-ink/10 bg-panel/35 p-6 shadow-sm">
               <h2 className="font-display text-2xl text-ink">{job.role}</h2>
-              <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+              <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
                 Experience · {job.experience}
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted">{job.skills}</p>

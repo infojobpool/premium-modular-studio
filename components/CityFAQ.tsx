@@ -18,7 +18,7 @@ export function CityFAQ() {
     <section id="faq" className={`scroll-mt-32 py-24 ${PAGE_GUTTER_X}`}>
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
             Frequently asked · {location.label}
           </p>
           <h2 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl">
@@ -49,7 +49,7 @@ export function CityFAQ() {
                 >
                   <span className="font-display text-lg text-ink sm:text-xl">{item.question}</span>
                   <span
-                    className="shrink-0 text-xs font-semibold uppercase tracking-[0.2em] text-accent"
+                    className="shrink-0 text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong"
                     aria-hidden
                   >
                     {open ? "−" : "+"}

@@ -7,7 +7,7 @@ import {
   STUDIO_EMAIL,
   STUDIO_EMAIL_HREF,
   STUDIO_SOCIAL,
-  STUDIO_WHATSAPP_HREF,
+  getStudioWhatsAppHref,
 } from "@/lib/locations";
 import { withBrandHighlight } from "./BrandInline";
 import { VividLogo } from "./VividLogo";
@@ -51,7 +51,7 @@ const socialItems = [
 
 export function Footer() {
   const { location } = useStudioLocation();
-  const whatsappHref = `${STUDIO_WHATSAPP_HREF}?text=${encodeURIComponent(
+  const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
     `Hello — enquiry from ${location.label} studio page.`,
   )}`;
   const premiumLinkClass =
@@ -87,7 +87,7 @@ export function Footer() {
               </p>
 
               <div className="mt-8">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-accent">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-strong">
                   Connect
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2.5">
@@ -115,7 +115,7 @@ export function Footer() {
               className="grid gap-10 sm:grid-cols-2 sm:gap-12 lg:gap-10"
             >
               <div className="rounded-2xl border border-ink/10 bg-canvas/50 p-5 sm:p-6">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Quick links</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">Quick links</p>
                 <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-[0.98rem]">
                   <Link href={`/${location.id}/about`} className={premiumLinkClass}>
                     <span className={premiumLinkUnderlineClass}>About</span>
@@ -140,7 +140,7 @@ export function Footer() {
 
               <div className="space-y-6 rounded-2xl border border-ink/10 bg-gradient-to-b from-canvas/70 to-panel/35 p-5 sm:border-l-0 sm:p-6 lg:border-l lg:border-ink/10 lg:pl-8">
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
                     {location.label} studio
                   </p>
                   <p className="mt-2 text-[0.98rem] leading-relaxed text-ink/84">
@@ -153,19 +153,19 @@ export function Footer() {
                 </div>
                 <div className="flex flex-col gap-2.5 border-t border-ink/10 pt-5 text-[0.98rem]">
                   <a href={STUDIO_EMAIL_HREF} className={premiumLinkClass}>
-                    <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center text-accent/85" aria-hidden>
+                    <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center text-accent-strong/85" aria-hidden>
                       ✉
                     </span>
                     <span className={premiumLinkUnderlineClass}>{STUDIO_EMAIL}</span>
                   </a>
                   <a href={location.phoneHref} className={premiumLinkClass}>
-                    <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center text-accent/85" aria-hidden>
+                    <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center text-accent-strong/85" aria-hidden>
                       ☎
                     </span>
                     <span className={premiumLinkUnderlineClass}>{location.phoneDisplay}</span>
                   </a>
                   <a href={whatsappHref} className={premiumLinkClass} target="_blank" rel="noreferrer">
-                    <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center text-accent/85" aria-hidden>
+                    <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center text-accent-strong/85" aria-hidden>
                       ◉
                     </span>
                     <span className={premiumLinkUnderlineClass}>WhatsApp</span>

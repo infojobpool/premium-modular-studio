@@ -130,7 +130,7 @@ export function HubLanding() {
             }}
           >
             <motion.div variants={heroItem} className="flex justify-center">
-              <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/[0.09] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.32em] text-accent shadow-[0_1px_0_rgba(255,255,255,0.45)_inset] sm:px-3.5 sm:text-[11px]">
+              <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/[0.09] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.32em] text-accent-strong shadow-[0_1px_0_rgba(255,255,255,0.45)_inset] sm:px-3.5 sm:text-[11px]">
                 Premium & luxury interiors
               </span>
             </motion.div>
@@ -143,7 +143,7 @@ export function HubLanding() {
                 hidden: { opacity: reduce ? 1 : 0, y: reduce ? 0 : 18 },
                 show: { opacity: 1, y: 0, transition: { duration: reduce ? 0 : 0.65, ease: easeOut } },
               }}
-              className="hub-hero-title mt-2.5 px-1 font-display text-balance uppercase text-[clamp(1.55rem,4.8vw+0.4rem,3.05rem)] leading-[1.06] tracking-[0.06em] text-ink sm:mt-3 sm:px-2 sm:tracking-[0.08em]"
+              className="hub-hero-title mt-2.5 px-1 font-display text-balance font-semibold uppercase text-[clamp(1.55rem,4.8vw+0.4rem,3.05rem)] leading-[1.06] tracking-[0.06em] text-ink sm:mt-3 sm:px-2 sm:tracking-[0.08em]"
             >
               {withBrandHighlight("Choose your Vivid In2erio studio")}
             </motion.h1>
@@ -198,7 +198,7 @@ export function HubLanding() {
                   aria-hidden
                 />
                 <span
-                  className="pointer-events-none absolute -right-2 top-12 z-0 font-display text-[clamp(3.75rem,16vw,5.25rem)] font-semibold leading-none text-accent/[0.09] transition-colors duration-500 group-hover:text-accent/[0.15] sm:-right-1 sm:top-14"
+                  className="pointer-events-none absolute -right-2 top-12 z-0 font-display text-[clamp(3.75rem,16vw,5.25rem)] font-semibold leading-none text-accent-strong/[0.14] transition-colors duration-500 group-hover:text-accent-strong/[0.24] sm:-right-1 sm:top-14"
                   aria-hidden
                 >
                   {c.city === "hyderabad" ? "H" : "B"}
@@ -242,14 +242,14 @@ export function HubLanding() {
               <span className="flex w-full basis-full flex-wrap items-center justify-center gap-x-2 gap-y-1.5 sm:w-auto sm:basis-auto">
                 <Link
                   href="/hyderabad"
-                  className="rounded-md px-1.5 py-1 font-medium text-ink/85 underline-offset-4 transition hover:text-accent hover:underline"
+                  className="rounded-md px-1.5 py-1 font-medium text-ink/85 underline-offset-4 transition hover:text-accent-strong hover:underline"
                 >
                   Hyderabad
                 </Link>
                 <span className="text-ink/25">·</span>
                 <Link
                   href="/bhubaneswar"
-                  className="rounded-md px-1.5 py-1 font-medium text-ink/85 underline-offset-4 transition hover:text-accent hover:underline"
+                  className="rounded-md px-1.5 py-1 font-medium text-ink/85 underline-offset-4 transition hover:text-accent-strong hover:underline"
                 >
                   Bhubaneswar
                 </Link>

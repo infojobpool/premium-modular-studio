@@ -28,7 +28,7 @@ export function StudioMapSection() {
     >
       <div className={`mx-auto grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-start ${CONTENT_MAX}`}>
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
             Visit · {location.label}
           </p>
           <h2 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl">
@@ -48,7 +48,7 @@ export function StudioMapSection() {
               href={mapsLink}
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-semibold uppercase tracking-[0.18em] text-accent underline-offset-4 hover:underline"
+              className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-strong underline-offset-4 hover:underline"
             >
               Open in Google Maps
             </a>

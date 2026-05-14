@@ -47,7 +47,7 @@ export function CityAwardsStrip() {
         <p className="text-center font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           50+ awards for innovative design
         </p>
-        <p className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+        <p className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
           Recognised across premium interior categories
         </p>
 

@@ -183,7 +183,7 @@ export function OfferLeadModal() {
                 <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-ink/12 to-ink/78" />
 
                 <div className="absolute inset-x-6 bottom-5 rounded-2xl border border-white/35 bg-canvas/95 p-4 text-ink shadow-[0_20px_50px_-20px_rgba(27,63,46,0.35)] ring-1 ring-ink/8 backdrop-blur-[2px]">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
                     aMAYzing home deals
                   </p>
                   <p className="mt-1 font-display text-[2.25rem] leading-none text-ink">Flat 25% OFF</p>

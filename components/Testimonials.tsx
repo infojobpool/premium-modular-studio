@@ -85,7 +85,7 @@ export function Testimonials() {
                   )}
                 </div>
                 <div className="min-w-0 flex-1 text-center sm:text-left">
-                  <span className="font-display text-5xl leading-none text-accent/25 sm:text-6xl" aria-hidden>
+                  <span className="font-display text-5xl leading-none text-accent-strong/40 sm:text-6xl" aria-hidden>
                     “
                   </span>
                   <p className="-mt-2 font-display text-lg leading-snug text-ink sm:-mt-3 sm:text-xl">
@@ -93,7 +93,7 @@ export function Testimonials() {
                   </p>
                   <footer className="mt-6 text-sm text-muted">
                     <cite className="not-italic font-semibold text-ink">{current.name}</cite>
-                    <span className="mx-2 text-accent">·</span>
+                    <span className="mx-2 text-accent-strong">·</span>
                     <span>{current.role}</span>
                   </footer>
                 </div>

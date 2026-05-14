@@ -5,7 +5,7 @@ import { useState, type FormEvent } from "react";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { buildContactMailto } from "@/lib/contact-mailto";
 import { getCalendlyUrl } from "@/lib/calendly";
-import { STUDIO_EMAIL, STUDIO_EMAIL_HREF, STUDIO_WHATSAPP_HREF } from "@/lib/locations";
+import { STUDIO_EMAIL, STUDIO_EMAIL_HREF, getStudioWhatsAppHref } from "@/lib/locations";
 import { vividCopy } from "@/lib/vivid-reference";
 import { LocationSwitcher } from "./LocationSwitcher";
 import { Reveal } from "./Reveal";
@@ -16,7 +16,7 @@ type SubmitState = "idle" | "sending" | "sent" | "error";
 export function CTA() {
   const { location } = useStudioLocation();
   const calendlyUrl = getCalendlyUrl();
-  const whatsappHref = `${STUDIO_WHATSAPP_HREF}?text=${encodeURIComponent(
+  const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
     `Hello Vivid In2erio — I'd like to discuss a project (${location.label} studio page).`,
   )}`;
 

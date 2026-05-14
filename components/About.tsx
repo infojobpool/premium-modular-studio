@@ -16,7 +16,7 @@ export function About() {
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <Reveal key={location.id} className="order-1 lg:order-1">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
               Luxury interior & architecture · {location.label}
             </p>
             <h2 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl">
@@ -27,15 +27,15 @@ export function About() {
             <p className="mt-6 text-base leading-relaxed text-muted/90">{vividCopy.servicesIntro}</p>
             <div className="mt-7 grid gap-3 sm:grid-cols-3">
               <div className="rounded-xl border border-ink/10 bg-canvas/60 px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Individuality</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">Individuality</p>
                 <p className="mt-1 text-sm text-muted">Designed around your lifestyle and identity.</p>
               </div>
               <div className="rounded-xl border border-ink/10 bg-canvas/60 px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Purpose</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">Purpose</p>
                 <p className="mt-1 text-sm text-muted">Every element has meaning and functionality.</p>
               </div>
               <div className="rounded-xl border border-ink/10 bg-canvas/60 px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
                   Refined execution
                 </p>
                 <p className="mt-1 text-sm text-muted">Flawless finishing with premium materials.</p>

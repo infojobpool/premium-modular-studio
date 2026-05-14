@@ -23,7 +23,7 @@ export default function AllProjectsIndexPage() {
         <Header />
         <div className={`pb-28 pt-32 ${PAGE_GUTTER_X}`}>
           <div className={`mx-auto ${CONTENT_MAX}`}>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">Portfolio</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">Portfolio</p>
             <h1 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl md:text-6xl">
               All project pages
             </h1>

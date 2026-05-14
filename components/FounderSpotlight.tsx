@@ -59,7 +59,7 @@ export function FounderSpotlight({ variant = "full" }: FounderSpotlightProps) {
           </div>
 
           <div className="relative">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent-strong">
               {s.eyebrow} · {location.label}
             </p>
             <h2 className={`mt-3 font-display tracking-tight text-ink ${isCompact ? "text-4xl sm:text-[2.7rem]" : "text-4xl sm:text-5xl"}`}>
@@ -88,7 +88,7 @@ export function FounderSpotlight({ variant = "full" }: FounderSpotlightProps) {
             {isCompact ? (
               <Link
                 href={`/${location.id}/about`}
-                className="mt-5 inline-flex items-center gap-2 rounded-full border border-ink/18 bg-canvas/60 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-ink transition hover:border-accent/45 hover:text-accent"
+                className="mt-5 inline-flex items-center gap-2 rounded-full border border-ink/18 bg-canvas/60 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-ink transition hover:border-accent/45 hover:text-accent-strong"
               >
                 {s.compactCtaLabel}
                 <span aria-hidden>→</span>
