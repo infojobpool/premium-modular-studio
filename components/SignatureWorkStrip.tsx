@@ -61,7 +61,7 @@ export function SignatureWorkStrip() {
                   alt={p.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="pointer-events-none object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   priority={i === 0}
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent" />

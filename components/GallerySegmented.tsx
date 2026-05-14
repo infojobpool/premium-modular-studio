@@ -99,14 +99,14 @@ export function GallerySegmented({ city, locationLabel }: Props) {
               onClick={() => setLightboxIndex(idx)}
               aria-haspopup="dialog"
               aria-label={`Open image ${idx + 1} of ${images.length} in viewer`}
-              className="group relative aspect-square cursor-[zoom-in] overflow-hidden border-0 bg-ink/[0.04] p-0 text-left transition hover:ring-2 hover:ring-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="group relative z-0 aspect-square cursor-[zoom-in] overflow-hidden border-0 bg-ink/[0.04] p-0 text-left transition hover:ring-2 hover:ring-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Image
                 src={src}
                 alt={`${project.alt} — still ${idx + 1}`}
                 fill
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 14vw"
-                className="object-cover transition duration-500 ease-out group-hover:scale-[1.04]"
+                className="pointer-events-none object-cover transition duration-500 ease-out group-hover:scale-[1.04]"
               />
             </button>
           ))}

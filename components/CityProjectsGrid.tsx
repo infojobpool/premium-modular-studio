@@ -32,7 +32,7 @@ export function CityProjectsGrid({ city, projects }: Props) {
                   src={p.src}
                   alt={p.alt}
                   fill
-                  className="object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
+                  className="pointer-events-none object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />

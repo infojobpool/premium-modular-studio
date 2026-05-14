@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
+
+const emptySubscribe = () => () => {};
 
 type Props = {
   images: readonly string[];
@@ -14,14 +16,11 @@ type Props = {
 
 export function ImageLightbox({ images, altForIndex, index, onClose, onIndexChange }: Props) {
   const titleId = useId();
-  const [mounted, setMounted] = useState(false);
+  /** True on client immediately — avoids one frame where the dialog never mounts after first click. */
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const touchStartX = useRef<number | null>(null);
   const open = index !== null;
   const count = images.length;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const goPrev = useCallback(() => {
     if (index === null || count === 0) return;
