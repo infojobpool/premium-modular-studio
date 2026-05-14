@@ -61,10 +61,10 @@ export function PressStrip() {
       className={`border-y border-ink/8 bg-panel/25 py-8 sm:py-9 ${PAGE_GUTTER_X}`}
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-accent-strong">
-          Studio standards · {location.label}
-        </p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-3 sm:gap-8">
+        <h2 className="sr-only">
+          Studio highlights · {location.label}
+        </h2>
+        <div className="grid gap-6 sm:grid-cols-3 sm:gap-8">
           {items.map((item, i) => (
             <motion.article
               key={`${item.title}-${i}`}
@@ -73,7 +73,7 @@ export function PressStrip() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4 }}
-              className="group relative flex gap-4 overflow-hidden rounded-[1.35rem] border border-ink/14 bg-gradient-to-br from-[#f0e7cd]/95 via-[#ece2c7]/88 to-[#e2d7b8]/82 p-5 shadow-[0_12px_30px_-20px_rgba(27,63,46,0.42)] transition-[border-color,box-shadow,transform] duration-500 hover:border-accent/45 hover:shadow-[0_30px_56px_-24px_rgba(27,63,46,0.45)] sm:flex-col sm:p-6"
+              className="group relative flex gap-4 overflow-hidden rounded-[1.35rem] border border-ink/14 bg-gradient-to-br from-[#f0e7cd]/95 via-[#ece2c7]/88 to-[#e2d7b8]/82 p-5 shadow-[0_10px_28px_-18px_rgba(27,63,46,0.32)] transition-[border-color,box-shadow,transform] duration-500 hover:border-accent/45 hover:shadow-[0_22px_44px_-20px_rgba(27,63,46,0.38)] sm:flex-col sm:p-6"
             >
               <span
                 className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent opacity-80"
@@ -83,12 +83,6 @@ export function PressStrip() {
                 className="pointer-events-none absolute -left-1/3 top-0 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/45 to-transparent opacity-0 transition-all duration-700 group-hover:left-[115%] group-hover:opacity-80"
                 aria-hidden
               />
-              <span
-                className="pointer-events-none absolute -right-2 -top-3 font-display text-5xl text-accent-strong/[0.22] transition-colors duration-500 group-hover:text-accent-strong/[0.34]"
-                aria-hidden
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
               <div className="shrink-0">
                 {item.logoUrl ? (
                   <div className="relative h-16 w-16 overflow-hidden rounded-2xl border border-ink/12 bg-panel shadow-[0_1px_0_rgba(255,255,255,0.65)_inset,0_10px_20px_-14px_rgba(0,0,0,0.6)]">
@@ -110,10 +104,7 @@ export function PressStrip() {
                 )}
               </div>
               <div className="min-w-0 flex-1 text-left">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-accent-strong">
-                  Signature standard
-                </p>
-                <h3 className="mt-2 font-display text-[1.35rem] leading-snug text-ink">{item.title}</h3>
+                <h3 className="font-display text-[1.35rem] leading-snug text-ink">{item.title}</h3>
                 {item.subtitle ? (
                   <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">{item.subtitle}</p>
                 ) : null}
