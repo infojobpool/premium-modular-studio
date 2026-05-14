@@ -76,10 +76,10 @@ export function SignatureWorkStrip() {
                 />
                 <Link
                   href={`/${location.id}/projects/${p.slug}`}
-                  className="absolute inset-x-0 bottom-0 top-[58%] z-30 flex flex-col justify-end bg-gradient-to-t from-ink/95 via-ink/40 to-transparent p-5 text-left no-underline sm:p-6"
+                  className="absolute inset-x-0 bottom-0 top-[58%] z-30 flex min-w-0 flex-col justify-end bg-gradient-to-t from-ink/95 via-ink/40 to-transparent p-5 text-left no-underline sm:p-6"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.25em] text-canvas/85">{p.tag}</p>
-                  <p className="mt-2 font-display text-xl text-canvas sm:text-2xl">{p.name}</p>
+                  <p className="mt-2 text-balance break-words font-display text-xl text-canvas sm:text-2xl">{p.name}</p>
                   <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
                     Case study →
                   </p>

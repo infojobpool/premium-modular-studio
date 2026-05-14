@@ -19,8 +19,8 @@ export function Hero() {
 
   return (
     <section className="relative isolate min-h-[100dvh] w-full overflow-x-clip bg-transparent">
-      <div className="relative z-10 mx-auto grid min-h-[100dvh] w-full max-w-none grid-cols-1 items-center gap-8 px-0 pb-24 pt-[max(8rem,env(safe-area-inset-top)+5.5rem)] sm:pb-28 sm:pt-[max(8.75rem,env(safe-area-inset-top)+5.75rem)] md:grid-cols-2 md:gap-0 md:pb-20 md:pt-[max(9.25rem,env(safe-area-inset-top)+5.75rem)] lg:pt-[max(9.5rem,env(safe-area-inset-top)+5.75rem)]">
-        <div className="px-6 sm:px-10 md:pl-16 md:pr-10 xl:pl-24 2xl:pl-32 2xl:pr-14">
+      <div className="relative z-10 mx-auto grid min-h-[100dvh] w-full max-w-none grid-cols-1 items-center gap-8 px-0 pb-24 pt-[max(8rem,env(safe-area-inset-top)+5.5rem)] sm:pb-28 sm:pt-[max(8.75rem,env(safe-area-inset-top)+5.75rem)] md:grid-cols-2 md:gap-6 md:pb-20 md:pt-[max(9.25rem,env(safe-area-inset-top)+5.75rem)] lg:gap-10 lg:pt-[max(9.5rem,env(safe-area-inset-top)+5.75rem)]">
+        <div className="min-w-0 px-6 sm:px-10 md:pl-16 md:pr-10 xl:pl-24 2xl:pl-32 2xl:pr-14">
           <div className="max-w-xl">
             <AnimatePresence mode="wait">
               {slide ? (
@@ -79,7 +79,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="px-6 sm:px-10 md:pl-0 md:pr-4 lg:pr-6 xl:pr-8">
+        <div className="min-w-0 px-6 sm:px-10 md:pl-0 md:pr-4 lg:pr-6 xl:pr-8">
           {/*
             Outer shell stays overflow-visible so the quick-links card is never clipped.
             Only the media + scrim live inside an overflow-hidden layer with matching radii.
@@ -99,7 +99,7 @@ export function Hero() {
                 aria-hidden
               />
             </div>
-            <div className="pointer-events-none absolute inset-x-3 bottom-4 z-20 hidden xl:flex xl:justify-end sm:inset-x-4 sm:bottom-5">
+            <div className="pointer-events-none absolute inset-x-3 bottom-4 z-20 hidden lg:flex lg:justify-end sm:inset-x-4 sm:bottom-5">
               <HeroQuickLinksCard />
             </div>
           </div>

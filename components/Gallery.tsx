@@ -37,7 +37,7 @@ export function Gallery() {
     <section
       ref={ref}
       id="work"
-      className="relative overflow-hidden py-28"
+      className="relative overflow-x-clip py-28"
     >
       <div className={`mx-auto ${CONTENT_MAX} ${PAGE_GUTTER_X}`}>
         <Reveal key={location.id} className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -64,6 +64,7 @@ export function Gallery() {
             <motion.div
               key={`${location.id}-${p.slug}`}
               style={{ x: i === 1 ? x2 : x1 }}
+              className="min-w-0 max-w-full"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -88,12 +89,12 @@ export function Gallery() {
                 />
                 <Link
                   href={`/${location.id}/projects/${p.slug}`}
-                  className="absolute inset-x-0 bottom-0 top-[58%] z-30 flex flex-col justify-end bg-gradient-to-t from-ink/85 via-ink/25 to-transparent p-6 text-left no-underline sm:p-7"
+                  className="absolute inset-x-0 bottom-0 top-[58%] z-30 flex min-w-0 flex-col justify-end bg-gradient-to-t from-ink/85 via-ink/25 to-transparent p-6 text-left no-underline sm:p-7"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.25em] text-canvas/85">
                     {p.tag}
                   </p>
-                  <p className="mt-2 font-display text-2xl text-canvas">{p.name}</p>
+                  <p className="mt-2 text-balance break-words font-display text-2xl text-canvas">{p.name}</p>
                   <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
                     Case study →
                   </p>

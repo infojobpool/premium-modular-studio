@@ -48,10 +48,12 @@ export function CityProjectsGrid({ city, projects }: Props) {
               </div>
               <Link
                 href={`/${city}/projects/${p.slug}`}
-                className="block p-6 sm:p-7 text-left no-underline"
+                className="block min-w-0 p-6 text-left no-underline sm:p-7"
               >
-                <h2 className="font-display text-2xl text-ink group-hover:text-accent-strong">{p.name}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{p.excerpt}</p>
+                <h2 className="text-balance break-words font-display text-2xl text-ink group-hover:text-accent-strong">
+                  {p.name}
+                </h2>
+                <p className="mt-3 text-pretty break-words text-sm leading-relaxed text-muted">{p.excerpt}</p>
                 <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
                   Read story →
                 </p>
