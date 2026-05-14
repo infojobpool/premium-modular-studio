@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* Vivid In2erio brand: forest, gold, cream */
+@theme {
+  --color-canvas: #eae1c8;
+  --color-ink: #1b3f2e;
+  --color-muted: #3d5a4d;
+  --color-accent: #d9a229;
+  --color-accent-soft: #e4b84a;
+  --color-panel: #ded8c4;
+  --font-family-display: var(--font-cormorant), ui-serif, Georgia, serif;
+  --font-family-body: var(--font-dm), ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility font-display {
+  font-family: var(--font-family-display);
+}
+
+@utility font-body {
+  font-family: var(--font-family-body);
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) color-mix(in oklab, var(--color-ink) 14%, var(--color-canvas));
+  }
+
+  html::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  html::-webkit-scrollbar-track {
+    background: color-mix(in oklab, var(--color-ink) 8%, var(--color-canvas));
+  }
+  html::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--color-accent) 88%, var(--color-ink));
+    border-radius: 9999px;
+    border: 2px solid color-mix(in oklab, var(--color-ink) 8%, var(--color-canvas));
+  }
+  body {
+    @apply bg-canvas text-ink antialiased font-body;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent) 40%, transparent);
+    color: var(--color-ink);
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/*
+ * Preflight sets img,video { max-width:100%; height:auto } which breaks Next/Image `fill`
+ * (absolute inset-0) — media can shrink to intrinsic size and sit like a “card” under copy.
+ */
+@layer components {
+  .hero-slide-stage img,
+  .hero-slide-stage video {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* subtle film grain — keep below content (z-10) and avoid mix-blend (breaks some embedded browsers) */
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Hero mesh — forest + gold mist on cream */
+.mesh-hero {
+  background:
+    radial-gradient(
+      1200px 600px at 15% 10%,
+      color-mix(in oklab, var(--color-ink) 18%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      900px 500px at 88% 18%,
+      color-mix(in oklab, var(--color-accent) 24%, transparent),
+      transparent 52%
+    ),
+    linear-gradient(180deg, var(--color-canvas) 0%, var(--color-panel) 100%);
+}
+
+/**
+ * Full-page wash per studio city — no extra image assets; shifts when switching Hyderabad ↔ Bhubaneswar.
+ * Sections that use solid bg-canvas still read “on brand”; transparent / panel-tint stripes show the mist.
+ */
+.studio-atmosphere {
+  --studio-mist-a: color-mix(in oklab, var(--color-accent) 22%, transparent);
+  --studio-mist-b: color-mix(in oklab, var(--color-ink) 14%, transparent);
+  --studio-base-tilt: color-mix(in oklab, var(--color-panel) 88%, var(--color-canvas));
+
+  background-color: var(--color-canvas);
+  background-image:
+    radial-gradient(
+      1180px 620px at 12% 6%,
+      var(--studio-mist-b),
+      transparent 58%
+    ),
+    radial-gradient(
+      920px 520px at 90% 20%,
+      var(--studio-mist-a),
+      transparent 52%
+    ),
+    linear-gradient(
+      168deg,
+      var(--color-canvas) 0%,
+      var(--studio-base-tilt) 48%,
+      var(--color-panel) 100%
+    );
+}
+
+.studio-atmosphere--hyderabad {
+  --studio-mist-a: color-mix(in oklab, var(--color-accent) 28%, transparent);
+  --studio-mist-b: color-mix(in oklab, var(--color-ink) 17%, transparent);
+  --studio-base-tilt: color-mix(in oklab, var(--color-panel) 90%, var(--color-canvas));
+}
+
+.studio-atmosphere--bhubaneswar {
+  --studio-mist-a: color-mix(in oklab, #2a7a6a 24%, transparent);
+  --studio-mist-b: color-mix(in oklab, #1e4d6b 16%, transparent);
+  --studio-base-tilt: color-mix(in oklab, var(--color-canvas) 35%, var(--color-panel));
+}
+
+/* Hero media column: slightly cooler wash for Bhubaneswar */
+.hero-media-scrim--hyderabad {
+  background: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--color-ink) 38%, transparent),
+    transparent 52%,
+    color-mix(in oklab, var(--color-ink) 10%, transparent)
+  );
+}
+
+.hero-media-scrim--bhubaneswar {
+  background: linear-gradient(
+    to right,
+    color-mix(in oklab, #0f3d36 42%, transparent),
+    transparent 52%,
+    color-mix(in oklab, #1a3550 14%, transparent)
+  );
+}
