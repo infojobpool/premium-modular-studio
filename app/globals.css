@@ -77,8 +77,8 @@
   }
 
   /**
-   * Brand digit in “In2erio”: inherits surrounding display/body metrics by default.
-   * Gold is mixed with ink + soft shadow so it stays legible on cream.
+   * “In2erio” digit: same treatment as the square logo — “2” matches surrounding type
+   * (size, weight, color, baseline). No accent color or shadow so it reads as one word everywhere.
    */
   .brand-in2-digit {
     font-family: inherit;
@@ -88,29 +88,11 @@
     letter-spacing: inherit;
     font-variant-numeric: normal;
     font-feature-settings: normal;
-    color: color-mix(in oklab, var(--color-accent) 68%, var(--color-ink) 32%);
     display: inline;
     vertical-align: baseline;
-    text-shadow: 0 0.03em 0.08em color-mix(in oklab, var(--color-ink) 18%, transparent);
-  }
-
-  /**
-   * Hub hero: lockup like the square logo — “2” a touch smaller + raised, IN/ERIO caps unchanged.
-   * Gold matches the mark; soft shadow keeps it readable on cream without a heavy “badge”.
-   */
-  .hub-hero-title .brand-in2-digit {
-    font-family: inherit;
-    font-size: 0.78em;
-    line-height: 1;
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    display: inline;
-    vertical-align: 0.34em;
-    margin-inline: 0.02em 0.01em;
-    color: color-mix(in oklab, var(--color-accent) 94%, var(--color-ink) 6%);
-    text-shadow:
-      0 0.04em 0.1em color-mix(in oklab, var(--color-ink) 14%, transparent),
-      0 1px 0 color-mix(in oklab, #fff 45%, transparent);
+    margin-inline: 0;
+    color: inherit;
+    text-shadow: none;
   }
 }
 
