@@ -77,8 +77,8 @@
   }
 
   /**
-   * “In2erio” digit: same treatment as the square logo — “2” matches surrounding type
-   * (size, weight, color, baseline). No accent color or shadow so it reads as one word everywhere.
+   * “In2erio” digit: matches surrounding type. Cormorant often uses old-style figures
+   * (smaller “2”); lining-nums aligns digit height with caps like N / E.
    */
   .brand-in2-digit {
     font-family: inherit;
@@ -86,8 +86,8 @@
     line-height: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
-    font-variant-numeric: normal;
-    font-feature-settings: normal;
+    font-variant-numeric: lining-nums;
+    font-feature-settings: "lnum" 1;
     display: inline;
     vertical-align: baseline;
     margin-inline: 0;
