@@ -32,11 +32,11 @@ export function Hero() {
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div className="mb-6 space-y-3">
-                    <p className="inline-flex w-fit max-w-full rounded-lg border border-ink/14 bg-accent/[0.14] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-ink shadow-sm">
+                    <p className="inline-flex max-w-full flex-wrap rounded-lg border border-ink/14 bg-accent/[0.14] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-ink shadow-sm break-words">
                       {slide.eyebrow}
                     </p>
                     {slide.statBadge ? (
-                      <p className="inline-flex rounded-full border border-ink/20 bg-canvas/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/90 shadow-sm">
+                      <p className="inline-flex max-w-full flex-wrap rounded-full border border-ink/20 bg-canvas/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/90 shadow-sm break-words">
                         {slide.statBadge}
                       </p>
                     ) : null}
@@ -53,10 +53,10 @@ export function Hero() {
                     transition={{ delay: 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     className="mt-10 flex flex-wrap items-center gap-4"
                   >
-                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="max-w-full min-w-0">
                       <Link
                         href={`/${location.id}/contact`}
-                        className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-ink shadow-[0_20px_60px_-20px_rgba(217,162,41,0.55)] transition-shadow hover:shadow-[0_24px_70px_-18px_rgba(217,162,41,0.65)]"
+                        className="inline-flex w-full max-w-xl min-w-0 items-center justify-center rounded-full bg-accent px-5 py-4 text-center text-sm font-semibold uppercase leading-snug tracking-[0.14em] text-ink text-balance shadow-[0_20px_60px_-20px_rgba(217,162,41,0.55)] transition-shadow hover:shadow-[0_24px_70px_-18px_rgba(217,162,41,0.65)] sm:px-8 sm:tracking-[0.18em]"
                       >
                         Schedule a private design consultation · {location.label}
                       </Link>
