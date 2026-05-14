@@ -7,6 +7,7 @@ import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { getGalleryImagesForProject } from "@/lib/gallery-segmented";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import type { StudioLocationId } from "@/lib/locations";
+import { withBrandHighlight } from "./BrandInline";
 import { Reveal } from "./Reveal";
 
 type Props = {
@@ -36,7 +37,7 @@ export function GallerySegmented({ city, locationLabel }: Props) {
               {copy.galleryHeading}
             </h2>
           </div>
-          <p className="max-w-md text-muted md:text-right">{copy.galleryIntro}</p>
+          <p className="max-w-md text-muted md:text-right">{withBrandHighlight(copy.galleryIntro)}</p>
         </Reveal>
 
         <div

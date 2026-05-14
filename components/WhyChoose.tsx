@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { vividCopy } from "@/lib/vivid-reference";
+import { withBrandHighlight } from "./BrandInline";
 import { Reveal } from "./Reveal";
 
 export function WhyChoose() {
@@ -39,7 +40,7 @@ export function WhyChoose() {
             Premium studio
           </p>
           <h2 className="mt-3 font-display text-[2.4rem] tracking-tight text-ink sm:text-5xl md:text-[3.45rem]">
-            {vividCopy.whyTitle}
+            {withBrandHighlight(vividCopy.whyTitle)}
           </h2>
           <p className="mt-3 text-xl leading-relaxed text-muted sm:text-[1.38rem]">{vividCopy.whySubtitle}</p>
           <p className="mt-3 max-w-2xl text-[0.82rem] font-semibold uppercase tracking-[0.22em] text-ink/70 sm:text-sm">

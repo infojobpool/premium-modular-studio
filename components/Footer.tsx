@@ -9,6 +9,7 @@ import {
   STUDIO_SOCIAL,
   STUDIO_WHATSAPP_HREF,
 } from "@/lib/locations";
+import { withBrandHighlight } from "./BrandInline";
 import { VividLogo } from "./VividLogo";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -176,7 +177,8 @@ export function Footer() {
         </div>
       </div>
       <p className={`mx-auto mt-10 pb-24 text-center text-[0.85rem] text-ink/72 md:pb-16 ${CONTENT_MAX}`}>
-        © {new Date().getFullYear()} Vivid In2erio. Hyderabad & Bhubaneswar.{" "}
+        © {new Date().getFullYear()}{" "}
+        {withBrandHighlight("Vivid In2erio")}. Hyderabad & Bhubaneswar.{" "}
         <Link href="/privacy" className="group inline-flex text-ink/75 transition-colors duration-300 hover:text-ink">
           <span className={premiumLinkUnderlineClass}>Privacy</span>
         </Link>

@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useId, useState } from "react";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { withBrandHighlight } from "./BrandInline";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -67,7 +68,7 @@ export function CityFAQ() {
                       className="border-t border-ink/8"
                     >
                       <p className="px-5 py-4 text-base leading-relaxed text-muted sm:px-6 sm:py-5">
-                        {item.answer}
+                        {withBrandHighlight(item.answer)}
                       </p>
                     </motion.div>
                   ) : null}

@@ -2,6 +2,7 @@
 
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { vividBlogPosts } from "@/lib/vivid-reference";
+import { withBrandHighlight } from "./BrandInline";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -17,7 +18,9 @@ export function CityBlogPosts() {
             Insights from the {location.label} studio
           </h1>
           <p className="mt-4 max-w-2xl text-muted">
-            Editorial from Vivid In2erio on kitchens, planning, and luxury residential trends.
+            {withBrandHighlight(
+              "Editorial from Vivid In2erio on kitchens, planning, and luxury residential trends.",
+            )}
           </p>
         </Reveal>
 

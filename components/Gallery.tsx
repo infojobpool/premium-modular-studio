@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { CONTENT_MAX, PAGE_GUTTER_X, resolveGalleryTileSrc } from "@/lib/interior-images";
+import { withBrandHighlight } from "./BrandInline";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -40,7 +41,7 @@ export function Gallery() {
               {city.galleryHeading}
             </h2>
           </div>
-          <p className="max-w-md text-muted md:text-right">{city.galleryIntro}</p>
+          <p className="max-w-md text-muted md:text-right">{withBrandHighlight(city.galleryIntro)}</p>
         </Reveal>
       </div>
 

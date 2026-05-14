@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { buildHeroSlides } from "@/lib/hero-media";
 import { HeroSlideStage } from "./HeroMedia";
 import { HeroQuickLinksCard } from "./HeroQuickLinksCard";
+import { withBrandHighlight } from "./BrandInline";
 import { useStudioLocation } from "./LocationProvider";
 
 export function Hero() {
@@ -44,7 +45,7 @@ export function Hero() {
                     {slide.headline}
                   </h1>
                   <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
-                    {slide.lead}
+                    {withBrandHighlight(slide.lead)}
                   </p>
                   <motion.div
                     initial={{ opacity: 0, y: 12 }}

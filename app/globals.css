@@ -75,6 +75,31 @@
     width: 100%;
     height: 100%;
   }
+
+  /**
+   * Brand digit in “In2erio”: match surrounding type (family, size, weight, baseline).
+   * Only the accent color differentiates the 2 — no alternate numeral styles that shift metrics.
+   */
+  /**
+   * Gold digit must stay readable on cream (hub hero) — slightly deeper gold + hairline
+   * ink halo so it does not “disappear” against light UI.
+   */
+  .brand-in2-digit {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    font-variant-numeric: normal;
+    font-feature-settings: normal;
+    color: color-mix(in oklab, var(--color-accent) 72%, var(--color-ink) 28%);
+    display: inline;
+    vertical-align: baseline;
+    text-shadow:
+      0 0 0.06em color-mix(in oklab, var(--color-ink) 42%, transparent),
+      0 0.08em 0.12em color-mix(in oklab, var(--color-ink) 12%, transparent),
+      0 1px 0 color-mix(in oklab, #fff 55%, transparent);
+  }
 }
 
 /* subtle film grain — keep below content (z-10) and avoid mix-blend (breaks some embedded browsers) */
@@ -101,6 +126,31 @@
       transparent 52%
     ),
     linear-gradient(180deg, var(--color-canvas) 0%, var(--color-panel) 100%);
+}
+
+/** Hub landing: subtle linen + vignette (absolute layer under hero content). */
+.hub-pattern-linen {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image: repeating-linear-gradient(
+    118deg,
+    transparent 0,
+    transparent 11px,
+    color-mix(in oklab, var(--color-ink) 5.5%, transparent) 11px,
+    color-mix(in oklab, var(--color-ink) 5.5%, transparent) 12px
+  );
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 38%, black 20%, transparent 72%);
+}
+
+.hub-pattern-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 120% 85% at 50% 0%,
+    transparent 42%,
+    color-mix(in oklab, var(--color-ink) 7%, transparent) 100%
+  );
 }
 
 /**

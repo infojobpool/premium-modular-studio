@@ -26,7 +26,7 @@ export function VividLogo({
   const imgClass = isFooter
     ? "h-[5.85rem] w-auto max-w-[min(100%,320px)] object-contain object-left sm:h-[6.5rem] sm:max-w-[340px]"
     : isHome
-      ? "h-16 w-auto max-w-[272px] object-contain object-left sm:h-[4.35rem] sm:max-w-[300px]"
+      ? "h-[5.25rem] w-auto max-w-[min(100%,320px)] object-contain object-left sm:h-[5.75rem] sm:max-w-[360px]"
       : "h-14 w-auto max-w-[252px] object-contain object-left sm:h-16 sm:max-w-[276px]";
 
   return (
@@ -48,7 +48,7 @@ export function VividLogo({
             isFooter
               ? "(max-width: 640px) 280px, 320px"
               : isHome
-                ? "(max-width: 640px) 272px, 300px"
+                ? "(max-width: 640px) 320px, 360px"
                 : "(max-width: 640px) 252px, 276px"
           }
           priority={size === "header" || size === "home"}

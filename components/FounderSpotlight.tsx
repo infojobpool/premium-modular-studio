@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { withBrandHighlight } from "./BrandInline";
 import { useStudioLocation } from "./LocationProvider";
 
 type FounderSpotlightProps = {
@@ -65,10 +66,10 @@ export function FounderSpotlight({ variant = "full" }: FounderSpotlightProps) {
               {s.name}
             </h2>
             <p className="mt-2 text-sm font-semibold uppercase tracking-[0.2em] text-ink/75">
-              {s.roleLine}
+              {withBrandHighlight(s.roleLine)}
             </p>
             <p className={`${isCompact ? "mt-4 text-base" : "mt-5 text-lg"} max-w-3xl leading-relaxed text-muted`}>
-              {s.bio}
+              {withBrandHighlight(s.bio)}
             </p>
 
             <ul className={`grid gap-3 ${isCompact ? "mt-5 md:grid-cols-3" : "mt-6 sm:grid-cols-2"}`}>
