@@ -109,20 +109,23 @@ export function HeroQuickLinksCard() {
   const links = linksForCity(location.id);
 
   return (
-    <aside className="pointer-events-auto w-full max-w-[18.25rem] rounded-2xl border border-white/55 bg-canvas/72 p-5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] ring-1 ring-white/40 backdrop-blur-xl sm:rounded-2xl sm:p-5">
+    <aside className="pointer-events-auto w-full max-w-[20rem] rounded-2xl border border-white/55 bg-canvas/72 p-4 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] ring-1 ring-white/40 backdrop-blur-xl sm:rounded-2xl sm:p-5">
       <p className="font-display text-xl tracking-tight text-ink sm:text-[1.35rem]">Transform your space</p>
       <p className="mt-1.5 text-xs leading-snug text-muted sm:text-[13px]">
         Jump to services, gallery, process, or book time with the {location.label} studio.
       </p>
-      <nav aria-label="Quick links" className="mt-4 grid grid-cols-2 gap-1.5 sm:grid-cols-3 sm:gap-2">
+      <nav
+        aria-label="Quick links"
+        className="mt-4 grid grid-cols-2 gap-2 sm:gap-2.5"
+      >
         {links.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="group flex flex-col gap-1.5 rounded-xl border border-ink/8 bg-canvas/45 px-2.5 py-2.5 text-left backdrop-blur-sm transition hover:border-accent/40 hover:bg-canvas/70 sm:py-2.5"
+            className="group flex min-w-0 flex-col gap-1.5 overflow-hidden rounded-xl border border-ink/8 bg-canvas/45 px-2.5 py-2.5 text-left backdrop-blur-sm transition hover:border-accent/40 hover:bg-canvas/70 sm:py-2.5"
           >
             <item.Icon />
-            <span className="text-[10px] font-semibold uppercase leading-tight tracking-[0.11em] text-ink sm:text-[11px]">
+            <span className="min-w-0 break-words text-[10px] font-semibold uppercase leading-snug tracking-[0.08em] text-ink sm:text-[11px] sm:tracking-[0.1em]">
               {item.label}
             </span>
           </Link>
