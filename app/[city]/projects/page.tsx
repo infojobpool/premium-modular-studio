@@ -32,13 +32,15 @@ export default async function CityProjectsIndex({ params }: Props) {
       <Header />
       <div className={`pb-24 pt-32 ${PAGE_GUTTER_X}`}>
         <div className={`mx-auto ${CONTENT_MAX}`}>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
+          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-accent-strong sm:text-xs">
             Case studies · {STUDIO_LOCATIONS[city].label}
           </p>
-          <h1 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl md:text-6xl">
+          <h1 className="mt-3 text-balance font-display text-[clamp(2rem,4.5vw+0.5rem,3.5rem)] font-semibold leading-[1.06] tracking-tight text-ink">
             Projects
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-muted">{copy.galleryIntro}</p>
+          <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
+            {copy.galleryIntro}
+          </p>
 
           <CityProjectsGrid city={city} projects={copy.galleryProjects} />
 

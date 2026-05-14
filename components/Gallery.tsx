@@ -37,23 +37,28 @@ export function Gallery() {
     <section
       ref={ref}
       id="work"
-      className="relative overflow-x-clip py-28"
+      className="relative overflow-x-clip border-b border-ink/8 bg-gradient-to-b from-canvas to-panel/25 py-24 sm:py-28"
     >
       <div className={`mx-auto ${CONTENT_MAX} ${PAGE_GUTTER_X}`}>
-        <Reveal key={location.id} className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
+        <Reveal key={location.id} className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-end lg:gap-12">
+          <div className="min-w-0">
+            <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-accent-strong sm:text-xs">
               Signature work · {location.label}
             </p>
-            <h2 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl md:text-6xl">
+            <h2 className="mt-3 text-balance font-display text-[clamp(2rem,4.5vw+0.5rem,3.5rem)] font-semibold leading-[1.06] tracking-tight text-ink">
               {city.galleryHeading}
             </h2>
+            <p className="mt-4 inline-flex max-w-full flex-wrap items-center gap-x-2 rounded-xl border border-ink/14 bg-panel/50 px-3.5 py-2 text-[10px] font-semibold uppercase leading-snug tracking-[0.14em] text-ink/72 sm:text-[11px] sm:tracking-[0.16em]">
+              <span className="text-accent-strong" aria-hidden>
+                ●
+              </span>
+              Tap the top of a card to zoom · arrows or swipe between covers
+            </p>
           </div>
-          <p className="max-w-md text-muted md:text-right">{withBrandHighlight(city.galleryIntro)}</p>
+          <p className="text-pretty text-sm leading-relaxed text-muted sm:text-[0.98rem] lg:text-right">
+            {withBrandHighlight(city.galleryIntro)}
+          </p>
         </Reveal>
-        <p className="mx-auto mt-2 max-w-3xl text-center text-[11px] font-medium uppercase tracking-[0.16em] text-ink/45 md:text-right">
-          Tap the top of a card to open the viewer · use arrows or swipe to browse project covers
-        </p>
       </div>
 
       {/* Full-viewport width grid so imagery scales on ultrawide (parent max-w-7xl no longer caps tiles). */}
@@ -104,12 +109,13 @@ export function Gallery() {
           ))}
       </div>
 
-      <div className={`mx-auto mt-12 text-center ${CONTENT_MAX} ${PAGE_GUTTER_X}`}>
+      <div className={`mx-auto mt-14 text-center ${CONTENT_MAX} ${PAGE_GUTTER_X}`}>
         <Link
           href={`/${location.id}/projects`}
-          className="text-sm font-semibold uppercase tracking-[0.2em] text-ink underline-offset-4 hover:underline"
+          className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-canvas/80 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-ink shadow-sm transition hover:border-accent/40 hover:bg-accent/12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
           View all project stories
+          <span aria-hidden>→</span>
         </Link>
       </div>
 

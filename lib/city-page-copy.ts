@@ -93,7 +93,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       },
       {
         tag: "Indukuri · Hyderabad",
-        name: "Sheeba  Villa 157 Indukuri Renders",
+        name: "Sheeba Villa 157 Indukuri Renders",
         alt: "Villa interior — Indukuri",
         slug: "sheeba-villa-157-indukuri",
         coverImage: vividGalleryCoverImageByProjectSlug["sheeba-villa-157-indukuri"],
@@ -111,7 +111,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       },
       {
         tag: "Indukuri Lakeshore",
-        name: "Villa 193 East Indukuri Lakeshore Rnders",
+        name: "Villa 193 East Indukuri Lakeshore Renders",
         alt: "Lakeshore villa render — east",
         slug: "villa-193-east-indukuri-lakeshore",
         coverImage: vividGalleryCoverImageByProjectSlug["villa-193-east-indukuri-lakeshore"],

@@ -240,9 +240,9 @@ export const vividGalleryCoverImageByProjectSlug = {
 export const vividGalleryProjects = [
   { tag: "Delhi", name: "Delhi Kitchen Design", alt: "Kitchen interior render — Delhi project" },
   { tag: "Joseph", name: "Joseph Kitchen Design", alt: "Kitchen design perspective" },
-  { tag: "Indukuri", name: "Sheeba  Villa 157 Indukuri Renders", alt: "Villa interior — Indukuri" },
+  { tag: "Indukuri", name: "Sheeba Villa 157 Indukuri Renders", alt: "Villa interior — Indukuri" },
   { tag: "Indukuri Lakeshore", name: "Villa 173 West Indukuri Lakeshore Renders", alt: "Lakeshore villa render — west" },
-  { tag: "Indukuri Lakeshore", name: "Villa 193 East Indukuri Lakeshore Rnders", alt: "Lakeshore villa render — east" },
+  { tag: "Indukuri Lakeshore", name: "Villa 193 East Indukuri Lakeshore Renders", alt: "Lakeshore villa render — east" },
 ] as const;
 
 /** Intro paragraph from https://waytowebs.in/vivid/gallery/ “Our Projects”. */
