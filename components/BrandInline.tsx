@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-/** Gold “2” — matches parent font; contrast tuned in `.brand-in2-digit` (globals.css). */
+/** Gold “2” — inherits parent type; hub headline uses calmer `.hub-hero-title .brand-in2-digit`. */
 export const brandIn2DigitClass = "brand-in2-digit";
 
 const BRAND_PATTERN = /Vivid In2erio|Vivid In2terio|In2erio|In2terio/g;

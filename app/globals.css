@@ -88,29 +88,26 @@
     letter-spacing: inherit;
     font-variant-numeric: normal;
     font-feature-settings: normal;
-    color: color-mix(in oklab, var(--color-accent) 72%, var(--color-ink) 28%);
+    color: color-mix(in oklab, var(--color-accent) 68%, var(--color-ink) 32%);
     display: inline;
     vertical-align: baseline;
-    text-shadow:
-      0 0 0.06em color-mix(in oklab, var(--color-ink) 42%, transparent),
-      0 0.08em 0.12em color-mix(in oklab, var(--color-ink) 12%, transparent),
-      0 1px 0 color-mix(in oklab, #fff 55%, transparent);
+    text-shadow: 0 0.03em 0.08em color-mix(in oklab, var(--color-ink) 18%, transparent);
   }
 
-  /** Hub headline only: oversized “2” — nudge up so baseline reads with caps in “In…erio”. */
+  /**
+   * Hub hero headline: same cap metrics as “IN” / “ERIO” — no upscaled digit.
+   * Slightly deeper bronze than body highlights so it stays visible without a “badge” look.
+   */
   .hub-hero-title .brand-in2-digit {
-    font-size: 1.38em;
-    line-height: 1;
-    font-weight: 700;
-    letter-spacing: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    display: inline;
     vertical-align: baseline;
-    display: inline-block;
-    margin-inline: 0.02em;
-    transform: translateY(-0.09em);
-    text-shadow:
-      0 0 0.08em color-mix(in oklab, var(--color-ink) 48%, transparent),
-      0 0.06em 0.14em color-mix(in oklab, var(--color-ink) 18%, transparent),
-      0 1px 0 color-mix(in oklab, #fff 60%, transparent);
+    color: color-mix(in oklab, var(--color-accent) 50%, var(--color-ink) 50%);
+    text-shadow: none;
   }
 }
 
