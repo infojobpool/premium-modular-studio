@@ -58,7 +58,10 @@ export function Hero() {
                         href={`/${location.id}/contact`}
                         className="inline-flex w-full max-w-xl min-w-0 items-center justify-center rounded-full bg-accent px-5 py-4 text-center text-sm font-semibold uppercase leading-snug tracking-[0.14em] text-ink text-balance shadow-[0_20px_60px_-20px_rgba(217,162,41,0.55)] transition-shadow hover:shadow-[0_24px_70px_-18px_rgba(217,162,41,0.65)] sm:px-8 sm:tracking-[0.18em]"
                       >
-                        Schedule a private design consultation · {location.label}
+                        <span className="sm:hidden">Book design consultation · {location.label}</span>
+                        <span className="hidden sm:inline">
+                          Schedule a private design consultation · {location.label}
+                        </span>
                       </Link>
                     </motion.div>
                     <motion.div whileHover={{ x: 4 }}>
@@ -66,7 +69,8 @@ export function Hero() {
                         href={`/${location.id}/gallery`}
                         className="inline-flex items-center gap-2 rounded-full border border-ink/20 bg-canvas/70 px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition hover:border-ink/40"
                       >
-                        View signature work
+                        <span className="sm:hidden">View work</span>
+                        <span className="hidden sm:inline">View signature work</span>
                         <span aria-hidden className="inline-block transition-transform">
                           →
                         </span>

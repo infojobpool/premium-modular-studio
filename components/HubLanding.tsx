@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { interiorImages, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { STUDIO_LOCATIONS } from "@/lib/locations";
 import { withBrandHighlight } from "./BrandInline";
 import { VividLogo } from "./VividLogo";
 
@@ -208,6 +209,9 @@ export function HubLanding() {
                 </span>
                 <p className="relative z-10 mt-2.5 max-w-[26rem] text-[11px] font-semibold uppercase leading-snug tracking-[0.16em] text-muted sm:mt-3 sm:text-xs sm:tracking-[0.18em]">
                   {c.line}
+                </p>
+                <p className="relative z-10 mt-1.5 max-w-[26rem] text-[10px] font-medium uppercase leading-snug tracking-[0.14em] text-ink/45 sm:text-[11px] sm:tracking-[0.16em]">
+                  {STUDIO_LOCATIONS[c.city].hoursSummary}
                 </p>
                 <span className="relative z-10 mt-auto flex flex-wrap items-center gap-2 pt-5 sm:pt-6">
                   <span className="inline-flex min-h-[44px] min-w-[44px] flex-1 items-center justify-center gap-2.5 rounded-full border border-ink/14 bg-canvas/75 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink shadow-sm transition duration-300 group-hover:border-accent/45 group-hover:bg-accent/12 group-hover:text-ink sm:inline-flex sm:flex-none sm:px-6 sm:text-xs sm:tracking-[0.26em]">
