@@ -95,19 +95,22 @@
   }
 
   /**
-   * Hub hero headline: same cap metrics as “IN” / “ERIO” — no upscaled digit.
-   * Slightly deeper bronze than body highlights so it stays visible without a “badge” look.
+   * Hub hero: lockup like the square logo — “2” a touch smaller + raised, IN/ERIO caps unchanged.
+   * Gold matches the mark; soft shadow keeps it readable on cream without a heavy “badge”.
    */
   .hub-hero-title .brand-in2-digit {
     font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    font-weight: inherit;
-    letter-spacing: inherit;
+    font-size: 0.78em;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: -0.03em;
     display: inline;
-    vertical-align: baseline;
-    color: color-mix(in oklab, var(--color-accent) 50%, var(--color-ink) 50%);
-    text-shadow: none;
+    vertical-align: 0.34em;
+    margin-inline: 0.02em 0.01em;
+    color: color-mix(in oklab, var(--color-accent) 94%, var(--color-ink) 6%);
+    text-shadow:
+      0 0.04em 0.1em color-mix(in oklab, var(--color-ink) 14%, transparent),
+      0 1px 0 color-mix(in oklab, #fff 45%, transparent);
   }
 }
 

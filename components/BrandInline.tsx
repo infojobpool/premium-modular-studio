@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-/** Gold “2” — inherits parent type; hub headline uses calmer `.hub-hero-title .brand-in2-digit`. */
+/** Gold “2” — default body/footer styling; hub headline uses logo-like `.hub-hero-title .brand-in2-digit`. */
 export const brandIn2DigitClass = "brand-in2-digit";
 
 const BRAND_PATTERN = /Vivid In2erio|Vivid In2terio|In2erio|In2terio/g;
