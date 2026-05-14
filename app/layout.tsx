@@ -20,16 +20,41 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
+  applicationName: "Vivid In2erio",
   title: {
     default: "Vivid In2erio | Premium & luxury interiors",
     template: "%s | Vivid In2erio",
   },
   description:
-    "Premium & luxury interiors in Hyderabad and Bhubaneswar. We design more than spaces — we curate refined lifestyles: timeless aesthetics, intelligent planning, and flawless execution for discerning homeowners and businesses.",
+    "Premium & luxury interiors in Hyderabad and Bhubaneswar — design to delivery for homes and workspaces: curated materials, modular kitchens & wardrobes, 3D sign-off, and studio-led execution.",
+  keywords: [
+    "Vivid In2erio",
+    "interior design Hyderabad",
+    "interior design Bhubaneswar",
+    "luxury interiors",
+    "modular kitchen",
+    "premium interiors",
+    "design studio Secunderabad",
+    "Odisha interiors",
+  ],
+  authors: [{ name: "Vivid In2erio" }],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Vivid In2erio",
+    title: "Vivid In2erio | Premium & luxury interiors",
+    description:
+      "Hyderabad & Bhubaneswar studios — bespoke residential and commercial interiors from consultation through handover.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vivid In2erio | Premium & luxury interiors",
+    description:
+      "Hyderabad & Bhubaneswar — luxury interiors, modular systems, and design-to-delivery execution.",
+  },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/icon.svg", type: "image/svg+xml" }],
     shortcut: "/favicon.svg",
-    apple: "/icon.svg",
   },
 };
 
