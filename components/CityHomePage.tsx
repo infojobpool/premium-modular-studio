@@ -8,9 +8,8 @@ import { IntentConversionBand } from "@/components/IntentConversionBand";
 import { OfferLeadModal } from "@/components/OfferLeadModal";
 import { PressStrip } from "@/components/PressStrip";
 import { PromoBanner } from "@/components/PromoBanner";
-import { CityProjectScopeStrip } from "@/components/CityProjectScopeStrip";
+import { PostHeroGuide } from "@/components/PostHeroGuide";
 import { SignatureWorkStrip } from "@/components/SignatureWorkStrip";
-import { StudioProcessRibbon } from "@/components/StudioProcessRibbon";
 import { StickyBookBar } from "@/components/StickyBookBar";
 import { Testimonials } from "@/components/Testimonials";
 import { WhyChoose } from "@/components/WhyChoose";
@@ -23,8 +22,7 @@ export function CityHomePage() {
     <CityPageShell stickyBar={<StickyBookBar />}>
       <OfferLeadModal />
       <Hero />
-      <StudioProcessRibbon />
-      <CityProjectScopeStrip />
+      <PostHeroGuide />
       <CityAwardsStrip />
       <PromoBanner />
       <WhyChoose />
