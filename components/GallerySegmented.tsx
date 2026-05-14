@@ -32,7 +32,7 @@ export function GallerySegmented({ city, locationLabel }: Props) {
   }, [active, city, project.slug]);
 
   return (
-    <section id="work" className="relative overflow-hidden py-24 sm:py-28">
+    <section id="work" className="relative overflow-x-clip py-24 sm:py-28">
       <div className={`mx-auto ${CONTENT_MAX} ${PAGE_GUTTER_X}`}>
         <Reveal key={city} className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
@@ -45,6 +45,9 @@ export function GallerySegmented({ city, locationLabel }: Props) {
           </div>
           <p className="max-w-md text-muted md:text-right">{withBrandHighlight(copy.galleryIntro)}</p>
         </Reveal>
+        <p className="mt-2 text-center text-[11px] font-medium uppercase tracking-[0.16em] text-ink/45 sm:text-left">
+          Tap any thumbnail to enlarge · arrows or swipe to move between stills
+        </p>
 
         <div
           className="mt-10 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"

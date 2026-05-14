@@ -45,6 +45,9 @@ export function SignatureWorkStrip() {
             Open full gallery →
           </Link>
         </Reveal>
+        <p className="mt-2 text-[11px] font-medium uppercase tracking-[0.16em] text-ink/45">
+          Tap the photo area on a card to zoom · arrows or swipe in the viewer
+        </p>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {projects.map((p, i) => (

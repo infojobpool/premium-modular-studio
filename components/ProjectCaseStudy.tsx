@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useMemo, useState } from "react";
 import type { ProjectPageDetail } from "@/lib/project-page-details";
 import { CONTENT_MAX, interiorImages, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { ImageLightbox } from "./ImageLightbox";
 
 type Props = {
   city: string;
@@ -28,9 +32,19 @@ export function ProjectCaseStudy({
   detail,
   heroPoolIndex,
 }: Props) {
-  const stripIndices = (detail?.galleryStripIndices ?? [0, 1, 2, 3]).filter(
-    (i) => i !== heroPoolIndex && interiorImages.gallery[i],
+  const stripIndices = useMemo(
+    () => (detail?.galleryStripIndices ?? [0, 1, 2, 3]).filter((i) => i !== heroPoolIndex && interiorImages.gallery[i]),
+    [detail, heroPoolIndex],
   );
+
+  const stripSrcs = useMemo(
+    () => stripIndices.map((i) => interiorImages.gallery[i]!).filter(Boolean),
+    [stripIndices],
+  );
+
+  const lightboxImages = useMemo(() => [heroSrc, ...stripSrcs], [heroSrc, stripSrcs]);
+
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   return (
     <article className={`pb-24 pt-28 ${PAGE_GUTTER_X}`}>
@@ -86,9 +100,16 @@ export function ProjectCaseStudy({
             src={heroSrc}
             alt={project.alt}
             fill
-            className="object-cover"
+            className="pointer-events-none object-cover"
             sizes="(max-width: 1024px) 100vw, 896px"
             priority
+          />
+          <button
+            type="button"
+            onClick={() => setLightboxIndex(0)}
+            aria-label="Open hero image in viewer"
+            aria-haspopup="dialog"
+            className="absolute inset-0 cursor-[zoom-in] border-0 bg-transparent transition hover:bg-ink/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
           />
         </div>
 
@@ -119,22 +140,33 @@ export function ProjectCaseStudy({
                 ? "Supporting stills from the same portfolio family—material rhythm, light, and joinery intent."
                 : "Reference imagery from the studio’s Waytowebs-aligned media set."}
             </p>
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {stripIndices.map((idx) => {
-                const src = interiorImages.gallery[idx];
+            <p className="mt-2 text-xs font-medium uppercase tracking-[0.18em] text-ink/45">
+              Tap an image to enlarge · swipe or use arrows to browse
+            </p>
+            <ul className="mt-8 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {stripIndices.map((poolIdx, stripPos) => {
+                const src = interiorImages.gallery[poolIdx];
                 if (!src) return null;
+                const lightboxIdx = 1 + stripPos;
                 return (
-                  <li
-                    key={`${idx}-${src}`}
-                    className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-ink/10 bg-panel/30"
-                  >
-                    <Image
-                      src={src}
-                      alt={`${project.name} — reference still ${idx + 1}`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                    />
+                  <li key={`${poolIdx}-${src}`}>
+                    <button
+                      type="button"
+                      onClick={() => setLightboxIndex(lightboxIdx)}
+                      aria-label={`Open image ${lightboxIdx + 1} of ${lightboxImages.length} in viewer`}
+                      aria-haspopup="dialog"
+                      className="group relative block w-full cursor-[zoom-in] overflow-hidden rounded-2xl border border-ink/10 bg-panel/30 text-left transition hover:border-accent/35 hover:shadow-[0_20px_48px_-28px_rgba(27,63,46,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      <span className="relative block aspect-[4/3] w-full">
+                        <Image
+                          src={src}
+                          alt={`${project.name} — reference still ${poolIdx + 1}`}
+                          fill
+                          className="pointer-events-none object-cover transition duration-500 ease-out group-hover:scale-[1.03]"
+                          sizes="(max-width: 1024px) 100vw, 33vw"
+                        />
+                      </span>
+                    </button>
                   </li>
                 );
               })}
@@ -168,6 +200,18 @@ export function ProjectCaseStudy({
           </Link>
         </div>
       </div>
+
+      <ImageLightbox
+        images={lightboxImages}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onIndexChange={setLightboxIndex}
+        altForIndex={(i) => {
+          if (i === 0) return project.alt;
+          const poolIdx = stripIndices[i - 1];
+          return `${project.name} — reference still ${poolIdx != null ? poolIdx + 1 : i + 1}`;
+        }}
+      />
     </article>
   );
 }

@@ -51,6 +51,9 @@ export function Gallery() {
           </div>
           <p className="max-w-md text-muted md:text-right">{withBrandHighlight(city.galleryIntro)}</p>
         </Reveal>
+        <p className="mx-auto mt-2 max-w-3xl text-center text-[11px] font-medium uppercase tracking-[0.16em] text-ink/45 md:text-right">
+          Tap the top of a card to open the viewer · use arrows or swipe to browse project covers
+        </p>
       </div>
 
       {/* Full-viewport width grid so imagery scales on ultrawide (parent max-w-7xl no longer caps tiles). */}
