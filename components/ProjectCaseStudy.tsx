@@ -7,6 +7,17 @@ import type { ProjectPageDetail } from "@/lib/project-page-details";
 import { CONTENT_MAX, interiorImages, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { ImageLightbox } from "./ImageLightbox";
 
+function dedupeUrls(urls: readonly string[]): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const u of urls) {
+    if (seen.has(u)) continue;
+    seen.add(u);
+    out.push(u);
+  }
+  return out;
+}
+
 type Props = {
   city: string;
   cityLabel: string;
@@ -21,6 +32,11 @@ type Props = {
   /** When set, renders typology, scope, extra sections, and image strip. */
   detail?: ProjectPageDetail;
   heroPoolIndex: number;
+  /**
+   * Project-specific stills (same set as `/[city]/gallery` for this slug).
+   * When provided, replaces the generic `interiorImages.gallery` index strip.
+   */
+  storyGallerySrcs?: readonly string[];
 };
 
 export function ProjectCaseStudy({
@@ -31,20 +47,33 @@ export function ProjectCaseStudy({
   story,
   detail,
   heroPoolIndex,
+  storyGallerySrcs,
 }: Props) {
-  const stripIndices = useMemo(
-    () => (detail?.galleryStripIndices ?? [0, 1, 2, 3]).filter((i) => i !== heroPoolIndex && interiorImages.gallery[i]),
-    [detail, heroPoolIndex],
+  const legacyStripIndices = useMemo(() => {
+    const raw = detail?.galleryStripIndices ?? [0, 1, 2, 3];
+    return raw.filter((i) => i !== heroPoolIndex && interiorImages.gallery[i] != null);
+  }, [detail, heroPoolIndex]);
+
+  const legacyStripSrcs = useMemo(
+    () => legacyStripIndices.map((i) => interiorImages.gallery[i]!).filter(Boolean),
+    [legacyStripIndices],
   );
 
-  const stripSrcs = useMemo(
-    () => stripIndices.map((i) => interiorImages.gallery[i]!).filter(Boolean),
-    [stripIndices],
-  );
+  const stripSrcs = useMemo(() => {
+    if (storyGallerySrcs && storyGallerySrcs.length > 0) {
+      return dedupeUrls(storyGallerySrcs);
+    }
+    return dedupeUrls(legacyStripSrcs);
+  }, [storyGallerySrcs, legacyStripSrcs]);
 
-  const lightboxImages = useMemo(() => [heroSrc, ...stripSrcs], [heroSrc, stripSrcs]);
+  const lightboxImages = useMemo(() => dedupeUrls([heroSrc, ...stripSrcs]), [heroSrc, stripSrcs]);
 
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const stripGridClass =
+    stripSrcs.length > 9
+      ? "mt-8 grid list-none gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4"
+      : "mt-8 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3";
 
   return (
     <article className={`pb-24 pt-28 ${PAGE_GUTTER_X}`}>
@@ -130,26 +159,26 @@ export function ProjectCaseStudy({
           ))}
         </div>
 
-        {stripIndices.length > 0 ? (
+        {stripSrcs.length > 0 ? (
           <div className="mt-20">
             <h2 className="font-display text-2xl text-ink sm:text-3xl">
               {detail ? "On the boards" : "More from the portfolio"}
             </h2>
             <p className="mt-3 max-w-xl text-sm text-muted">
-              {detail
-                ? "Supporting stills from the same portfolio family—material rhythm, light, and joinery intent."
-                : "Reference imagery from the studio’s Waytowebs-aligned media set."}
+              {storyGallerySrcs && storyGallerySrcs.length > 0
+                ? "The same project stills as in the studio gallery—tap to enlarge, swipe or use arrows to browse."
+                : detail
+                  ? "Supporting stills from the same portfolio family—material rhythm, light, and joinery intent."
+                  : "Reference imagery from the studio’s Waytowebs-aligned media set."}
             </p>
             <p className="mt-2 text-xs font-medium uppercase tracking-[0.18em] text-ink/45">
               Tap an image to enlarge · swipe or use arrows to browse
             </p>
-            <ul className="mt-8 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {stripIndices.map((poolIdx, stripPos) => {
-                const src = interiorImages.gallery[poolIdx];
-                if (!src) return null;
+            <ul className={stripGridClass}>
+              {stripSrcs.map((src, stripPos) => {
                 const lightboxIdx = 1 + stripPos;
                 return (
-                  <li key={`${poolIdx}-${src}`}>
+                  <li key={`${stripPos}-${src}`}>
                     <button
                       type="button"
                       onClick={() => setLightboxIndex(lightboxIdx)}
@@ -160,7 +189,7 @@ export function ProjectCaseStudy({
                       <span className="relative block aspect-[4/3] w-full">
                         <Image
                           src={src}
-                          alt={`${project.name} — reference still ${poolIdx + 1}`}
+                          alt={`${project.name} — portfolio still ${stripPos + 1}`}
                           fill
                           className="pointer-events-none object-cover transition duration-500 ease-out group-hover:scale-[1.03]"
                           sizes="(max-width: 1024px) 100vw, 33vw"
@@ -198,6 +227,14 @@ export function ProjectCaseStudy({
           >
             All stories
           </Link>
+          {storyGallerySrcs && storyGallerySrcs.length > 0 ? (
+            <Link
+              href={`/${city}/gallery`}
+              className="inline-flex rounded-full border border-ink/15 px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink hover:border-accent/40"
+            >
+              Full gallery
+            </Link>
+          ) : null}
         </div>
       </div>
 
@@ -208,8 +245,7 @@ export function ProjectCaseStudy({
         onIndexChange={setLightboxIndex}
         altForIndex={(i) => {
           if (i === 0) return project.alt;
-          const poolIdx = stripIndices[i - 1];
-          return `${project.name} — reference still ${poolIdx != null ? poolIdx + 1 : i + 1}`;
+          return `${project.name} — portfolio still ${i}`;
         }}
       />
     </article>

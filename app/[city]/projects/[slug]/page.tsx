@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { ProjectCaseStudy } from "@/components/ProjectCaseStudy";
 import { CITY_PAGE_COPY, isStudioCity } from "@/lib/city-page-copy";
 import { allStaticProjectParams, getProjectStory } from "@/lib/city-projects";
+import { getGalleryImagesForProject } from "@/lib/gallery-segmented";
 import { interiorImages } from "@/lib/interior-images";
 import { getProjectPageDetail } from "@/lib/project-page-details";
 import type { StudioLocationId } from "@/lib/locations";
@@ -52,6 +53,10 @@ export default async function CityProjectDetail({ params }: Props) {
   const detail = getProjectPageDetail(slug);
   const cityLabel = city === "hyderabad" ? "Hyderabad" : "Bhubaneswar";
 
+  /** Same stills as `/[city]/gallery` for this slug — powers the “On the boards” strip. */
+  const segmentStills = getGalleryImagesForProject(city, slug);
+  const storyGallerySrcs = segmentStills.filter((url) => url !== hero);
+
   return (
     <main>
       <Header />
@@ -63,6 +68,7 @@ export default async function CityProjectDetail({ params }: Props) {
         story={story}
         detail={detail}
         heroPoolIndex={heroPoolIndex}
+        storyGallerySrcs={storyGallerySrcs.length > 0 ? storyGallerySrcs : undefined}
       />
       <Footer />
     </main>
