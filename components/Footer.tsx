@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import {
+  STUDIO_LOCATIONS,
   STUDIO_EMAIL,
   STUDIO_EMAIL_HREF,
   STUDIO_SOCIAL,
@@ -51,6 +52,7 @@ const socialItems = [
 
 export function Footer() {
   const { location } = useStudioLocation();
+  const peerCity = location.id === "hyderabad" ? STUDIO_LOCATIONS.bhubaneswar : STUDIO_LOCATIONS.hyderabad;
   const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
     `Hello — enquiry from ${location.label} studio page.`,
   )}`;
@@ -81,8 +83,8 @@ export function Footer() {
             >
               <VividLogo size="footer" variant="brand" />
               <p className="mt-4 max-w-md text-[1.02rem] leading-relaxed text-ink/85">
-                Premium & luxury interiors for Hyderabad and Bhubaneswar. Complete
-                design-to-delivery solutions for elegant homes, refined workspaces, and
+                Premium & luxury interiors led from our {location.label} studio, with parallel practice in{" "}
+                {peerCity.label}. Complete design-to-delivery for elegant homes, refined workspaces, and
                 high-end commercial environments.
               </p>
 

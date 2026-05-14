@@ -8,6 +8,7 @@ import { IntentConversionBand } from "@/components/IntentConversionBand";
 import { OfferLeadModal } from "@/components/OfferLeadModal";
 import { PressStrip } from "@/components/PressStrip";
 import { PromoBanner } from "@/components/PromoBanner";
+import { CityProjectScopeStrip } from "@/components/CityProjectScopeStrip";
 import { SignatureWorkStrip } from "@/components/SignatureWorkStrip";
 import { StudioProcessRibbon } from "@/components/StudioProcessRibbon";
 import { StickyBookBar } from "@/components/StickyBookBar";
@@ -23,6 +24,7 @@ export function CityHomePage() {
       <OfferLeadModal />
       <Hero />
       <StudioProcessRibbon />
+      <CityProjectScopeStrip />
       <CityAwardsStrip />
       <PromoBanner />
       <WhyChoose />
