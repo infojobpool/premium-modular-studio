@@ -15,7 +15,7 @@ function WhatsAppGlyph({ className }: { className?: string }) {
 const CITY_HOME = /^\/(hyderabad|bhubaneswar)$/;
 
 /**
- * Fixed WhatsApp shortcut (official green bubble) on city studio routes only.
+ * Fixed WhatsApp shortcut: white “Contact now” pill + official green bubble on city routes.
  * Sits above the optional sticky enquiry bar on city home.
  */
 export function WhatsAppFloatButton() {
@@ -26,19 +26,24 @@ export function WhatsAppFloatButton() {
     `Hello — I'd like to speak with the ${location.label} studio on WhatsApp.`,
   )}`;
 
+  const position = isCityHome
+    ? "bottom-[calc(env(safe-area-inset-bottom)+5.75rem)] right-[max(1rem,env(safe-area-inset-right))] sm:bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] sm:right-[max(1rem,env(safe-area-inset-right))]"
+    : "bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] right-[max(1rem,env(safe-area-inset-right))]";
+
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`WhatsApp ${location.label} studio`}
-      className={`fixed z-[42] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-6px_rgba(37,211,102,0.55),0_4px_14px_-4px_rgba(0,0,0,0.35)] ring-2 ring-white/90 transition hover:scale-[1.06] hover:shadow-[0_14px_36px_-6px_rgba(37,211,102,0.6)] active:scale-[0.98] ${
-        isCityHome
-          ? "bottom-[calc(env(safe-area-inset-bottom)+5.75rem)] right-[max(1rem,env(safe-area-inset-right))] sm:bottom-[calc(env(safe-area-inset-bottom)+1.25rem)]"
-          : "bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] right-[max(1rem,env(safe-area-inset-right))]"
-      }`}
+      aria-label={`Contact now on WhatsApp — ${location.label} studio`}
+      className={`fixed z-[42] flex max-w-[calc(100vw-2rem)] flex-row items-center gap-2.5 ${position} transition hover:scale-[1.02] active:scale-[0.99]`}
     >
-      <WhatsAppGlyph className="h-[1.85rem] w-[1.85rem]" />
+      <span className="min-w-0 whitespace-nowrap rounded-full border border-ink/12 bg-white px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-ink shadow-[0_8px_24px_-8px_rgba(0,0,0,0.25)] sm:px-4 sm:text-sm sm:tracking-[0.14em]">
+        Contact now
+      </span>
+      <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-6px_rgba(37,211,102,0.55),0_4px_14px_-4px_rgba(0,0,0,0.35)] ring-2 ring-white/90 transition hover:shadow-[0_14px_36px_-6px_rgba(37,211,102,0.6)]">
+        <WhatsAppGlyph className="h-[1.85rem] w-[1.85rem]" />
+      </span>
     </a>
   );
 }
