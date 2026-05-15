@@ -122,21 +122,30 @@ export function Header() {
           {navItems.map((item) => {
             const href = `${cityBase}/${item.segment}`;
             const active = isNavActive(item.segment);
+            const isContact = item.segment === "contact";
             return (
               <Link
                 key={item.segment}
                 href={href}
                 className={`relative shrink-0 whitespace-nowrap transition-colors ${
-                  active ? "text-ink" : "text-ink/80 hover:text-ink"
+                  isContact
+                    ? "rounded-full border border-accent/45 bg-accent/15 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-accent-strong shadow-sm hover:border-accent/60 hover:bg-accent/22"
+                    : active
+                      ? "text-ink"
+                      : "text-ink/80 hover:text-ink"
                 }`}
                 aria-current={active ? "page" : undefined}
               >
                 <span
-                  className={`after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:bg-accent after:transition-transform after:duration-300 ${
-                    active
-                      ? "after:scale-x-100"
-                      : "after:origin-left after:scale-x-0 hover:after:scale-x-100"
-                  }`}
+                  className={
+                    isContact
+                      ? ""
+                      : `relative after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:bg-accent after:transition-transform after:duration-300 ${
+                          active
+                            ? "after:scale-x-100"
+                            : "after:origin-left after:scale-x-0 hover:after:scale-x-100"
+                        }`
+                  }
                 >
                   {item.label}
                 </span>
@@ -170,12 +179,17 @@ export function Header() {
               {navItems.map((item) => {
                 const href = `${cityBase}/${item.segment}`;
                 const active = isNavActive(item.segment);
+                const isContact = item.segment === "contact";
                 return (
                   <Link
                     key={`mobile-${item.segment}`}
                     href={href}
                     className={`rounded-lg px-2 py-1.5 transition-colors ${
-                      active ? "bg-ink/8 text-ink" : "text-ink/75 hover:bg-ink/5 hover:text-ink"
+                      isContact
+                        ? "border border-accent/50 bg-accent/18 text-accent-strong shadow-sm hover:bg-accent/25"
+                        : active
+                          ? "bg-ink/8 text-ink"
+                          : "text-ink/75 hover:bg-ink/5 hover:text-ink"
                     }`}
                     aria-current={active ? "page" : undefined}
                   >
