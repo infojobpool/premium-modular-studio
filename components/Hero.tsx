@@ -33,9 +33,18 @@ export function Hero() {
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div className="mb-6 space-y-3">
-                    <p className="inline-flex max-w-full flex-wrap rounded-lg border border-ink/14 bg-accent/[0.14] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-ink shadow-sm break-words">
-                      {slide.eyebrow}
-                    </p>
+                    {slide.eyebrowHref ? (
+                      <Link
+                        href={slide.eyebrowHref}
+                        className="inline-flex max-w-full flex-wrap rounded-lg border border-ink/14 bg-accent/[0.14] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-ink shadow-sm break-words transition hover:border-ink/25 hover:bg-accent/[0.22]"
+                      >
+                        {slide.eyebrow}
+                      </Link>
+                    ) : (
+                      <p className="inline-flex max-w-full flex-wrap rounded-lg border border-ink/14 bg-accent/[0.14] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-ink shadow-sm break-words">
+                        {slide.eyebrow}
+                      </p>
+                    )}
                     {slide.statBadge ? (
                       <p className="inline-flex max-w-full flex-wrap rounded-full border border-ink/20 bg-canvas/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/90 shadow-sm break-words">
                         {slide.statBadge}

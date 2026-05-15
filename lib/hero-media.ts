@@ -8,6 +8,8 @@ export type HeroSlide =
       src: string;
       alt: string;
       eyebrow: string;
+      /** When set, the eyebrow renders as a link (e.g. city contact). */
+      eyebrowHref?: string;
       headline: string;
       lead: string;
       statBadge?: string;
@@ -18,6 +20,7 @@ export type HeroSlide =
       alt: string;
       poster?: string;
       eyebrow: string;
+      eyebrowHref?: string;
       headline: string;
       lead: string;
       statBadge?: string;
@@ -61,9 +64,9 @@ export function buildHeroSlides(
       src: interiorImages.hero,
       alt: `Villa living render — ${cityLabel}`,
       eyebrow: "Contact us",
+      eyebrowHref: `/${cityId}/contact`,
       headline: `Premium & luxury interiors in ${cityLabel}`,
       lead: "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
-      statBadge: "Book your consultation",
     },
     {
       kind: "image",
