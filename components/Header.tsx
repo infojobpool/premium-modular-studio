@@ -3,7 +3,7 @@
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PAGE_GUTTER_X } from "@/lib/interior-images";
 import { LocationSwitcher } from "./LocationSwitcher";
 import { VividLogo } from "./VividLogo";
@@ -42,11 +42,31 @@ export function Header() {
 
   const { scrollY } = useScroll();
   const [solid, setSolid] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
 
   useMotionValueEvent(scrollY, "change", (y) => {
     setSolid(y > 48);
+    if (mobileMenuOpen) {
+      setHidden(false);
+      lastScrollY.current = y;
+      return;
+    }
+    const delta = y - lastScrollY.current;
+    if (y < 72) {
+      setHidden(false);
+    } else if (delta > 10) {
+      setHidden(true);
+    } else if (delta < -10) {
+      setHidden(false);
+    }
+    lastScrollY.current = y;
   });
+
+  useEffect(() => {
+    if (mobileMenuOpen) setHidden(false);
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -67,13 +87,18 @@ export function Header() {
   return (
     <motion.header
       initial={{ y: -24, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed inset-x-0 top-0 z-40 pt-2 sm:pt-3 ${PAGE_GUTTER_X}`}
+      animate={{ y: hidden ? "-110%" : 0, opacity: hidden ? 0 : 1 }}
+      transition={{
+        duration: hidden ? 0.28 : 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={`fixed inset-x-0 top-0 z-40 pt-2 sm:pt-3 ${PAGE_GUTTER_X} ${
+        hidden ? "pointer-events-none" : ""
+      }`}
     >
       <div
-        className={`isolate mx-auto flex w-full max-w-[92rem] flex-wrap items-center justify-between gap-2 border px-3 py-2 transition-[background,box-shadow,border-color,border-radius] duration-500 sm:gap-4 sm:px-7 sm:py-3 ${
-          mobileMenuOpen ? "rounded-2xl" : "rounded-2xl lg:rounded-full"
+        className={`isolate mx-auto flex w-full max-w-[92rem] flex-nowrap items-center justify-between gap-2 border px-3 py-2 transition-[background,box-shadow,border-color,border-radius] duration-500 sm:gap-3 sm:px-7 sm:py-3 lg:gap-4 xl:gap-5 ${
+          mobileMenuOpen ? "flex-wrap rounded-2xl" : "rounded-2xl lg:rounded-full"
         } ${
           solid
             ? "border-ink/18 bg-canvas/86 shadow-[0_12px_46px_-16px_rgba(27,63,46,0.28)] backdrop-blur-xl"
@@ -88,7 +113,7 @@ export function Header() {
           <VividLogo size={isCityHome ? "home" : "header"} />
         </Link>
 
-        <div className="order-2 hidden shrink-0 items-center sm:ml-auto md:ml-0 lg:flex">
+        <div className="order-2 hidden shrink-0 items-center lg:ml-1 lg:flex xl:ml-0">
           <LocationSwitcher compact layoutGroup="hdr" />
         </div>
 
@@ -118,7 +143,7 @@ export function Header() {
           </span>
         </button>
 
-        <nav className="order-4 hidden w-full items-center gap-7 border-t border-ink/8 pt-0 text-sm font-medium lg:flex lg:w-auto lg:overflow-visible lg:border-0 lg:justify-center xl:gap-8">
+        <nav className="order-4 hidden min-w-0 flex-1 items-center justify-center gap-4 overflow-x-auto text-[13px] font-medium [-ms-overflow-style:none] [scrollbar-width:none] lg:flex lg:gap-5 xl:gap-7 xl:text-sm [&::-webkit-scrollbar]:hidden">
           {navItems.map((item) => {
             const href = `${cityBase}/${item.segment}`;
             const active = isNavActive(item.segment);
@@ -157,7 +182,7 @@ export function Header() {
         <button
           type="button"
           onClick={openConsultationPopup}
-          className="order-5 hidden items-center justify-center rounded-full bg-ink px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 lg:inline-flex"
+          className="order-5 hidden shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 2xl:inline-flex 2xl:px-5 2xl:text-[11px] 2xl:tracking-[0.18em]"
         >
           Book Free Consultation
         </button>
