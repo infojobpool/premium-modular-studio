@@ -2,16 +2,17 @@
  * Segmented gallery stills parsed from https://waytowebs.in/vivid/gallery/
  * (Elementor `data-elementor-lightbox-slideshow` ids).
  *
- * Delhi Kitchen uses the five `kitchen-option-*` stills from the Joseph Kitchen
- * column on the reference site — the Delhi tab is mis-linked to Villa 193 media.
- * Self-hosted under `public/gallery/delhi-kitchen/`.
+ * Delhi Kitchen stills self-hosted under `public/gallery/delhi-kitchen/`.
  */
 export const delhiKitchenSegmentedGallery = [
-  "/gallery/delhi-kitchen/kitchen-option-1.jpg",
-  "/gallery/delhi-kitchen/kitchen-option-2.jpg",
-  "/gallery/delhi-kitchen/kitchen-option-3.jpg",
-  "/gallery/delhi-kitchen/kitchen-option-4.jpg",
-  "/gallery/delhi-kitchen/kitchen-option-5.jpg",
+  "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.11.png",
+  "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.9.png",
+  "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised2.png",
+  "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised2.2.png",
+  "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders1-1.png",
+  "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised2.3.png",
+  "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised442.png",
+  "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised43444.png",
 ] as const;
 
 export const josephKitchenSegmentedGallery = [
