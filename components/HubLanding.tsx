@@ -152,7 +152,7 @@ export function HubLanding() {
               variants={heroItem}
               className="mx-auto mt-3 max-w-3xl px-2 text-[10px] font-semibold uppercase leading-snug tracking-[0.2em] text-muted sm:mt-3.5 sm:text-[11px] sm:tracking-[0.22em] md:text-xs md:tracking-[0.24em]"
             >
-              We design more than spaces — we curate refined lifestyles. Open the Hyderabad or Bhubaneswar
+              We design more than spaces — we curate refined lifestyles. Click the Hyderabad or Bhubaneswar
               studio for local projects, consultations, and contact so your enquiry lands with the right team.
             </motion.p>
             <motion.p
