@@ -66,8 +66,8 @@ export function getStudioWhatsAppHref(city: StudioLocationId): string {
 export const DEFAULT_STUDIO_LOCATION: StudioLocationId = "hyderabad";
 
 /** Matches public listing on https://waytowebs.in/vivid/ */
-export const STUDIO_EMAIL = "info@viviin2rio.com";
-export const STUDIO_EMAIL_HREF = "mailto:info@viviin2rio.com";
+export const STUDIO_EMAIL = "info@vividin2erio.com";
+export const STUDIO_EMAIL_HREF = "mailto:info@vividin2erio.com";
 
 /** Public social profiles — update hrefs when official accounts are confirmed. */
 export const STUDIO_SOCIAL = {

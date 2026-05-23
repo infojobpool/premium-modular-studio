@@ -98,7 +98,7 @@ export function CTA() {
 
           <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
             <div>
-              <p className="inline-flex rounded-full border border-accent/50 bg-accent/18 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.28em] text-accent-strong shadow-sm">
+              <p className="inline-flex rounded-full border border-accent/50 bg-accent/20 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.28em] text-canvas shadow-sm">
                 Contact us
               </p>
               <h1 className="mt-5 max-w-[22ch] font-display text-4xl leading-[1.08] text-canvas sm:text-5xl md:text-[3.15rem] md:leading-[1.06] [text-shadow:0_0_40px_rgba(228,184,74,0.35),0_2px_0_rgba(27,63,46,0.2)]">
