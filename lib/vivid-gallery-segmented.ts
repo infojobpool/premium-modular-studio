@@ -51,17 +51,9 @@ export const sheebaVilla157SegmentedGallery = [
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Sheeba-Maam-Villa-157-indukuri-Customized-20250331-011415.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Sheeba-Maam-Villa-157-indukuri-Unnamed-20250330-214011.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Sheeba-Maam-Villa-157-indukuri-Living-Dining-Room-20250319-223137-1.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised-1.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised2.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised-2.1.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised-2.2.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised-2.3.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised-2.4.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised-2.5.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised-2.6.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised-3.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised-3.1.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/sheeba-revised-3.2.jpg",
 ] as const;
 
 export const villa173WestSegmentedGallery = [
@@ -105,7 +97,6 @@ export const villa193EastSegmentedGallery = [
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders-3-1.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders2-2.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders1-1.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.14.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.13.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.12.jpg",

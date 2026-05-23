@@ -41,7 +41,6 @@ export function Services() {
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent" />
             </div>
             <div className="relative p-8">
               <div className="pointer-events-none absolute -right-12 -top-24 h-36 w-36 rounded-full bg-accent/10 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
