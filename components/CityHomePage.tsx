@@ -3,6 +3,7 @@ import { CityAwardsStrip } from "@/components/CityAwardsStrip";
 import { CityPageShell } from "@/components/CityPageShell";
 import { FounderSpotlight } from "@/components/FounderSpotlight";
 import { Hero } from "@/components/Hero";
+import { HeroMobileQuickLinks } from "@/components/HeroMobileQuickLinks";
 import { InspirationStrip } from "@/components/InspirationStrip";
 import { IntentConversionBand } from "@/components/IntentConversionBand";
 import { OfferLeadModal } from "@/components/OfferLeadModal";
@@ -22,6 +23,7 @@ export function CityHomePage() {
     <CityPageShell stickyBar={<StickyBookBar />}>
       <OfferLeadModal />
       <Hero />
+      <HeroMobileQuickLinks />
       <PostHeroGuide />
       <CityAwardsStrip />
       <PromoBanner />

@@ -6,10 +6,13 @@ import { useCallback, useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import { trackEvent } from "@/lib/analytics";
 import { vividImages } from "@/lib/vivid-reference";
+import { WELCOME_DISMISSED_EVENT } from "./CityWelcomeModal";
 import { useStudioLocation } from "./LocationProvider";
 
 const STORAGE_PREFIX = "vivid-offer-modal-dismissed";
+const WELCOME_STORAGE_PREFIX = "vivid-city-welcome-dismissed";
 const OPEN_EVENT = "vivid:open-offer-modal";
+const OFFER_DELAY_MS = 1200;
 const PROPERTY_TYPES = ["1 BHK", "2 BHK", "3 BHK", "4+ BHK / Duplex"] as const;
 type PropertyType = (typeof PROPERTY_TYPES)[number];
 type OfferFormState = {
@@ -19,6 +22,10 @@ type OfferFormState = {
   phone: string;
   whatsappOptIn: boolean;
 };
+
+function welcomeKeyFor(city: string) {
+  return `${WELCOME_STORAGE_PREFIX}:${city}`;
+}
 
 function keyFor(city: string) {
   return `${STORAGE_PREFIX}:${city}`;
@@ -50,15 +57,41 @@ export function OfferLeadModal() {
 
   useEffect(() => {
     if (!mounted) return;
-    try {
-      if (!sessionStorage.getItem(keyFor(location.id))) {
-        const t = window.setTimeout(() => setOpen(true), 1300);
-        return () => window.clearTimeout(t);
+
+    let delayTimer: number | undefined;
+
+    const scheduleOffer = () => {
+      if (delayTimer) window.clearTimeout(delayTimer);
+      try {
+        if (sessionStorage.getItem(keyFor(location.id))) return;
+      } catch {
+        /* ignore */
       }
-    } catch {
-      const t = window.setTimeout(() => setOpen(true), 1300);
-      return () => window.clearTimeout(t);
+      delayTimer = window.setTimeout(() => setOpen(true), OFFER_DELAY_MS);
+    };
+
+    const welcomeDone = () => {
+      try {
+        return !!sessionStorage.getItem(welcomeKeyFor(location.id));
+      } catch {
+        return false;
+      }
+    };
+
+    if (welcomeDone()) {
+      scheduleOffer();
+    } else {
+      const onWelcomeDismissed = () => scheduleOffer();
+      window.addEventListener(WELCOME_DISMISSED_EVENT, onWelcomeDismissed);
+      return () => {
+        window.removeEventListener(WELCOME_DISMISSED_EVENT, onWelcomeDismissed);
+        if (delayTimer) window.clearTimeout(delayTimer);
+      };
     }
+
+    return () => {
+      if (delayTimer) window.clearTimeout(delayTimer);
+    };
   }, [location.id, mounted]);
 
   const dismiss = useCallback(() => {

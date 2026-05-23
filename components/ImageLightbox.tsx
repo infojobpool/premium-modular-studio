@@ -170,8 +170,8 @@ export function ImageLightbox({ images, altForIndex, index, onClose, onIndexChan
           </button>
         </div>
         {count > 1 ? (
-          <p className="text-center text-[11px] text-canvas/55">
-            Swipe on the image or use arrow keys
+          <p className="text-center text-[11px] font-medium uppercase tracking-[0.14em] text-canvas/60">
+            ← → arrow keys · swipe to browse · Esc to close
           </p>
         ) : null}
       </div>

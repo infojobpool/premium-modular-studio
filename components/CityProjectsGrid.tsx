@@ -7,6 +7,7 @@ import type { CityGalleryProject } from "@/lib/city-page-copy";
 import { resolveGalleryTileSrc } from "@/lib/interior-images";
 import type { StudioLocationId } from "@/lib/locations";
 import { ImageLightbox } from "./ImageLightbox";
+import { Reveal } from "./Reveal";
 
 type Props = {
   city: StudioLocationId;
@@ -26,6 +27,7 @@ export function CityProjectsGrid({ city, projects }: Props) {
       <ul className="mt-16 grid gap-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 xl:grid-cols-5">
         {resolved.map((p, i) => (
           <li key={p.slug}>
+            <Reveal delay={i * 0.06}>
             <div className="group overflow-hidden rounded-3xl border border-ink/10 bg-panel/40 shadow-sm transition hover:border-accent/35 hover:shadow-[0_24px_60px_-32px_rgba(27,63,46,0.18)]">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
@@ -61,6 +63,7 @@ export function CityProjectsGrid({ city, projects }: Props) {
                 </p>
               </Link>
             </div>
+            </Reveal>
           </li>
         ))}
       </ul>

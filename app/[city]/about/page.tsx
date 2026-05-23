@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CityPageShell } from "@/components/CityPageShell";
 import { CitySubpageBackLink } from "@/components/CitySubpageBackLink";
+import { About } from "@/components/About";
 import { FounderSpotlight } from "@/components/FounderSpotlight";
 import { CITY_PAGE_COPY, isStudioCity } from "@/lib/city-page-copy";
 import type { StudioLocationId } from "@/lib/locations";
@@ -34,6 +35,7 @@ export default async function CityAboutPage({ params }: Props) {
   return (
     <CityPageShell>
       <CitySubpageBackLink city={city} />
+      <About />
       <FounderSpotlight />
     </CityPageShell>
   );

@@ -14,6 +14,8 @@ const navItems = [
   { segment: "projects", label: "Stories" },
   { segment: "services", label: "Services" },
   { segment: "process", label: "Process" },
+  { segment: "blog", label: "Blog" },
+  { segment: "careers", label: "Careers" },
   { segment: "faq", label: "FAQ" },
   { segment: "visit", label: "Visit" },
   { segment: "contact", label: "Contact" },

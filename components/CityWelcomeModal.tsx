@@ -13,6 +13,7 @@ import {
 import type { StudioLocationId } from "@/lib/locations";
 
 const STORAGE_PREFIX = "vivid-city-welcome-dismissed";
+export const WELCOME_DISMISSED_EVENT = "vivid:welcome-dismissed";
 
 function storageKey(city: StudioLocationId) {
   return `${STORAGE_PREFIX}:${city}`;
@@ -163,6 +164,7 @@ export function CityWelcomeModal({ city }: { city: StudioLocationId }) {
       /* ignore */
     }
     setOpen(false);
+    window.dispatchEvent(new CustomEvent(WELCOME_DISMISSED_EVENT, { detail: { city } }));
   }, [city]);
 
   const onCta = useCallback(() => {

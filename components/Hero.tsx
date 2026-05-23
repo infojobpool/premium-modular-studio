@@ -3,8 +3,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useMemo } from "react";
-import { buildHeroSlides, pickHeroAmbientFrames } from "@/lib/hero-media";
-import { HeroAmbientImageRotator, HeroSlideStage } from "./HeroMedia";
+import { useHeroCarousel } from "@/hooks/use-hero-carousel";
+import { buildHeroSlides } from "@/lib/hero-media";
+import { HeroCarouselToolbar, HeroSlideStage } from "./HeroMedia";
 import { HeroQuickLinksCard } from "./HeroQuickLinksCard";
 import { withBrandHighlight } from "./BrandInline";
 import { useStudioLocation } from "./LocationProvider";
@@ -15,8 +16,8 @@ export function Hero() {
     () => buildHeroSlides(location.label, location.id),
     [location.label, location.id],
   );
-  const slide = slides[0];
-  const ambientFrames = useMemo(() => pickHeroAmbientFrames(slides), [slides]);
+  const { list, safeIndex, current, reduceMotion, setIndex, go, setPaused } =
+    useHeroCarousel(slides);
 
   return (
     <section className="relative isolate min-h-[100dvh] w-full overflow-x-clip bg-transparent">
@@ -24,38 +25,38 @@ export function Hero() {
         <div className="min-w-0 px-6 sm:px-10 md:pl-16 md:pr-10 xl:pl-24 2xl:pl-32 2xl:pr-14">
           <div className="max-w-xl">
             <AnimatePresence mode="wait">
-              {slide ? (
+              {current ? (
                 <motion.div
-                  key={slide.src}
+                  key={`${current.kind}-${safeIndex}-${current.headline}`}
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div className="mb-6 space-y-3">
-                    {slide.eyebrowHref ? (
+                    {current.eyebrowHref ? (
                       <Link
-                        href={slide.eyebrowHref}
+                        href={current.eyebrowHref}
                         className="inline-flex max-w-full flex-wrap rounded-lg border border-ink/14 bg-accent/[0.14] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-ink shadow-sm break-words transition hover:border-ink/25 hover:bg-accent/[0.22]"
                       >
-                        {slide.eyebrow}
+                        {current.eyebrow}
                       </Link>
                     ) : (
                       <p className="inline-flex max-w-full flex-wrap rounded-lg border border-ink/14 bg-accent/[0.14] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-ink shadow-sm break-words">
-                        {slide.eyebrow}
+                        {current.eyebrow}
                       </p>
                     )}
-                    {slide.statBadge ? (
+                    {current.statBadge ? (
                       <p className="inline-flex max-w-full flex-wrap rounded-full border border-ink/20 bg-canvas/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/90 shadow-sm break-words">
-                        {slide.statBadge}
+                        {current.statBadge}
                       </p>
                     ) : null}
                   </div>
                   <h1 className="font-display text-balance text-4xl leading-[1.05] tracking-tight text-ink sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl">
-                    {slide.headline}
+                    {current.headline}
                   </h1>
                   <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
-                    {withBrandHighlight(slide.lead)}
+                    {withBrandHighlight(current.lead)}
                   </p>
                   <motion.div
                     initial={{ opacity: 0, y: 12 }}
@@ -94,25 +95,32 @@ export function Hero() {
         </div>
 
         <div className="min-w-0 px-6 sm:px-10 md:pl-0 md:pr-4 lg:pr-6 xl:pr-8">
-          {/*
-            Outer shell stays overflow-visible so the quick-links card is never clipped.
-            Only the media + scrim live inside an overflow-hidden layer with matching radii.
-          */}
-          <div className="relative min-h-[360px] overflow-visible rounded-[2rem] border border-ink/10 bg-ink shadow-[0_30px_80px_-40px_rgba(0,0,0,0.45)] sm:min-h-[430px] md:min-h-[520px] md:rounded-none md:rounded-l-[2.4rem]">
+          <div
+            className="relative min-h-[360px] overflow-visible rounded-[2rem] border border-ink/10 bg-ink shadow-[0_30px_80px_-40px_rgba(0,0,0,0.45)] sm:min-h-[430px] md:min-h-[520px] md:rounded-none md:rounded-l-[2.4rem]"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onFocusCapture={() => setPaused(true)}
+            onBlurCapture={() => setPaused(false)}
+          >
             <div className="absolute inset-0 overflow-hidden rounded-[2rem] md:rounded-none md:rounded-l-[2.4rem]">
-              {ambientFrames.length > 0 ? (
-                <HeroAmbientImageRotator frames={ambientFrames} />
-              ) : slide ? (
+              {current ? (
                 <HeroSlideStage
-                  current={slide}
-                  safeIndex={0}
-                  reduceMotion={null}
+                  current={current}
+                  safeIndex={safeIndex}
+                  reduceMotion={reduceMotion}
                   fullscreen={false}
                 />
               ) : null}
               <div
                 className={`pointer-events-none absolute inset-0 z-[5] hero-media-scrim--${location.id}`}
                 aria-hidden
+              />
+              <HeroCarouselToolbar
+                list={list}
+                safeIndex={safeIndex}
+                setIndex={setIndex}
+                go={go}
+                fullscreen={false}
               />
             </div>
             <div className="pointer-events-none absolute inset-x-3 bottom-4 z-20 hidden lg:flex lg:justify-end sm:inset-x-4 sm:bottom-5">

@@ -5,6 +5,11 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { getGalleryImagesForProject } from "@/lib/gallery-segmented";
+import {
+  GALLERY_TYPOLOGY_FILTERS,
+  projectMatchesTypology,
+  type GalleryTypology,
+} from "@/lib/gallery-typology";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import type { StudioLocationId } from "@/lib/locations";
 import { withBrandHighlight } from "./BrandInline";
@@ -21,17 +26,26 @@ const SHELL = `mx-auto w-full ${CONTENT_MAX} ${PAGE_GUTTER_X}` as const;
 export function GallerySegmented({ city, locationLabel }: Props) {
   const copy = CITY_PAGE_COPY[city];
   const projects = copy.galleryProjects;
+  const [typology, setTypology] = useState<GalleryTypology>("all");
+  const filteredProjects = useMemo(
+    () => projects.filter((p) => projectMatchesTypology(p.slug, typology)),
+    [projects, typology],
+  );
   const [active, setActive] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const project = projects[active]!;
+  const project = filteredProjects[active] ?? filteredProjects[0]!;
   const images = useMemo(
-    () => getGalleryImagesForProject(city, project.slug),
-    [city, project.slug],
+    () => (project ? getGalleryImagesForProject(city, project.slug) : []),
+    [city, project],
   );
 
   useEffect(() => {
+    setActive(0);
+  }, [typology, city]);
+
+  useEffect(() => {
     setLightboxIndex(null);
-  }, [active, city, project.slug]);
+  }, [active, city, project?.slug]);
 
   return (
     <section
@@ -67,13 +81,38 @@ export function GallerySegmented({ city, locationLabel }: Props) {
           </p>
         </Reveal>
 
+        <div className="mt-8 flex flex-wrap items-center gap-2 sm:mt-10">
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-ink/45">Browse by</span>
+          {GALLERY_TYPOLOGY_FILTERS.map((filter) => {
+            const isActive = typology === filter.id;
+            const count = projects.filter((p) => projectMatchesTypology(p.slug, filter.id)).length;
+            if (count === 0) return null;
+            return (
+              <button
+                key={filter.id}
+                type="button"
+                aria-pressed={isActive}
+                onClick={() => setTypology(filter.id)}
+                className={
+                  isActive
+                    ? "rounded-full border border-accent/45 bg-accent/20 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink shadow-sm"
+                    : "rounded-full border border-ink/14 bg-canvas/70 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/70 transition hover:border-accent/35 hover:text-ink"
+                }
+              >
+                {filter.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {filteredProjects.length > 0 ? (
         <div
-          className="mt-10 rounded-[1.25rem] border border-ink/10 bg-panel/40 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] sm:mt-12 sm:p-2.5"
+          className="mt-4 rounded-[1.25rem] border border-ink/10 bg-panel/40 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] sm:mt-5 sm:p-2.5"
           role="tablist"
           aria-label="Choose a project"
         >
           <div className="flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-py-1 pb-0.5 pt-0.5 [-ms-overflow-style:none] [scrollbar-width:none] sm:flex-wrap sm:overflow-visible [&::-webkit-scrollbar]:hidden">
-            {projects.map((p, i) => {
+            {filteredProjects.map((p, i) => {
               const isActive = i === active;
               return (
                 <button
@@ -96,8 +135,14 @@ export function GallerySegmented({ city, locationLabel }: Props) {
             })}
           </div>
         </div>
+        ) : (
+          <p className="mt-6 rounded-2xl border border-ink/12 bg-panel/40 px-5 py-4 text-sm text-muted">
+            No projects in this category yet — try another filter or view all work.
+          </p>
+        )}
       </div>
 
+      {project ? (
       <div
         id={`gallery-panel-${project.slug}`}
         role="tabpanel"
@@ -187,13 +232,14 @@ export function GallerySegmented({ city, locationLabel }: Props) {
           </Link>
         </div>
       </div>
+      ) : null}
 
       <ImageLightbox
         images={images}
         index={lightboxIndex}
         onClose={() => setLightboxIndex(null)}
         onIndexChange={setLightboxIndex}
-        altForIndex={(i) => `${project.alt} — still ${i + 1}`}
+        altForIndex={(i) => `${project?.alt ?? "Gallery"} — still ${i + 1}`}
       />
     </section>
   );
