@@ -229,7 +229,7 @@ export const vividCareerOpenings = [
  * (the live WP gallery mis-links those columns to the wrong media).
  */
 export const vividGalleryCoverImageByProjectSlug = {
-  "delhi-kitchen-design": `${VIVID_WP_MEDIA}/kitchen-option-2.jpg`,
+  "delhi-kitchen-design": "/gallery/delhi-kitchen/kitchen-option-2.jpg",
   "joseph-kitchen-design": `${VIVID_WP_MEDIA}/kitchen-option-1.jpg`,
   "sheeba-villa-157-indukuri": `${VIVID_WP_MEDIA}/ground-floor-Secondary-bedroom-20250316-144027-1.jpg`,
   "villa-173-west-indukuri-lakeshore": `${VIVID_WP_MEDIA}/Villa-173-West-Indukuri-Lakeshore-Renders-12.jpg`,

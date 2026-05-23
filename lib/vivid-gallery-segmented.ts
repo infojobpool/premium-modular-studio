@@ -1,11 +1,17 @@
-/** Segmented gallery stills parsed from https://waytowebs.in/vivid/gallery/ (Elementor `data-elementor-lightbox-slideshow` ids). */
-
+/**
+ * Segmented gallery stills parsed from https://waytowebs.in/vivid/gallery/
+ * (Elementor `data-elementor-lightbox-slideshow` ids).
+ *
+ * Delhi Kitchen uses the five `kitchen-option-*` stills from the Joseph Kitchen
+ * column on the reference site — the Delhi tab is mis-linked to Villa 193 media.
+ * Self-hosted under `public/gallery/delhi-kitchen/`.
+ */
 export const delhiKitchenSegmentedGallery = [
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/kitchen-option-1.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/kitchen-option-2.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/kitchen-option-3.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/kitchen-option-4.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/kitchen-option-5.jpg",
+  "/gallery/delhi-kitchen/kitchen-option-1.jpg",
+  "/gallery/delhi-kitchen/kitchen-option-2.jpg",
+  "/gallery/delhi-kitchen/kitchen-option-3.jpg",
+  "/gallery/delhi-kitchen/kitchen-option-4.jpg",
+  "/gallery/delhi-kitchen/kitchen-option-5.jpg",
 ] as const;
 
 export const josephKitchenSegmentedGallery = [

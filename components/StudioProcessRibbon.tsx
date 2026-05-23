@@ -1,25 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
-import { useStudioLocation } from "./LocationProvider";
 
-function RibbonIcon({ kind }: { kind: "calendar" | "drawing" | "handover" }) {
+function RibbonIcon({ kind }: { kind: "drawing" | "handover" }) {
   const cls = "h-5 w-5 text-ink sm:h-5 sm:w-5";
-  if (kind === "calendar") {
-    return (
-      <svg viewBox="0 0 24 24" className={cls} fill="none" aria-hidden>
-        <rect x="3.5" y="5" width="17" height="15" rx="2" stroke="currentColor" strokeWidth="1.4" />
-        <path d="M3.5 9.5h17M8 3v3M16 3v3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        <path
-          d="M8.2 14.2h2.2M13.6 14.2h2.2M8.2 17.4h7.6"
-          stroke="currentColor"
-          strokeWidth="1.35"
-          strokeLinecap="round"
-        />
-      </svg>
-    );
-  }
   if (kind === "drawing") {
     return (
       <svg viewBox="0 0 24 24" className={cls} fill="none" aria-hidden>
@@ -47,19 +31,11 @@ function RibbonIcon({ kind }: { kind: "calendar" | "drawing" | "handover" }) {
 }
 
 export function StudioProcessRibbon({ variant = "section" }: { variant?: "section" | "plain" }) {
-  const { location } = useStudioLocation();
-
   const items = [
-    {
-      kicker: "Appointments",
-      icon: "calendar" as const,
-      body: location.hoursSummary,
-      href: `/${location.id}/visit` as const,
-      cta: "Studio & map",
-    },
     {
       kicker: "After your site visit",
       icon: "drawing" as const,
+      featured: true,
       body:
         "Measured drawings and scope clarity before production starts — so approvals stay confident.",
     },
@@ -72,45 +48,66 @@ export function StudioProcessRibbon({ variant = "section" }: { variant?: "sectio
   ] as const;
 
   const list = (
-    <ul className="grid gap-4 sm:grid-cols-3 sm:gap-5 lg:gap-6">
-      {items.map((item) => (
-        <li
-          key={item.kicker}
-          className="relative overflow-hidden rounded-2xl border border-ink/20 bg-canvas/95 p-4 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_8px_24px_-16px_rgba(27,63,46,0.2)] sm:p-5"
-        >
-          <span
-            className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/80 via-accent-soft/90 to-accent/70"
-            aria-hidden
-          />
-          <div className="flex items-start gap-3">
+    <ul className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
+      {items.map((item) => {
+        const featured = "featured" in item && item.featured;
+        return (
+          <li
+            key={item.kicker}
+            className={
+              featured
+                ? "relative overflow-hidden rounded-[1.35rem] border border-accent/50 bg-gradient-to-br from-accent/[0.16] via-canvas/98 to-panel/75 p-5 shadow-[0_1px_0_rgba(255,255,255,0.92)_inset,0_24px_56px_-22px_rgba(217,162,41,0.38),0_14px_36px_-18px_rgba(27,63,46,0.22)] ring-1 ring-accent/30 sm:p-6"
+                : "relative overflow-hidden rounded-2xl border border-ink/20 bg-canvas/95 p-4 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_8px_24px_-16px_rgba(27,63,46,0.2)] sm:p-5"
+            }
+          >
             <span
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-ink/12 bg-accent/15 text-ink shadow-sm"
+              className={
+                featured
+                  ? "pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent via-accent-soft to-accent"
+                  : "pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/80 via-accent-soft/90 to-accent/70"
+              }
               aria-hidden
-            >
-              <RibbonIcon kind={item.icon} />
-            </span>
-            <div className="min-w-0 flex-1">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink sm:text-xs">
-                {item.kicker}
-              </p>
-              <p className="mt-2 text-sm font-medium leading-relaxed text-ink sm:text-[0.95rem]">{item.body}</p>
-              {"href" in item ? (
-                <p className="mt-3">
-                  <Link
-                    href={item.href}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-ink/18 bg-panel/80 px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-ink shadow-sm transition hover:border-accent/55 hover:bg-accent/20 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
-                  >
-                    {item.cta}
-                    <span aria-hidden className="text-accent-strong">
-                      →
-                    </span>
-                  </Link>
+            />
+            {featured ? (
+              <span className="mb-3 inline-flex rounded-full border border-accent/45 bg-accent/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-accent-strong shadow-sm">
+                Core studio step
+              </span>
+            ) : null}
+            <div className="flex items-start gap-3">
+              <span
+                className={
+                  featured
+                    ? "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-accent/40 bg-accent/25 text-ink shadow-[0_8px_20px_-12px_rgba(217,162,41,0.45)]"
+                    : "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-ink/12 bg-accent/15 text-ink shadow-sm"
+                }
+                aria-hidden
+              >
+                <RibbonIcon kind={item.icon} />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p
+                  className={
+                    featured
+                      ? "font-display text-lg font-semibold tracking-tight text-ink sm:text-xl"
+                      : "text-[11px] font-bold uppercase tracking-[0.2em] text-ink sm:text-xs"
+                  }
+                >
+                  {item.kicker}
                 </p>
-              ) : null}
+                <p
+                  className={
+                    featured
+                      ? "mt-2.5 text-sm font-medium leading-relaxed text-ink/90 sm:text-base"
+                      : "mt-2 text-sm font-medium leading-relaxed text-ink sm:text-[0.95rem]"
+                  }
+                >
+                  {item.body}
+                </p>
+              </div>
             </div>
-          </div>
-        </li>
-      ))}
+          </li>
+        );
+      })}
     </ul>
   );
 
