@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import {
   STUDIO_LOCATIONS,
@@ -58,7 +59,11 @@ const socialItems = [
   { key: "linkedin", label: "LinkedIn", href: STUDIO_SOCIAL.linkedIn, Icon: IconLinkedIn },
 ] as const;
 
+const CITY_HOME = /^\/(hyderabad|bhubaneswar)$/;
+
 export function Footer() {
+  const pathname = usePathname();
+  const isCityHome = CITY_HOME.test(pathname);
   const { location } = useStudioLocation();
   const peerCity = location.id === "hyderabad" ? STUDIO_LOCATIONS.bhubaneswar : STUDIO_LOCATIONS.hyderabad;
   const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
@@ -184,7 +189,13 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <p className={`mx-auto mt-10 pb-24 text-center text-[0.85rem] text-ink/72 md:pb-16 ${CONTENT_MAX}`}>
+      <p
+        className={`mx-auto mt-10 text-center text-[0.85rem] text-ink/72 ${CONTENT_MAX} ${
+          isCityHome
+            ? "pb-[calc(7rem+env(safe-area-inset-bottom))]"
+            : "pb-24 md:pb-16"
+        }`}
+      >
         © {new Date().getFullYear()}{" "}
         {withBrandHighlight("Vivid In2erio")}. Hyderabad & Bhubaneswar.{" "}
         <Link href="/privacy" className="group inline-flex text-ink/75 transition-colors duration-300 hover:text-ink">
