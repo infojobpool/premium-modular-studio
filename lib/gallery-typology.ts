@@ -18,3 +18,8 @@ export function projectMatchesTypology(slug: string, filter: GalleryTypology): b
   if (filter === "all") return true;
   return typologyForProjectSlug(slug) === filter;
 }
+
+export function parseGalleryTypology(value: string | null | undefined): GalleryTypology | null {
+  if (!value) return null;
+  return GALLERY_TYPOLOGY_FILTERS.some((f) => f.id === value) ? (value as GalleryTypology) : null;
+}

@@ -40,6 +40,8 @@ export type CityGalleryProject = {
   coverImage?: string;
   /** Pick a tile from `interiorImages.gallery` when it should not match list order. */
   imageIndex?: number;
+  /** Livspace-style meta line on cards, e.g. "Kitchen · Delhi NCR · Modular". */
+  cardLabel?: string;
 };
 
 export type CityPageCopy = {
@@ -81,6 +83,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         coverImage: vividGalleryCoverImageByProjectSlug["delhi-kitchen-design"],
         excerpt:
           "Full-kitchen composition with appliance integration, lighting layers, and documentation aligned to premium execution standards.",
+        cardLabel: "Kitchen · Delhi NCR · Modular",
       },
       {
         tag: "Joseph",
@@ -90,6 +93,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         coverImage: vividGalleryCoverImageByProjectSlug["joseph-kitchen-design"],
         excerpt:
           "Custom kitchen layout and joinery rhythm—signed off in visualization before procurement and site fit-out.",
+        cardLabel: "Kitchen · Custom residence · Contemporary",
       },
       {
         tag: "Indukuri · Hyderabad",
@@ -99,6 +103,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         coverImage: vividGalleryCoverImageByProjectSlug["sheeba-villa-157-indukuri"],
         excerpt:
           "Villa-scale interiors with clarity from planning through advanced visualization—Indukuri corridor portfolio work.",
+        cardLabel: "Villa · Indukuri · Full interior",
       },
       {
         tag: "Indukuri Lakeshore",
@@ -108,6 +113,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         coverImage: vividGalleryCoverImageByProjectSlug["villa-173-west-indukuri-lakeshore"],
         excerpt:
           "West lakeshore villa studies: spatial flow, façade-adjacent light, and joinery coordinated for lakeside living.",
+        cardLabel: "Villa · Lakeshore · West elevation",
       },
       {
         tag: "Indukuri Lakeshore",
@@ -117,6 +123,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         coverImage: vividGalleryCoverImageByProjectSlug["villa-193-east-indukuri-lakeshore"],
         excerpt:
           "East lakeshore composition—premium standards from detailed planning through smart integrations and handover.",
+        cardLabel: "Villa · Lakeshore · East wing",
       },
     ],
     leadershipSpotlight: {
@@ -206,6 +213,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         excerpt:
           "Compact coastal plan with resilient transitions, service core efficiency, and views preserved toward the bay.",
         imageIndex: 5,
+        cardLabel: "Apartment · Coastal · 2–3 BHK",
       },
       {
         tag: "Odisha",
@@ -215,6 +223,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         excerpt:
           "Open kitchen anchored with a deep canopy, appliance integration, and milestone-linked Hyderabad fabrication.",
         imageIndex: 6,
+        cardLabel: "Kitchen · Open plan · Odisha",
       },
       {
         tag: "Patia corridor",
@@ -224,6 +233,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         excerpt:
           "Wardrobe and study in one disciplined volume—sliding screens, desk lighting, and tones tuned to monsoon daylight.",
         imageIndex: 7,
+        cardLabel: "Wardrobe · Patia · Study nook",
       },
     ],
     leadershipSpotlight: {

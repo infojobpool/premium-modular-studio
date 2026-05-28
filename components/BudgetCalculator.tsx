@@ -19,10 +19,34 @@ const finishMultipliers = {
   luxury: 1.22,
 } as const;
 
+type CalcScope = "kitchen" | "fullhome" | "villa";
+
+const CALC_SCOPES: readonly {
+  id: CalcScope;
+  label: string;
+  projectType: keyof typeof projectMultipliers;
+  defaultArea: number;
+  areaMin: number;
+  areaMax: number;
+}[] = [
+  { id: "kitchen", label: "Kitchen", projectType: "kitchen", defaultArea: 120, areaMin: 80, areaMax: 280 },
+  {
+    id: "fullhome",
+    label: "Full home",
+    projectType: "apartment3bhk",
+    defaultArea: 1400,
+    areaMin: 650,
+    areaMax: 2800,
+  },
+  { id: "villa", label: "Villa", projectType: "villa", defaultArea: 3200, areaMin: 1800, areaMax: 5200 },
+] as const;
+
 export function BudgetCalculator() {
   const { location } = useStudioLocation();
-  const [area, setArea] = useState(1400);
-  const [projectType, setProjectType] = useState<keyof typeof projectMultipliers>("apartment3bhk");
+  const [scope, setScope] = useState<CalcScope>("fullhome");
+  const scopeConfig = CALC_SCOPES.find((s) => s.id === scope)!;
+  const [area, setArea] = useState(scopeConfig.defaultArea);
+  const [projectType, setProjectType] = useState<keyof typeof projectMultipliers>(scopeConfig.projectType);
   const [finish, setFinish] = useState<keyof typeof finishMultipliers>("premium");
   const [smartAddons, setSmartAddons] = useState(false);
   const [calcStarted, setCalcStarted] = useState(false);
@@ -98,6 +122,15 @@ export function BudgetCalculator() {
     }
   }
 
+  function handleScopeChange(next: CalcScope) {
+    const config = CALC_SCOPES.find((s) => s.id === next)!;
+    markCalcStarted();
+    setScope(next);
+    setProjectType(config.projectType);
+    setArea(config.defaultArea);
+    trackEvent("calc_updated", { city: location.id, field: "scope", scope: next });
+  }
+
   return (
     <section id="budget-calculator" className={`border-y border-ink/10 bg-panel/35 py-12 sm:py-14 ${PAGE_GUTTER_X}`}>
       <div className={`mx-auto grid gap-10 ${CONTENT_MAX} lg:grid-cols-[minmax(0,1fr)_420px]`}>
@@ -111,24 +144,57 @@ export function BudgetCalculator() {
             typology, finish band, and optional smart-home inclusions.
           </p>
 
+          <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Project scope">
+            {CALC_SCOPES.map((item) => {
+              const active = scope === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => handleScopeChange(item.id)}
+                  className={
+                    active
+                      ? "rounded-full border border-accent/45 bg-accent/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink shadow-sm"
+                      : "rounded-full border border-ink/14 bg-canvas/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/70 transition hover:border-accent/35 hover:text-ink"
+                  }
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+
           <div className="mt-9 grid gap-5 sm:grid-cols-2">
-            <label className="text-sm font-medium text-ink">
-              Project type
-              <select
-                value={projectType}
-                onChange={(e) => {
-                  markCalcStarted();
-                  setProjectType(e.target.value as keyof typeof projectMultipliers);
-                  trackEvent("calc_updated", { city: location.id, field: "projectType" });
-                }}
-                className="mt-2 w-full rounded-xl border border-ink/20 bg-canvas px-3 py-2 text-sm"
-              >
-                <option value="kitchen">Modular kitchen</option>
-                <option value="apartment2bhk">2BHK apartment</option>
-                <option value="apartment3bhk">3BHK apartment</option>
-                <option value="villa">Villa</option>
-              </select>
-            </label>
+            {scope === "fullhome" ? (
+              <label className="text-sm font-medium text-ink">
+                Home type
+                <select
+                  value={projectType}
+                  onChange={(e) => {
+                    markCalcStarted();
+                    setProjectType(e.target.value as keyof typeof projectMultipliers);
+                    trackEvent("calc_updated", { city: location.id, field: "projectType" });
+                  }}
+                  className="mt-2 w-full rounded-xl border border-ink/20 bg-canvas px-3 py-2 text-sm"
+                >
+                  <option value="apartment2bhk">2BHK apartment</option>
+                  <option value="apartment3bhk">3BHK apartment</option>
+                </select>
+              </label>
+            ) : (
+              <div className="rounded-xl border border-ink/12 bg-canvas/60 px-3 py-3 text-sm text-muted">
+                <span className="font-medium text-ink">
+                  {scope === "kitchen" ? "Modular kitchen" : "Villa / large residence"}
+                </span>
+                <p className="mt-1 text-xs leading-relaxed">
+                  {scope === "kitchen"
+                    ? "Typical run includes base units, tall storage, countertop allowance, and appliance zones."
+                    : "Full-residence scope with premium joinery, finishes, and coordinated services."}
+                </p>
+              </div>
+            )}
 
             <label className="text-sm font-medium text-ink">
               Finish level
@@ -152,9 +218,9 @@ export function BudgetCalculator() {
             Built-up area (sqft): <span className="font-semibold">{area}</span>
             <input
               type="range"
-              min={450}
-              max={5200}
-              step={50}
+              min={scopeConfig.areaMin}
+              max={scopeConfig.areaMax}
+              step={scope === "kitchen" ? 10 : 50}
               value={area}
               onChange={(e) => {
                 markCalcStarted();

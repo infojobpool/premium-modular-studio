@@ -1,9 +1,12 @@
 import { BudgetCalculator } from "@/components/BudgetCalculator";
 import { CityAwardsStrip } from "@/components/CityAwardsStrip";
 import { CityPageShell } from "@/components/CityPageShell";
+import { DesignIdeasStrip } from "@/components/DesignIdeasStrip";
 import { FounderSpotlight } from "@/components/FounderSpotlight";
 import { Hero } from "@/components/Hero";
 import { HeroMobileQuickLinks } from "@/components/HeroMobileQuickLinks";
+import { HomeFaqStrip } from "@/components/HomeFaqStrip";
+import { HomeMagazineStrip } from "@/components/HomeMagazineStrip";
 import { InspirationStrip } from "@/components/InspirationStrip";
 import { IntentConversionBand } from "@/components/IntentConversionBand";
 import { OfferLeadModal } from "@/components/OfferLeadModal";
@@ -12,6 +15,7 @@ import { PromoBanner } from "@/components/PromoBanner";
 import { PostHeroGuide } from "@/components/PostHeroGuide";
 import { SignatureWorkStrip } from "@/components/SignatureWorkStrip";
 import { StickyBookBar } from "@/components/StickyBookBar";
+import { StudioTrustStrip } from "@/components/StudioTrustStrip";
 import { Testimonials } from "@/components/Testimonials";
 import { WhyChoose } from "@/components/WhyChoose";
 
@@ -25,6 +29,8 @@ export function CityHomePage() {
       <Hero />
       <HeroMobileQuickLinks />
       <PostHeroGuide />
+      <StudioTrustStrip />
+      <DesignIdeasStrip />
       <CityAwardsStrip />
       <PromoBanner />
       <WhyChoose />
@@ -32,8 +38,10 @@ export function CityHomePage() {
       <SignatureWorkStrip />
       <InspirationStrip />
       <BudgetCalculator />
+      <HomeMagazineStrip />
       <PressStrip />
       <Testimonials />
+      <HomeFaqStrip />
       <IntentConversionBand />
     </CityPageShell>
   );

@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { getGalleryImagesForProject } from "@/lib/gallery-segmented";
 import {
   GALLERY_TYPOLOGY_FILTERS,
+  parseGalleryTypology,
   projectMatchesTypology,
   type GalleryTypology,
 } from "@/lib/gallery-typology";
@@ -26,6 +28,7 @@ const SHELL = `mx-auto w-full ${CONTENT_MAX} ${PAGE_GUTTER_X}` as const;
 export function GallerySegmented({ city, locationLabel }: Props) {
   const copy = CITY_PAGE_COPY[city];
   const projects = copy.galleryProjects;
+  const searchParams = useSearchParams();
   const [typology, setTypology] = useState<GalleryTypology>("all");
   const filteredProjects = useMemo(
     () => projects.filter((p) => projectMatchesTypology(p.slug, typology)),
@@ -38,6 +41,11 @@ export function GallerySegmented({ city, locationLabel }: Props) {
     () => (project ? getGalleryImagesForProject(city, project.slug) : []),
     [city, project],
   );
+
+  useEffect(() => {
+    const fromUrl = parseGalleryTypology(searchParams.get("type"));
+    if (fromUrl) setTypology(fromUrl);
+  }, [searchParams]);
 
   useEffect(() => {
     setActive(0);

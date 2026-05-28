@@ -55,6 +55,11 @@ export function CityProjectsGrid({ city, projects }: Props) {
                 <h2 className="text-balance break-words font-display text-xl font-semibold leading-snug text-ink transition-colors group-hover:text-accent-strong sm:text-2xl">
                   {p.name}
                 </h2>
+                {p.cardLabel ? (
+                  <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/55">
+                    {p.cardLabel}
+                  </p>
+                ) : null}
                 <p className="mt-3 text-pretty break-words text-sm leading-relaxed text-muted sm:text-[0.95rem]">
                   {p.excerpt}
                 </p>

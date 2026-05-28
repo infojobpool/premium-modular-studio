@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
-import { CityProjectScopeStrip } from "./CityProjectScopeStrip";
+import { ServiceEntryStrip } from "./ServiceEntryStrip";
 import { useStudioLocation } from "./LocationProvider";
 
 /** Quick paths by project type — shown below the hero. */
@@ -40,7 +40,7 @@ export function PostHeroGuide() {
             </header>
 
             <div className="min-w-0 md:border-l md:border-ink/10 md:pl-6 lg:pl-8">
-              <CityProjectScopeStrip variant="embedded" />
+              <ServiceEntryStrip />
             </div>
           </div>
         </div>
