@@ -40,8 +40,6 @@ export function Header() {
     ? `Vivid In2erio — ${cityBase === "/hyderabad" ? "Hyderabad" : "Bhubaneswar"} studio home`
     : "Vivid In2erio — studio hub";
 
-  const isCityHome = pathname === "/hyderabad" || pathname === "/bhubaneswar";
-
   const { scrollY } = useScroll();
   const [solid, setSolid] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -98,31 +96,32 @@ export function Header() {
         hidden ? "pointer-events-none" : ""
       }`}
     >
-      <div
-        className={`isolate mx-auto flex w-full max-w-[92rem] flex-nowrap items-center justify-between gap-2 border px-3 py-2 transition-[background,box-shadow,border-color,border-radius] duration-500 sm:gap-3 sm:px-7 sm:py-3 lg:gap-4 xl:gap-5 ${
-          mobileMenuOpen ? "flex-wrap rounded-2xl" : "rounded-2xl lg:rounded-full"
-        } ${
-          solid
-            ? "border-ink/18 bg-canvas/86 shadow-[0_12px_46px_-16px_rgba(27,63,46,0.28)] backdrop-blur-xl"
-            : "border-ink/10 bg-canvas/70 shadow-[0_8px_34px_-18px_rgba(27,63,46,0.18)] backdrop-blur-md"
-        }`}
-      >
+      <div className="mx-auto flex w-full max-w-[92rem] items-center gap-2.5 sm:gap-3 lg:gap-4">
         <Link
           href={logoHref}
-          className="order-1 min-w-0 shrink"
+          className="relative z-10 shrink-0"
           aria-label={logoAria}
         >
-          <VividLogo size={isCityHome ? "home" : "header"} />
+          <VividLogo size="aside" />
         </Link>
 
-        <div className="order-2 hidden shrink-0 items-center lg:ml-1 lg:flex xl:ml-0">
+        <div
+          className={`isolate flex min-w-0 flex-1 flex-nowrap items-center justify-between gap-2 border px-3 py-2 transition-[background,box-shadow,border-color,border-radius] duration-500 sm:gap-3 sm:px-5 sm:py-2.5 lg:gap-4 lg:px-7 lg:py-3 xl:gap-5 ${
+            mobileMenuOpen ? "flex-wrap rounded-2xl" : "rounded-2xl lg:rounded-full"
+          } ${
+            solid
+              ? "border-ink/18 bg-canvas/86 shadow-[0_12px_46px_-16px_rgba(27,63,46,0.28)] backdrop-blur-xl"
+              : "border-ink/10 bg-canvas/70 shadow-[0_8px_34px_-18px_rgba(27,63,46,0.18)] backdrop-blur-md"
+          }`}
+        >
+        <div className="order-1 flex shrink-0 items-center">
           <LocationSwitcher compact layoutGroup="hdr" />
         </div>
 
         <button
           type="button"
           onClick={() => setMobileMenuOpen((v) => !v)}
-          className="order-3 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-ink/15 bg-canvas/60 text-ink lg:hidden"
+          className="order-2 ml-auto inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-ink/15 bg-canvas/60 text-ink lg:hidden"
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
         >
@@ -145,7 +144,7 @@ export function Header() {
           </span>
         </button>
 
-        <nav className="order-4 hidden min-w-0 flex-1 items-center justify-center gap-4 overflow-x-auto text-[13px] font-medium [-ms-overflow-style:none] [scrollbar-width:none] lg:flex lg:gap-5 xl:gap-7 xl:text-sm [&::-webkit-scrollbar]:hidden">
+        <nav className="order-3 hidden min-w-0 flex-1 items-center justify-center gap-4 overflow-x-auto text-[13px] font-medium [-ms-overflow-style:none] [scrollbar-width:none] lg:flex lg:gap-5 xl:gap-7 xl:text-sm [&::-webkit-scrollbar]:hidden">
           {navItems.map((item) => {
             const href = `${cityBase}/${item.segment}`;
             const active = isNavActive(item.segment);
@@ -184,13 +183,13 @@ export function Header() {
         <button
           type="button"
           onClick={openConsultationPopup}
-          className="order-5 hidden shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 2xl:inline-flex 2xl:px-5 2xl:text-[11px] 2xl:tracking-[0.18em]"
+          className="order-4 hidden shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 2xl:inline-flex 2xl:px-5 2xl:text-[11px] 2xl:tracking-[0.18em]"
         >
           Book Free Consultation
         </button>
 
         {mobileMenuOpen ? (
-          <div className="order-6 relative z-10 mt-2 w-full rounded-xl border border-ink/12 bg-canvas p-3 shadow-[0_20px_48px_-28px_rgba(27,63,46,0.42)] ring-1 ring-ink/[0.06] backdrop-blur-md lg:hidden">
+          <div className="order-5 relative z-10 mt-2 w-full rounded-xl border border-ink/12 bg-canvas p-3 shadow-[0_20px_48px_-28px_rgba(27,63,46,0.42)] ring-1 ring-ink/[0.06] backdrop-blur-md lg:hidden">
             <div className="mb-3 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
               <LocationSwitcher compact wide layoutGroup="hdr-mobile" />
               <button
@@ -227,6 +226,7 @@ export function Header() {
             </nav>
           </div>
         ) : null}
+        </div>
       </div>
     </motion.header>
   );

@@ -7,8 +7,8 @@ const LOGO_H = 1024;
 
 type VividLogoProps = {
   className?: string;
-  /** `home` — slightly larger lockup for city index / hub landing. */
-  size?: "header" | "home" | "footer";
+  /** Lockup beside the nav pill (not inside it). */
+  size?: "header" | "home" | "footer" | "aside";
   /** Visual treatment around the asset (PNG already includes brand background). */
   variant?: "default" | "light" | "brand";
 };
@@ -20,14 +20,17 @@ export function VividLogo({
 }: VividLogoProps) {
   const isFooter = size === "footer";
   const isHome = size === "home";
+  const isAside = size === "aside";
   const brand = variant === "brand";
   const light = variant === "light";
 
   const imgClass = isFooter
     ? "h-[5.85rem] w-auto max-w-[min(100%,320px)] object-contain object-left sm:h-[6.5rem] sm:max-w-[340px]"
+    : isAside
+      ? "h-[4.25rem] w-auto max-w-[min(100%,300px)] object-contain object-left sm:h-[4.875rem] sm:max-w-[340px] lg:h-[5.375rem] lg:max-w-[380px]"
     : isHome
-      ? "h-[5.25rem] w-auto max-w-[min(100%,320px)] object-contain object-left sm:h-[5.75rem] sm:max-w-[360px]"
-      : "h-14 w-auto max-w-[252px] object-contain object-left sm:h-16 sm:max-w-[276px]";
+      ? "h-[5.75rem] w-auto max-w-[min(100%,340px)] object-contain object-left sm:h-[6.25rem] sm:max-w-[380px]"
+      : "h-[3.875rem] w-auto max-w-[272px] object-contain object-left sm:h-[4.375rem] sm:max-w-[300px]";
 
   return (
     <span
@@ -47,11 +50,13 @@ export function VividLogo({
           sizes={
             isFooter
               ? "(max-width: 640px) 280px, 320px"
+              : isAside
+                ? "(max-width: 640px) 300px, 380px"
               : isHome
-                ? "(max-width: 640px) 320px, 360px"
-                : "(max-width: 640px) 252px, 276px"
+                ? "(max-width: 640px) 340px, 380px"
+                : "(max-width: 640px) 272px, 300px"
           }
-          priority={size === "header" || size === "home"}
+          priority={size === "header" || size === "home" || size === "aside"}
         />
       </span>
     </span>
