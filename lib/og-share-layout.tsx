@@ -1,10 +1,12 @@
+import { OgBrandLockup } from "@/lib/og-brand-lockup";
+import type { OgImageSrc } from "@/lib/og-image-assets";
+
 /**
  * JSX for `next/og` ImageResponse — inline styles only (Satori subset).
  * Used by `app/opengraph-image.tsx`, `app/twitter-image.tsx`, and city OG routes.
  */
 export type OgShareLayoutProps = {
-  logoSrc: string;
-  heroSrc: string;
+  heroSrc: OgImageSrc;
   /** e.g. "Hyderabad · Bhubaneswar" or "Hyderabad studio" */
   locationLine: string;
   headline?: string;
@@ -14,13 +16,12 @@ export type OgShareLayoutProps = {
 };
 
 export function OgShareLayout({
-  logoSrc,
   heroSrc,
   locationLine,
   headline = "Premium & luxury interiors",
   subline = "Design to delivery for homes & workspaces — curated materials, modular craft, and studio-led execution.",
   cta = "Book a private studio consultation",
-  domain = "viviin2rio.com",
+  domain = "vividin2erio.com",
 }: OgShareLayoutProps) {
   return (
     <div
@@ -42,9 +43,10 @@ export function OgShareLayout({
           display: "flex",
         }}
       >
+        {/* Satori accepts ArrayBuffer for img src; React types do not. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={heroSrc}
+          src={heroSrc as unknown as string}
           alt=""
           width={648}
           height={630}
@@ -84,7 +86,7 @@ export function OgShareLayout({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "52px 56px 48px",
+          padding: "48px 52px 44px",
           backgroundImage: "linear-gradient(155deg, #1b3f2e 0%, #163528 52%, #0f2d20 100%)",
         }}
       >
@@ -92,10 +94,11 @@ export function OgShareLayout({
           style={{
             position: "absolute",
             top: 0,
-            left: 56,
-            right: 56,
+            left: 52,
+            right: 52,
             height: 3,
-            backgroundImage: "linear-gradient(90deg, transparent 0%, #d9a229 18%, #e4b84a 50%, #d9a229 82%, transparent 100%)",
+            backgroundImage:
+              "linear-gradient(90deg, transparent 0%, #d9a229 18%, #e4b84a 50%, #d9a229 82%, transparent 100%)",
           }}
         />
 
@@ -104,50 +107,40 @@ export function OgShareLayout({
             display: "flex",
             alignItems: "flex-start",
             justifyContent: "space-between",
-            gap: 24,
+            gap: 20,
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={logoSrc}
-            alt=""
-            width={168}
-            height={168}
-            style={{
-              width: 168,
-              height: 168,
-              objectFit: "contain",
-              objectPosition: "left top",
-            }}
-          />
+          <OgBrandLockup />
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-end",
-              gap: 8,
-              paddingTop: 8,
+              gap: 6,
+              paddingTop: 10,
+              flexShrink: 0,
             }}
           >
             <span
               style={{
                 fontSize: 11,
                 fontWeight: 600,
-                letterSpacing: "0.32em",
+                letterSpacing: "0.28em",
                 textTransform: "uppercase",
                 color: "#d9a229",
                 fontFamily: "DM Sans",
               }}
             >
-              Vivid In2erio
+              Design studio
             </span>
             <span
               style={{
-                fontSize: 19,
+                fontSize: 20,
                 fontWeight: 600,
                 color: "#eae1c8",
                 fontFamily: "DM Sans",
                 letterSpacing: "0.04em",
+                textAlign: "right",
               }}
             >
               {locationLine}
@@ -155,10 +148,10 @@ export function OgShareLayout({
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 22, maxWidth: 620 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, maxWidth: 620 }}>
           <div
             style={{
-              fontSize: 68,
+              fontSize: 66,
               fontWeight: 600,
               lineHeight: 1.02,
               color: "#f4ecd8",
@@ -170,7 +163,7 @@ export function OgShareLayout({
           </div>
           <div
             style={{
-              fontSize: 26,
+              fontSize: 25,
               lineHeight: 1.38,
               color: "rgba(234,225,200,0.86)",
               fontFamily: "DM Sans",
@@ -184,7 +177,14 @@ export function OgShareLayout({
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <div style={{ width: 64, height: 3, backgroundColor: "#d9a229", borderRadius: 2 }} />
-            <div style={{ width: 12, height: 12, borderRadius: 999, border: "2px solid rgba(217,162,41,0.65)" }} />
+            <div
+              style={{
+                width: 12,
+                height: 12,
+                borderRadius: 999,
+                border: "2px solid rgba(217,162,41,0.65)",
+              }}
+            />
           </div>
           <div
             style={{
@@ -196,7 +196,7 @@ export function OgShareLayout({
           >
             <span
               style={{
-                fontSize: 21,
+                fontSize: 20,
                 fontWeight: 600,
                 color: "#eae1c8",
                 fontFamily: "DM Sans",
@@ -210,7 +210,7 @@ export function OgShareLayout({
                 fontWeight: 600,
                 color: "#d9a229",
                 fontFamily: "DM Sans",
-                letterSpacing: "0.08em",
+                letterSpacing: "0.06em",
               }}
             >
               {domain}

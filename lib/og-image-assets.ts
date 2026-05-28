@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import type { StudioLocationId } from "@/lib/locations";
+import { getSiteUrl } from "@/lib/site-url";
 import { vividImages } from "@/lib/vivid-reference";
 
 const CORMORANT_SEMIBOLD =
@@ -26,6 +27,13 @@ export type OgFont = {
   style: "normal";
 };
 
+/** Satori renders `<img>` reliably with ArrayBuffer — not data URLs. */
+export type OgImageSrc = ArrayBuffer;
+
+function toArrayBuffer(buf: Buffer): ArrayBuffer {
+  return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer;
+}
+
 export async function loadOgFonts(): Promise<OgFont[]> {
   const [cormorant, dmMedium, dmSemibold] = await Promise.all([
     fetch(CORMORANT_SEMIBOLD).then((r) => r.arrayBuffer()),
@@ -40,47 +48,43 @@ export async function loadOgFonts(): Promise<OgFont[]> {
   ];
 }
 
-async function readPublicAsset(relativePath: string): Promise<string> {
+async function readPublicAssetBuffer(relativePath: string): Promise<OgImageSrc> {
   const buf = await readFile(join(process.cwd(), "public", relativePath));
-  const ext = relativePath.split(".").pop()?.toLowerCase();
-  const mime =
-    ext === "png" ? "image/png" : ext === "webp" ? "image/webp" : ext === "jpg" || ext === "jpeg" ? "image/jpeg" : "image/png";
-  return `data:${mime};base64,${buf.toString("base64")}`;
+  return toArrayBuffer(buf);
 }
 
-async function fetchRemoteImageAsDataUrl(url: string): Promise<string> {
+async function fetchRemoteImageBuffer(url: string): Promise<OgImageSrc> {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch OG image: ${url}`);
-  const buf = Buffer.from(await res.arrayBuffer());
-  const contentType = res.headers.get("content-type") ?? "image/jpeg";
-  return `data:${contentType};base64,${buf.toString("base64")}`;
+  return res.arrayBuffer();
 }
 
-export async function loadOgLogo(): Promise<string> {
-  return readPublicAsset("vivid-in2erio-logo.png");
+async function loadPublicAssetWithFallback(relativePath: string, publicUrlPath: string): Promise<OgImageSrc> {
+  try {
+    return await readPublicAssetBuffer(relativePath);
+  } catch {
+    const origin = getSiteUrl();
+    return fetchRemoteImageBuffer(`${origin}${publicUrlPath}`);
+  }
 }
 
-export async function loadOgHeroImage(city?: StudioLocationId): Promise<string> {
+export async function loadOgHeroImage(city?: StudioLocationId): Promise<OgImageSrc> {
   if (city) {
     try {
-      return await readPublicAsset(OG_HERO_BY_CITY[city]);
+      return await loadPublicAssetWithFallback(OG_HERO_BY_CITY[city], `/${OG_HERO_BY_CITY[city]}`);
     } catch {
       /* fall through */
     }
   }
 
   try {
-    return await readPublicAsset(DEFAULT_HERO);
+    return await loadPublicAssetWithFallback(DEFAULT_HERO, `/${DEFAULT_HERO}`);
   } catch {
-    return fetchRemoteImageAsDataUrl(vividImages.hero);
+    return fetchRemoteImageBuffer(vividImages.hero);
   }
 }
 
 export async function loadOgShareAssets(city?: StudioLocationId) {
-  const [fonts, logoSrc, heroSrc] = await Promise.all([
-    loadOgFonts(),
-    loadOgLogo(),
-    loadOgHeroImage(city),
-  ]);
-  return { fonts, logoSrc, heroSrc };
+  const [fonts, heroSrc] = await Promise.all([loadOgFonts(), loadOgHeroImage(city)]);
+  return { fonts, heroSrc };
 }

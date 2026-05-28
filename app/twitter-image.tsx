@@ -12,12 +12,11 @@ export const size = OG_IMAGE_SIZE;
 export const contentType = "image/png";
 
 export default async function TwitterImage() {
-  const { fonts, logoSrc, heroSrc } = await loadOgShareAssets();
+  const { fonts, heroSrc } = await loadOgShareAssets();
 
   return new ImageResponse(
     (
       <OgShareLayout
-        logoSrc={logoSrc}
         heroSrc={heroSrc}
         locationLine="Hyderabad · Bhubaneswar"
         subline="Design to delivery for homes & workspaces — curated materials, modular craft, and studio-led execution across Telangana and Odisha."

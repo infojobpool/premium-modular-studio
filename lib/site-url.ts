@@ -19,5 +19,5 @@ export function getSiteUrl(): string {
     const host = vercel.replace(/^https?:\/\//i, "").replace(/\/$/, "");
     return `https://${host}`;
   }
-  return "https://viviin2rio.com";
+  return "https://vividin2erio.com";
 }
