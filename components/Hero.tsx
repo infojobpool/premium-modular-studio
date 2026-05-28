@@ -123,7 +123,7 @@ export function Hero() {
                 fullscreen={false}
               />
             </div>
-            <div className="pointer-events-none absolute inset-x-3 bottom-4 z-20 hidden lg:flex lg:justify-end sm:inset-x-4 sm:bottom-5">
+            <div className="pointer-events-none absolute inset-x-3 bottom-3 z-30 hidden justify-end lg:flex sm:inset-x-4 sm:bottom-4">
               <HeroQuickLinksCard />
             </div>
           </div>

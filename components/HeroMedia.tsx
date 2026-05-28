@@ -174,8 +174,10 @@ export function HeroCarouselToolbar({
 
   return (
     <div
-      className={`pointer-events-auto absolute inset-x-0 z-[25] flex justify-center px-4 ${
-        fullscreen ? "bottom-8 sm:bottom-10" : "bottom-6 sm:bottom-8"
+      className={`pointer-events-auto absolute z-[25] flex px-4 ${
+        fullscreen
+          ? "inset-x-0 bottom-8 justify-center sm:bottom-10"
+          : "bottom-5 left-3 justify-start sm:bottom-6 sm:left-4 lg:bottom-5 lg:left-5"
       }`}
     >
       <div className="flex items-center gap-1 rounded-full border border-black/8 bg-canvas/98 px-1.5 py-1.5 shadow-[0_10px_40px_-8px_rgba(0,0,0,0.35)] ring-1 ring-white/60 backdrop-blur-sm sm:gap-2 sm:px-2 sm:py-2">
