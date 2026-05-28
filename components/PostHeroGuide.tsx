@@ -12,11 +12,11 @@ export function PostHeroGuide() {
 
   return (
     <section
-      className={`border-b border-ink/12 bg-gradient-to-b from-panel/50 via-canvas to-canvas ${PAGE_GUTTER_X} py-5 sm:py-6`}
+      className={`relative z-10 -mt-14 border-b border-ink/12 bg-gradient-to-b from-panel/50 via-canvas to-canvas sm:-mt-16 md:-mt-20 lg:-mt-24 ${PAGE_GUTTER_X} pb-5 pt-0 sm:pb-6`}
       aria-labelledby="post-hero-guide-heading"
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>
-        <div className="overflow-hidden rounded-[1.25rem] border border-ink/12 bg-gradient-to-br from-canvas/95 via-canvas/90 to-panel/35 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.75),0_12px_40px_-24px_rgba(27,63,46,0.14)] sm:rounded-[1.35rem] sm:p-5 md:p-6">
+        <div className="overflow-hidden rounded-[1.25rem] border border-ink/12 bg-gradient-to-br from-canvas/95 via-canvas/90 to-panel/35 p-4 shadow-[0_20px_50px_-20px_rgba(27,63,46,0.18),inset_0_1px_0_rgba(255,255,255,0.75)] sm:rounded-[1.35rem] sm:p-5 md:p-6">
           <div className="grid items-center gap-4 md:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] md:gap-6 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-8 xl:grid-cols-[minmax(0,19rem)_minmax(0,1fr)]">
             <header className="min-w-0 md:pr-2">
               <p className="text-[10px] font-bold uppercase tracking-[0.26em] text-accent-strong">
