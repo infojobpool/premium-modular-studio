@@ -1,15 +1,31 @@
 import { ImageResponse } from "next/og";
+import { loadOgShareAssets, OG_IMAGE_SIZE } from "@/lib/og-image-assets";
 import { OgShareLayout } from "@/lib/og-share-layout";
+
+export const runtime = "nodejs";
 
 export const alt =
   "Vivid In2erio — premium and luxury interiors in Hyderabad and Bhubaneswar, design to delivery.";
 
-export const size = { width: 1200, height: 630 };
+export const size = OG_IMAGE_SIZE;
 
 export const contentType = "image/png";
 
-export default function TwitterImage() {
-  return new ImageResponse(<OgShareLayout />, {
-    ...size,
-  });
+export default async function TwitterImage() {
+  const { fonts, logoSrc, heroSrc } = await loadOgShareAssets();
+
+  return new ImageResponse(
+    (
+      <OgShareLayout
+        logoSrc={logoSrc}
+        heroSrc={heroSrc}
+        locationLine="Hyderabad · Bhubaneswar"
+        subline="Design to delivery for homes & workspaces — curated materials, modular craft, and studio-led execution across Telangana and Odisha."
+      />
+    ),
+    {
+      ...size,
+      fonts,
+    },
+  );
 }

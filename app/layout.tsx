@@ -45,6 +45,14 @@ export const metadata: Metadata = {
     title: "Vivid In2erio | Premium & luxury interiors",
     description:
       "Hyderabad & Bhubaneswar studios — bespoke residential and commercial interiors from consultation through handover.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Vivid In2erio — premium and luxury interiors in Hyderabad and Bhubaneswar",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
