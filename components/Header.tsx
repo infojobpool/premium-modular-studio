@@ -1,12 +1,14 @@
 "use client";
 
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { PAGE_GUTTER_X } from "@/lib/interior-images";
 import { FOCUS_RING } from "@/lib/ui-classes";
+import { STUDIO_LOCATIONS } from "@/lib/locations";
 import { LocationSwitcher } from "./LocationSwitcher";
+import { MobileNavMenu } from "./MobileNavMenu";
 import { VividLogo } from "./VividLogo";
 
 const navItems = [
@@ -130,7 +132,11 @@ export function Header() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen((v) => !v)}
-          className={`order-2 ml-auto inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-ink/15 bg-canvas/60 text-ink lg:hidden ${FOCUS_RING}`}
+          className={`order-2 ml-auto inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border text-ink transition duration-300 lg:hidden ${FOCUS_RING} ${
+            mobileMenuOpen
+              ? "border-accent/45 bg-accent/15 shadow-sm"
+              : "border-ink/15 bg-canvas/60"
+          }`}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
         >
@@ -199,51 +205,14 @@ export function Header() {
         </div>
         </div>
 
-        <AnimatePresence>
-        {mobileMenuOpen ? (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-30 w-full rounded-xl border border-ink/12 bg-canvas p-3 shadow-[0_20px_48px_-28px_rgba(27,63,46,0.42)] ring-1 ring-ink/[0.06] backdrop-blur-md lg:hidden"
-          >
-            <div className="mb-3 flex justify-end border-b border-ink/8 pb-3">
-              <button
-                type="button"
-                onClick={openConsultationPopup}
-                className={`inline-flex w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 sm:w-auto sm:px-5 sm:py-2 sm:text-[10px] sm:tracking-[0.16em] ${FOCUS_RING}`}
-              >
-                Book consultation
-              </button>
-            </div>
-
-            <nav className="grid grid-cols-2 gap-x-3 gap-y-2.5 text-[12px] font-semibold">
-              {navItems.map((item) => {
-                const href = `${cityBase}/${item.segment}`;
-                const active = isNavActive(item.segment);
-                const isContact = item.segment === "contact";
-                return (
-                  <Link
-                    key={`mobile-${item.segment}`}
-                    href={href}
-                    className={`rounded-lg px-2 py-1.5 transition-colors ${FOCUS_RING} ${
-                      isContact
-                        ? "border border-accent/50 bg-accent/18 text-accent-strong shadow-sm hover:bg-accent/25"
-                        : active
-                          ? "bg-ink/8 text-ink"
-                          : "text-ink/75 hover:bg-ink/5 hover:text-ink"
-                    }`}
-                    aria-current={active ? "page" : undefined}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-          </motion.div>
-        ) : null}
-        </AnimatePresence>
+        <MobileNavMenu
+          open={mobileMenuOpen}
+          cityBase={cityBase}
+          cityLabel={STUDIO_LOCATIONS[cityBase === "/bhubaneswar" ? "bhubaneswar" : "hyderabad"].label}
+          onClose={() => setMobileMenuOpen(false)}
+          onConsultation={openConsultationPopup}
+          isNavActive={isNavActive}
+        />
       </div>
     </motion.header>
   );
