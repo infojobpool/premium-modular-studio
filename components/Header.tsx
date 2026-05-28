@@ -208,18 +208,17 @@ export function Header() {
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-30 w-full rounded-xl border border-ink/12 bg-canvas p-3 shadow-[0_20px_48px_-28px_rgba(27,63,46,0.42)] ring-1 ring-ink/[0.06] backdrop-blur-md lg:hidden"
           >
-            <div className="mb-3 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
-              <LocationSwitcher compact wide layoutGroup="hdr-mobile" />
+            <div className="mb-3 flex justify-end border-b border-ink/8 pb-3">
               <button
                 type="button"
                 onClick={openConsultationPopup}
-                className={`inline-flex w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 sm:w-auto sm:px-3.5 sm:py-1.5 sm:text-[9px] sm:tracking-[0.16em] ${FOCUS_RING}`}
+                className={`inline-flex w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 sm:w-auto sm:px-5 sm:py-2 sm:text-[10px] sm:tracking-[0.16em] ${FOCUS_RING}`}
               >
                 Book consultation
               </button>
             </div>
 
-            <nav className="grid grid-cols-2 gap-x-3 gap-y-2.5 border-t border-ink/8 pt-3 text-[12px] font-semibold">
+            <nav className="grid grid-cols-2 gap-x-3 gap-y-2.5 text-[12px] font-semibold">
               {navItems.map((item) => {
                 const href = `${cityBase}/${item.segment}`;
                 const active = isNavActive(item.segment);
