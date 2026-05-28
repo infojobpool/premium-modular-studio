@@ -106,19 +106,18 @@ export function Header() {
         hidden ? "pointer-events-none" : ""
       }`}
     >
-      <div className="mx-auto flex w-full max-w-[92rem] items-center gap-2.5 sm:gap-3 lg:gap-4">
+      <div className="mx-auto flex w-full max-w-[92rem] flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3 lg:gap-4">
         <Link
           href={logoHref}
-          className={`relative z-10 shrink-0 rounded-lg ${FOCUS_RING}`}
+          className={`relative z-20 shrink-0 rounded-lg ${FOCUS_RING}`}
           aria-label={logoAria}
         >
           <VividLogo size="aside" />
         </Link>
 
         <div
-          className={`isolate flex min-w-0 flex-1 flex-nowrap items-center justify-between gap-2 border px-3 py-2 transition-[background,box-shadow,border-color,border-radius] duration-500 sm:gap-3 sm:px-5 sm:py-2.5 lg:gap-4 lg:px-7 lg:py-3 xl:gap-5 ${
-            mobileMenuOpen ? "flex-wrap rounded-2xl" : "rounded-2xl lg:rounded-full"
-          } ${
+          className={`isolate flex min-w-0 flex-1 flex-nowrap items-center justify-between gap-2 rounded-2xl border px-3 py-2 transition-[background,box-shadow,border-color] duration-500 sm:gap-3 sm:px-5 sm:py-2.5 lg:flex-none lg:rounded-full lg:px-7 lg:py-3 xl:gap-5 ${
             solid
               ? "border-ink/18 bg-canvas/86 shadow-[0_12px_46px_-16px_rgba(27,63,46,0.28)] backdrop-blur-xl"
               : "border-ink/10 bg-canvas/70 shadow-[0_8px_34px_-18px_rgba(27,63,46,0.18)] backdrop-blur-md"
@@ -197,6 +196,8 @@ export function Header() {
         >
           Book Free Consultation
         </button>
+        </div>
+        </div>
 
         <AnimatePresence>
         {mobileMenuOpen ? (
@@ -205,7 +206,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="order-5 relative z-10 mt-2 w-full rounded-xl border border-ink/12 bg-canvas p-3 shadow-[0_20px_48px_-28px_rgba(27,63,46,0.42)] ring-1 ring-ink/[0.06] backdrop-blur-md lg:hidden"
+            className="relative z-30 w-full rounded-xl border border-ink/12 bg-canvas p-3 shadow-[0_20px_48px_-28px_rgba(27,63,46,0.42)] ring-1 ring-ink/[0.06] backdrop-blur-md lg:hidden"
           >
             <div className="mb-3 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
               <LocationSwitcher compact wide layoutGroup="hdr-mobile" />
@@ -244,7 +245,6 @@ export function Header() {
           </motion.div>
         ) : null}
         </AnimatePresence>
-        </div>
       </div>
     </motion.header>
   );

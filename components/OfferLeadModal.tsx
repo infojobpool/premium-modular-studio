@@ -14,8 +14,8 @@ import { useStudioLocation } from "./LocationProvider";
 const STORAGE_PREFIX = "vivid-offer-modal-dismissed";
 const WELCOME_STORAGE_PREFIX = "vivid-city-welcome-dismissed";
 const OPEN_EVENT = "vivid:open-offer-modal";
-const SCROLL_OPEN_Y = 360;
-const OFFER_FALLBACK_MS = 12000;
+/** Wait 1 minute after welcome before auto-showing the offer modal. */
+const OFFER_DELAY_MS = 60_000;
 const PROPERTY_TYPES = ["1 BHK", "2 BHK", "3 BHK", "4+ BHK / Duplex"] as const;
 type PropertyType = (typeof PROPERTY_TYPES)[number];
 type OfferFormState = {
@@ -64,31 +64,24 @@ export function OfferLeadModal() {
   useEffect(() => {
     if (!mounted) return;
 
-    let fallbackTimer: number | undefined;
+    let delayTimer: number | undefined;
 
     const scheduleOffer = () => {
-      if (fallbackTimer) window.clearTimeout(fallbackTimer);
+      if (delayTimer) window.clearTimeout(delayTimer);
       try {
         if (sessionStorage.getItem(keyFor(location.id))) return;
       } catch {
         /* ignore */
       }
 
-      const tryOpenOnScroll = () => {
-        if (window.scrollY >= SCROLL_OPEN_Y) {
-          setOpen(true);
-          window.removeEventListener("scroll", tryOpenOnScroll);
-          if (fallbackTimer) window.clearTimeout(fallbackTimer);
+      delayTimer = window.setTimeout(() => {
+        try {
+          if (sessionStorage.getItem(keyFor(location.id))) return;
+        } catch {
+          /* ignore */
         }
-      };
-
-      window.addEventListener("scroll", tryOpenOnScroll, { passive: true });
-      tryOpenOnScroll();
-
-      fallbackTimer = window.setTimeout(() => {
         setOpen(true);
-        window.removeEventListener("scroll", tryOpenOnScroll);
-      }, OFFER_FALLBACK_MS);
+      }, OFFER_DELAY_MS);
     };
 
     const welcomeDone = () => {
@@ -106,12 +99,12 @@ export function OfferLeadModal() {
       window.addEventListener(WELCOME_DISMISSED_EVENT, onWelcomeDismissed);
       return () => {
         window.removeEventListener(WELCOME_DISMISSED_EVENT, onWelcomeDismissed);
-        if (fallbackTimer) window.clearTimeout(fallbackTimer);
+        if (delayTimer) window.clearTimeout(delayTimer);
       };
     }
 
     return () => {
-      if (fallbackTimer) window.clearTimeout(fallbackTimer);
+      if (delayTimer) window.clearTimeout(delayTimer);
     };
   }, [location.id, mounted]);
 
