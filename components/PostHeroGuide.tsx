@@ -12,7 +12,7 @@ export function PostHeroGuide() {
 
   return (
     <section
-      className={`relative z-10 -mt-8 border-b border-ink/12 bg-gradient-to-b from-panel/50 via-canvas to-canvas sm:-mt-12 md:-mt-20 lg:-mt-24 ${PAGE_GUTTER_X} pb-5 pt-2 sm:pb-6 sm:pt-0`}
+      className={`relative z-10 -mt-10 border-b border-ink/12 bg-gradient-to-b from-panel/50 via-canvas to-canvas sm:-mt-12 md:-mt-20 lg:-mt-24 ${PAGE_GUTTER_X} pb-5 pt-2 sm:pb-6 sm:pt-0`}
       aria-labelledby="post-hero-guide-heading"
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>
