@@ -25,7 +25,7 @@ export function VividLogo({
   const light = variant === "light";
 
   const imgClass = isFooter
-    ? "h-[5.85rem] w-auto max-w-[min(100%,320px)] object-contain object-left sm:h-[6.5rem] sm:max-w-[340px]"
+    ? "h-[6.75rem] w-auto max-w-[min(100%,360px)] object-contain object-left sm:h-[7.5rem] sm:max-w-[380px]"
     : isAside
       ? "h-[5rem] w-auto max-w-[min(100%,340px)] object-contain object-left sm:h-[5.625rem] sm:max-w-[390px] lg:h-[6.125rem] lg:max-w-[430px]"
     : isHome
@@ -49,7 +49,7 @@ export function VividLogo({
           className={imgClass}
           sizes={
             isFooter
-              ? "(max-width: 640px) 280px, 320px"
+              ? "(max-width: 640px) 360px, 380px"
               : isAside
                 ? "(max-width: 640px) 340px, 430px"
               : isHome
