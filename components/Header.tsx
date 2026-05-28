@@ -1,10 +1,11 @@
 "use client";
 
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { PAGE_GUTTER_X } from "@/lib/interior-images";
+import { FOCUS_RING } from "@/lib/ui-classes";
 import { LocationSwitcher } from "./LocationSwitcher";
 import { VividLogo } from "./VividLogo";
 
@@ -72,6 +73,15 @@ export function Header() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mobileMenuOpen]);
+
   function isNavActive(segment: string): boolean {
     const href = `${cityBase}/${segment}`;
     if (segment === "projects") {
@@ -99,7 +109,7 @@ export function Header() {
       <div className="mx-auto flex w-full max-w-[92rem] items-center gap-2.5 sm:gap-3 lg:gap-4">
         <Link
           href={logoHref}
-          className="relative z-10 shrink-0"
+          className={`relative z-10 shrink-0 rounded-lg ${FOCUS_RING}`}
           aria-label={logoAria}
         >
           <VividLogo size="aside" />
@@ -121,7 +131,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen((v) => !v)}
-          className="order-2 ml-auto inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-ink/15 bg-canvas/60 text-ink lg:hidden"
+          className={`order-2 ml-auto inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-ink/15 bg-canvas/60 text-ink lg:hidden ${FOCUS_RING}`}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
         >
@@ -153,7 +163,7 @@ export function Header() {
               <Link
                 key={item.segment}
                 href={href}
-                className={`relative shrink-0 whitespace-nowrap transition-colors ${
+                className={`relative shrink-0 whitespace-nowrap rounded-md transition-colors ${FOCUS_RING} ${
                   isContact
                     ? "rounded-full border border-accent/45 bg-accent/15 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-accent-strong shadow-sm hover:border-accent/60 hover:bg-accent/22"
                     : active
@@ -183,19 +193,26 @@ export function Header() {
         <button
           type="button"
           onClick={openConsultationPopup}
-          className="order-4 hidden shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 2xl:inline-flex 2xl:px-5 2xl:text-[11px] 2xl:tracking-[0.18em]"
+          className={`order-4 hidden shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 2xl:inline-flex 2xl:px-5 2xl:text-[11px] 2xl:tracking-[0.18em] ${FOCUS_RING}`}
         >
           Book Free Consultation
         </button>
 
+        <AnimatePresence>
         {mobileMenuOpen ? (
-          <div className="order-5 relative z-10 mt-2 w-full rounded-xl border border-ink/12 bg-canvas p-3 shadow-[0_20px_48px_-28px_rgba(27,63,46,0.42)] ring-1 ring-ink/[0.06] backdrop-blur-md lg:hidden">
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="order-5 relative z-10 mt-2 w-full rounded-xl border border-ink/12 bg-canvas p-3 shadow-[0_20px_48px_-28px_rgba(27,63,46,0.42)] ring-1 ring-ink/[0.06] backdrop-blur-md lg:hidden"
+          >
             <div className="mb-3 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
               <LocationSwitcher compact wide layoutGroup="hdr-mobile" />
               <button
                 type="button"
                 onClick={openConsultationPopup}
-                className="inline-flex w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 sm:w-auto sm:px-3.5 sm:py-1.5 sm:text-[9px] sm:tracking-[0.16em]"
+                className={`inline-flex w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 sm:w-auto sm:px-3.5 sm:py-1.5 sm:text-[9px] sm:tracking-[0.16em] ${FOCUS_RING}`}
               >
                 Book consultation
               </button>
@@ -210,7 +227,7 @@ export function Header() {
                   <Link
                     key={`mobile-${item.segment}`}
                     href={href}
-                    className={`rounded-lg px-2 py-1.5 transition-colors ${
+                    className={`rounded-lg px-2 py-1.5 transition-colors ${FOCUS_RING} ${
                       isContact
                         ? "border border-accent/50 bg-accent/18 text-accent-strong shadow-sm hover:bg-accent/25"
                         : active
@@ -224,8 +241,9 @@ export function Header() {
                 );
               })}
             </nav>
-          </div>
+          </motion.div>
         ) : null}
+        </AnimatePresence>
         </div>
       </div>
     </motion.header>

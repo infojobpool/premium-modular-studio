@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getStudioWhatsAppHref } from "@/lib/locations";
+import { FOCUS_RING_DARK } from "@/lib/ui-classes";
 import { useStudioLocation } from "./LocationProvider";
 
 const CITY_PATH = /^\/(hyderabad|bhubaneswar)$/;
@@ -51,13 +52,13 @@ export function StickyBookBar() {
             href={wa}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-canvas/25 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-canvas transition hover:border-canvas/45 sm:px-4 sm:text-[11px]"
+            className={`rounded-full border border-canvas/25 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-canvas transition hover:border-canvas/45 sm:px-4 sm:text-[11px] ${FOCUS_RING_DARK}`}
           >
             WhatsApp
           </a>
           <Link
             href={contactHref}
-            className="rounded-full bg-accent px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink shadow-sm transition hover:bg-accent-soft sm:px-5 sm:text-[11px]"
+            className={`rounded-full bg-accent px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink shadow-sm transition hover:bg-accent-soft sm:px-5 sm:text-[11px] ${FOCUS_RING_DARK}`}
           >
             Enquire
           </Link>

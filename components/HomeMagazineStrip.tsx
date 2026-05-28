@@ -1,8 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { FOCUS_RING } from "@/lib/ui-classes";
 import { vividBlogPosts, vividGalleryImagePool } from "@/lib/vivid-reference";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
@@ -33,7 +35,7 @@ export function HomeMagazineStrip() {
           </div>
           <Link
             href={`/${location.id}/blog`}
-            className="text-xs font-bold uppercase tracking-[0.18em] text-ink underline-offset-4 hover:underline"
+            className={`text-xs font-bold uppercase tracking-[0.18em] text-ink underline-offset-4 hover:underline ${FOCUS_RING}`}
           >
             View all articles →
           </Link>
@@ -41,17 +43,23 @@ export function HomeMagazineStrip() {
 
         <ul className="mt-8 grid gap-4 sm:grid-cols-3 sm:gap-5">
           {vividBlogPosts.map((post, i) => (
-            <li key={post.href}>
+            <motion.li
+              key={post.href}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+            >
               <a
                 href={post.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-canvas shadow-sm transition hover:border-accent/35 hover:shadow-md"
+                className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-canvas shadow-sm transition hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-md ${FOCUS_RING}`}
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-ink/5">
                   <Image
                     src={BLOG_IMAGES[i]!}
-                    alt=""
+                    alt={post.title}
                     fill
                     sizes="(max-width: 640px) 100vw, 33vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.03]"
@@ -67,7 +75,7 @@ export function HomeMagazineStrip() {
                   </span>
                 </div>
               </a>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>

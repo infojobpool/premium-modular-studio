@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { vividCopy } from "@/lib/vivid-reference";
 import { withBrandHighlight } from "./BrandInline";
+import { CountUp } from "./CountUp";
 import { Reveal } from "./Reveal";
 
 export function WhyChoose() {
@@ -71,45 +72,5 @@ export function WhyChoose() {
         <div className="mt-2 h-px w-full bg-gradient-to-r from-transparent via-ink/12 to-transparent" aria-hidden />
       </div>
     </section>
-  );
-}
-
-function CountUp({
-  target,
-  suffix,
-  start,
-}: {
-  target: number;
-  suffix: string;
-  start: boolean;
-}) {
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    if (!start) return;
-    const durationMs = 1300;
-    const startedAt = performance.now();
-    let raf = 0;
-
-    const tick = (now: number) => {
-      const elapsed = now - startedAt;
-      const progress = Math.min(elapsed / durationMs, 1);
-      const eased = 1 - (1 - progress) ** 3;
-      setValue(Math.round(target * eased));
-      if (progress < 1) raf = requestAnimationFrame(tick);
-    };
-
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [start, target]);
-
-  if (suffix === "/10") {
-    return <>{(value / 10).toFixed(1)}/5</>;
-  }
-  return (
-    <>
-      {value}
-      {suffix}
-    </>
   );
 }

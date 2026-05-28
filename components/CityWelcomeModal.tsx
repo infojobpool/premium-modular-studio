@@ -3,14 +3,16 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useId, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useFocusTrap } from "@/hooks/use-focus-trap";
 import {
   CITY_WELCOME_MODAL_IMAGES,
   CITY_WELCOME_STATS,
   type CityWelcomeStats,
 } from "@/lib/city-welcome-modal";
 import type { StudioLocationId } from "@/lib/locations";
+import { FOCUS_RING } from "@/lib/ui-classes";
 
 const STORAGE_PREFIX = "vivid-city-welcome-dismissed";
 export const WELCOME_DISMISSED_EVENT = "vivid:welcome-dismissed";
@@ -138,8 +140,11 @@ const features = [
 
 export function CityWelcomeModal({ city }: { city: StudioLocationId }) {
   const titleId = useId();
+  const dialogRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  useFocusTrap(dialogRef, open);
 
   const image = CITY_WELCOME_MODAL_IMAGES[city];
   const cityLabel = city === "hyderabad" ? "Hyderabad" : "Bhubaneswar";
@@ -207,10 +212,12 @@ export function CityWelcomeModal({ city }: { city: StudioLocationId }) {
           />
 
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
-            className="relative z-10 flex max-h-[min(92dvh,900px)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl shadow-[0_40px_100px_-24px_rgba(0,0,0,0.6)] ring-1 ring-white/10 sm:rounded-[1.75rem]"
+            tabIndex={-1}
+            className="relative z-10 flex max-h-[min(92dvh,900px)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl shadow-[0_40px_100px_-24px_rgba(0,0,0,0.6)] ring-1 ring-white/10 sm:rounded-[1.75rem] outline-none"
             initial={{ opacity: 0, y: 22, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -219,7 +226,7 @@ export function CityWelcomeModal({ city }: { city: StudioLocationId }) {
             <button
               type="button"
               onClick={dismiss}
-              className="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/35 text-xl font-light leading-none text-white shadow-lg ring-1 ring-white/25 transition hover:bg-black/50 sm:right-4 sm:top-4"
+              className={`absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/35 text-xl font-light leading-none text-white shadow-lg ring-1 ring-white/25 transition hover:bg-black/50 sm:right-4 sm:top-4 ${FOCUS_RING}`}
               aria-label="Close"
             >
               ×
@@ -258,7 +265,7 @@ export function CityWelcomeModal({ city }: { city: StudioLocationId }) {
                   <Link
                     href={projectsHref}
                     onClick={onCta}
-                    className="inline-flex w-fit items-center gap-2 rounded-md bg-[#c9a227] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1a1a] shadow-[0_12px_40px_-8px_rgba(201,162,39,0.55)] transition hover:bg-[#d4ae2e]"
+                    className={`inline-flex w-fit items-center gap-2 rounded-md bg-[#c9a227] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1a1a] shadow-[0_12px_40px_-8px_rgba(201,162,39,0.55)] transition hover:bg-[#d4ae2e] ${FOCUS_RING}`}
                   >
                     Explore {cityLabel} projects
                     <span aria-hidden>→</span>

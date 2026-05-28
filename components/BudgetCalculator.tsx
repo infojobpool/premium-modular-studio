@@ -1,9 +1,12 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { getStudioWhatsAppHref } from "@/lib/locations";
+import { FOCUS_RING } from "@/lib/ui-classes";
+import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
 
 const projectMultipliers = {
@@ -41,6 +44,8 @@ const CALC_SCOPES: readonly {
   { id: "villa", label: "Villa", projectType: "villa", defaultArea: 3200, areaMin: 1800, areaMax: 5200 },
 ] as const;
 
+const BTN_SECONDARY = `rounded-full border border-ink/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition hover:border-accent/35 hover:bg-accent/[0.06] ${FOCUS_RING}` as const;
+
 export function BudgetCalculator() {
   const { location } = useStudioLocation();
   const [scope, setScope] = useState<CalcScope>("fullhome");
@@ -61,6 +66,7 @@ export function BudgetCalculator() {
     return { min, max };
   }, [area, finish, projectType, smartAddons]);
 
+  const estimateKey = `${estimate.min}-${estimate.max}`;
   const estimateText = `Estimated budget for ${location.label}: INR ${estimate.min.toLocaleString("en-IN")} - INR ${estimate.max.toLocaleString("en-IN")}`;
   const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
     `${estimateText}\nProject: ${projectType}\nArea: ${area} sqft\nFinish: ${finish}\nSmart add-ons: ${smartAddons ? "Yes" : "No"}`,
@@ -134,7 +140,7 @@ export function BudgetCalculator() {
   return (
     <section id="budget-calculator" className={`border-y border-ink/10 bg-panel/35 py-12 sm:py-14 ${PAGE_GUTTER_X}`}>
       <div className={`mx-auto grid gap-10 ${CONTENT_MAX} lg:grid-cols-[minmax(0,1fr)_420px]`}>
-        <div>
+        <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent-strong">Budget planner</p>
           <h2 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl">
             Interior budget calculator
@@ -153,11 +159,12 @@ export function BudgetCalculator() {
                   type="button"
                   role="tab"
                   aria-selected={active}
+                  aria-controls="calc-panel"
                   onClick={() => handleScopeChange(item.id)}
                   className={
                     active
-                      ? "rounded-full border border-accent/45 bg-accent/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink shadow-sm"
-                      : "rounded-full border border-ink/14 bg-canvas/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/70 transition hover:border-accent/35 hover:text-ink"
+                      ? `rounded-full border border-accent/45 bg-accent/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink shadow-sm ${FOCUS_RING}`
+                      : `rounded-full border border-ink/14 bg-canvas/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/70 transition hover:border-accent/35 hover:text-ink ${FOCUS_RING}`
                   }
                 >
                   {item.label}
@@ -166,7 +173,7 @@ export function BudgetCalculator() {
             })}
           </div>
 
-          <div className="mt-9 grid gap-5 sm:grid-cols-2">
+          <div id="calc-panel" role="tabpanel" className="mt-9 grid gap-5 sm:grid-cols-2">
             {scope === "fullhome" ? (
               <label className="text-sm font-medium text-ink">
                 Home type
@@ -177,7 +184,7 @@ export function BudgetCalculator() {
                     setProjectType(e.target.value as keyof typeof projectMultipliers);
                     trackEvent("calc_updated", { city: location.id, field: "projectType" });
                   }}
-                  className="mt-2 w-full rounded-xl border border-ink/20 bg-canvas px-3 py-2 text-sm"
+                  className={`mt-2 w-full rounded-xl border border-ink/20 bg-canvas px-3 py-2 text-sm ${FOCUS_RING}`}
                 >
                   <option value="apartment2bhk">2BHK apartment</option>
                   <option value="apartment3bhk">3BHK apartment</option>
@@ -205,7 +212,7 @@ export function BudgetCalculator() {
                   setFinish(e.target.value as keyof typeof finishMultipliers);
                   trackEvent("calc_updated", { city: location.id, field: "finish" });
                 }}
-                className="mt-2 w-full rounded-xl border border-ink/20 bg-canvas px-3 py-2 text-sm"
+                className={`mt-2 w-full rounded-xl border border-ink/20 bg-canvas px-3 py-2 text-sm ${FOCUS_RING}`}
               >
                 <option value="essential">Essential</option>
                 <option value="premium">Premium</option>
@@ -227,7 +234,7 @@ export function BudgetCalculator() {
                 setArea(Number(e.target.value));
                 trackEvent("calc_updated", { city: location.id, field: "area" });
               }}
-              className="mt-3 w-full accent-accent"
+              className={`mt-3 w-full accent-accent ${FOCUS_RING}`}
             />
           </label>
 
@@ -240,66 +247,69 @@ export function BudgetCalculator() {
                 setSmartAddons(e.target.checked);
                 trackEvent("calc_updated", { city: location.id, field: "smartAddons" });
               }}
-              className="h-4 w-4 rounded border-ink/30 accent-accent"
+              className={`h-4 w-4 rounded border-ink/30 accent-accent ${FOCUS_RING}`}
             />
             Include smart-home package
           </label>
-        </div>
+        </Reveal>
 
-        <aside className="rounded-3xl border border-ink/12 bg-canvas p-7 shadow-sm">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent-strong">
-            Estimated range · {location.label}
-          </p>
-          <div className="mt-4 flex flex-wrap items-end gap-2 text-ink">
-            <span className="pb-1 font-body text-xs font-semibold uppercase tracking-[0.26em] text-ink/72">
-              INR
-            </span>
-            <p className="font-body text-[1.85rem] font-semibold leading-none tracking-[0.02em] tabular-nums sm:text-[2.2rem]">
-              {estimate.min.toLocaleString("en-IN")} - {estimate.max.toLocaleString("en-IN")}
+        <Reveal delay={0.08}>
+          <aside className="rounded-3xl border border-ink/12 bg-canvas p-7 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent-strong">
+              Estimated range · {location.label}
             </p>
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-muted">
-            Final quote depends on site condition, civil scope, imported materials, and services.
-            Confirmed after survey and BOQ freeze.
-          </p>
+            <div className="mt-4 flex flex-wrap items-end gap-2 text-ink">
+              <span className="pb-1 font-body text-xs font-semibold uppercase tracking-[0.26em] text-ink/72">
+                INR
+              </span>
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={estimateKey}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                  className="font-body text-[1.85rem] font-semibold leading-none tracking-[0.02em] tabular-nums sm:text-[2.2rem]"
+                >
+                  {estimate.min.toLocaleString("en-IN")} - {estimate.max.toLocaleString("en-IN")}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-muted">
+              Final quote depends on site condition, civil scope, imported materials, and services.
+              Confirmed after survey and BOQ freeze.
+            </p>
 
-          <div className="mt-7 flex flex-wrap gap-3">
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() =>
-                trackEvent("whatsapp_clicked", { city: location.id, source: "budget_calculator" })
-              }
-              className="rounded-full bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-canvas"
-            >
-              Send on WhatsApp
-            </a>
-            <a
-              href={`/${location.id}/contact`}
-              onClick={() =>
-                trackEvent("book_clicked", { city: location.id, source: "budget_calculator" })
-              }
-              className="rounded-full border border-ink/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-ink"
-            >
-              Book consultation
-            </a>
-            <button
-              type="button"
-              onClick={handleDownloadEstimate}
-              className="rounded-full border border-ink/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-ink"
-            >
-              Download estimate
-            </button>
-            <button
-              type="button"
-              onClick={handleCopyEstimate}
-              className="rounded-full border border-ink/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-ink"
-            >
-              {copied ? "Copied" : "Copy estimate"}
-            </button>
-          </div>
-        </aside>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() =>
+                  trackEvent("whatsapp_clicked", { city: location.id, source: "budget_calculator" })
+                }
+                className={`rounded-full bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-canvas transition hover:bg-ink/90 ${FOCUS_RING}`}
+              >
+                Send on WhatsApp
+              </a>
+              <a
+                href={`/${location.id}/contact`}
+                onClick={() =>
+                  trackEvent("book_clicked", { city: location.id, source: "budget_calculator" })
+                }
+                className={BTN_SECONDARY}
+              >
+                Book consultation
+              </a>
+              <button type="button" onClick={handleDownloadEstimate} className={BTN_SECONDARY}>
+                Download estimate
+              </button>
+              <button type="button" onClick={handleCopyEstimate} className={BTN_SECONDARY}>
+                {copied ? "Copied" : "Copy estimate"}
+              </button>
+            </div>
+          </aside>
+        </Reveal>
       </div>
     </section>
   );

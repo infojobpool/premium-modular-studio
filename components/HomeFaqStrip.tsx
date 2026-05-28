@@ -1,10 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { useId, useState } from "react";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { FOCUS_RING } from "@/lib/ui-classes";
 import { withBrandHighlight } from "./BrandInline";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
@@ -13,6 +14,7 @@ const PREVIEW_COUNT = 4;
 
 export function HomeFaqStrip() {
   const { location } = useStudioLocation();
+  const reduceMotion = useReducedMotion();
   const faqs = CITY_PAGE_COPY[location.id].faqs.slice(0, PREVIEW_COUNT);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const baseId = useId();
@@ -34,7 +36,7 @@ export function HomeFaqStrip() {
           </div>
           <Link
             href={`/${location.id}/faq`}
-            className="text-xs font-bold uppercase tracking-[0.18em] text-ink underline-offset-4 hover:underline"
+            className={`text-xs font-bold uppercase tracking-[0.18em] text-ink underline-offset-4 hover:underline ${FOCUS_RING}`}
           >
             All questions →
           </Link>
@@ -56,7 +58,7 @@ export function HomeFaqStrip() {
                   aria-expanded={open}
                   aria-controls={panelId}
                   onClick={() => setOpenIndex(open ? null : index)}
-                  className="flex w-full items-center justify-between gap-4 px-4 py-3.5 text-left sm:px-5 sm:py-4"
+                  className={`flex w-full items-center justify-between gap-4 px-4 py-3.5 text-left sm:px-5 sm:py-4 ${FOCUS_RING}`}
                 >
                   <span className="font-display text-base text-ink sm:text-lg">{item.question}</span>
                   <span
@@ -75,7 +77,10 @@ export function HomeFaqStrip() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{
+                        duration: reduceMotion ? 0 : 0.35,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                       className="border-t border-ink/8"
                     >
                       <p className="px-4 py-3.5 text-sm leading-relaxed text-muted sm:px-5 sm:py-4">

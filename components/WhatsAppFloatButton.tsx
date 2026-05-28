@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { getStudioWhatsAppHref } from "@/lib/locations";
+import { FOCUS_RING } from "@/lib/ui-classes";
 import { useStudioLocation } from "./LocationProvider";
 
 function WhatsAppGlyph({ className }: { className?: string }) {
@@ -27,7 +28,7 @@ export function WhatsAppFloatButton() {
   )}`;
 
   const position = isCityHome
-    ? "bottom-[calc(env(safe-area-inset-bottom)+5.75rem)] right-[max(1rem,env(safe-area-inset-right))] sm:bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] sm:right-[max(1rem,env(safe-area-inset-right))]"
+    ? "bottom-[calc(env(safe-area-inset-bottom)+5.75rem)] right-[max(1rem,env(safe-area-inset-right))]"
     : "bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] right-[max(1rem,env(safe-area-inset-right))]";
 
   return (
@@ -36,7 +37,7 @@ export function WhatsAppFloatButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Contact now on WhatsApp — ${location.label} studio`}
-      className={`fixed z-[42] flex max-w-[calc(100vw-2rem)] flex-row items-center gap-2.5 ${position} transition hover:scale-[1.02] active:scale-[0.99]`}
+      className={`fixed z-[42] flex max-w-[calc(100vw-2rem)] flex-row items-center gap-2.5 ${position} transition hover:scale-[1.02] active:scale-[0.99] ${FOCUS_RING}`}
     >
       <span className="min-w-0 whitespace-nowrap rounded-full border border-ink/12 bg-white px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-ink shadow-[0_8px_24px_-8px_rgba(0,0,0,0.25)] sm:px-4 sm:text-sm sm:tracking-[0.14em]">
         Contact now

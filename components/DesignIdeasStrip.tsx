@@ -1,9 +1,11 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { DESIGN_IDEA_ROOMS, galleryHref } from "@/lib/design-ideas";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { FOCUS_RING } from "@/lib/ui-classes";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -27,7 +29,7 @@ export function DesignIdeasStrip() {
           </div>
           <Link
             href={`/${location.id}/gallery#work`}
-            className="text-xs font-bold uppercase tracking-[0.18em] text-ink underline-offset-4 hover:underline"
+            className={`text-xs font-bold uppercase tracking-[0.18em] text-ink underline-offset-4 hover:underline ${FOCUS_RING}`}
           >
             View all work →
           </Link>
@@ -35,10 +37,16 @@ export function DesignIdeasStrip() {
 
         <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
           {DESIGN_IDEA_ROOMS.map((room, i) => (
-            <li key={room.label}>
+            <motion.li
+              key={room.label}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+            >
               <Link
                 href={galleryHref(location.id, room.typology)}
-                className="group block overflow-hidden rounded-2xl border border-ink/10 bg-panel/30 shadow-sm transition hover:border-accent/35 hover:shadow-md"
+                className={`group block overflow-hidden rounded-2xl border border-ink/10 bg-panel/30 shadow-sm transition hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-md ${FOCUS_RING}`}
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-ink/5">
                   <Image
@@ -55,7 +63,7 @@ export function DesignIdeasStrip() {
                   </p>
                 </div>
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>

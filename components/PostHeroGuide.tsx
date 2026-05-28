@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { FOCUS_RING } from "@/lib/ui-classes";
 import { ServiceEntryStrip } from "./ServiceEntryStrip";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -11,7 +12,7 @@ export function PostHeroGuide() {
 
   return (
     <section
-      className={`border-b border-ink/12 bg-gradient-to-b from-panel/50 via-canvas to-canvas ${PAGE_GUTTER_X} py-4 sm:py-5`}
+      className={`border-b border-ink/12 bg-gradient-to-b from-panel/50 via-canvas to-canvas ${PAGE_GUTTER_X} py-5 sm:py-6`}
       aria-labelledby="post-hero-guide-heading"
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>
@@ -32,7 +33,7 @@ export function PostHeroGuide() {
               </p>
               <Link
                 href={`/${location.id}/contact`}
-                className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-ink/70 transition hover:text-accent-strong"
+                className={`mt-3 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-ink/70 transition hover:text-accent-strong ${FOCUS_RING}`}
               >
                 Not sure yet? Talk to us
                 <span aria-hidden>→</span>

@@ -2,9 +2,11 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useCallback, useEffect, useId, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useFocusTrap } from "@/hooks/use-focus-trap";
 import { trackEvent } from "@/lib/analytics";
+import { FOCUS_RING } from "@/lib/ui-classes";
 import { vividImages } from "@/lib/vivid-reference";
 import { WELCOME_DISMISSED_EVENT } from "./CityWelcomeModal";
 import { useStudioLocation } from "./LocationProvider";
@@ -12,7 +14,8 @@ import { useStudioLocation } from "./LocationProvider";
 const STORAGE_PREFIX = "vivid-offer-modal-dismissed";
 const WELCOME_STORAGE_PREFIX = "vivid-city-welcome-dismissed";
 const OPEN_EVENT = "vivid:open-offer-modal";
-const OFFER_DELAY_MS = 1200;
+const SCROLL_OPEN_Y = 360;
+const OFFER_FALLBACK_MS = 12000;
 const PROPERTY_TYPES = ["1 BHK", "2 BHK", "3 BHK", "4+ BHK / Duplex"] as const;
 type PropertyType = (typeof PROPERTY_TYPES)[number];
 type OfferFormState = {
@@ -33,6 +36,7 @@ function keyFor(city: string) {
 
 export function OfferLeadModal() {
   const titleId = useId();
+  const dialogRef = useRef<HTMLDivElement>(null);
   const { location } = useStudioLocation();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -47,6 +51,8 @@ export function OfferLeadModal() {
     whatsappOptIn: true,
   });
 
+  useFocusTrap(dialogRef, open);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -58,16 +64,31 @@ export function OfferLeadModal() {
   useEffect(() => {
     if (!mounted) return;
 
-    let delayTimer: number | undefined;
+    let fallbackTimer: number | undefined;
 
     const scheduleOffer = () => {
-      if (delayTimer) window.clearTimeout(delayTimer);
+      if (fallbackTimer) window.clearTimeout(fallbackTimer);
       try {
         if (sessionStorage.getItem(keyFor(location.id))) return;
       } catch {
         /* ignore */
       }
-      delayTimer = window.setTimeout(() => setOpen(true), OFFER_DELAY_MS);
+
+      const tryOpenOnScroll = () => {
+        if (window.scrollY >= SCROLL_OPEN_Y) {
+          setOpen(true);
+          window.removeEventListener("scroll", tryOpenOnScroll);
+          if (fallbackTimer) window.clearTimeout(fallbackTimer);
+        }
+      };
+
+      window.addEventListener("scroll", tryOpenOnScroll, { passive: true });
+      tryOpenOnScroll();
+
+      fallbackTimer = window.setTimeout(() => {
+        setOpen(true);
+        window.removeEventListener("scroll", tryOpenOnScroll);
+      }, OFFER_FALLBACK_MS);
     };
 
     const welcomeDone = () => {
@@ -85,12 +106,12 @@ export function OfferLeadModal() {
       window.addEventListener(WELCOME_DISMISSED_EVENT, onWelcomeDismissed);
       return () => {
         window.removeEventListener(WELCOME_DISMISSED_EVENT, onWelcomeDismissed);
-        if (delayTimer) window.clearTimeout(delayTimer);
+        if (fallbackTimer) window.clearTimeout(fallbackTimer);
       };
     }
 
     return () => {
-      if (delayTimer) window.clearTimeout(delayTimer);
+      if (fallbackTimer) window.clearTimeout(fallbackTimer);
     };
   }, [location.id, mounted]);
 
@@ -192,19 +213,21 @@ export function OfferLeadModal() {
           />
 
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
+            tabIndex={-1}
             initial={{ opacity: 0, y: 20, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 380, damping: 30 }}
-            className="relative z-10 w-full max-w-[1040px] overflow-hidden rounded-[1.15rem] border border-ink/14 bg-gradient-to-br from-canvas via-[#f3ecda] to-panel shadow-[0_40px_90px_-28px_color-mix(in_oklab,var(--color-ink)_42%,transparent)] ring-1 ring-white/40"
+            className="relative z-10 w-full max-w-[1040px] overflow-hidden rounded-[1.15rem] border border-ink/14 bg-gradient-to-br from-canvas via-[#f3ecda] to-panel shadow-[0_40px_90px_-28px_color-mix(in_oklab,var(--color-ink)_42%,transparent)] ring-1 ring-white/40 outline-none"
           >
             <button
               type="button"
               onClick={dismiss}
-              className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-ink/8 text-2xl font-light text-muted transition hover:bg-ink/12 hover:text-ink"
+              className={`absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-ink/8 text-2xl font-light text-muted transition hover:bg-ink/12 hover:text-ink ${FOCUS_RING}`}
               aria-label="Close"
             >
               ×

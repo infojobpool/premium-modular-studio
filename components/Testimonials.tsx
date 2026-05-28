@@ -1,9 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { FOCUS_RING_DARK } from "@/lib/ui-classes";
 import { vividCopy, vividTestimonials } from "@/lib/vivid-reference";
 import { Reveal } from "./Reveal";
 
@@ -19,6 +20,7 @@ function getInitials(name: string): string {
 }
 
 export function Testimonials() {
+  const reduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [failedPhotos, setFailedPhotos] = useState<Record<number, boolean>>({});
@@ -28,12 +30,16 @@ export function Testimonials() {
   const initials = getInitials(current.name);
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || reduceMotion) return;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % total);
     }, AUTO_ADVANCE_MS);
     return () => window.clearInterval(id);
-  }, [paused, total]);
+  }, [paused, reduceMotion, total]);
+
+  const slideTransition = reduceMotion
+    ? { duration: 0 }
+    : { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const };
 
   return (
     <section className={`border-y border-ink/8 bg-[#151d19] py-10 sm:py-12 ${PAGE_GUTTER_X}`}>
@@ -59,11 +65,11 @@ export function Testimonials() {
           <AnimatePresence mode="wait" initial={false}>
             <motion.article
               key={index}
-              initial={{ opacity: 0, x: 24 }}
+              initial={reduceMotion ? false : { opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -24 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              aria-live="polite"
+              exit={reduceMotion ? undefined : { opacity: 0, x: -24 }}
+              transition={slideTransition}
+              aria-live={reduceMotion ? "off" : "polite"}
               className="relative rounded-[1.4rem] border border-canvas/16 bg-canvas/96 p-6 shadow-[0_16px_34px_-26px_rgba(0,0,0,0.7)] sm:p-8"
             >
               <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
@@ -113,7 +119,7 @@ export function Testimonials() {
                 role="tab"
                 aria-selected={i === index}
                 aria-label={`Show testimonial ${i + 1} of ${total}`}
-                className={`h-2.5 rounded-full border border-transparent transition-all duration-300 ${
+                className={`h-2.5 rounded-full border border-transparent transition-all duration-300 ${FOCUS_RING_DARK} ${
                   i === index
                     ? "w-8 border-accent/60 bg-accent"
                     : "w-2.5 bg-canvas/30 hover:bg-canvas/45"
