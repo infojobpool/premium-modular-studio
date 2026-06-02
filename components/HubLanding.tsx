@@ -17,8 +17,9 @@ const cards = [
     title: "Hyderabad",
     line: "Flagship studio · Secunderabad / Sainikpuri",
     href: "/hyderabad",
-    image: "/welcome-hyderabad-living.png",
-    imageAlt: "Hyderabad studio — luxury living room interior",
+    image: "/welcome-hyderabad-skyline.png",
+    imageAlt: "Hyderabad studio — city skyline at dusk",
+    imagePosition: "object-[center_35%]" as const,
   },
   {
     city: "bhubaneswar" as const,
@@ -27,6 +28,7 @@ const cards = [
     href: "/bhubaneswar",
     image: "/welcome-bhubaneswar-living.png",
     imageAlt: "Bhubaneswar studio — luxury living room interior",
+    imagePosition: "object-center" as const,
   },
 ] as const;
 
@@ -58,10 +60,10 @@ export function HubLanding() {
   return (
     <>
       <div
-        className={`relative flex min-h-[100dvh] flex-col overflow-hidden mesh-hero ${PAGE_GUTTER_X} pb-[max(1.25rem,env(safe-area-inset-bottom)+0.75rem)] pt-[max(1.25rem,env(safe-area-inset-top)+0.5rem)] sm:pb-6 sm:pt-8`}
+        className={`relative flex min-h-[100dvh] flex-col overflow-hidden mesh-hero lg:min-h-0 ${PAGE_GUTTER_X} pb-[max(1rem,env(safe-area-inset-bottom)+0.5rem)] pt-[max(1rem,env(safe-area-inset-top)+0.35rem)] sm:pb-5 sm:pt-6 lg:pb-6`}
       >
-        <div className="pointer-events-none absolute inset-0 z-0 min-h-[100dvh]" aria-hidden>
-          <div className="relative h-full min-h-[100dvh] w-full">
+        <div className="pointer-events-none absolute inset-0 z-0 min-h-full lg:min-h-[100dvh]" aria-hidden>
+          <div className="relative h-full min-h-[100dvh] w-full lg:absolute lg:inset-0">
             <Image
               src={interiorImages.hero}
               alt=""
@@ -101,8 +103,8 @@ export function HubLanding() {
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
 
-        <div className="relative z-[1] mx-auto flex w-full min-h-0 flex-1 flex-col lg:max-w-[52rem] lg:justify-center lg:gap-5 lg:py-6">
-          <header className={`relative flex ${HUB_RAIL} justify-center sm:justify-start`}>
+        <div className="relative z-[1] mx-auto flex w-full flex-col gap-2.5 sm:gap-3 lg:max-w-[54rem] lg:gap-3 lg:pt-3 lg:pb-5">
+          <header className={`relative flex shrink-0 ${HUB_RAIL} justify-center sm:justify-start`}>
             <motion.div
               initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -120,9 +122,9 @@ export function HubLanding() {
             </motion.div>
           </header>
 
-          <div className={`flex flex-col gap-4 lg:gap-5 ${HUB_RAIL}`}>
+          <div className={`flex shrink-0 flex-col gap-3 lg:gap-3.5 ${HUB_RAIL}`}>
             <motion.div
-              className="relative text-center"
+              className="relative text-center lg:text-left"
               initial="hidden"
               animate="show"
               variants={{
@@ -135,27 +137,27 @@ export function HubLanding() {
                 },
               }}
             >
-              <motion.div variants={heroItem} className="flex justify-center">
+              <motion.div variants={heroItem} className="flex justify-center lg:justify-start">
                 <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/[0.09] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.32em] text-accent-strong shadow-[0_1px_0_rgba(255,255,255,0.45)_inset] sm:px-3.5 sm:text-[11px]">
                   Premium & luxury interiors
                 </span>
               </motion.div>
               <motion.div
                 variants={heroLine}
-                className="mx-auto mt-1.5 h-px w-14 origin-center bg-gradient-to-r from-transparent via-accent to-transparent sm:w-20"
+                className="mx-auto mt-1 h-px w-12 origin-center bg-gradient-to-r from-transparent via-accent to-transparent lg:mx-0"
               />
               <motion.h1
                 variants={{
                   hidden: { opacity: reduce ? 1 : 0, y: reduce ? 0 : 18 },
                   show: { opacity: 1, y: 0, transition: { duration: reduce ? 0 : 0.65, ease: easeOut } },
                 }}
-                className="hub-hero-title mt-1.5 px-1 font-display text-balance font-semibold uppercase text-[clamp(1.65rem,4.2vw+0.35rem,2.75rem)] leading-[1.08] tracking-[0.07em] text-ink sm:mt-2 sm:tracking-[0.09em]"
+                className="hub-hero-title mt-1 px-1 font-display text-balance font-semibold uppercase text-[clamp(1.5rem,3.5vw+0.4rem,2.35rem)] leading-[1.08] tracking-[0.07em] text-ink lg:px-0 lg:tracking-[0.08em]"
               >
                 Choose your studio
               </motion.h1>
               <motion.p
                 variants={heroItem}
-                className="mx-auto mt-2 max-w-lg px-2 text-xs font-medium leading-snug text-muted sm:text-sm"
+                className="mx-auto mt-1.5 max-w-lg px-2 text-xs font-medium leading-snug text-muted sm:text-sm lg:mx-0 lg:px-0"
               >
                 Select{" "}
                 <span className="font-semibold text-ink">Hyderabad</span> or{" "}
@@ -167,13 +169,13 @@ export function HubLanding() {
                   hidden: { opacity: reduce ? 1 : 0 },
                   show: { opacity: 1, transition: { duration: reduce ? 0 : 0.48, ease: easeOut } },
                 }}
-                className="mx-auto mt-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/45 sm:text-[11px]"
+                className="mx-auto mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/45 sm:text-[11px] lg:mx-0"
               >
                 By appointment
               </motion.p>
             </motion.div>
 
-            <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+            <div className="grid w-full grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-4 lg:gap-5">
               {cards.map((c, i) => (
                 <motion.div
                   key={c.city}
@@ -191,35 +193,32 @@ export function HubLanding() {
                     href={c.href}
                     className="group relative flex touch-manipulation flex-col overflow-hidden rounded-2xl border border-ink/18 bg-gradient-to-b from-canvas/98 via-canvas/88 to-panel/80 shadow-[0_1px_0_rgba(255,255,255,0.76)_inset,0_0_0_1px_color-mix(in_oklab,var(--color-accent)_16%,transparent),0_32px_72px_-40px_rgba(27,63,46,0.5)] ring-1 ring-white/70 backdrop-blur-[4px] transition-[border-color,box-shadow,transform] duration-500 hover:border-accent/48 hover:shadow-[0_1px_0_rgba(255,255,255,0.82)_inset,0_0_0_1px_color-mix(in_oklab,var(--color-accent)_32%,transparent),0_44px_88px_-32px_rgba(27,63,46,0.42)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:rounded-[1.65rem]"
                   >
-                    <div className="relative h-[7.25rem] w-full shrink-0 overflow-hidden sm:h-[7.75rem]">
+                    <div className="relative aspect-[5/3] w-full shrink-0 overflow-hidden sm:aspect-[16/10] lg:aspect-[3/2]">
                       <Image
                         src={c.image}
                         alt={c.imageAlt}
                         fill
-                        sizes="(max-width: 640px) 100vw, 26rem"
-                        className="object-cover object-center transition duration-700 group-hover:scale-[1.04]"
-                      />
-                      <div
-                        className="absolute inset-0 bg-gradient-to-t from-canvas/95 via-canvas/25 to-transparent"
-                        aria-hidden
+                        sizes="(max-width: 640px) 100vw, 28rem"
+                        className={`object-cover saturate-[1.08] contrast-[1.03] transition duration-700 group-hover:scale-[1.03] ${c.imagePosition}`}
                       />
                       <span
                         className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-95"
                         aria-hidden
                       />
-                      <span className="absolute bottom-3 left-4 z-10 font-display text-[clamp(1.35rem,4vw,1.85rem)] uppercase leading-none tracking-[0.1em] text-ink drop-shadow-[0_1px_8px_rgba(234,225,200,0.85)] sm:left-5">
-                        {c.title}
-                      </span>
                     </div>
 
-                    <div className="relative flex flex-col px-4 pb-4 pt-3 sm:px-5 sm:pb-5 sm:pt-3.5">
-                      <p className="text-[11px] font-semibold uppercase leading-snug tracking-[0.14em] text-muted sm:text-xs sm:tracking-[0.16em]">
+                    <div className="relative flex flex-col px-4 pb-4 pt-3.5 sm:px-5 sm:pb-4 sm:pt-4">
+                      <span className="font-display text-[clamp(1.35rem,3.5vw,1.75rem)] uppercase leading-none tracking-[0.1em] text-ink">
+                        {c.title}
+                      </span>
+                      <p className="mt-1.5 text-[11px] font-semibold uppercase leading-snug tracking-[0.12em] text-muted sm:text-xs">
                         {c.line}
-                      </p>
-                      <p className="mt-1 text-[10px] font-medium uppercase leading-snug tracking-[0.12em] text-ink/45 sm:text-[11px]">
+                        <span className="mx-1.5 text-ink/25" aria-hidden>
+                          ·
+                        </span>
                         {STUDIO_LOCATIONS[c.city].hoursSummary}
                       </p>
-                      <span className="mt-3 inline-flex min-h-[44px] w-full items-center justify-center gap-2.5 rounded-full border border-ink/14 bg-canvas/80 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-ink shadow-sm transition duration-300 group-hover:border-accent/45 group-hover:bg-accent/12 sm:w-auto sm:min-w-[12.5rem] sm:tracking-[0.24em]">
+                      <span className="mt-2.5 inline-flex min-h-[42px] w-full items-center justify-center gap-2 rounded-full border border-ink/14 bg-canvas/80 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink shadow-sm transition duration-300 group-hover:border-accent/45 group-hover:bg-accent/12 sm:w-auto sm:min-w-[11.5rem] sm:px-5 sm:text-[11px]">
                         Enter studio
                         <span
                           className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/12 bg-canvas text-sm transition duration-300 group-hover:translate-x-0.5 group-hover:border-accent/45 group-hover:bg-accent/20"
@@ -240,7 +239,7 @@ export function HubLanding() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: reduce ? 0 : 0.55, delay: reduce ? 0 : 0.1, ease: easeOut }}
-            className={`${HUB_RAIL} mt-4 border-t border-ink/12 pt-4 text-center lg:mt-5 lg:pt-4`}
+            className={`${HUB_RAIL} mt-3 shrink-0 border-t border-ink/12 pt-3 text-center lg:mt-4 lg:pt-3.5`}
           >
             <p className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2 text-[11px] leading-snug text-muted sm:text-xs sm:leading-normal">
               <span className="inline-flex flex-wrap items-center justify-center gap-x-1.5">
