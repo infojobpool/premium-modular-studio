@@ -54,7 +54,7 @@ export function HubLanding() {
   return (
     <>
       <div
-        className={`relative flex min-h-[100dvh] flex-col overflow-hidden mesh-hero ${PAGE_GUTTER_X} pb-[max(2rem,env(safe-area-inset-bottom)+1.25rem)] pt-[max(2.25rem,env(safe-area-inset-top)+0.75rem)] sm:pb-12 sm:pt-14`}
+        className={`relative flex min-h-[100dvh] flex-col overflow-hidden mesh-hero ${PAGE_GUTTER_X} pb-[max(1.5rem,env(safe-area-inset-bottom)+1rem)] pt-[max(1.5rem,env(safe-area-inset-top)+0.5rem)] sm:pb-8 sm:pt-10`}
       >
         <div className="pointer-events-none absolute inset-0 z-0 min-h-[100dvh]" aria-hidden>
           <div className="relative h-full min-h-[100dvh] w-full">
@@ -108,7 +108,7 @@ export function HubLanding() {
             >
               <Link
                 href="/"
-                className="inline-flex min-w-0 rounded-2xl border border-ink/12 bg-canvas/65 px-4 py-3 shadow-[0_14px_44px_-22px_rgba(27,63,46,0.4)] ring-1 ring-white/55 backdrop-blur-md transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-[0_22px_56px_-24px_rgba(27,63,46,0.38)] active:scale-[0.98] sm:px-4 sm:py-3.5"
+                className="inline-flex min-w-0 rounded-2xl border border-ink/12 bg-canvas/65 px-3 py-2 shadow-[0_14px_44px_-22px_rgba(27,63,46,0.4)] ring-1 ring-white/55 backdrop-blur-md transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-[0_22px_56px_-24px_rgba(27,63,46,0.38)] active:scale-[0.98] sm:px-3.5 sm:py-2.5"
                 aria-label="Vivid In2erio home"
               >
                 <VividLogo size="home" />
@@ -117,7 +117,7 @@ export function HubLanding() {
           </header>
 
           <motion.div
-            className={`relative mx-auto mt-5 ${HUB_RAIL} text-center sm:mt-6`}
+            className={`relative mx-auto mt-3 ${HUB_RAIL} text-center sm:mt-4`}
             initial="hidden"
             animate="show"
             variants={{
@@ -137,40 +137,39 @@ export function HubLanding() {
             </motion.div>
             <motion.div
               variants={heroLine}
-              className="mx-auto mt-2 h-px w-16 origin-center bg-gradient-to-r from-transparent via-accent to-transparent sm:mt-2 sm:w-24"
+              className="mx-auto mt-1.5 h-px w-14 origin-center bg-gradient-to-r from-transparent via-accent to-transparent sm:w-20"
             />
             <motion.h1
               variants={{
                 hidden: { opacity: reduce ? 1 : 0, y: reduce ? 0 : 18 },
                 show: { opacity: 1, y: 0, transition: { duration: reduce ? 0 : 0.65, ease: easeOut } },
               }}
-              className="hub-hero-title mt-2.5 px-1 font-display text-balance font-semibold uppercase text-[clamp(1.55rem,4.8vw+0.4rem,3.05rem)] leading-[1.06] tracking-[0.06em] text-ink sm:mt-3 sm:px-2 sm:tracking-[0.08em]"
+              className="hub-hero-title mt-1.5 px-1 font-display text-balance font-semibold uppercase text-[clamp(1.55rem,4.8vw+0.4rem,3.05rem)] leading-[1.06] tracking-[0.06em] text-ink sm:mt-2 sm:px-2 sm:tracking-[0.08em]"
             >
               {withBrandHighlight("Choose your Vivid In2erio studio")}
             </motion.h1>
             <motion.p
               variants={heroItem}
-              className="mx-auto mt-3 max-w-3xl px-2 text-[10px] font-semibold uppercase leading-snug tracking-[0.2em] text-muted sm:mt-3.5 sm:text-[11px] sm:tracking-[0.22em] md:text-xs md:tracking-[0.24em]"
+              className="mx-auto mt-2 max-w-xl px-2 text-xs font-medium leading-snug text-muted sm:text-sm"
             >
-              We design more than spaces — we curate refined lifestyles.{" "}
-              <span className="text-accent-strong decoration-accent/45 underline decoration-2 underline-offset-[0.25em]">
-                Click the Hyderabad or Bhubaneswar studio
-              </span>{" "}
-              for local projects, consultations, and contact so your enquiry lands with the right team.
+              Select{" "}
+              <span className="font-semibold text-ink">Hyderabad</span> or{" "}
+              <span className="font-semibold text-ink">Bhubaneswar</span> for local projects and
+              consultations.
             </motion.p>
             <motion.p
               variants={{
                 hidden: { opacity: reduce ? 1 : 0 },
                 show: { opacity: 1, transition: { duration: reduce ? 0 : 0.48, ease: easeOut } },
               }}
-              className="mx-auto mt-2.5 max-w-2xl px-2 text-[9px] font-semibold uppercase leading-snug tracking-[0.24em] text-ink/50 sm:mt-3 sm:text-[10px] sm:tracking-[0.26em]"
+              className="mx-auto mt-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/45 sm:text-[11px]"
             >
-              Design-to-delivery · Luxury homes & workspaces · By appointment
+              By appointment
             </motion.p>
           </motion.div>
 
           <div
-            className={`relative mx-auto mt-6 grid w-full grid-cols-1 gap-5 sm:mt-9 sm:grid-cols-2 sm:gap-6 lg:gap-8 ${HUB_RAIL}`}
+            className={`relative mx-auto mt-4 grid w-full grid-cols-1 gap-4 sm:mt-5 sm:grid-cols-2 sm:gap-5 lg:gap-6 ${HUB_RAIL}`}
           >
             {cards.map((c, i) => (
               <motion.div
@@ -187,7 +186,7 @@ export function HubLanding() {
               >
               <Link
                 href={c.href}
-                className="group relative flex min-h-[214px] touch-manipulation flex-col overflow-hidden rounded-2xl border border-ink/18 bg-gradient-to-b from-canvas/98 via-canvas/84 to-panel/78 p-6 shadow-[0_1px_0_rgba(255,255,255,0.76)_inset,0_0_0_1px_color-mix(in_oklab,var(--color-accent)_16%,transparent),0_36px_80px_-42px_rgba(27,63,46,0.55)] ring-1 ring-white/70 backdrop-blur-[4px] transition-[border-color,box-shadow,transform] duration-500 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:bg-gradient-to-br before:from-white/38 before:via-white/7 before:to-transparent before:opacity-0 before:transition-opacity before:duration-500 after:pointer-events-none after:absolute after:inset-[11px] after:rounded-[calc(1rem-2px)] after:border after:border-accent/18 after:opacity-70 after:transition-[opacity,border-color] after:duration-500 hover:border-accent/48 hover:shadow-[0_1px_0_rgba(255,255,255,0.82)_inset,0_0_0_1px_color-mix(in_oklab,var(--color-accent)_32%,transparent),0_48px_96px_-32px_rgba(27,63,46,0.45)] hover:before:opacity-100 hover:after:border-accent/38 hover:after:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:min-h-[228px] sm:rounded-[1.65rem] sm:after:rounded-[1.35rem] sm:p-7"
+                className="group relative flex min-h-[196px] touch-manipulation flex-col overflow-hidden rounded-2xl border border-ink/18 bg-gradient-to-b from-canvas/98 via-canvas/84 to-panel/78 p-5 shadow-[0_1px_0_rgba(255,255,255,0.76)_inset,0_0_0_1px_color-mix(in_oklab,var(--color-accent)_16%,transparent),0_36px_80px_-42px_rgba(27,63,46,0.55)] ring-1 ring-white/70 backdrop-blur-[4px] transition-[border-color,box-shadow,transform] duration-500 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:bg-gradient-to-br before:from-white/38 before:via-white/7 before:to-transparent before:opacity-0 before:transition-opacity before:duration-500 after:pointer-events-none after:absolute after:inset-[11px] after:rounded-[calc(1rem-2px)] after:border after:border-accent/18 after:opacity-70 after:transition-[opacity,border-color] after:duration-500 hover:border-accent/48 hover:shadow-[0_1px_0_rgba(255,255,255,0.82)_inset,0_0_0_1px_color-mix(in_oklab,var(--color-accent)_32%,transparent),0_48px_96px_-32px_rgba(27,63,46,0.45)] hover:before:opacity-100 hover:after:border-accent/38 hover:after:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:min-h-[208px] sm:rounded-[1.65rem] sm:after:rounded-[1.35rem] sm:p-6"
               >
                 <span
                   className="pointer-events-none absolute left-6 top-6 z-[1] h-10 w-10 border-l-2 border-t-2 border-accent/55 opacity-85 transition-opacity duration-500 group-hover:opacity-100 sm:left-7 sm:top-7"
@@ -210,13 +209,13 @@ export function HubLanding() {
                 <span className="relative z-10 font-display text-[clamp(1.5rem,5.2vw,2.45rem)] uppercase leading-none tracking-[0.11em] text-ink">
                   {c.title}
                 </span>
-                <p className="relative z-10 mt-2.5 max-w-[26rem] text-[11px] font-semibold uppercase leading-snug tracking-[0.16em] text-muted sm:mt-3 sm:text-xs sm:tracking-[0.18em]">
+                <p className="relative z-10 mt-2 max-w-[26rem] text-[11px] font-semibold uppercase leading-snug tracking-[0.14em] text-muted sm:text-xs sm:tracking-[0.16em]">
                   {c.line}
                 </p>
-                <p className="relative z-10 mt-1.5 max-w-[26rem] text-[10px] font-medium uppercase leading-snug tracking-[0.14em] text-ink/45 sm:text-[11px] sm:tracking-[0.16em]">
+                <p className="relative z-10 mt-1 max-w-[26rem] text-[10px] font-medium uppercase leading-snug tracking-[0.12em] text-ink/45 sm:text-[11px]">
                   {STUDIO_LOCATIONS[c.city].hoursSummary}
                 </p>
-                <span className="relative z-10 mt-auto flex flex-wrap items-center gap-2 pt-5 sm:pt-6">
+                <span className="relative z-10 mt-auto flex flex-wrap items-center gap-2 pt-4 sm:pt-4">
                   <span className="inline-flex min-h-[44px] min-w-[44px] flex-1 items-center justify-center gap-2.5 rounded-full border border-ink/14 bg-canvas/75 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink shadow-sm transition duration-300 group-hover:border-accent/45 group-hover:bg-accent/12 group-hover:text-ink sm:inline-flex sm:flex-none sm:px-6 sm:text-xs sm:tracking-[0.26em]">
                     Enter studio
                     <span
@@ -237,7 +236,7 @@ export function HubLanding() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: reduce ? 0 : 0.55, delay: reduce ? 0 : 0.1, ease: easeOut }}
-            className={`relative mx-auto mt-8 ${HUB_RAIL} border-t border-ink/12 pt-5 text-center sm:mt-10 sm:pt-6`}
+            className={`relative mx-auto mt-5 ${HUB_RAIL} border-t border-ink/12 pt-4 text-center sm:mt-6 sm:pt-5`}
           >
             <p className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2 text-[11px] leading-snug text-muted sm:text-xs sm:leading-normal">
               <span className="inline-flex flex-wrap items-center justify-center gap-x-1.5">
