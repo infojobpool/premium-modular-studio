@@ -60,10 +60,12 @@ const socialItems = [
 ] as const;
 
 const CITY_HOME = /^\/(hyderabad|bhubaneswar)$/;
+const CITY_ROUTE = /^\/(hyderabad|bhubaneswar)(\/|$)/;
 
 export function Footer() {
   const pathname = usePathname();
   const isCityHome = CITY_HOME.test(pathname);
+  const isCityRoute = CITY_ROUTE.test(pathname);
   const { location } = useStudioLocation();
   const peerCity = location.id === "hyderabad" ? STUDIO_LOCATIONS.bhubaneswar : STUDIO_LOCATIONS.hyderabad;
   const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
@@ -75,7 +77,7 @@ export function Footer() {
     "relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 group-hover:after:scale-x-100";
 
   return (
-    <footer className={`border-t border-ink/10 bg-gradient-to-b from-canvas via-canvas to-panel/40 pt-14 ${PAGE_GUTTER_X}`}>
+    <footer className={`scroll-mt-24 border-t border-ink/10 bg-gradient-to-b from-canvas via-canvas to-panel/40 pt-10 sm:pt-12 ${PAGE_GUTTER_X}`}>
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <div className="group relative overflow-hidden rounded-[2rem] border border-ink/12 bg-gradient-to-br from-canvas/98 via-canvas/90 to-panel/55 px-6 py-8 shadow-[0_28px_70px_-40px_rgba(27,63,46,0.5)] sm:px-10 sm:py-10">
           <span
@@ -129,7 +131,7 @@ export function Footer() {
               transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="grid gap-10 sm:grid-cols-2 sm:gap-12 lg:gap-10"
             >
-              <div className="rounded-2xl border border-ink/10 bg-canvas/50 p-5 sm:p-6">
+              <div className="rounded-2xl border border-ink/10 bg-canvas/50 p-5 max-sm:pr-14 sm:p-6">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">Quick links</p>
                 <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-[0.98rem]">
                   <Link href={`/${location.id}/about`} className={premiumLinkClass}>
@@ -153,7 +155,7 @@ export function Footer() {
                 </div>
               </div>
 
-              <div className="space-y-6 rounded-2xl border border-ink/10 bg-gradient-to-b from-canvas/70 to-panel/35 p-5 sm:border-l-0 sm:p-6 lg:border-l lg:border-ink/10 lg:pl-8">
+              <div className="space-y-6 rounded-2xl border border-ink/10 bg-gradient-to-b from-canvas/70 to-panel/35 p-5 max-sm:pr-16 sm:border-l-0 sm:p-6 lg:border-l lg:border-ink/10 lg:pl-8">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
                     {location.label} studio
@@ -192,8 +194,10 @@ export function Footer() {
       <p
         className={`mx-auto mt-10 text-center text-[0.85rem] text-ink/72 ${CONTENT_MAX} ${
           isCityHome
-            ? "pb-[calc(7rem+env(safe-area-inset-bottom))]"
-            : "pb-24 md:pb-16"
+            ? "pb-[calc(11rem+env(safe-area-inset-bottom))]"
+            : isCityRoute
+              ? "pb-[calc(7rem+env(safe-area-inset-bottom))]"
+              : "pb-24 md:pb-16"
         }`}
       >
         © {new Date().getFullYear()}{" "}

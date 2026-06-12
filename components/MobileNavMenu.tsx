@@ -73,7 +73,7 @@ export function MobileNavMenu({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -12, scale: 0.98 }}
             transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-3 top-[max(5.25rem,env(safe-area-inset-top)+4.75rem)] z-[46] max-h-[min(78dvh,640px)] overflow-hidden rounded-[1.35rem] border border-white/50 bg-gradient-to-br from-canvas/98 via-canvas/95 to-panel/55 shadow-[0_32px_80px_-24px_rgba(27,63,46,0.45)] ring-1 ring-ink/10 sm:inset-x-4 lg:hidden"
+            className="fixed inset-x-3 top-[max(9rem,env(safe-area-inset-top)+8rem)] z-[46] max-h-[min(72dvh,600px)] overflow-hidden rounded-[1.35rem] border border-white/50 bg-gradient-to-br from-canvas/98 via-canvas/95 to-panel/55 shadow-[0_32px_80px_-24px_rgba(27,63,46,0.45)] ring-1 ring-ink/10 sm:inset-x-4 lg:hidden"
           >
             <span
               className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent"

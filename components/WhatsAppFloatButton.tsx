@@ -1,6 +1,8 @@
 "use client";
 
+import { useMotionValueEvent, useScroll } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { getStudioWhatsAppHref } from "@/lib/locations";
 import { FOCUS_RING } from "@/lib/ui-classes";
 import { useStudioLocation } from "./LocationProvider";
@@ -14,36 +16,65 @@ function WhatsAppGlyph({ className }: { className?: string }) {
 }
 
 const CITY_HOME = /^\/(hyderabad|bhubaneswar)$/;
+const CITY_ROUTE = /^\/(hyderabad|bhubaneswar)(\/|$)/;
 
 /**
- * Fixed WhatsApp shortcut: white “Contact now” pill + official green bubble on city routes.
- * Sits above the optional sticky enquiry bar on city home.
+ * Fixed WhatsApp shortcut on city routes. Icon-only on narrow screens to avoid footer overlap.
  */
 export function WhatsAppFloatButton() {
   const { location } = useStudioLocation();
   const pathname = usePathname();
   const isCityHome = CITY_HOME.test(pathname);
+  const isCityRoute = CITY_ROUTE.test(pathname);
+  const { scrollY } = useScroll();
+  const [stickyBarUp, setStickyBarUp] = useState(false);
+  const [nearBottom, setNearBottom] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const docH = document.documentElement.scrollHeight;
+    const viewH = window.innerHeight;
+    setNearBottom(y + viewH >= docH - 180);
+    setStickyBarUp(isCityHome && y > 360);
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const y = window.scrollY;
+    const docH = document.documentElement.scrollHeight;
+    const viewH = window.innerHeight;
+    setNearBottom(y + viewH >= docH - 180);
+    setStickyBarUp(isCityHome && y > 360);
+  }, [isCityHome, pathname]);
+
   const href = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
     `Hello — I'd like to speak with the ${location.label} studio on WhatsApp.`,
   )}`;
 
+  if (!isCityRoute) return null;
+
   const position = isCityHome
-    ? "bottom-[calc(env(safe-area-inset-bottom)+5.75rem)] right-[max(1rem,env(safe-area-inset-right))]"
-    : "bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] right-[max(1rem,env(safe-area-inset-right))]";
+    ? stickyBarUp
+      ? "bottom-[calc(env(safe-area-inset-bottom)+6.75rem)]"
+      : "bottom-[calc(env(safe-area-inset-bottom)+1.25rem)]"
+    : isCityRoute
+      ? "bottom-[calc(env(safe-area-inset-bottom)+1.25rem)]"
+      : "bottom-[calc(env(safe-area-inset-bottom)+1.25rem)]";
 
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Contact now on WhatsApp — ${location.label} studio`}
-      className={`fixed z-[42] flex max-w-[calc(100vw-2rem)] flex-row items-center gap-2.5 ${position} transition hover:scale-[1.02] active:scale-[0.99] ${FOCUS_RING}`}
+      aria-label={`Contact on WhatsApp — ${location.label} studio`}
+      className={`fixed z-[42] flex max-w-[calc(100vw-1.5rem)] flex-row items-center gap-2 transition hover:scale-[1.02] active:scale-[0.99] ${position} right-[max(0.75rem,env(safe-area-inset-right))] ${
+        nearBottom ? "pointer-events-none translate-y-4 opacity-0" : "opacity-100"
+      } ${FOCUS_RING}`}
     >
-      <span className="min-w-0 whitespace-nowrap rounded-full border border-ink/12 bg-white px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-ink shadow-[0_8px_24px_-8px_rgba(0,0,0,0.25)] sm:px-4 sm:text-sm sm:tracking-[0.14em]">
+      <span className="hidden min-w-0 whitespace-nowrap rounded-full border border-ink/12 bg-white px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-ink shadow-[0_8px_24px_-8px_rgba(0,0,0,0.25)] sm:inline-flex sm:px-4 sm:text-sm sm:tracking-[0.14em]">
         Contact now
       </span>
-      <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-6px_rgba(37,211,102,0.55),0_4px_14px_-4px_rgba(0,0,0,0.35)] ring-2 ring-white/90 transition hover:shadow-[0_14px_36px_-6px_rgba(37,211,102,0.6)]">
-        <WhatsAppGlyph className="h-[1.85rem] w-[1.85rem]" />
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-6px_rgba(37,211,102,0.55),0_4px_14px_-4px_rgba(0,0,0,0.35)] ring-2 ring-white/90 sm:h-14 sm:w-14">
+        <WhatsAppGlyph className="h-[1.55rem] w-[1.55rem] sm:h-[1.85rem] sm:w-[1.85rem]" />
       </span>
     </a>
   );

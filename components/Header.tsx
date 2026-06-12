@@ -56,8 +56,14 @@ export function Header() {
       lastScrollY.current = y;
       return;
     }
+    const docH = document.documentElement.scrollHeight;
+    const viewH = window.innerHeight;
+    const nearBottom = y + viewH >= docH - 120;
     const delta = y - lastScrollY.current;
-    if (y < 72) {
+
+    if (nearBottom) {
+      setHidden(true);
+    } else if (y < 72) {
       setHidden(false);
     } else if (delta > 10) {
       setHidden(true);
@@ -108,25 +114,26 @@ export function Header() {
         hidden ? "pointer-events-none" : ""
       }`}
     >
-      <div className="mx-auto flex w-full max-w-[92rem] flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
-        <div className="flex min-w-0 items-center gap-2 sm:gap-3 lg:gap-4">
+      <div className="mx-auto flex w-full max-w-[92rem] flex-col gap-2">
+        <div className="flex min-w-0 flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
         <Link
           href={logoHref}
-          className={`relative z-20 shrink-0 rounded-lg ${FOCUS_RING}`}
+          className={`relative z-20 shrink-0 self-start rounded-lg ${FOCUS_RING}`}
           aria-label={logoAria}
         >
-          <VividLogo size="aside" />
+          <VividLogo size="header" className="lg:hidden" />
+          <VividLogo size="aside" className="hidden lg:inline-flex" />
         </Link>
 
         <div
-          className={`isolate flex min-w-0 flex-1 flex-nowrap items-center justify-between gap-2 rounded-2xl border px-3 py-2 transition-[background,box-shadow,border-color] duration-500 sm:gap-3 sm:px-5 sm:py-2.5 lg:flex-none lg:rounded-full lg:px-7 lg:py-3 xl:gap-5 ${
+          className={`isolate flex w-full min-w-0 flex-1 flex-nowrap items-center justify-between gap-2 rounded-2xl border px-3 py-2 transition-[background,box-shadow,border-color] duration-500 sm:gap-3 sm:px-5 sm:py-2.5 lg:w-auto lg:flex-none lg:rounded-full lg:px-7 lg:py-3 xl:gap-5 ${
             solid
               ? "border-ink/18 bg-canvas/86 shadow-[0_12px_46px_-16px_rgba(27,63,46,0.28)] backdrop-blur-xl"
               : "border-ink/10 bg-canvas/70 shadow-[0_8px_34px_-18px_rgba(27,63,46,0.18)] backdrop-blur-md"
           }`}
         >
-        <div className="order-1 flex shrink-0 items-center">
-          <LocationSwitcher compact layoutGroup="hdr" />
+        <div className="order-1 flex min-w-0 flex-1 items-center sm:flex-none">
+          <LocationSwitcher compact wide layoutGroup="hdr" />
         </div>
 
         <button

@@ -30,7 +30,7 @@ export function VividLogo({
       ? "h-[5.75rem] w-auto max-w-[min(100%,380px)] object-contain object-left sm:h-[6.375rem] sm:max-w-[430px] lg:h-[6.875rem] lg:max-w-[460px]"
     : isHome
       ? "h-[5.75rem] w-auto max-w-[min(100%,340px)] object-contain object-left sm:h-[6.25rem] sm:max-w-[380px]"
-      : "h-[3.875rem] w-auto max-w-[272px] object-contain object-left sm:h-[4.375rem] sm:max-w-[300px]";
+      : "h-[3.25rem] w-auto max-w-[min(100%,10.5rem)] object-contain object-left sm:h-[3.875rem] sm:max-w-[13.5rem] md:max-w-[17rem] lg:h-[4.375rem] lg:max-w-[300px]";
 
   return (
     <span
