@@ -65,8 +65,24 @@ export function FounderSpotlight({ variant = "full" }: FounderSpotlightProps) {
             <h2 className={`mt-3 font-display tracking-tight text-ink ${isCompact ? "text-4xl sm:text-[2.7rem]" : "text-4xl sm:text-5xl"}`}>
               {s.name}
             </h2>
-            <p className="mt-2 text-sm font-semibold uppercase tracking-[0.2em] text-ink/75">
-              {withBrandHighlight(s.roleLine)}
+            <p className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
+              {s.designation ? (
+                <span className="inline-flex rounded-full border border-accent/40 bg-accent/14 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong shadow-[0_1px_0_rgba(255,255,255,0.35)_inset]">
+                  {s.designation}
+                </span>
+              ) : null}
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-ink/70">
+                {s.designation ? (
+                  <>
+                    <span className="text-ink/35" aria-hidden>
+                      ·{" "}
+                    </span>
+                    {withBrandHighlight(s.roleLine)}
+                  </>
+                ) : (
+                  withBrandHighlight(s.roleLine)
+                )}
+              </span>
             </p>
             <p className={`${isCompact ? "mt-4 text-base" : "mt-5 text-lg"} max-w-3xl leading-relaxed text-muted`}>
               {withBrandHighlight(s.bio)}

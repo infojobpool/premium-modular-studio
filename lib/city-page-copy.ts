@@ -12,6 +12,8 @@ export type CityLeadershipSpotlight = {
   /** Accessible name for the section landmark */
   sectionAriaLabel: string;
   name: string;
+  /** When set, shown as a highlighted badge (e.g. Co-founder). */
+  designation?: string;
   roleLine: string;
   bio: string;
   imageSrc: string;
@@ -237,13 +239,14 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       },
     ],
     leadershipSpotlight: {
-      eyebrow: "Partner spotlight",
-      sectionAriaLabel: "Partner spotlight",
+      eyebrow: "Co-founder spotlight",
+      sectionAriaLabel: "Co-founder spotlight",
       name: "Gargi Panda",
-      roleLine: "Partner · Vivid In2erio",
+      designation: "Co-founder",
+      roleLine: "Vivid In2erio",
       bio: "Leads client experience and on-ground delivery for the Bhubaneswar studio—aligning local site teams, documentation, and handover with the same premium standards as our Telangana atelier, tuned for Odisha’s light, humidity, and pace.",
       imageSrc: "/partner-gargi-panda-bhubaneswar.png",
-      imageAlt: "Gargi Panda, Partner — Vivid In2terio Bhubaneswar",
+      imageAlt: "Gargi Panda, Co-founder — Vivid In2erio Bhubaneswar",
       highlights: [
         {
           title: "Odisha studio leadership:",
@@ -258,7 +261,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
           body: "When specialist CNC, veneers, or large-format stone route through Sainikpuri, she keeps one accountable thread for Bhubaneswar clients.",
         },
       ],
-      compactCtaLabel: "Read partner story",
+      compactCtaLabel: "Read co-founder story",
     },
     trustHighlights: [
       {
