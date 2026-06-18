@@ -84,7 +84,15 @@ export async function loadOgHeroImage(city?: StudioLocationId): Promise<OgImageS
   }
 }
 
+export async function loadOgLogo(): Promise<OgImageSrc> {
+  return loadPublicAssetWithFallback("vivid-in2erio-logo.png", "/vivid-in2erio-logo.png");
+}
+
 export async function loadOgShareAssets(city?: StudioLocationId) {
-  const [fonts, heroSrc] = await Promise.all([loadOgFonts(), loadOgHeroImage(city)]);
-  return { fonts, heroSrc };
+  const [fonts, heroSrc, logoSrc] = await Promise.all([
+    loadOgFonts(),
+    loadOgHeroImage(city),
+    loadOgLogo(),
+  ]);
+  return { fonts, heroSrc, logoSrc };
 }

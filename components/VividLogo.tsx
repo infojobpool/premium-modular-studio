@@ -1,9 +1,5 @@
 import Image from "next/image";
-
-/** Official lockup asset (square PNG, includes mark + wordmark + tagline). */
-const LOGO_SRC = "/vivid-in2erio-logo.png";
-const LOGO_W = 1024;
-const LOGO_H = 1024;
+import { BRAND_LOGO_ALT, BRAND_LOGO_HEIGHT, BRAND_LOGO_SRC, BRAND_LOGO_WIDTH } from "@/lib/brand-logo";
 
 type VividLogoProps = {
   className?: string;
@@ -42,10 +38,10 @@ export function VividLogo({
         } ${light ? "opacity-[0.98]" : ""}`}
       >
         <Image
-          src={LOGO_SRC}
-          alt="Vivid In2erio — premium interiors"
-          width={LOGO_W}
-          height={LOGO_H}
+          src={BRAND_LOGO_SRC}
+          alt={BRAND_LOGO_ALT}
+          width={BRAND_LOGO_WIDTH}
+          height={BRAND_LOGO_HEIGHT}
           className={imgClass}
           sizes={
             isFooter

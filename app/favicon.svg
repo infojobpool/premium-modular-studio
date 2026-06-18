@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vivid In2erio favicon">
-  <rect width="64" height="64" rx="14" fill="#1b3f2e" />
-  <path d="M17 16h10l5 12 5-12h10L33 48h-2L17 16z" fill="#d9a229" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vivid In2wrio favicon">
+  <rect width="64" height="64" rx="14" fill="#1B3322" />
+  <path d="M18 24 L32 14 L46 24" stroke="#E6DDC4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="32" cy="28.5" r="3.25" fill="#D4A017" />
+  <path
+    d="M32 39 C26 39 18 34 16 27 C15 23 18 21 21 23 L27 31 L32 28.5 L37 31 L43 23 C46 21 49 23 48 27 C46 34 38 39 32 39 Z"
+    fill="#D4A017"
+  />
 </svg>

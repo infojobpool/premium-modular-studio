@@ -28,12 +28,13 @@ export default async function CityOpenGraphImage({ params }: Props) {
   const label = STUDIO_LOCATIONS[city].label;
   const copy = CITY_PAGE_COPY[city];
 
-  const { fonts, heroSrc } = await loadOgShareAssets(city);
+  const { fonts, heroSrc, logoSrc } = await loadOgShareAssets(city);
 
   return new ImageResponse(
     (
       <OgShareLayout
         heroSrc={heroSrc}
+        logoSrc={logoSrc}
         locationLine={`${label} studio`}
         headline="Premium & luxury interiors"
         subline={clip(copy.heroLead)}

@@ -1,4 +1,4 @@
-import { OgBrandLockup } from "@/lib/og-brand-lockup";
+import { BRAND_LOGO_HEIGHT, BRAND_LOGO_WIDTH } from "@/lib/brand-logo";
 import type { OgImageSrc } from "@/lib/og-image-assets";
 
 /**
@@ -7,6 +7,7 @@ import type { OgImageSrc } from "@/lib/og-image-assets";
  */
 export type OgShareLayoutProps = {
   heroSrc: OgImageSrc;
+  logoSrc: OgImageSrc;
   /** e.g. "Hyderabad · Bhubaneswar" or "Hyderabad studio" */
   locationLine: string;
   headline?: string;
@@ -17,6 +18,7 @@ export type OgShareLayoutProps = {
 
 export function OgShareLayout({
   heroSrc,
+  logoSrc,
   locationLine,
   headline = "Premium & luxury interiors",
   subline = "Design to delivery for homes & workspaces — curated materials, modular craft, and studio-led execution.",
@@ -110,7 +112,21 @@ export function OgShareLayout({
             gap: 20,
           }}
         >
-          <OgBrandLockup />
+          {/* Satori accepts ArrayBuffer for img src; React types do not. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoSrc as unknown as string}
+            width={BRAND_LOGO_WIDTH}
+            height={BRAND_LOGO_HEIGHT}
+            alt=""
+            style={{
+              height: 96,
+              width: 96,
+              objectFit: "contain",
+              borderRadius: 12,
+              flexShrink: 0,
+            }}
+          />
           <div
             style={{
               display: "flex",
