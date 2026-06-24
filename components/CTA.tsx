@@ -17,7 +17,7 @@ export function CTA() {
   const { location } = useStudioLocation();
   const calendlyUrl = getCalendlyUrl();
   const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
-    `Hello Vivid In2erio — I'd like to discuss a project (${location.label} studio page).`,
+    `Hello Vivid In2wrio — I'd like to discuss a project (${location.label} studio page).`,
   )}`;
 
   const [submitState, setSubmitState] = useState<SubmitState>("idle");

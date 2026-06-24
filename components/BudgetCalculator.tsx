@@ -94,7 +94,7 @@ export function BudgetCalculator() {
 
   function handleDownloadEstimate() {
     const content = [
-      "Vivid In2erio - Budget Estimate",
+      "Vivid In2wrio - Budget Estimate",
       `City: ${location.label}`,
       `Project type: ${projectType}`,
       `Area: ${area} sqft`,

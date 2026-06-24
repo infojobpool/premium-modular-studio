@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Gallery · ${label}`,
     description: clip(CITY_PAGE_COPY[city].galleryIntro),
-    openGraph: { title: `Gallery · ${label} | Vivid In2erio` },
+    openGraph: { title: `Gallery · ${label} | Vivid In2wrio` },
   };
 }
 

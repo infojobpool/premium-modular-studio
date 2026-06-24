@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Process · ${label}`,
     description: clip(`${vividCopy.processIntroTitle}. ${vividCopy.processIntroBody}`),
-    openGraph: { title: `Process · ${label} | Vivid In2erio` },
+    openGraph: { title: `Process · ${label} | Vivid In2wrio` },
   };
 }
 

@@ -1,5 +1,5 @@
 /**
- * Imagery + editorial copy sourced from the public Vivid In2erio demo
+ * Imagery + editorial copy sourced from the public Vivid In2wrio demo
  * https://waytowebs.in/vivid/ (WordPress media API).
  * Replace with self-hosted /public assets when you migrate off Waytowebs CDN.
  */
@@ -43,20 +43,20 @@ export const vividImages = {
   about: vividGalleryImagePool[9]!,
 } as const;
 
-/** Editorial aligned with the public Vivid In2erio site (Waytowebs build). */
+/** Editorial aligned with the public Vivid In2wrio site (Waytowebs build). */
 export const vividCopy = {
   heroEyebrow: "Premium & luxury interiors",
   heroTitle: "Premium & luxury interiors — curated for how you live",
   heroLead:
-    "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
+    "At Vivid In2wrio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
   heroStudio:
-    "Vivid In2erio is a luxury interior and architectural design studio with presence in Hyderabad and Bhubaneswar, known for creating bespoke residential and commercial spaces. Every project we craft is a balance of elegance, functionality, and enduring value — designed to elevate the way you live and work.",
+    "Vivid In2wrio is a luxury interior and architectural design studio with presence in Hyderabad and Bhubaneswar, known for creating bespoke residential and commercial spaces. Every project we craft is a balance of elegance, functionality, and enduring value — designed to elevate the way you live and work.",
   servicesIntro:
     "We offer complete design-to-delivery solutions for luxury homes, modern workspaces, and high-end commercial environments.",
   processIntroTitle: "A seamless journey from vision to reality",
   processIntroBody:
     "A carefully curated approach that guides you from initial concept to final execution, ensuring clarity, collaboration, and beautifully crafted interiors at every stage.",
-  whyTitle: "Why choose Vivid In2erio",
+  whyTitle: "Why choose Vivid In2wrio",
   whySubtitle: "Designed for those who expect the best",
   testimonialsIntroTitle: "Trusted by homeowners & businesses",
   ctaTitle: "Transform your vision into a timeless masterpiece",
@@ -247,4 +247,4 @@ export const vividGalleryProjects = [
 
 /** Intro paragraph from https://waytowebs.in/vivid/gallery/ “Our Projects”. */
 export const vividGalleryPageIntro =
-  "At Vivid In2erio, our specialized services are designed to elevate every project with clarity, control, and complete confidence. From detailed planning to advanced visualization and smart integrations, we ensure every stage of your project is seamless, efficient, and executed to premium standards." as const;
+  "At Vivid In2wrio, our specialized services are designed to elevate every project with clarity, control, and complete confidence. From detailed planning to advanced visualization and smart integrations, we ensure every stage of your project is seamless, efficient, and executed to premium standards." as const;

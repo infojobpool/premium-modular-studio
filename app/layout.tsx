@@ -20,15 +20,15 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
-  applicationName: "Vivid In2erio",
+  applicationName: "Vivid In2wrio",
   title: {
-    default: "Vivid In2erio | Premium & luxury interiors",
-    template: "%s | Vivid In2erio",
+    default: "Vivid In2wrio | Premium & luxury interiors",
+    template: "%s | Vivid In2wrio",
   },
   description:
     "Premium & luxury interiors in Hyderabad and Bhubaneswar — design to delivery for homes and workspaces: curated materials, modular kitchens & wardrobes, 3D sign-off, and studio-led execution.",
   keywords: [
-    "Vivid In2erio",
+    "Vivid In2wrio",
     "interior design Hyderabad",
     "interior design Bhubaneswar",
     "luxury interiors",
@@ -37,12 +37,12 @@ export const metadata: Metadata = {
     "design studio Secunderabad",
     "Odisha interiors",
   ],
-  authors: [{ name: "Vivid In2erio" }],
+  authors: [{ name: "Vivid In2wrio" }],
   openGraph: {
     type: "website",
     locale: "en_IN",
-    siteName: "Vivid In2erio",
-    title: "Vivid In2erio | Premium & luxury interiors",
+    siteName: "Vivid In2wrio",
+    title: "Vivid In2wrio | Premium & luxury interiors",
     description:
       "Hyderabad & Bhubaneswar studios — bespoke residential and commercial interiors from consultation through handover.",
     images: [
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Vivid In2erio — premium and luxury interiors in Hyderabad and Bhubaneswar",
+        alt: "Vivid In2wrio — premium and luxury interiors in Hyderabad and Bhubaneswar",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vivid In2erio | Premium & luxury interiors",
+    title: "Vivid In2wrio | Premium & luxury interiors",
     description:
       "Hyderabad & Bhubaneswar — luxury interiors, modular systems, and design-to-delivery execution.",
   },

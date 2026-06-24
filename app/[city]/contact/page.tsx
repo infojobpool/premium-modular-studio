@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Contact · ${label}`,
     description: clip(vividCopy.ctaBody),
-    openGraph: { title: `Contact · ${label} | Vivid In2erio` },
+    openGraph: { title: `Contact · ${label} | Vivid In2wrio` },
   };
 }
 

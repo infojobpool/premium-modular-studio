@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Visit · ${loc.label}`,
     description: `${loc.regionLine}. ${loc.addressLines.join(" ")}`,
-    openGraph: { title: `Visit · ${loc.label} | Vivid In2erio` },
+    openGraph: { title: `Visit · ${loc.label} | Vivid In2wrio` },
   };
 }
 

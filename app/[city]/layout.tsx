@@ -25,14 +25,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${label} studio`,
     description: clipDescription(copy.heroLead),
     openGraph: {
-      title: `${label} studio | Vivid In2erio`,
+      title: `${label} studio | Vivid In2wrio`,
       description: clipDescription(copy.heroLead),
       images: [
         {
           url: `/${city}/opengraph-image`,
           width: 1200,
           height: 630,
-          alt: `Vivid In2erio ${label} — premium and luxury interiors`,
+          alt: `Vivid In2wrio ${label} — premium and luxury interiors`,
         },
       ],
     },

@@ -52,7 +52,7 @@ export function About() {
             {/* eslint-disable-next-line @next/next/no-img-element -- Fill layout: native img avoids preflight breaking absolute cover. */}
             <img
               src={vividImages.about}
-              alt="Vivid In2erio interior visualization"
+              alt="Vivid In2wrio interior visualization"
               sizes="(max-width: 1024px) 100vw, 50vw"
               decoding="async"
               className="absolute inset-0 block size-full object-cover"

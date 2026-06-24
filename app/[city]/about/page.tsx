@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `About · ${label}`,
     description: clip(CITY_PAGE_COPY[city].aboutLead),
-    openGraph: { title: `About · ${label} | Vivid In2erio` },
+    openGraph: { title: `About · ${label} | Vivid In2wrio` },
   };
 }
 

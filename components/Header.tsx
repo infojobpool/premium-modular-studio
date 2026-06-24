@@ -40,8 +40,8 @@ export function Header() {
     pathname.startsWith("/bhubaneswar/");
   const logoHref = onCitySite ? cityBase : "/";
   const logoAria = onCitySite
-    ? `Vivid In2erio — ${cityBase === "/hyderabad" ? "Hyderabad" : "Bhubaneswar"} studio home`
-    : "Vivid In2erio — studio hub";
+    ? `Vivid In2wrio — ${cityBase === "/hyderabad" ? "Hyderabad" : "Bhubaneswar"} studio home`
+    : "Vivid In2wrio — studio hub";
 
   const { scrollY } = useScroll();
   const [solid, setSolid] = useState(false);

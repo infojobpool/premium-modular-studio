@@ -6,7 +6,7 @@ import { STUDIO_EMAIL } from "@/lib/locations";
 export const metadata: Metadata = {
   title: "Privacy",
   description:
-    "How Vivid In2erio handles information you share through this marketing site and enquiry forms.",
+    "How Vivid In2wrio handles information you share through this marketing site and enquiry forms.",
 };
 
 export default function PrivacyPage() {

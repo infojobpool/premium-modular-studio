@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const label = STUDIO_LOCATIONS[city].label;
   return {
     title: `Careers · ${label}`,
-    description: `Career opportunities at Vivid In2erio ${label} for interior design, architecture, visualization, and execution roles.`,
-    openGraph: { title: `Careers · ${label} | Vivid In2erio` },
+    description: `Career opportunities at Vivid In2wrio ${label} for interior design, architecture, visualization, and execution roles.`,
+    openGraph: { title: `Careers · ${label} | Vivid In2wrio` },
   };
 }
 

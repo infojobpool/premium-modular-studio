@@ -66,9 +66,9 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
   hyderabad: {
     heroTitle: "Premium & luxury interiors in Hyderabad",
     heroLead:
-      "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
+      "At Vivid In2wrio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
     heroStudio:
-      "Vivid In2erio is a Hyderabad-based luxury interior and architectural design studio, known for creating bespoke residential and commercial spaces. Every project we craft is a balance of elegance, functionality, and enduring value — designed to elevate the way you live and work.",
+      "Vivid In2wrio is a Hyderabad-based luxury interior and architectural design studio, known for creating bespoke residential and commercial spaces. Every project we craft is a balance of elegance, functionality, and enduring value — designed to elevate the way you live and work.",
     aboutHeading: "Luxury interior & architectural studio in Hyderabad",
     aboutLead:
       "Walk the studio in Phase II, Valluvar Nagar (Sainikpuri): review materials, joinery mock-ups, and lighting studies in person, then follow one accountable team from detailed design through precision execution to luxury handover.",
@@ -133,10 +133,10 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       sectionAriaLabel: "Founder spotlight",
       name: "Soubhagya Laxmi Nayak",
       designation: "Founder & CEO",
-      roleLine: "Vivid In2erio",
+      roleLine: "Vivid In2wrio",
       bio: "Recognised for design leadership that balances aesthetics, functionality, and execution discipline across luxury residential projects. Her studio direction has shaped a premium, client-first interior practice across Telangana and Odisha.",
       imageSrc: "/founder-soubhagya-laxmi-nayak.png",
-      imageAlt: "Soubhagya Laxmi Nayak, Founder and CEO — Vivid In2erio Hyderabad",
+      imageAlt: "Soubhagya Laxmi Nayak, Founder and CEO — Vivid In2wrio Hyderabad",
       highlights: [
         {
           title: "India Design Awards 2023:",
@@ -196,7 +196,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
   bhubaneswar: {
     heroTitle: "Premium & luxury interiors in Bhubaneswar",
     heroLead:
-      "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
+      "At Vivid In2wrio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
     heroStudio:
       "The Bhubaneswar studio brings the same bespoke residential and commercial rigor to Odisha—elegant, functional spaces with enduring value, coordinated with Hyderabad when specialist fabrication or documentation calls for it.",
     aboutHeading: "Luxury interior & architectural studio · Bhubaneswar",
@@ -244,10 +244,10 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       sectionAriaLabel: "Co-founder spotlight",
       name: "Gargi Panda",
       designation: "Co-founder",
-      roleLine: "Vivid In2erio",
+      roleLine: "Vivid In2wrio",
       bio: "Leads client experience and on-ground delivery for the Bhubaneswar studio—aligning local site teams, documentation, and handover with the same premium standards as our Telangana atelier, tuned for Odisha’s light, humidity, and pace.",
       imageSrc: "/partner-gargi-panda-bhubaneswar.png",
-      imageAlt: "Gargi Panda, Co-founder — Vivid In2erio Bhubaneswar",
+      imageAlt: "Gargi Panda, Co-founder — Vivid In2wrio Bhubaneswar",
       highlights: [
         {
           title: "Odisha studio leadership:",

@@ -1,7 +1,7 @@
 import type { CityGalleryProject } from "./city-page-copy";
 import { vividGalleryImagePool, vividImages } from "./vivid-reference";
 
-/** Remote imagery from the live Vivid In2erio reference build (Waytowebs). */
+/** Remote imagery from the live Vivid In2wrio reference build (Waytowebs). */
 export const interiorImages = {
   hero: vividImages.hero,
   /** Full pool for gallery grids and case-study heroes (see `vividGalleryImagePool`). */

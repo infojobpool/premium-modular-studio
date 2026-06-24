@@ -16,7 +16,7 @@ export type StudioLocation = {
 };
 
 /**
- * Hyderabad: matches public Waytowebs demo listing for Vivid In2erio.
+ * Hyderabad: matches public Waytowebs demo listing for Vivid In2wrio.
  * Bhubaneswar: studio address at Puri Bypass, Mangaraj Point.
  */
 export const STUDIO_LOCATIONS: Record<StudioLocationId, StudioLocation> = {

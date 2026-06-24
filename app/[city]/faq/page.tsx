@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `FAQ · ${label}`,
     description: description.slice(0, 158),
-    openGraph: { title: `FAQ · ${label} | Vivid In2erio` },
+    openGraph: { title: `FAQ · ${label} | Vivid In2wrio` },
   };
 }
 

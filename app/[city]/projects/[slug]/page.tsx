@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: project.name,
     description,
-    openGraph: { title: `${project.name} | Vivid In2erio`, description },
+    openGraph: { title: `${project.name} | Vivid In2wrio`, description },
   };
 }
 
