@@ -21,7 +21,7 @@ export function Hero() {
 
   return (
     <section className="relative isolate min-h-[82dvh] w-full overflow-x-clip bg-transparent sm:min-h-[85dvh] lg:min-h-[88dvh]">
-      <div className="relative z-10 mx-auto grid min-h-[82dvh] w-full max-w-none grid-cols-1 items-end gap-8 px-0 pb-8 pt-[max(9.25rem,env(safe-area-inset-top)+7.25rem)] sm:min-h-[85dvh] sm:pb-10 sm:pt-[max(9.5rem,env(safe-area-inset-top)+7.5rem)] md:grid-cols-2 md:items-center md:gap-6 md:pb-10 md:pt-[max(9.75rem,env(safe-area-inset-top)+7.5rem)] lg:min-h-[88dvh] lg:gap-10 lg:pb-12 lg:pt-[max(9.5rem,env(safe-area-inset-top)+5.75rem)]">
+      <div className="relative z-10 mx-auto grid min-h-[82dvh] w-full max-w-none grid-cols-1 items-end gap-8 px-0 pb-10 pt-[max(9.25rem,env(safe-area-inset-top)+7.25rem)] sm:min-h-[85dvh] sm:pb-12 sm:pt-[max(9.5rem,env(safe-area-inset-top)+7.5rem)] md:grid-cols-2 md:items-center md:gap-6 md:pb-14 md:pt-[max(9.75rem,env(safe-area-inset-top)+7.5rem)] lg:min-h-[88dvh] lg:gap-10 lg:pb-16 lg:pt-[max(9.5rem,env(safe-area-inset-top)+5.75rem)]">
         <div className="min-w-0 px-6 sm:px-10 md:pl-16 md:pr-10 xl:pl-24 2xl:pl-32 2xl:pr-14">
           <div className="max-w-xl">
             <AnimatePresence mode="wait">

@@ -59,6 +59,7 @@ export const metadata: Metadata = {
     title: "Vivid In2wrio | Premium & luxury interiors",
     description:
       "Hyderabad & Bhubaneswar — luxury interiors, modular systems, and design-to-delivery execution.",
+    images: ["/twitter-image"],
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/icon.svg", type: "image/svg+xml" }],

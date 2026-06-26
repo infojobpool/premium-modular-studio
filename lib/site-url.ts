@@ -5,10 +5,12 @@
  * (e.g. you share `*.vercel.app` but this defaults to another domain), thumbnails will break.
  *
  * Priority:
- * 1. `NEXT_PUBLIC_SITE_URL` — set in Vercel to your public site (e.g. `https://yoursite.com`).
+ * 1. `NEXT_PUBLIC_SITE_URL` — set in Vercel to your public site (e.g. `https://www.vividin2wrio.com`).
  * 2. `VERCEL_URL` — set automatically on Vercel (`https://<deployment>.vercel.app`).
  * 3. Fallback marketing domain (override via env in production).
  */
+export const SITE_DOMAIN = "vividin2wrio.com" as const;
+
 export function getSiteUrl(): string {
   const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (explicit && /^https?:\/\//i.test(explicit)) {
@@ -19,5 +21,5 @@ export function getSiteUrl(): string {
     const host = vercel.replace(/^https?:\/\//i, "").replace(/\/$/, "");
     return `https://${host}`;
   }
-  return "https://vividin2erio.com";
+  return `https://www.${SITE_DOMAIN}`;
 }

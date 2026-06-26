@@ -13,12 +13,18 @@ const DM_SANS_SEMIBOLD =
 
 export const OG_IMAGE_SIZE = { width: 1200, height: 630 } as const;
 
+const OG_GALLERY = "gallery/delhi-kitchen" as const;
+
+/** Default share thumbnail — bright modular kitchen (reads well at WhatsApp size). */
+export const OG_HERO_DEFAULT =
+  `${OG_GALLERY}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised43444.png` as const;
+
 export const OG_HERO_BY_CITY: Record<StudioLocationId, string> = {
-  hyderabad: "welcome-hyderabad-living.png",
-  bhubaneswar: "welcome-bhubaneswar-living.png",
+  hyderabad: `${OG_GALLERY}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.11.png`,
+  bhubaneswar: `${OG_GALLERY}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised442.png`,
 };
 
-const DEFAULT_HERO = "gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised442.png";
+const DEFAULT_HERO = OG_HERO_DEFAULT;
 
 export type OgFont = {
   name: string;
