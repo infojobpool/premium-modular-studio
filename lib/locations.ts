@@ -28,8 +28,8 @@ export const STUDIO_LOCATIONS: Record<StudioLocationId, StudioLocation> = {
       "Phase II, Valluvar Nagar, Laxmipuri, Sainikpuri",
       "Secunderabad, Telangana 500094",
     ],
-    phoneDisplay: "+91 89191 76937",
-    phoneHref: "tel:+918919176937",
+    phoneDisplay: "+91 91218 21616",
+    phoneHref: "tel:+919121821616",
     mapQuery: "Phase II Valluvar Nagar Laxmipuri Sainikpuri Secunderabad 500094",
     hoursSummary: "Mon–Sat · 10:00–19:00 IST (by appointment)",
     schemaHours: { opens: "10:00", closes: "19:00" },
@@ -52,7 +52,7 @@ export const STUDIO_LOCATIONS: Record<StudioLocationId, StudioLocation> = {
 };
 
 /** Hyderabad studio WhatsApp (digits only, no +). Use `getStudioWhatsAppHref` for city pages. */
-export const STUDIO_WHATSAPP_E164 = "918919176937";
+export const STUDIO_WHATSAPP_E164 = "919121821616";
 export const STUDIO_WHATSAPP_HREF = `https://wa.me/${STUDIO_WHATSAPP_E164}`;
 
 export function getStudioWhatsAppE164(city: StudioLocationId): string {
