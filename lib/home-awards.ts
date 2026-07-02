@@ -28,7 +28,7 @@ const SHARED_AWARDS: HomeAward[] = [
   {
     title: "Founder & CEO Recognition",
     year: "2023",
-    note: "Awarded to Soubhagya Laxmi Nayak for leadership in luxury residential interiors.",
+    note: "Awarded to Soubhagya Laxmi Nayakk for leadership in luxury residential interiors.",
   },
 ] as const;
 

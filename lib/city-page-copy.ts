@@ -131,12 +131,12 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
     leadershipSpotlight: {
       eyebrow: "Founder spotlight",
       sectionAriaLabel: "Founder spotlight",
-      name: "Soubhagya Laxmi Nayak",
+      name: "Soubhagya Laxmi Nayakk",
       designation: "Founder & CEO",
       roleLine: "Vivid In2wrio",
       bio: "Recognised for design leadership that balances aesthetics, functionality, and execution discipline across luxury residential projects. Her studio direction has shaped a premium, client-first interior practice across Telangana and Odisha.",
       imageSrc: "/founder-soubhagya-laxmi-nayak.png",
-      imageAlt: "Soubhagya Laxmi Nayak, Founder and CEO — Vivid In2wrio Hyderabad",
+      imageAlt: "Soubhagya Laxmi Nayakk, Founder and CEO — Vivid In2wrio Hyderabad",
       highlights: [
         {
           title: "India Design Awards 2023:",
