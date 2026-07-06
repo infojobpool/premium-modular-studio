@@ -7,8 +7,9 @@ import { CITY_PAGE_COPY, isStudioCity } from "@/lib/city-page-copy";
 import { allStaticProjectParams, getProjectStory } from "@/lib/city-projects";
 import { getGalleryImagesForProject } from "@/lib/gallery-segmented";
 import { interiorImages } from "@/lib/interior-images";
-import { getProjectPageDetail } from "@/lib/project-page-details";
 import type { StudioLocationId } from "@/lib/locations";
+import { getProjectPageDetail } from "@/lib/project-page-details";
+import { buildMetadataForPath } from "@/lib/seo/page-seo";
 
 type Props = { params: Promise<{ city: string; slug: string }> };
 
@@ -22,13 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = raw as StudioLocationId;
   const project = CITY_PAGE_COPY[city].galleryProjects.find((p) => p.slug === slug);
   if (!project) return {};
-  const detail = getProjectPageDetail(slug);
-  const description = detail?.contextLine ?? project.excerpt;
-  return {
-    title: project.name,
-    description,
-    openGraph: { title: `${project.name} | Vivid In2wrio`, description },
-  };
+  return await buildMetadataForPath(`/${city}/projects/${slug}`);
 }
 
 export default async function CityProjectDetail({ params }: Props) {

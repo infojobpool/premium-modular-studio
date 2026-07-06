@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { STUDIO_EMAIL } from "@/lib/locations";
+import { buildMetadataForPath } from "@/lib/seo/page-seo";
 
-export const metadata: Metadata = {
-  title: "Privacy",
-  description:
-    "How Vivid In2wrio handles information you share through this marketing site and enquiry forms.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return await buildMetadataForPath("/privacy");
+}
 
 export default function PrivacyPage() {
   return (

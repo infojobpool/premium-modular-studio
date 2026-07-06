@@ -7,12 +7,11 @@ import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import type { StudioLocationId } from "@/lib/locations";
 import { STUDIO_LOCATIONS } from "@/lib/locations";
+import { buildMetadataForPath } from "@/lib/seo/page-seo";
 
-export const metadata: Metadata = {
-  title: "All projects",
-  description:
-    "Case studies across Hyderabad and Bhubaneswar — kitchens, villas, and apartments with name-specific scope and documentation.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return await buildMetadataForPath("/projects");
+}
 
 export default function AllProjectsIndexPage() {
   const cities: StudioLocationId[] = ["hyderabad", "bhubaneswar"];

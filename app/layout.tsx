@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { buildRootLayoutMetadata } from "@/lib/seo/metadata";
 import { getSiteUrl } from "@/lib/site-url";
 
 const cormorant = Cormorant_Garamond({
@@ -18,54 +19,7 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(getSiteUrl()),
-  applicationName: "Vivid In2wrio",
-  title: {
-    default: "Vivid In2wrio | Premium & luxury interiors",
-    template: "%s | Vivid In2wrio",
-  },
-  description:
-    "Premium & luxury interiors in Hyderabad and Bhubaneswar — design to delivery for homes and workspaces: curated materials, modular kitchens & wardrobes, 3D sign-off, and studio-led execution.",
-  keywords: [
-    "Vivid In2wrio",
-    "interior design Hyderabad",
-    "interior design Bhubaneswar",
-    "luxury interiors",
-    "modular kitchen",
-    "premium interiors",
-    "design studio Secunderabad",
-    "Odisha interiors",
-  ],
-  authors: [{ name: "Vivid In2wrio" }],
-  openGraph: {
-    type: "website",
-    locale: "en_IN",
-    siteName: "Vivid In2wrio",
-    title: "Vivid In2wrio | Premium & luxury interiors",
-    description:
-      "Hyderabad & Bhubaneswar studios — bespoke residential and commercial interiors from consultation through handover.",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Vivid In2wrio — premium and luxury interiors in Hyderabad and Bhubaneswar",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Vivid In2wrio | Premium & luxury interiors",
-    description:
-      "Hyderabad & Bhubaneswar — luxury interiors, modular systems, and design-to-delivery execution.",
-    images: ["/twitter-image"],
-  },
-  icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/icon.svg", type: "image/svg+xml" }],
-    shortcut: "/favicon.svg",
-  },
-};
+export const metadata: Metadata = buildRootLayoutMetadata(getSiteUrl());
 
 export const viewport: Viewport = {
   width: "device-width",
