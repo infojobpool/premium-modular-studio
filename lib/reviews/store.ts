@@ -1,4 +1,4 @@
-import { head, put } from "@vercel/blob";
+import { get, put } from "@vercel/blob";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
@@ -8,7 +8,11 @@ const BLOB_PATHNAME = "customer-reviews.json";
 const LOCAL_FILE = path.join(process.cwd(), "data", "customer-reviews.json");
 
 function isBlobStorageEnabled(): boolean {
-  return Boolean(process.env.BLOB_READ_WRITE_TOKEN?.trim());
+  return Boolean(
+    process.env.BLOB_READ_WRITE_TOKEN?.trim() ||
+      process.env.BLOB_STORE_ID?.trim() ||
+      process.env.VERCEL_OIDC_TOKEN?.trim(),
+  );
 }
 
 async function readLocalDatabase(): Promise<ReviewsDatabase> {
@@ -29,10 +33,13 @@ async function writeLocalDatabase(db: ReviewsDatabase): Promise<void> {
 
 async function readBlobDatabase(): Promise<ReviewsDatabase> {
   try {
-    const meta = await head(BLOB_PATHNAME);
-    const res = await fetch(meta.url, { cache: "no-store" });
-    if (!res.ok) return { reviews: [] };
-    const parsed = (await res.json()) as ReviewsDatabase;
+    const result = await get(BLOB_PATHNAME, { access: "private" });
+    if (!result || result.statusCode !== 200 || !result.stream) {
+      return { reviews: [] };
+    }
+
+    const text = await new Response(result.stream).text();
+    const parsed = JSON.parse(text) as ReviewsDatabase;
     if (!Array.isArray(parsed.reviews)) return { reviews: [] };
     return parsed;
   } catch {
@@ -42,7 +49,7 @@ async function readBlobDatabase(): Promise<ReviewsDatabase> {
 
 async function writeBlobDatabase(db: ReviewsDatabase): Promise<void> {
   await put(BLOB_PATHNAME, JSON.stringify(db), {
-    access: "public",
+    access: "private",
     addRandomSuffix: false,
     allowOverwrite: true,
     contentType: "application/json",
