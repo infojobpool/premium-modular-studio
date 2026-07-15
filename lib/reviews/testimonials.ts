@@ -11,6 +11,7 @@ function toTestimonialItem(review: {
   role: string;
   photo?: string;
   photoAlt?: string;
+  videoUrl?: string;
 }): TestimonialItem {
   return {
     quote: review.quote,
@@ -18,6 +19,7 @@ function toTestimonialItem(review: {
     role: review.role,
     photo: review.photo ?? FALLBACK_PHOTO,
     photoAlt: review.photoAlt ?? `Portrait of ${review.name}`,
+    videoUrl: review.videoUrl,
   };
 }
 

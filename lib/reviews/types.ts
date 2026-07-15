@@ -7,6 +7,8 @@ export type CustomerReview = {
   role: string;
   photo?: string;
   photoAlt?: string;
+  /** Optional short clip uploaded on /review only. */
+  videoUrl?: string;
   city?: StudioLocationId;
   createdAt: string;
   published: boolean;
@@ -17,6 +19,7 @@ export type CustomerReviewInput = {
   name: string;
   role: string;
   photo?: string;
+  videoUrl?: string;
   city?: StudioLocationId;
   /** Honeypot — must be empty */
   company?: string;
@@ -28,6 +31,7 @@ export type TestimonialItem = {
   role: string;
   photo: string;
   photoAlt: string;
+  videoUrl?: string;
 };
 
 export type ReviewsDatabase = {

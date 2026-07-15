@@ -20,6 +20,7 @@ export function parseReviewInput(body: unknown): ParsedReviewInput {
   const name = typeof raw.name === "string" ? raw.name.trim() : "";
   const role = typeof raw.role === "string" ? raw.role.trim() : "";
   const photoRaw = typeof raw.photo === "string" ? raw.photo.trim() : "";
+  const videoRaw = typeof raw.videoUrl === "string" ? raw.videoUrl.trim() : "";
   const cityRaw = typeof raw.city === "string" ? raw.city.trim() : "";
 
   if (quote.length < 20 || quote.length > 600) {
@@ -48,6 +49,22 @@ export function parseReviewInput(body: unknown): ParsedReviewInput {
     }
   }
 
+  let videoUrl: string | undefined;
+  if (videoRaw) {
+    try {
+      const url = new URL(videoRaw);
+      if (url.protocol !== "https:") {
+        return { ok: false, error: "Video link must start with https://." };
+      }
+      if (!url.hostname.endsWith(".blob.vercel-storage.com")) {
+        return { ok: false, error: "Invalid review video." };
+      }
+      videoUrl = url.toString();
+    } catch {
+      return { ok: false, error: "Invalid video upload. Please try again." };
+    }
+  }
+
   let city: StudioLocationId | undefined;
   if (cityRaw === "hyderabad" || cityRaw === "bhubaneswar") {
     city = cityRaw;
@@ -57,6 +74,6 @@ export function parseReviewInput(body: unknown): ParsedReviewInput {
 
   return {
     ok: true,
-    data: { quote, name, role, photo, city },
+    data: { quote, name, role, photo, videoUrl, city },
   };
 }

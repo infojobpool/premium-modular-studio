@@ -86,6 +86,7 @@ export async function addCustomerReview(
     role: input.role,
     photo: input.photo,
     photoAlt: input.photo ? `Portrait of ${input.name}` : undefined,
+    videoUrl: input.videoUrl,
     city: input.city,
     createdAt: new Date().toISOString(),
     published: true,

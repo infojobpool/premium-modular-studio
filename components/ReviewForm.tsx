@@ -1,13 +1,44 @@
 "use client";
 
+import { upload } from "@vercel/blob/client";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState, type FormEvent } from "react";
-import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { Reveal } from "@/components/Reveal";
+import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import {
+  REVIEW_VIDEO_ACCEPT,
+  REVIEW_VIDEO_MAX_BYTES,
+  REVIEW_VIDEO_MAX_SECONDS,
+} from "@/lib/reviews/constants";
 
-type SubmitState = "idle" | "sending" | "done" | "error";
+type SubmitState = "idle" | "uploading" | "sending" | "done" | "error";
+
+function slugify(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 40);
+}
+
+async function readVideoDuration(file: File): Promise<number> {
+  return new Promise((resolve, reject) => {
+    const objectUrl = URL.createObjectURL(file);
+    const video = document.createElement("video");
+    video.preload = "metadata";
+    video.onloadedmetadata = () => {
+      URL.revokeObjectURL(objectUrl);
+      resolve(video.duration);
+    };
+    video.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      reject(new Error("Could not read video file."));
+    };
+    video.src = objectUrl;
+  });
+}
 
 export function ReviewForm() {
   const searchParams = useSearchParams();
@@ -17,6 +48,8 @@ export function ReviewForm() {
 
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [errorText, setErrorText] = useState("");
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [selectedVideoName, setSelectedVideoName] = useState("");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,20 +58,56 @@ export function ReviewForm() {
     const company = String(fd.get("company") ?? "");
     if (company.trim()) return;
 
-    setSubmitState("sending");
     setErrorText("");
+    setUploadProgress(0);
 
     const city = String(fd.get("city") ?? "").trim();
+    const name = String(fd.get("name") ?? "").trim();
+    const videoInput = form.elements.namedItem("video") as HTMLInputElement | null;
+    const videoFile = videoInput?.files?.[0];
+
+    let videoUrl: string | undefined;
 
     try {
+      if (videoFile && videoFile.size > 0) {
+        if (videoFile.size > REVIEW_VIDEO_MAX_BYTES) {
+          setSubmitState("error");
+          setErrorText("Video is too large. Please use a clip under 25 MB.");
+          return;
+        }
+
+        setSubmitState("uploading");
+        const duration = await readVideoDuration(videoFile);
+        if (duration > REVIEW_VIDEO_MAX_SECONDS) {
+          setSubmitState("error");
+          setErrorText(`Please use a clip under ${REVIEW_VIDEO_MAX_SECONDS} seconds.`);
+          return;
+        }
+
+        const ext = videoFile.name.split(".").pop()?.toLowerCase() || "mp4";
+        const pathname = `reviews/videos/${Date.now()}-${slugify(name || "client")}.${ext}`;
+
+        const blob = await upload(pathname, videoFile, {
+          access: "public",
+          handleUploadUrl: "/api/reviews/upload",
+          multipart: videoFile.size > 5 * 1024 * 1024,
+          onUploadProgress: ({ percentage }) => setUploadProgress(Math.round(percentage)),
+        });
+
+        videoUrl = blob.url;
+      }
+
+      setSubmitState("sending");
+
       const res = await fetch("/api/reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           quote: String(fd.get("quote") ?? ""),
-          name: String(fd.get("name") ?? ""),
+          name,
           role: String(fd.get("role") ?? ""),
           photo: String(fd.get("photo") ?? ""),
+          videoUrl,
           city: city || undefined,
           company,
         }),
@@ -52,10 +121,11 @@ export function ReviewForm() {
       }
 
       setSubmitState("done");
+      setSelectedVideoName("");
       form.reset();
     } catch {
       setSubmitState("error");
-      setErrorText("Network error. Please check your connection and try again.");
+      setErrorText("Upload failed. Please check your connection and try again.");
     }
   }
 
@@ -90,6 +160,8 @@ export function ReviewForm() {
       </motion.div>
     );
   }
+
+  const busy = submitState === "uploading" || submitState === "sending";
 
   return (
     <form
@@ -147,6 +219,40 @@ export function ReviewForm() {
           </div>
         </div>
 
+        <div>
+          <label htmlFor="video" className="text-sm font-semibold text-ink">
+            Short video clip (optional)
+          </label>
+          <input
+            id="video"
+            name="video"
+            type="file"
+            accept={REVIEW_VIDEO_ACCEPT}
+            disabled={busy}
+            onChange={(e) => setSelectedVideoName(e.target.files?.[0]?.name ?? "")}
+            className="mt-2 block w-full cursor-pointer rounded-2xl border border-dashed border-ink/15 bg-panel/20 px-4 py-4 text-sm text-muted file:mr-4 file:rounded-full file:border-0 file:bg-ink file:px-4 file:py-2 file:text-sm file:font-semibold file:text-canvas hover:border-accent/35"
+          />
+          <p className="mt-1 text-xs text-muted">
+            MP4, MOV, or WebM · up to {REVIEW_VIDEO_MAX_SECONDS} seconds · max 25 MB · shown on our website
+          </p>
+          {selectedVideoName ? (
+            <p className="mt-2 text-sm text-ink">
+              Selected: <span className="font-medium">{selectedVideoName}</span>
+            </p>
+          ) : null}
+          {submitState === "uploading" ? (
+            <div className="mt-3">
+              <div className="h-2 overflow-hidden rounded-full bg-panel">
+                <div
+                  className="h-full rounded-full bg-accent transition-all duration-300"
+                  style={{ width: `${uploadProgress}%` }}
+                />
+              </div>
+              <p className="mt-1 text-xs text-muted">Uploading video… {uploadProgress}%</p>
+            </div>
+          ) : null}
+        </div>
+
         <div className="grid gap-6 sm:grid-cols-2">
           <div>
             <label htmlFor="city" className="text-sm font-semibold text-ink">
@@ -197,10 +303,14 @@ export function ReviewForm() {
 
       <button
         type="submit"
-        disabled={submitState === "sending"}
+        disabled={busy}
         className="mt-8 w-full rounded-full bg-ink px-6 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-canvas transition hover:bg-ink/90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
-        {submitState === "sending" ? "Publishing…" : "Publish my review"}
+        {submitState === "uploading"
+          ? `Uploading video… ${uploadProgress}%`
+          : submitState === "sending"
+            ? "Publishing…"
+            : "Publish my review"}
       </button>
     </form>
   );
@@ -218,8 +328,8 @@ export function ReviewPageContent({ shareUrl }: { shareUrl: string }) {
             Share your Vivid In2wrio experience
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            Thank you for working with us. Your review goes live on our website as soon as you submit —
-            no login needed.
+            Thank you for working with us. Add a written review and, if you like, a short video clip of
+            your space — it goes live on our website as soon as you submit.
           </p>
         </Reveal>
 
