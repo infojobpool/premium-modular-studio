@@ -5,7 +5,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { FOCUS_RING_DARK } from "@/lib/ui-classes";
-import { vividCopy, vividTestimonials } from "@/lib/vivid-reference";
+import { vividCopy } from "@/lib/vivid-reference";
+import type { TestimonialItem } from "@/lib/reviews/types";
 import { Reveal } from "./Reveal";
 
 const AUTO_ADVANCE_MS = 5500;
@@ -19,13 +20,13 @@ function getInitials(name: string): string {
     .join("");
 }
 
-export function Testimonials() {
+export function Testimonials({ items }: { items: readonly TestimonialItem[] }) {
   const reduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [failedPhotos, setFailedPhotos] = useState<Record<number, boolean>>({});
-  const total = vividTestimonials.length;
-  const current = vividTestimonials[index]!;
+  const total = items.length;
+  const current = items[index]!;
   const showFallbackAvatar = failedPhotos[index];
   const initials = getInitials(current.name);
 
@@ -112,7 +113,7 @@ export function Testimonials() {
             role="tablist"
             aria-label="Choose testimonial"
           >
-            {vividTestimonials.map((_, i) => (
+            {items.map((_, i) => (
               <button
                 key={i}
                 type="button"

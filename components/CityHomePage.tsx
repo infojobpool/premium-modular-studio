@@ -15,7 +15,7 @@ import { PostHeroGuide } from "@/components/PostHeroGuide";
 import { SignatureWorkStrip } from "@/components/SignatureWorkStrip";
 import { StickyBookBar } from "@/components/StickyBookBar";
 import { StudioTrustStrip } from "@/components/StudioTrustStrip";
-import { Testimonials } from "@/components/Testimonials";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { WhyChoose } from "@/components/WhyChoose";
 
 /**
@@ -38,7 +38,7 @@ export function CityHomePage() {
       <BudgetCalculator />
       <HomeMagazineStrip />
       <PressStrip />
-      <Testimonials />
+      <TestimonialsSection />
       <HomeFaqStrip />
       <IntentConversionBand />
     </CityPageShell>
