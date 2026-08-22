@@ -7,7 +7,6 @@ import { Hero } from "@/components/Hero";
 import { HomeFaqStrip } from "@/components/HomeFaqStrip";
 import { HomeMagazineStrip } from "@/components/HomeMagazineStrip";
 import { MaterialsLibraryStrip } from "@/components/MaterialsLibraryStrip";
-import { PostHeroGuide } from "@/components/PostHeroGuide";
 import { SignatureWorkStrip } from "@/components/SignatureWorkStrip";
 import { StickyBookBar } from "@/components/StickyBookBar";
 import { StudioTrustStrip } from "@/components/StudioTrustStrip";
@@ -20,7 +19,6 @@ export function CityHomePage() {
   return (
     <CityPageShell stickyBar={<StickyBookBar />}>
       <Hero />
-      <PostHeroGuide />
       <StudioTrustStrip />
       <DesignIdeasStrip />
       <MaterialsLibraryStrip />
