@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { BlogArticle } from "@/components/BlogArticle";
 import { CityPageShell } from "@/components/CityPageShell";
-import { CitySubpageBackLink } from "@/components/CitySubpageBackLink";
 import { isStudioCity } from "@/lib/city-page-copy";
 import { BLOG_POSTS, getBlogPost } from "@/lib/blog-posts";
 import { STUDIO_LOCATIONS, type StudioLocationId } from "@/lib/locations";
@@ -46,7 +45,6 @@ export default async function CityBlogArticlePage({ params }: Props) {
 
   return (
     <CityPageShell>
-      <CitySubpageBackLink city={city} />
       <BlogArticle city={city} cityLabel={cityLabel} post={post} />
     </CityPageShell>
   );

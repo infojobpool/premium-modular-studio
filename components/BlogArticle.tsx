@@ -23,7 +23,9 @@ type Props = {
 
 export function BlogArticle({ city, cityLabel, post }: Props) {
   return (
-    <article className={`pb-24 pt-8 ${PAGE_GUTTER_X}`}>
+    <article
+      className={`pb-24 pt-[max(7.75rem,env(safe-area-inset-top)+6.5rem)] sm:pt-[max(8.25rem,env(safe-area-inset-top)+6.75rem)] lg:pt-28 ${PAGE_GUTTER_X}`}
+    >
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
           <Link
