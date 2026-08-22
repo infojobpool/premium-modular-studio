@@ -96,6 +96,27 @@
     color: inherit;
     text-shadow: none;
   }
+
+  /** Thin gold accent under editorial section titles */
+  .editorial-gold-rule {
+    display: block;
+    height: 1px;
+    width: 3.5rem;
+    background: linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--color-accent) 85%, var(--color-ink)),
+      transparent
+    );
+  }
+
+  .editorial-pull-quote {
+    border-left: 2px solid color-mix(in oklab, var(--color-accent) 70%, transparent);
+    padding-left: 1.25rem;
+    font-family: var(--font-family-display);
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: color-mix(in oklab, var(--color-ink) 88%, transparent);
+  }
 }
 
 /* subtle film grain — keep below content (z-10) and avoid mix-blend (breaks some embedded browsers) */

@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { getGalleryImagesForProject } from "@/lib/gallery-segmented";
+import { galleryImageMeta } from "@/lib/gallery-image-captions";
 import {
   GALLERY_TYPOLOGY_FILTERS,
   parseGalleryTypology,
@@ -190,6 +191,7 @@ export function GallerySegmented({ city, locationLabel }: Props) {
           >
             {images.map((src, idx) => {
               const isFeatured = idx === 0;
+              const meta = galleryImageMeta(src);
               return (
                 <button
                   key={`${project.slug}-${idx}-${src}`}
@@ -224,6 +226,18 @@ export function GallerySegmented({ city, locationLabel }: Props) {
                       Featured
                     </span>
                   ) : null}
+                  {meta?.tags.length ? (
+                    <span className="pointer-events-none absolute bottom-3 right-3 left-3 flex flex-wrap justify-end gap-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                      {meta.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/20 bg-ink/60 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-canvas/95 backdrop-blur-sm"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </span>
+                  ) : null}
                 </button>
               );
             })}
@@ -247,7 +261,12 @@ export function GallerySegmented({ city, locationLabel }: Props) {
         index={lightboxIndex}
         onClose={() => setLightboxIndex(null)}
         onIndexChange={setLightboxIndex}
+        cinema
         altForIndex={(i) => `${project?.alt ?? "Gallery"} — still ${i + 1}`}
+        captionForIndex={(i) => {
+          const src = images[i];
+          return src ? galleryImageMeta(src)?.caption : undefined;
+        }}
       />
     </section>
   );

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { ProjectPageDetail } from "@/lib/project-page-details";
 import { CONTENT_MAX, interiorImages, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { galleryImageMeta } from "@/lib/gallery-image-captions";
 import { ImageLightbox } from "./ImageLightbox";
 
 function dedupeUrls(urls: readonly string[]): string[] {
@@ -37,6 +38,8 @@ type Props = {
    * When provided, replaces the generic `interiorImages.gallery` index strip.
    */
   storyGallerySrcs?: readonly string[];
+  /** 1-based case study index for editorial labelling */
+  projectNumber?: number;
 };
 
 export function ProjectCaseStudy({
@@ -48,6 +51,7 @@ export function ProjectCaseStudy({
   detail,
   heroPoolIndex,
   storyGallerySrcs,
+  projectNumber,
 }: Props) {
   const legacyStripIndices = useMemo(() => {
     const raw = detail?.galleryStripIndices ?? [0, 1, 2, 3];
@@ -86,9 +90,15 @@ export function ProjectCaseStudy({
           <span className="text-ink">{project.name}</span>
         </nav>
 
-        <p className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-accent-strong">
-          {project.tag} · {cityLabel}
-        </p>
+        {projectNumber != null ? (
+          <p className="mt-8 text-[11px] font-bold uppercase tracking-[0.32em] text-accent-strong">
+            Project {String(projectNumber).padStart(2, "0")} · {project.tag} · {cityLabel}
+          </p>
+        ) : (
+          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-accent-strong">
+            {project.tag} · {cityLabel}
+          </p>
+        )}
 
         {detail ? (
           <p className="mt-3 text-sm font-medium text-muted">{detail.typology}</p>
@@ -105,7 +115,7 @@ export function ProjectCaseStudy({
         <p className="mt-6 max-w-2xl text-xl text-muted">{project.excerpt}</p>
 
         {detail?.lead ? (
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink/90">{detail.lead}</p>
+          <blockquote className="editorial-pull-quote mt-10 max-w-2xl">{detail.lead}</blockquote>
         ) : null}
 
         {detail?.facts?.length ? (
@@ -194,6 +204,11 @@ export function ProjectCaseStudy({
                           className="pointer-events-none object-cover transition duration-500 ease-out group-hover:scale-[1.03]"
                           sizes="(max-width: 1024px) 100vw, 33vw"
                         />
+                        {galleryImageMeta(src)?.tags[0] ? (
+                          <span className="pointer-events-none absolute bottom-2 left-2 rounded-full border border-white/20 bg-ink/55 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-canvas/95 opacity-0 transition group-hover:opacity-100">
+                            {galleryImageMeta(src)!.tags[0]}
+                          </span>
+                        ) : null}
                       </span>
                     </button>
                   </li>
@@ -243,9 +258,14 @@ export function ProjectCaseStudy({
         index={lightboxIndex}
         onClose={() => setLightboxIndex(null)}
         onIndexChange={setLightboxIndex}
+        cinema
         altForIndex={(i) => {
           if (i === 0) return project.alt;
           return `${project.name} — portfolio still ${i}`;
+        }}
+        captionForIndex={(i) => {
+          const src = lightboxImages[i];
+          return src ? galleryImageMeta(src)?.caption : undefined;
         }}
       />
     </article>

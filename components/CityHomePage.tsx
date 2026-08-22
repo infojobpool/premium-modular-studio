@@ -6,8 +6,8 @@ import { FounderSpotlight } from "@/components/FounderSpotlight";
 import { Hero } from "@/components/Hero";
 import { HomeFaqStrip } from "@/components/HomeFaqStrip";
 import { HomeMagazineStrip } from "@/components/HomeMagazineStrip";
-import { InspirationStrip } from "@/components/InspirationStrip";
 import { IntentConversionBand } from "@/components/IntentConversionBand";
+import { MaterialsLibraryStrip } from "@/components/MaterialsLibraryStrip";
 import { OfferLeadModal } from "@/components/OfferLeadModal";
 import { PressStrip } from "@/components/PressStrip";
 import { PromoBanner } from "@/components/PromoBanner";
@@ -29,12 +29,12 @@ export function CityHomePage() {
       <PostHeroGuide />
       <StudioTrustStrip />
       <DesignIdeasStrip />
+      <MaterialsLibraryStrip />
       <CityAwardsStrip />
-      <PromoBanner />
+      <SignatureWorkStrip />
       <WhyChoose />
       <FounderSpotlight variant="compact" />
-      <SignatureWorkStrip />
-      <InspirationStrip />
+      <PromoBanner />
       <BudgetCalculator />
       <HomeMagazineStrip />
       <PressStrip />
