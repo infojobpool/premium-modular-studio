@@ -13,13 +13,12 @@ const navItems = [
   { segment: "blog", label: "Blog" },
   { segment: "careers", label: "Careers" },
   { segment: "faq", label: "FAQ" },
-  { segment: "contact", label: "Book Free Consultation" },
 ] as const;
 
 const navGroups = [
   { eyebrow: "Studio", segments: ["about"] as const },
   { eyebrow: "Work", segments: ["gallery", "projects"] as const },
-  { eyebrow: "More", segments: ["blog", "careers", "faq", "contact"] as const },
+  { eyebrow: "More", segments: ["blog", "careers", "faq"] as const },
 ];
 
 type Props = {
@@ -101,7 +100,6 @@ export function MobileNavMenu({
                         const item = navItems.find((n) => n.segment === segment)!;
                         const href = `${cityBase}/${segment}`;
                         const active = isNavActive(segment);
-                        const isContact = segment === "contact";
                         const delay = groupIndex * 0.05 + i * 0.04;
 
                         return (
@@ -116,20 +114,16 @@ export function MobileNavMenu({
                               onClick={onClose}
                               aria-current={active ? "page" : undefined}
                               className={`group flex items-center justify-between rounded-xl px-3 py-3 transition ${FOCUS_RING} ${
-                                isContact
-                                  ? "mt-1 border border-accent/40 bg-accent/12 shadow-sm hover:bg-accent/18"
-                                  : active
-                                    ? "bg-ink/[0.06] text-ink"
-                                    : "text-ink/80 hover:bg-ink/[0.04] hover:text-ink"
+                                active
+                                  ? "bg-ink/[0.06] text-ink"
+                                  : "text-ink/80 hover:bg-ink/[0.04] hover:text-ink"
                               }`}
                             >
                               <span className="font-display text-[1.35rem] leading-none tracking-tight">
                                 {item.label}
                               </span>
                               <span
-                                className={`text-sm transition-transform duration-300 group-hover:translate-x-0.5 ${
-                                  isContact ? "text-accent-strong" : "text-ink/35"
-                                }`}
+                                className="text-sm text-ink/35 transition-transform duration-300 group-hover:translate-x-0.5"
                                 aria-hidden
                               >
                                 →
