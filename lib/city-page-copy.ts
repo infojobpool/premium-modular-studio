@@ -161,8 +161,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       {
         title: "In-studio joinery & lighting",
         subtitle: "Mock-ups and sign-off studies before materials hit your site.",
-        logoUrl:
-          "https://waytowebs.in/vivid/wp-content/uploads/2026/04/41-768x720.jpg",
+        logoUrl: "/gallery/portfolio/living-room-sectional-circular-art.png",
         logoAlt: "Joinery and interior craft — Vivid portfolio reference",
       },
       {
@@ -213,9 +212,9 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         name: "Coastal apartment living",
         alt: "Living room interior render",
         slug: "coastal-apartment-bbsr",
+        coverImage: vividGalleryCoverImageByProjectSlug["coastal-apartment-bbsr"],
         excerpt:
           "Compact coastal plan with resilient transitions, service core efficiency, and views preserved toward the bay.",
-        imageIndex: 5,
         cardLabel: "Apartment · Coastal · 2–3 BHK",
       },
       {
@@ -223,9 +222,9 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         name: "Modular kitchen & dining",
         alt: "Kitchen perspective",
         slug: "modular-kitchen-odisha",
+        coverImage: vividGalleryCoverImageByProjectSlug["modular-kitchen-odisha"],
         excerpt:
           "Open kitchen anchored with a deep canopy, appliance integration, and milestone-linked Hyderabad fabrication.",
-        imageIndex: 6,
         cardLabel: "Kitchen · Open plan · Odisha",
       },
       {
@@ -233,9 +232,9 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         name: "Wardrobe & study",
         alt: "Wardrobe interior vignette",
         slug: "wardrobe-study-patia",
+        coverImage: vividGalleryCoverImageByProjectSlug["wardrobe-study-patia"],
         excerpt:
           "Wardrobe and study in one disciplined volume—sliding screens, desk lighting, and tones tuned to monsoon daylight.",
-        imageIndex: 7,
         cardLabel: "Wardrobe · Patia · Study nook",
       },
     ],

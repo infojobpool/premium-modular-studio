@@ -1,5 +1,5 @@
 import type { GalleryTypology } from "@/lib/gallery-typology";
-import { vividGalleryCoverImageByProjectSlug, vividGalleryImagePool } from "@/lib/vivid-reference";
+import { vividGalleryCoverImageByProjectSlug, PORTFOLIO_GALLERY } from "@/lib/vivid-reference";
 
 export type DesignIdeaRoom = {
   label: string;
@@ -19,13 +19,13 @@ export const DESIGN_IDEA_ROOMS: readonly DesignIdeaRoom[] = [
   {
     label: "Living & dining",
     typology: "villa",
-    image: vividGalleryImagePool[1]!,
+    image: `${PORTFOLIO_GALLERY}/modern-dining-room-green-chairs.png`,
     alt: "Living and dining interior perspective",
   },
   {
     label: "Wardrobe & storage",
     typology: "apartment",
-    image: vividGalleryImagePool[2]!,
+    image: `${PORTFOLIO_GALLERY}/bedroom-wardrobe-tinted-glass.png`,
     alt: "Wardrobe and storage interior",
   },
   {
@@ -37,13 +37,13 @@ export const DESIGN_IDEA_ROOMS: readonly DesignIdeaRoom[] = [
   {
     label: "Apartment",
     typology: "apartment",
-    image: vividGalleryImagePool[4]!,
+    image: `${PORTFOLIO_GALLERY}/living-room-red-bird-art.png`,
     alt: "Apartment interior perspective",
   },
   {
     label: "Full home",
     typology: "all",
-    image: vividGalleryImagePool[0]!,
+    image: `${PORTFOLIO_GALLERY}/living-room-tv-feature-wall.png`,
     alt: "Full home interior composition",
   },
 ] as const;

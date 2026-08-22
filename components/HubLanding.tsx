@@ -16,7 +16,7 @@ const cards = [
     studio: "Flagship studio",
     area: "Secunderabad / Sainikpuri",
     href: "/hyderabad",
-    image: "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised442.png",
+    image: "/gallery/portfolio/living-room-tv-feature-wall.png",
     imageAlt: "Hyderabad studio — luxury bedroom interior",
     imagePosition: "object-[center_42%]" as const,
     hours: "10:00–19:00 IST",

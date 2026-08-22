@@ -4,6 +4,7 @@ import type { StudioLocationId } from "@/lib/locations";
 import {
   delhiKitchenSegmentedGallery,
   josephKitchenSegmentedGallery,
+  portfolioSegmentedGallery,
   sheebaVilla157SegmentedGallery,
   villa173WestSegmentedGallery,
   villa193EastSegmentedGallery,
@@ -18,10 +19,31 @@ const HYDERABAD_SEGMENTED_BY_SLUG: Record<string, readonly string[]> = {
   "villa-193-east-indukuri-lakeshore": villa193EastSegmentedGallery,
 };
 
+const BHUBANESWAR_SEGMENTED_BY_SLUG: Record<string, readonly string[]> = {
+  "coastal-apartment-bbsr": portfolioSegmentedGallery,
+  "modular-kitchen-odisha": delhiKitchenSegmentedGallery,
+  "wardrobe-study-patia": [
+    portfolioSegmentedGallery[7]!,
+    portfolioSegmentedGallery[8]!,
+    portfolioSegmentedGallery[6]!,
+    portfolioSegmentedGallery[1]!,
+    portfolioSegmentedGallery[2]!,
+    portfolioSegmentedGallery[3]!,
+    portfolioSegmentedGallery[0]!,
+    portfolioSegmentedGallery[4]!,
+    portfolioSegmentedGallery[5]!,
+    portfolioSegmentedGallery[9]!,
+  ],
+};
+
 /** Stills for the segmented gallery grid on `/[city]/gallery`. */
 export function getGalleryImagesForProject(city: StudioLocationId, slug: string): string[] {
   if (city === "hyderabad") {
     const row = HYDERABAD_SEGMENTED_BY_SLUG[slug];
+    if (row) return [...row];
+  }
+  if (city === "bhubaneswar") {
+    const row = BHUBANESWAR_SEGMENTED_BY_SLUG[slug];
     if (row) return [...row];
   }
   const projects = CITY_PAGE_COPY[city].galleryProjects;

@@ -1,10 +1,28 @@
 /**
- * Segmented gallery stills parsed from https://waytowebs.in/vivid/gallery/
- * (Elementor `data-elementor-lightbox-slideshow` ids).
- *
- * Delhi Kitchen stills self-hosted under `public/gallery/delhi-kitchen/`.
+ * Segmented gallery stills — portfolio renders self-hosted under `public/gallery/portfolio/`.
+ * Legacy Waytowebs stills retained as supplementary frames where noted.
  */
+import { PORTFOLIO_GALLERY } from "./vivid-reference";
+
+const P = PORTFOLIO_GALLERY;
+
+export const portfolioSegmentedGallery = [
+  `${P}/living-room-tv-feature-wall.png`,
+  `${P}/modern-dining-room-green-chairs.png`,
+  `${P}/living-room-sectional-circular-art.png`,
+  `${P}/living-room-red-bird-art.png`,
+  `${P}/modular-kitchen-wood-beige.png`,
+  `${P}/galley-kitchen-samsung-fridge.png`,
+  `${P}/living-room-kitchenette-open-plan.png`,
+  `${P}/master-bedroom-geometric-panel.png`,
+  `${P}/bedroom-wardrobe-tinted-glass.png`,
+  `${P}/bedroom-tan-headboard-wardrobe.png`,
+] as const;
+
 export const delhiKitchenSegmentedGallery = [
+  `${P}/modular-kitchen-wood-beige.png`,
+  `${P}/galley-kitchen-samsung-fridge.png`,
+  `${P}/living-room-kitchenette-open-plan.png`,
   "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.11.png",
   "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.9.png",
   "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised2.png",
@@ -16,6 +34,9 @@ export const delhiKitchenSegmentedGallery = [
 ] as const;
 
 export const josephKitchenSegmentedGallery = [
+  `${P}/galley-kitchen-samsung-fridge.png`,
+  `${P}/modular-kitchen-wood-beige.png`,
+  `${P}/living-room-kitchenette-open-plan.png`,
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/kitchen-option-1.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/kitchen-option-2.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/kitchen-option-3.jpg",
@@ -24,6 +45,12 @@ export const josephKitchenSegmentedGallery = [
 ] as const;
 
 export const sheebaVilla157SegmentedGallery = [
+  `${P}/master-bedroom-geometric-panel.png`,
+  `${P}/bedroom-wardrobe-tinted-glass.png`,
+  `${P}/bedroom-tan-headboard-wardrobe.png`,
+  `${P}/living-room-sectional-circular-art.png`,
+  `${P}/living-room-tv-feature-wall.png`,
+  `${P}/modern-dining-room-green-chairs.png`,
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/ground-floor-Secondary-bedroom-20250316-144027-1.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/ground-floor-Secondary-bedroom-20250316-144029-1.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/ground-floor-Secondary-bedroom-20250316-144414-1.jpg",
@@ -64,6 +91,9 @@ export const sheebaVilla157SegmentedGallery = [
 ] as const;
 
 export const villa173WestSegmentedGallery = [
+  `${P}/living-room-tv-feature-wall.png`,
+  `${P}/living-room-sectional-circular-art.png`,
+  `${P}/living-room-red-bird-art.png`,
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-173-West-Indukuri-Lakeshore-Renders-12.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-173-West-Indukuri-Lakeshore-Renders-9-1.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-173-West-Indukuri-Lakeshore-Renders-8-1.jpg",
@@ -99,6 +129,11 @@ export const villa173WestSegmentedGallery = [
 ] as const;
 
 export const villa193EastSegmentedGallery = [
+  `${P}/living-room-sectional-circular-art.png`,
+  `${P}/living-room-red-bird-art.png`,
+  `${P}/modern-dining-room-green-chairs.png`,
+  `${P}/living-room-kitchenette-open-plan.png`,
+  `${P}/master-bedroom-geometric-panel.png`,
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders-5-1.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders-4-1.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders-3-1.jpg",

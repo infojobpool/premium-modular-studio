@@ -7,40 +7,40 @@ export const VIVID_WP_MEDIA =
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04" as const;
 
 /**
- * Ordered pool for gallery / case studies (matches names listed on
- * https://waytowebs.in/vivid/gallery/ — first five slots map 1:1 to those projects).
- * Indices 0–2: former “gallery strip”; 3–8: service stills; 9: about; 10: hero master.
+ * Self-hosted portfolio stills (home hero, inspiration strip, gallery pool).
+ * Additional project-specific sets live in `lib/vivid-gallery-segmented.ts`.
  */
+export const PORTFOLIO_GALLERY = "/gallery/portfolio" as const;
+
 export const vividGalleryImagePool = [
-  `${VIVID_WP_MEDIA}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.1-1536x1068.jpg`,
-  `${VIVID_WP_MEDIA}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised2-1024x576.jpg`,
-  `${VIVID_WP_MEDIA}/41-768x720.jpg`,
-  `${VIVID_WP_MEDIA}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.4-1-768x588.jpg`,
-  `${VIVID_WP_MEDIA}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.8-1-768x768.jpg`,
-  `${VIVID_WP_MEDIA}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised2.1-768x720.jpg`,
-  `${VIVID_WP_MEDIA}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised2.2-768x720.jpg`,
-  `${VIVID_WP_MEDIA}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised43444-768x768.jpg`,
-  `${VIVID_WP_MEDIA}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.6-768x768.jpg`,
-  `${VIVID_WP_MEDIA}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.2-1024x588.jpg`,
-  `${VIVID_WP_MEDIA}/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1-1536x1198.jpg`,
+  `${PORTFOLIO_GALLERY}/living-room-tv-feature-wall.png`,
+  `${PORTFOLIO_GALLERY}/modern-dining-room-green-chairs.png`,
+  `${PORTFOLIO_GALLERY}/living-room-sectional-circular-art.png`,
+  `${PORTFOLIO_GALLERY}/living-room-red-bird-art.png`,
+  `${PORTFOLIO_GALLERY}/modular-kitchen-wood-beige.png`,
+  `${PORTFOLIO_GALLERY}/galley-kitchen-samsung-fridge.png`,
+  `${PORTFOLIO_GALLERY}/living-room-kitchenette-open-plan.png`,
+  `${PORTFOLIO_GALLERY}/master-bedroom-geometric-panel.png`,
+  `${PORTFOLIO_GALLERY}/bedroom-wardrobe-tinted-glass.png`,
+  `${PORTFOLIO_GALLERY}/bedroom-tan-headboard-wardrobe.png`,
 ] as const;
 
 export const vividImages = {
   /** Hero — architectural render */
-  hero: vividGalleryImagePool[10]!,
+  hero: vividGalleryImagePool[0]!,
   /** Signature work strip (first three pool frames) */
-  gallery: [vividGalleryImagePool[0]!, vividGalleryImagePool[1]!, vividGalleryImagePool[2]!] as const,
-  /** Six service cards — same project family as the reference site */
+  gallery: [vividGalleryImagePool[1]!, vividGalleryImagePool[2]!, vividGalleryImagePool[3]!] as const,
+  /** Six service cards — kitchens, living, bedrooms */
   services: [
-    vividGalleryImagePool[3]!,
     vividGalleryImagePool[4]!,
     vividGalleryImagePool[5]!,
     vividGalleryImagePool[6]!,
     vividGalleryImagePool[7]!,
     vividGalleryImagePool[8]!,
+    vividGalleryImagePool[9]!,
   ] as const,
   /** About strip */
-  about: vividGalleryImagePool[9]!,
+  about: vividGalleryImagePool[8]!,
 } as const;
 
 /** Editorial aligned with the public Vivid In2wrio site (Waytowebs build). */
@@ -168,26 +168,6 @@ export const vividTestimonials = [
   },
 ] as const;
 
-export const vividBlogPosts = [
-  {
-    title: "Premium Kitchen Design Ideas That Combine Style & Functionality",
-    href: "https://waytowebs.in/vivid/2026/02/26/premium-kitchen-design-ideas-that-combine-style-functionality/",
-    summary:
-      "Kitchen layouts, materials, and storage strategies that keep luxury aesthetics practical for daily use.",
-  },
-  {
-    title: "5 Architectural Planning Tips for a Modern Luxury Home",
-    href: "https://waytowebs.in/vivid/2026/02/26/5-architectural-planning-tips-for-a-modern-luxury-home/",
-    summary:
-      "Planning principles for circulation, light, services, and proportion before interiors and procurement begin.",
-  },
-  {
-    title: "Top Luxury Interior Design Trends in 2026 for Hyderabad Homes",
-    href: "https://waytowebs.in/vivid/2026/02/26/top-luxury-interior-design-trends-in-2026-for-hyderabad-homes/",
-    summary:
-      "Trend directions adapted for Hyderabad homes: warm palettes, integrated automation, and layered finishes.",
-  },
-] as const;
 
 export const vividCareerOpenings = [
   {
@@ -229,11 +209,14 @@ export const vividCareerOpenings = [
  * (the live WP gallery mis-links those columns to the wrong media).
  */
 export const vividGalleryCoverImageByProjectSlug = {
-  "delhi-kitchen-design": "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.11.png",
-  "joseph-kitchen-design": `${VIVID_WP_MEDIA}/kitchen-option-1.jpg`,
-  "sheeba-villa-157-indukuri": `${VIVID_WP_MEDIA}/ground-floor-Secondary-bedroom-20250316-144027-1.jpg`,
-  "villa-173-west-indukuri-lakeshore": `${VIVID_WP_MEDIA}/Villa-173-West-Indukuri-Lakeshore-Renders-12.jpg`,
-  "villa-193-east-indukuri-lakeshore": vividGalleryImagePool[0]!,
+  "delhi-kitchen-design": `${PORTFOLIO_GALLERY}/modular-kitchen-wood-beige.png`,
+  "joseph-kitchen-design": `${PORTFOLIO_GALLERY}/galley-kitchen-samsung-fridge.png`,
+  "sheeba-villa-157-indukuri": `${PORTFOLIO_GALLERY}/master-bedroom-geometric-panel.png`,
+  "villa-173-west-indukuri-lakeshore": `${PORTFOLIO_GALLERY}/living-room-tv-feature-wall.png`,
+  "villa-193-east-indukuri-lakeshore": `${PORTFOLIO_GALLERY}/living-room-sectional-circular-art.png`,
+  "coastal-apartment-bbsr": `${PORTFOLIO_GALLERY}/living-room-red-bird-art.png`,
+  "modular-kitchen-odisha": `${PORTFOLIO_GALLERY}/galley-kitchen-samsung-fridge.png`,
+  "wardrobe-study-patia": `${PORTFOLIO_GALLERY}/bedroom-wardrobe-tinted-glass.png`,
 } as const satisfies Record<string, string>;
 
 /** Names as listed on the Waytowebs gallery page (portfolio-wide). */
