@@ -5,12 +5,9 @@ import type { StudioLocationId } from "@/lib/locations";
 /** City sub-routes included in sitemap and future SEO admin. */
 export const CITY_SUBPAGES = [
   "about",
-  "services",
-  "process",
   "gallery",
   "projects",
   "contact",
-  "visit",
   "faq",
   "blog",
   "careers",
@@ -41,7 +38,7 @@ export function getPublicSitemapEntries(): SitemapEntry[] {
       entries.push({
         path: `/${city}/${sub}`,
         changeFrequency: "monthly",
-        priority: sub === "contact" || sub === "services" ? 0.8 : 0.7,
+        priority: sub === "contact" ? 0.85 : 0.7,
       });
     }
 

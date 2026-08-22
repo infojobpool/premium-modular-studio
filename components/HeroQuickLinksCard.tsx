@@ -11,20 +11,6 @@ type QuickItem = {
   Icon: () => ReactElement;
 };
 
-function IconBrush() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
-      <path
-        d="M4 20h4l10.5-10.5a2.5 2.5 0 00-3.5-3.5L4.5 16.5V20z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <path d="M13 6l5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-    </svg>
-  );
-}
-
 function IconGrid() {
   return (
     <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
@@ -51,33 +37,6 @@ function IconCube() {
   );
 }
 
-function IconEye() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
-      <path
-        d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-      <circle cx="12" cy="12" r="2.5" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  );
-}
-
-function IconPin() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
-      <path
-        d="M12 21s7-4.35 7-11a7 7 0 10-14 0c0 6.65 7 11 7 11z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      <circle cx="12" cy="10" r="2" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  );
-}
-
 function IconChat() {
   return (
     <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
@@ -91,15 +50,27 @@ function IconChat() {
   );
 }
 
+function IconFaq() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-accent-strong" fill="none" aria-hidden>
+      <path
+        d="M12 18h.01M9.5 9a2.5 2.5 0 115 0c0 2-2.5 2.5-2.5 4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
 function linksForCity(city: StudioLocationId): QuickItem[] {
   const base = `/${city}`;
   return [
-    { label: "Interior design", href: `${base}/services`, Icon: IconBrush },
-    { label: "Modular systems", href: `${base}/gallery`, Icon: IconGrid },
-    { label: "3D walkthroughs", href: `${base}/process`, Icon: IconEye },
+    { label: "Gallery", href: `${base}/gallery`, Icon: IconGrid },
     { label: "Case studies", href: `${base}/projects`, Icon: IconCube },
-    { label: "Studio visit", href: `${base}/visit`, Icon: IconPin },
-    { label: "Contact", href: `${base}/contact`, Icon: IconChat },
+    { label: "Book consultation", href: `${base}/contact`, Icon: IconChat },
+    { label: "FAQ", href: `${base}/faq`, Icon: IconFaq },
   ];
 }
 
@@ -112,7 +83,7 @@ export function HeroQuickLinksCard() {
     <aside className="pointer-events-auto w-full max-w-[20rem] rounded-2xl border border-white/55 bg-canvas/72 p-4 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] ring-1 ring-white/40 backdrop-blur-xl sm:rounded-2xl sm:p-5 lg:mb-1">
       <p className="font-display text-xl tracking-tight text-ink sm:text-[1.35rem]">Transform your space</p>
       <p className="mt-1.5 max-w-full text-pretty text-xs leading-snug text-muted break-words sm:text-[13px]">
-        Jump to services, gallery, process, or book time with the {location.label} studio.
+        Jump to gallery, case studies, or book a free consultation at the {location.label} studio.
       </p>
       <nav
         aria-label="Quick links"

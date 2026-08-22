@@ -10,17 +10,14 @@ const navItems = [
   { segment: "about", label: "About" },
   { segment: "gallery", label: "Gallery" },
   { segment: "projects", label: "Stories" },
-  { segment: "services", label: "Services" },
-  { segment: "process", label: "Process" },
   { segment: "blog", label: "Blog" },
   { segment: "careers", label: "Careers" },
   { segment: "faq", label: "FAQ" },
-  { segment: "visit", label: "Visit" },
-  { segment: "contact", label: "Contact" },
+  { segment: "contact", label: "Book Free Consultation" },
 ] as const;
 
 const navGroups = [
-  { eyebrow: "Studio", segments: ["about", "services", "process", "visit"] as const },
+  { eyebrow: "Studio", segments: ["about"] as const },
   { eyebrow: "Work", segments: ["gallery", "projects"] as const },
   { eyebrow: "More", segments: ["blog", "careers", "faq", "contact"] as const },
 ];
@@ -30,7 +27,6 @@ type Props = {
   cityBase: string;
   cityLabel: string;
   onClose: () => void;
-  onConsultation: () => void;
   isNavActive: (segment: string) => boolean;
 };
 
@@ -39,7 +35,6 @@ export function MobileNavMenu({
   cityBase,
   cityLabel,
   onClose,
-  onConsultation,
   isNavActive,
 }: Props) {
   const [mounted, setMounted] = useState(false);
@@ -154,16 +149,13 @@ export function MobileNavMenu({
                 transition={{ duration: 0.4, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 className="mt-6 border-t border-ink/8 pt-5"
               >
-                <button
-                  type="button"
-                  onClick={() => {
-                    onConsultation();
-                    onClose();
-                  }}
+                <Link
+                  href={`${cityBase}/contact`}
+                  onClick={onClose}
                   className={`inline-flex w-full items-center justify-center rounded-full bg-ink px-5 py-3.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-canvas shadow-[0_16px_40px_-12px_rgba(27,63,46,0.55)] transition hover:bg-ink/92 ${FOCUS_RING}`}
                 >
                   Book free consultation
-                </button>
+                </Link>
                 <Link
                   href={`${cityBase}/gallery`}
                   onClick={onClose}

@@ -69,9 +69,9 @@ export function Hero() {
                         href={`/${location.id}/contact`}
                         className="inline-flex w-full max-w-xl min-w-0 items-center justify-center rounded-full bg-accent px-5 py-4 text-center text-sm font-semibold uppercase leading-snug tracking-[0.14em] text-ink text-balance shadow-[0_20px_60px_-20px_rgba(217,162,41,0.55)] transition-shadow hover:shadow-[0_24px_70px_-18px_rgba(217,162,41,0.65)] sm:px-8 sm:tracking-[0.18em]"
                       >
-                        <span className="sm:hidden">Book design consultation · {location.label}</span>
+                        <span className="sm:hidden">Book free consultation · {location.label}</span>
                         <span className="hidden sm:inline">
-                          Schedule a private design consultation · {location.label}
+                          Book free consultation · {location.label}
                         </span>
                       </Link>
                     </motion.div>

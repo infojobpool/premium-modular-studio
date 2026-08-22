@@ -29,10 +29,10 @@ export function StudioMapSection() {
       <div className={`mx-auto grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-start ${CONTENT_MAX}`}>
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
-            Visit · {location.label}
+            Studio location · {location.label}
           </p>
           <h2 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl">
-            Studio & hours
+            Visit & hours
           </h2>
           <p className="mt-2 text-sm font-semibold uppercase tracking-[0.22em] text-muted">
             {location.regionLine}

@@ -30,7 +30,7 @@ export function MaterialsLibraryStrip() {
             align="between"
             trailing={
               <Link
-                href={`/${location.id}/visit`}
+                href={`/${location.id}/contact`}
                 className={`text-xs font-bold uppercase tracking-[0.18em] text-ink underline-offset-4 hover:underline ${FOCUS_RING}`}
               >
                 Book a sample review →

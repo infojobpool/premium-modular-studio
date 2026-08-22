@@ -127,11 +127,11 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
     focusKeyword: "interior design projects Hyderabad",
   },
   "hyderabad/contact": {
-    title: "Contact · Hyderabad",
+    title: "Book Free Consultation · Hyderabad",
     description:
-      "Book a private design consultation at our Hyderabad studio — phone, WhatsApp, email, and enquiry form for residential and commercial projects.",
-    focusKeyword: "contact interior designer Hyderabad",
-    keywords: ["book interior consultation Hyderabad", "Vivid In2wrio contact"],
+      "Book a free design consultation and plan your studio visit — phone, WhatsApp, email, enquiry form, and map for our Hyderabad studio in Sainikpuri.",
+    focusKeyword: "book interior consultation Hyderabad",
+    keywords: ["book interior consultation Hyderabad", "Vivid In2wrio contact", "studio visit Hyderabad"],
   },
   "hyderabad/visit": {
     title: "Visit · Hyderabad",
@@ -188,10 +188,10 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
     focusKeyword: "interior design projects Bhubaneswar",
   },
   "bhubaneswar/contact": {
-    title: "Contact · Bhubaneswar",
+    title: "Book Free Consultation · Bhubaneswar",
     description:
-      "Contact Vivid In2wrio Bhubaneswar — book a studio consultation via phone, WhatsApp, email, or the on-site enquiry form.",
-    focusKeyword: "contact interior designer Bhubaneswar",
+      "Book a free design consultation and plan your studio visit — phone, WhatsApp, email, enquiry form, and map for our Bhubaneswar studio on Puri Bypass.",
+    focusKeyword: "book interior consultation Bhubaneswar",
   },
   "bhubaneswar/visit": {
     title: "Visit · Bhubaneswar",

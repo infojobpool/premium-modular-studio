@@ -44,7 +44,7 @@ export function StickyBookBar() {
     >
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 rounded-2xl border border-canvas/15 bg-ink/95 px-4 py-3 shadow-[0_-8px_40px_-12px_rgba(0,0,0,0.35)] backdrop-blur-md sm:px-5 sm:py-3.5">
         <p className="min-w-0 text-xs font-medium leading-snug text-canvas/90 sm:text-sm">
-          <span className="font-semibold text-canvas">Book a private visit</span>
+          <span className="font-semibold text-canvas">Book free consultation</span>
           <span className="hidden text-canvas/70 sm:inline"> · {location.label}</span>
         </p>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">

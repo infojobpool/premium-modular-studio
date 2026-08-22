@@ -15,13 +15,10 @@ const navItems = [
   { segment: "about", label: "About" },
   { segment: "gallery", label: "Gallery" },
   { segment: "projects", label: "Stories" },
-  { segment: "services", label: "Services" },
-  { segment: "process", label: "Process" },
   { segment: "blog", label: "Blog" },
   { segment: "careers", label: "Careers" },
   { segment: "faq", label: "FAQ" },
-  { segment: "visit", label: "Visit" },
-  { segment: "contact", label: "Contact" },
+  { segment: "contact", label: "Book Free Consultation" },
 ] as const;
 
 export function Header() {
@@ -96,10 +93,6 @@ export function Header() {
       return pathname === href || pathname.startsWith(`${cityBase}/projects/`);
     }
     return pathname === href;
-  }
-
-  function openConsultationPopup() {
-    window.dispatchEvent(new CustomEvent("vivid:open-offer-modal"));
   }
 
   return (
@@ -202,13 +195,12 @@ export function Header() {
           })}
         </nav>
 
-        <button
-          type="button"
-          onClick={openConsultationPopup}
+        <Link
+          href={`${cityBase}/contact`}
           className={`order-4 hidden shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-canvas shadow-[0_8px_20px_-10px_rgba(0,0,0,0.45)] transition hover:opacity-95 2xl:inline-flex 2xl:px-5 2xl:text-[11px] 2xl:tracking-[0.18em] ${FOCUS_RING}`}
         >
           Book Free Consultation
-        </button>
+        </Link>
         </div>
         </div>
 
@@ -217,7 +209,6 @@ export function Header() {
           cityBase={cityBase}
           cityLabel={STUDIO_LOCATIONS[cityBase === "/bhubaneswar" ? "bhubaneswar" : "hyderabad"].label}
           onClose={() => setMobileMenuOpen(false)}
-          onConsultation={openConsultationPopup}
           isNavActive={isNavActive}
         />
       </div>
