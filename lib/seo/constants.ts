@@ -1,5 +1,5 @@
 /** Shared SEO constants — single place to tune for future admin/CMS. */
-export const BRAND_NAME = "Vivid In2wrio" as const;
+export const BRAND_NAME = "Vivid In2erio" as const;
 
 export const OG_IMAGE_WIDTH = 1200;
 export const OG_IMAGE_HEIGHT = 630;

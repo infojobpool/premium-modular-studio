@@ -30,7 +30,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     imageAlt: "Modern living room with warm neutral palette and layered lighting",
     pdfPath: "/blog/top-interior-design-trends-modern-homes.pdf",
     lead:
-      "Modern home interiors are no longer just about looking stylish. Today, homeowners want spaces that are beautiful, functional, comfortable, and designed around the way they actually live. At Vivid In2wrio, we believe good interior design brings together thoughtful planning, quality materials, smart storage, and a style that feels personal.",
+      "Modern home interiors are no longer just about looking stylish. Today, homeowners want spaces that are beautiful, functional, comfortable, and designed around the way they actually live. At Vivid In2erio, we believe good interior design brings together thoughtful planning, quality materials, smart storage, and a style that feels personal.",
     sections: [
       {
         type: "heading",
@@ -141,7 +141,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "Perhaps the most important trend is personalization. There is no single interior style that works for every homeowner. A successful home interior should consider the family's lifestyle, daily routines, storage requirements, preferences, available space, and budget. At Vivid In2wrio, our approach is to understand these requirements first and then create interiors that combine design, functionality, quality, and individuality.",
+        text: "Perhaps the most important trend is personalization. There is no single interior style that works for every homeowner. A successful home interior should consider the family's lifestyle, daily routines, storage requirements, preferences, available space, and budget. At Vivid In2erio, our approach is to understand these requirements first and then create interiors that combine design, functionality, quality, and individuality.",
       },
       {
         type: "heading",
@@ -187,7 +187,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "At Vivid In2wrio, we sign off appliance positions, services, and joinery in 3D before fabrication — so the kitchen you approve is the kitchen that arrives on site.",
+        text: "At Vivid In2erio, we sign off appliance positions, services, and joinery in 3D before fabrication — so the kitchen you approve is the kitchen that arrives on site.",
       },
       {
         type: "paragraph",

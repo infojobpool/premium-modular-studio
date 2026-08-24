@@ -45,7 +45,7 @@ export const GLOBAL_PAGE_SEO: Record<"/" | "/projects" | "/privacy", PageSeoFiel
   "/": {
     title: "Choose your studio",
     description:
-      "Vivid In2wrio — premium & luxury interiors in Hyderabad and Bhubaneswar. Select your city for consultations, projects, and studio contact.",
+      "Vivid In2erio — premium & luxury interiors in Hyderabad and Bhubaneswar. Select your city for consultations, projects, and studio contact.",
     focusKeyword: "premium interiors Hyderabad Bhubaneswar",
     keywords: ["luxury interior design", "modular kitchen", "design studio India"],
   },
@@ -59,7 +59,7 @@ export const GLOBAL_PAGE_SEO: Record<"/" | "/projects" | "/privacy", PageSeoFiel
   "/privacy": {
     title: "Privacy",
     description:
-      "How Vivid In2wrio handles information you share through this marketing site and enquiry forms.",
+      "How Vivid In2erio handles information you share through this marketing site and enquiry forms.",
     robots: { index: true, follow: true },
   },
 };
@@ -97,8 +97,8 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "hyderabad/about": {
     title: "About · Hyderabad",
     description:
-      "Meet the Vivid In2wrio Hyderabad studio — luxury residential and commercial interiors, founder-led design, and execution from Sainikpuri, Secunderabad.",
-    focusKeyword: "about Vivid In2wrio Hyderabad",
+      "Meet the Vivid In2erio Hyderabad studio — luxury residential and commercial interiors, founder-led design, and execution from Sainikpuri, Secunderabad.",
+    focusKeyword: "about Vivid In2erio Hyderabad",
     keywords: ["Hyderabad interior design studio", "luxury residential interiors"],
   },
   "hyderabad/services": {
@@ -131,12 +131,12 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
     description:
       "Book a free design consultation and plan your studio visit — phone, WhatsApp, email, enquiry form, and map for our Hyderabad studio in Sainikpuri.",
     focusKeyword: "book interior consultation Hyderabad",
-    keywords: ["book interior consultation Hyderabad", "Vivid In2wrio contact", "studio visit Hyderabad"],
+    keywords: ["book interior consultation Hyderabad", "Vivid In2erio contact", "studio visit Hyderabad"],
   },
   "hyderabad/visit": {
     title: "Visit · Hyderabad",
     description:
-      "Visit Vivid In2wrio Hyderabad — Phase II, Valluvar Nagar, Laxmipuri, Sainikpuri, Secunderabad 500094. Mon–Sat by appointment.",
+      "Visit Vivid In2erio Hyderabad — Phase II, Valluvar Nagar, Laxmipuri, Sainikpuri, Secunderabad 500094. Mon–Sat by appointment.",
     focusKeyword: "interior design studio Secunderabad",
   },
   "hyderabad/faq": {
@@ -148,20 +148,20 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "hyderabad/blog": {
     title: "Blog · Hyderabad",
     description:
-      "Editorial insights from Vivid In2wrio Hyderabad on planning, kitchens, luxury residential trends, and studio-led interior design.",
+      "Editorial insights from Vivid In2erio Hyderabad on planning, kitchens, luxury residential trends, and studio-led interior design.",
     focusKeyword: "interior design blog Hyderabad",
   },
   "hyderabad/careers": {
     title: "Careers · Hyderabad",
     description:
-      "Careers at Vivid In2wrio Hyderabad — interior design, architecture, 3D visualization, and site execution roles in Telangana.",
+      "Careers at Vivid In2erio Hyderabad — interior design, architecture, 3D visualization, and site execution roles in Telangana.",
     focusKeyword: "interior design jobs Hyderabad",
   },
   "bhubaneswar/about": {
     title: "About · Bhubaneswar",
     description:
-      "Meet the Vivid In2wrio Bhubaneswar studio — Odisha-led delivery, climate-aware specifications, and premium residential interiors on Puri Bypass.",
-    focusKeyword: "about Vivid In2wrio Bhubaneswar",
+      "Meet the Vivid In2erio Bhubaneswar studio — Odisha-led delivery, climate-aware specifications, and premium residential interiors on Puri Bypass.",
+    focusKeyword: "about Vivid In2erio Bhubaneswar",
   },
   "bhubaneswar/services": {
     title: "Services · Bhubaneswar",
@@ -196,7 +196,7 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "bhubaneswar/visit": {
     title: "Visit · Bhubaneswar",
     description:
-      "Visit Vivid In2wrio Bhubaneswar — Plot No. 2165/8180, Puri Bypass, Mangaraj Point, Bhubaneswar 751006. Mon–Sat by appointment.",
+      "Visit Vivid In2erio Bhubaneswar — Plot No. 2165/8180, Puri Bypass, Mangaraj Point, Bhubaneswar 751006. Mon–Sat by appointment.",
     focusKeyword: "interior design studio Bhubaneswar",
   },
   "bhubaneswar/faq": {
@@ -208,13 +208,13 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "bhubaneswar/blog": {
     title: "Blog · Bhubaneswar",
     description:
-      "Editorial insights from Vivid In2wrio Bhubaneswar on Odisha homes, planning, and luxury residential interior trends.",
+      "Editorial insights from Vivid In2erio Bhubaneswar on Odisha homes, planning, and luxury residential interior trends.",
     focusKeyword: "interior design blog Bhubaneswar",
   },
   "bhubaneswar/careers": {
     title: "Careers · Bhubaneswar",
     description:
-      "Careers at Vivid In2wrio Bhubaneswar — interior design, architecture, visualization, and execution roles in Odisha.",
+      "Careers at Vivid In2erio Bhubaneswar — interior design, architecture, visualization, and execution roles in Odisha.",
     focusKeyword: "interior design jobs Bhubaneswar",
   },
 };

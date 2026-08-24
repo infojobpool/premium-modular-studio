@@ -6,7 +6,7 @@ import { getSiteUrl } from "@/lib/site-url";
 export const metadata: Metadata = {
   title: "Share your review",
   description:
-    "Tell us about your Vivid In2wrio project — your review appears on our website right after you submit.",
+    "Tell us about your Vivid In2erio project — your review appears on our website right after you submit.",
   robots: { index: false, follow: true },
 };
 

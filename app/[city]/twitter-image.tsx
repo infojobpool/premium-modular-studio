@@ -7,7 +7,7 @@ import { STUDIO_LOCATIONS, type StudioLocationId } from "@/lib/locations";
 export const runtime = "nodejs";
 
 export const alt =
-  "Vivid In2wrio — premium and luxury interiors in Hyderabad and Bhubaneswar, design to delivery.";
+  "Vivid In2erio — premium and luxury interiors in Hyderabad and Bhubaneswar, design to delivery.";
 
 export const size = OG_IMAGE_SIZE;
 

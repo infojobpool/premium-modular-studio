@@ -66,7 +66,7 @@ export function buildHeroSlides(
       eyebrow: "Contact us",
       eyebrowHref: `/${cityId}/contact`,
       headline: `Premium & luxury interiors in ${cityLabel}`,
-      lead: "At Vivid In2wrio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
+      lead: "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
     },
     {
       kind: "image",

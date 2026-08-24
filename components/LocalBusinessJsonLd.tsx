@@ -21,7 +21,7 @@ export function LocalBusinessJsonLd({ city }: { city: StudioLocationId }) {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${url}#localbusiness`,
-    name: `Vivid In2wrio — ${loc.label}`,
+    name: `Vivid In2erio — ${loc.label}`,
     description,
     url,
     email: STUDIO_EMAIL,

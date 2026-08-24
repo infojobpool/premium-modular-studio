@@ -201,7 +201,7 @@ export function Footer() {
         }`}
       >
         © {new Date().getFullYear()}{" "}
-        {withBrandHighlight("Vivid In2wrio")}. Hyderabad & Bhubaneswar.{" "}
+        {withBrandHighlight("Vivid In2erio")}. Hyderabad & Bhubaneswar.{" "}
         <Link href="/privacy" className="group inline-flex text-ink/75 transition-colors duration-300 hover:text-ink">
           <span className={premiumLinkUnderlineClass}>Privacy</span>
         </Link>

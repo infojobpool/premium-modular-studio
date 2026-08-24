@@ -17,7 +17,7 @@ export const STUDIO_TEAM: readonly StudioTeamMember[] = [
     role: "CEO",
     studio: "both",
     imageSrc: "/founder-soubhagya-laxmi-nayak.png",
-    imageAlt: "Soubhagyalaxmi Nayak, CEO — Vivid In2wrio",
+    imageAlt: "Soubhagyalaxmi Nayak, CEO — Vivid In2erio",
   },
   {
     id: "chief-designer",
@@ -25,7 +25,7 @@ export const STUDIO_TEAM: readonly StudioTeamMember[] = [
     role: "Chief Designer & Architect · Hyderabad & Bhubaneswar",
     studio: "both",
     imageSrc: "/team/ar-ganesh.jpg",
-    imageAlt: "Ar. Ganesh, Chief Designer & Architect — Vivid In2wrio",
+    imageAlt: "Ar. Ganesh, Chief Designer & Architect — Vivid In2erio",
   },
   {
     id: "bhubaneswar-lead",
@@ -35,7 +35,7 @@ export const STUDIO_TEAM: readonly StudioTeamMember[] = [
     phone: "+91 78540 01410",
     phoneHref: "tel:+917854001410",
     imageSrc: "/partner-gargi-panda-bhubaneswar.png",
-    imageAlt: "Gargi Panda, Branch Head — Vivid In2wrio Bhubaneswar",
+    imageAlt: "Gargi Panda, Branch Head — Vivid In2erio Bhubaneswar",
   },
   {
     id: "odisha-assistant",
@@ -45,7 +45,7 @@ export const STUDIO_TEAM: readonly StudioTeamMember[] = [
     phone: "+91 95735 97839",
     phoneHref: "tel:+919573597839",
     imageSrc: "/team/ganesh-odisha.png",
-    imageAlt: "Ganesh, Odisha studio assistant — Vivid In2wrio",
+    imageAlt: "Ganesh, Odisha studio assistant — Vivid In2erio",
   },
 ] as const;
 

@@ -31,7 +31,7 @@ export function CityBlogPosts() {
           </h1>
           <p className="mt-4 max-w-2xl text-muted">
             {withBrandHighlight(
-              "Editorial from Vivid In2wrio on kitchens, planning, and luxury residential trends.",
+              "Editorial from Vivid In2erio on kitchens, planning, and luxury residential trends.",
             )}
           </p>
         </Reveal>

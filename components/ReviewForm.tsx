@@ -325,7 +325,7 @@ export function ReviewPageContent({ shareUrl }: { shareUrl: string }) {
             Reviews &amp; feedback
           </p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl tracking-tight text-ink sm:text-5xl md:text-6xl">
-            Share your Vivid In2wrio experience
+            Share your Vivid In2erio experience
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
             Thank you for working with us. Add a written review and, if you like, a short video clip of
