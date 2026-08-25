@@ -21,6 +21,11 @@ export function StudioTeamSection() {
 
   const members = [...STUDIO_TEAM].sort((a, b) => {
     const score = (m: (typeof STUDIO_TEAM)[number]) => {
+      if (location.id === "bhubaneswar") {
+        if (m.studio === "bhubaneswar") return 0;
+        if (m.studio === "both") return 1;
+        return 2;
+      }
       if (m.studio === "both") return 0;
       if (m.studio === location.id) return 1;
       return 2;
@@ -48,7 +53,7 @@ export function StudioTeamSection() {
           <p className="mt-5 text-lg leading-relaxed text-muted">{STUDIO_TEAM_INTRO.body}</p>
         </Reveal>
 
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {members.map((member, i) => (
             <motion.li
               key={member.id}
