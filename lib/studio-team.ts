@@ -42,6 +42,8 @@ export const STUDIO_TEAM: readonly StudioTeamMember[] = [
     name: "Sanjay Das",
     role: "Sales & Execution · Bhubaneswar",
     studio: "bhubaneswar",
+    phone: "+91 73963 79237",
+    phoneHref: "tel:+917396379237",
     imageSrc: "/team/sanjay-das-bhubaneswar.png",
     imageAlt: "Sanjay Das, Sales & Execution — Vivid In2erio Bhubaneswar",
   },
