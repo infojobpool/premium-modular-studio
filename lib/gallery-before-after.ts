@@ -3,15 +3,15 @@ import { vividGalleryImagePool } from "@/lib/vivid-reference";
 
 const MATTHEW_MAKEOVER = "/gallery/matthew-makeover";
 
-/** Real client exterior — daytime shell vs completed night-lit facade (Matthew villa). */
+/** Real client exterior — original facade vs completed daytime makeover (Matthew villa). */
 export const MATTHEW_EXTERIOR_BEFORE_AFTER = {
   beforeSrc: `${MATTHEW_MAKEOVER}/makeover-reference.png`,
-  afterSrc: `${MATTHEW_MAKEOVER}/exterior-night-facade.png`,
+  afterSrc: `${MATTHEW_MAKEOVER}/exterior-after-day.png`,
   beforeLabel: "Before",
   afterLabel: "After",
   headline: "Matthew's villa — exterior makeover rework",
   caption:
-    "Drag to compare the original facade with the completed transformation: architectural lighting, clean lines, and a presentation-worthy entry—then explore every room inside the case study.",
+    "Drag to compare the original facade with the completed transformation: glass balcony, clean white lines, and a modern entry—then explore every room inside the case study.",
   caseStudyHref: "/hyderabad/projects/matthew-villa-makeover",
   caseStudyLabel: "View Matthew's full home makeover →",
 } as const;
