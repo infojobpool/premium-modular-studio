@@ -1,13 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import { useId, useState } from "react";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import type { GalleryBeforeAfterProps } from "@/lib/gallery-before-after";
+import { FOCUS_RING } from "@/lib/ui-classes";
 import { Reveal } from "./Reveal";
 
-type Props = GalleryBeforeAfterProps;
+type Props = GalleryBeforeAfterProps & { className?: string };
 
 function compositeLayerStyle(src: string, side: "before" | "after"): CSSProperties {
   return {
@@ -19,7 +21,7 @@ function compositeLayerStyle(src: string, side: "before" | "after"): CSSProperti
 }
 
 export function BeforeAfterCompare(props: Props) {
-  const { headline, caption, beforeLabel, afterLabel } = props;
+  const { headline, caption, beforeLabel, afterLabel, caseStudyHref, caseStudyLabel, className } = props;
   const compositeSrc = "compositeSrc" in props ? props.compositeSrc : undefined;
   const beforeSrc = "beforeSrc" in props ? props.beforeSrc : undefined;
   const afterSrc = "afterSrc" in props ? props.afterSrc : undefined;
@@ -28,7 +30,7 @@ export function BeforeAfterCompare(props: Props) {
   const labelId = useId();
 
   return (
-    <section className={`py-16 ${PAGE_GUTTER_X}`} aria-labelledby={labelId}>
+    <section className={`py-16 ${PAGE_GUTTER_X}${className ? ` ${className}` : ""}`} aria-labelledby={labelId}>
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">Proof of craft</p>
@@ -36,6 +38,14 @@ export function BeforeAfterCompare(props: Props) {
             {headline}
           </h2>
           <p className="mt-3 max-w-2xl text-muted">{caption}</p>
+          {caseStudyHref ? (
+            <Link
+              href={caseStudyHref}
+              className={`mt-5 inline-flex text-sm font-semibold uppercase tracking-[0.18em] text-accent-strong underline-offset-4 hover:underline ${FOCUS_RING}`}
+            >
+              {caseStudyLabel ?? "View case study →"}
+            </Link>
+          ) : null}
         </Reveal>
 
         <div className="relative mt-10 overflow-hidden rounded-3xl border border-ink/10 bg-ink/5 shadow-sm">

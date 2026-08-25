@@ -4,6 +4,7 @@ import { CityPageShell } from "@/components/CityPageShell";
 import { DesignIdeasStrip } from "@/components/DesignIdeasStrip";
 import { FounderSpotlight } from "@/components/FounderSpotlight";
 import { Hero } from "@/components/Hero";
+import { HomeBeforeAfterStrip } from "@/components/HomeBeforeAfterStrip";
 import { HomeFaqStrip } from "@/components/HomeFaqStrip";
 import { HomeMagazineStrip } from "@/components/HomeMagazineStrip";
 import { MaterialsLibraryStrip } from "@/components/MaterialsLibraryStrip";
@@ -24,6 +25,7 @@ export function CityHomePage() {
       <MaterialsLibraryStrip />
       <CityAwardsStrip />
       <SignatureWorkStrip />
+      <HomeBeforeAfterStrip />
       <FounderSpotlight variant="compact" />
       <BudgetCalculator />
       <HomeMagazineStrip />
