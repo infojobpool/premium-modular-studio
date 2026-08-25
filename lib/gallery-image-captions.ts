@@ -50,6 +50,31 @@ const CAPTION_ENTRIES: ReadonlyArray<{ match: string; tags: string[]; caption: s
     tags: ["Pattern wallpaper", "Roman blinds", "Floating nightstand"],
     caption: "Guest bedroom — textured wallcovering and tailored wardrobe bank",
   },
+  {
+    match: "matthew-makeover/exterior-night",
+    tags: ["Façade lighting", "Exterior rework", "Night presentation"],
+    caption: "Matthew residence — exterior makeover with layered architectural lighting",
+  },
+  {
+    match: "matthew-makeover/kitchen-l-shape",
+    tags: ["Powder-blue joinery", "Marble backsplash", "Integrated appliances"],
+    caption: "Modular L-kitchen — powder-blue cabinets, marble splash, under-cabinet LED",
+  },
+  {
+    match: "matthew-makeover/stairwell-spiral",
+    tags: ["Globe pendants", "Glass railing", "Sculptural lighting"],
+    caption: "Stairwell — cascading globe pendants and glass guard rework",
+  },
+  {
+    match: "matthew-makeover/living-tv-feature",
+    tags: ["Marble panel", "Wood slats", "Cove LED"],
+    caption: "Living feature wall — marble TV panel with timber slats and cove lighting",
+  },
+  {
+    match: "matthew-makeover/bedroom-built-in",
+    tags: ["Window seat", "Gloss wardrobe", "Integrated storage"],
+    caption: "Bedroom — built-in wardrobe with window seat and drawer storage",
+  },
 ];
 
 export function galleryImageMeta(src: string): { tags: string[]; caption: string } | null {

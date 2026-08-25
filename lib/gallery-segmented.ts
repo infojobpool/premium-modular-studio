@@ -7,6 +7,7 @@ import {
   portfolioSegmentedGallery,
   sheebaVilla157SegmentedGallery,
   villa173WestSegmentedGallery,
+  matthewVillaMakeoverSegmentedGallery,
   villa193EastSegmentedGallery,
 } from "@/lib/vivid-gallery-segmented";
 
@@ -17,6 +18,7 @@ const HYDERABAD_SEGMENTED_BY_SLUG: Record<string, readonly string[]> = {
   "sheeba-villa-157-indukuri": sheebaVilla157SegmentedGallery,
   "villa-173-west-indukuri-lakeshore": villa173WestSegmentedGallery,
   "villa-193-east-indukuri-lakeshore": villa193EastSegmentedGallery,
+  "matthew-villa-makeover": matthewVillaMakeoverSegmentedGallery,
 };
 
 const BHUBANESWAR_SEGMENTED_BY_SLUG: Record<string, readonly string[]> = {

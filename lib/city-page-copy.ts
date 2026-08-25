@@ -127,6 +127,16 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
           "East lakeshore composition—premium standards from detailed planning through smart integrations and handover.",
         cardLabel: "Villa · Lakeshore · East wing",
       },
+      {
+        tag: "Matthew",
+        name: "Matthew Villa Makeover",
+        alt: "Full-home interior makeover — Matthew residence",
+        slug: "matthew-villa-makeover",
+        coverImage: vividGalleryCoverImageByProjectSlug["matthew-villa-makeover"],
+        excerpt:
+          "Complete home rework—from exterior lighting and living volumes through modular kitchens, bedrooms, and a sculptural stairwell.",
+        cardLabel: "Villa · Full home · Makeover rework",
+      },
     ],
     leadershipSpotlight: {
       eyebrow: "Founder spotlight",

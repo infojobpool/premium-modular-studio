@@ -217,6 +217,7 @@ export const vividGalleryCoverImageByProjectSlug = {
   "coastal-apartment-bbsr": `${PORTFOLIO_GALLERY}/living-room-red-bird-art.png`,
   "modular-kitchen-odisha": `${PORTFOLIO_GALLERY}/galley-kitchen-samsung-fridge.png`,
   "wardrobe-study-patia": `${PORTFOLIO_GALLERY}/bedroom-wardrobe-tinted-glass.png`,
+  "matthew-villa-makeover": "/gallery/matthew-makeover/exterior-night-facade.png",
 } as const satisfies Record<string, string>;
 
 /** Names as listed on the Waytowebs gallery page (portfolio-wide). */

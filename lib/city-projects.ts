@@ -28,6 +28,11 @@ export const PROJECT_STORY: Record<string, string[]> = {
     "Photoreal renders and walkthroughs carried approvals for hardware, stone, and lighting before production budgets were released.",
     "Project management stayed tight through precision execution to a premium handover aligned with the studio’s twin-city standards.",
   ],
+  "matthew-villa-makeover": [
+    "Matthew’s home needed a full makeover rework—living, dining, kitchen, bedrooms, and circulation treated as one programme rather than isolated upgrades.",
+    "We rebuilt the kitchen on an L-plan with powder-blue joinery, integrated appliances, and display cabinetry; the dining room and stairwell were opened to each other with marble floors and sculptural lighting.",
+    "Bedrooms received built-in wardrobes, window seats, and study niches; the stairwell gained a timber arch, glass guards, and cascading globe pendants. Exterior façade lighting completed the transformation.",
+  ],
   "coastal-apartment-bbsr": [
     "A compact coastal apartment needed maximum storage and resilient finishes without sacrificing openness toward the bay.",
     "We pushed services into a tight core, freed the perimeter for seating and views, and specified sealants and stone transitions for monsoon splash zones.",

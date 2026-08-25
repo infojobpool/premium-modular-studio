@@ -159,5 +159,25 @@ export const villa193EastSegmentedGallery = [
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders-revised43444.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders-revised442.jpg",
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04/41.jpg",
-  "https://waytowebs.in/vivid/wp-content/uploads/2026/04/Villa-193-East-Indukuri-Lakeshore-Rnders-revised44.jpg",
+] as const;
+
+export const matthewVillaMakeoverSegmentedGallery = [
+  "/gallery/matthew-makeover/exterior-night-facade.png",
+  "/gallery/matthew-makeover/living-room-grey-sofas.png",
+  "/gallery/matthew-makeover/living-dining-overview.png",
+  "/gallery/matthew-makeover/dining-room-marble-floor.png",
+  "/gallery/matthew-makeover/dining-kitchen-staircase.png",
+  "/gallery/matthew-makeover/living-tv-feature-wall.png",
+  "/gallery/matthew-makeover/staircase-wood-arch.png",
+  "/gallery/matthew-makeover/stairwell-spiral-chandelier.png",
+  "/gallery/matthew-makeover/false-ceiling-home-theater.png",
+  "/gallery/matthew-makeover/kitchen-l-shape-blue.png",
+  "/gallery/matthew-makeover/kitchen-teal-appliances.png",
+  "/gallery/matthew-makeover/kitchen-l-shape-wide.png",
+  "/gallery/matthew-makeover/kitchen-display-cabinet.png",
+  "/gallery/matthew-makeover/bedroom-dark-wood-bed.png",
+  "/gallery/matthew-makeover/bedroom-built-in-wardrobe.png",
+  "/gallery/matthew-makeover/bedroom-desk-workspace.png",
+  "/gallery/matthew-makeover/dressing-vanity-mirror.png",
+  "/gallery/matthew-makeover/makeover-reference.png",
 ] as const;
