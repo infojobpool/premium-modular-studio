@@ -3,6 +3,8 @@
  * https://waytowebs.in/vivid/ (WordPress media API).
  * Replace with self-hosted /public assets when you migrate off Waytowebs CDN.
  */
+import { torriTapovanCoverImage } from "@/lib/torri-tapovan-gallery";
+
 export const VIVID_WP_MEDIA =
   "https://waytowebs.in/vivid/wp-content/uploads/2026/04" as const;
 
@@ -218,6 +220,7 @@ export const vividGalleryCoverImageByProjectSlug = {
   "modular-kitchen-odisha": `${PORTFOLIO_GALLERY}/galley-kitchen-samsung-fridge.png`,
   "wardrobe-study-patia": `${PORTFOLIO_GALLERY}/bedroom-wardrobe-tinted-glass.png`,
   "matthew-villa-makeover": "/gallery/matthew-makeover/exterior-night-facade.png",
+  "torri-tapovan-villa": torriTapovanCoverImage,
 } as const satisfies Record<string, string>;
 
 /** Names as listed on the Waytowebs gallery page (portfolio-wide). */

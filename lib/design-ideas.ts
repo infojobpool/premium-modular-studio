@@ -1,4 +1,5 @@
 import type { GalleryTypology } from "@/lib/gallery-typology";
+import { torriTapovanCoverImage, TORRI_TAPOVAN_GALLERY } from "@/lib/torri-tapovan-gallery";
 import { vividGalleryCoverImageByProjectSlug, PORTFOLIO_GALLERY } from "@/lib/vivid-reference";
 
 export type DesignIdeaRoom = {
@@ -19,8 +20,8 @@ export const DESIGN_IDEA_ROOMS: readonly DesignIdeaRoom[] = [
   {
     label: "Living & dining",
     typology: "villa",
-    image: `${PORTFOLIO_GALLERY}/modern-dining-room-green-chairs.png`,
-    alt: "Living and dining interior perspective",
+    image: torriTapovanCoverImage,
+    alt: "Torri Tapovan Villa living and dining render",
   },
   {
     label: "Wardrobe & storage",
@@ -31,8 +32,8 @@ export const DESIGN_IDEA_ROOMS: readonly DesignIdeaRoom[] = [
   {
     label: "Villa",
     typology: "villa",
-    image: vividGalleryCoverImageByProjectSlug["sheeba-villa-157-indukuri"],
-    alt: "Villa interior render",
+    image: `${TORRI_TAPOVAN_GALLERY}/living-dining-hero.png`,
+    alt: "Torri Tapovan Villa interior render",
   },
   {
     label: "Apartment",

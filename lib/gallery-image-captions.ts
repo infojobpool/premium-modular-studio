@@ -71,9 +71,19 @@ const CAPTION_ENTRIES: ReadonlyArray<{ match: string; tags: string[]; caption: s
     caption: "Living feature wall — marble TV panel with timber slats and cove lighting",
   },
   {
-    match: "matthew-makeover/bedroom-built-in",
-    tags: ["Window seat", "Gloss wardrobe", "Integrated storage"],
-    caption: "Bedroom — built-in wardrobe with window seat and drawer storage",
+    match: "torri-tapovan-villa/living-dining-partition",
+    tags: ["Living & dining", "Bar volume", "Timber partition"],
+    caption: "Torri Tapovan Villa — open living, dining, and bar with arched partition",
+  },
+  {
+    match: "torri-tapovan-villa/modular-kitchen",
+    tags: ["U-kitchen", "Display cabinets", "Breakfast bar"],
+    caption: "Modular U-kitchen — glass uppers, task LED, and breakfast bar",
+  },
+  {
+    match: "torri-tapovan-villa/master-bedroom-glass",
+    tags: ["Tinted glass", "Boiserie", "Cove lighting"],
+    caption: "Master suite — glass wardrobes and scalloped headboard wall",
   },
 ];
 

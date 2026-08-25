@@ -1,4 +1,5 @@
 const P = "/gallery/portfolio";
+const TORRI = "/gallery/torri-tapovan-villa";
 
 export type MaterialSample = {
   name: string;
@@ -30,8 +31,8 @@ export const MATERIALS_LIBRARY: readonly MaterialSample[] = [
   {
     name: "Tinted glass",
     category: "Wardrobes",
-    image: `${P}/bedroom-wardrobe-tinted-glass.png`,
-    alt: "Tinted glass wardrobe doors",
+    image: `${TORRI}/master-bedroom-glass-wardrobe.png`,
+    alt: "Tinted glass wardrobe doors — Torri Tapovan Villa",
   },
   {
     name: "Geometric wood",

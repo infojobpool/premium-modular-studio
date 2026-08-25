@@ -53,6 +53,40 @@ export const PROJECT_PAGE_DETAILS: Record<string, ProjectPageDetail> = {
       },
     ],
   },
+  "torri-tapovan-villa": {
+    typology: "Villa · Full interior renders",
+    contextLine: "Torri Tapovan · villa living, bar, kitchen, and suites",
+    lead:
+      "Torri Tapovan is a full-villa interior study: open living and dining anchored by a bar and timber partition, a U-shaped kitchen with breakfast bar, and suites with glass wardrobes, window seats, and integrated study niches—all composed in one warm neutral palette.",
+    scope: [
+      "Living, dining, and bar volumes with layered ceiling and pendant lighting",
+      "Modular U-kitchen with display cabinets, task LED, and breakfast bar",
+      "Master suites with scalloped headboards, boiserie, and tinted-glass wardrobes",
+      "Secondary bedrooms with window seats, gallery walls, and desk-vanity joinery",
+      "Feature partitions integrating pooja, storage, and arched glass panels",
+      "Photoreal renders and finish schedules for client sign-off before site",
+    ],
+    facts: [
+      { label: "Programme", value: "Full villa interior" },
+      { label: "Deliverable", value: "Photoreal renders" },
+      { label: "Focus", value: "Living · kitchen · suites" },
+    ],
+    galleryStripIndices: [0, 1, 14, 16],
+    sections: [
+      {
+        heading: "Entertaining volume",
+        paragraphs: [
+          "Living and dining open to a bar with floating shelves, grandfather-clock joinery, and sculptural pendants—materials stay warm (walnut, marble, taupe upholstery) so the space reads cohesive from day to evening settings.",
+        ],
+      },
+      {
+        heading: "Private wings",
+        paragraphs: [
+          "Bedrooms pair glass-front wardrobes with window seats and study niches; cove and profile lighting is drawn into the documentation so installers know exactly where channels and drivers land before gypsum closes.",
+        ],
+      },
+    ],
+  },
   "joseph-kitchen-design": {
     typology: "Kitchen · Custom residence",
     contextLine: "Joseph residence · open kitchen to dining axis",

@@ -4,15 +4,17 @@ import type { StudioLocationId } from "@/lib/locations";
 import {
   delhiKitchenSegmentedGallery,
   josephKitchenSegmentedGallery,
+  matthewVillaMakeoverSegmentedGallery,
   portfolioSegmentedGallery,
   sheebaVilla157SegmentedGallery,
   villa173WestSegmentedGallery,
-  matthewVillaMakeoverSegmentedGallery,
   villa193EastSegmentedGallery,
 } from "@/lib/vivid-gallery-segmented";
+import { torriTapovanSegmentedGallery } from "@/lib/torri-tapovan-gallery";
 
 const HYDERABAD_SEGMENTED_BY_SLUG: Record<string, readonly string[]> = {
   "delhi-kitchen-design": delhiKitchenSegmentedGallery,
+  "torri-tapovan-villa": torriTapovanSegmentedGallery,
   /** Same WP set as Delhi column kitchen stills, reversed so the two kitchen tabs differ slightly in order. */
   "joseph-kitchen-design": [...josephKitchenSegmentedGallery].reverse(),
   "sheeba-villa-157-indukuri": sheebaVilla157SegmentedGallery,

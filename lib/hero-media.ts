@@ -1,5 +1,6 @@
 import { interiorImages } from "@/lib/interior-images";
 import type { StudioLocationId } from "@/lib/locations";
+import { torriTapovanCoverImage } from "@/lib/torri-tapovan-gallery";
 
 /** One hero frame: full-bleed media + overlay copy (Asian Paints–style rotating headlines). */
 export type HeroSlide =
@@ -67,6 +68,16 @@ export function buildHeroSlides(
       eyebrowHref: `/${cityId}/contact`,
       headline: `Premium & luxury interiors in ${cityLabel}`,
       lead: "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
+    },
+    {
+      kind: "image",
+      src: torriTapovanCoverImage,
+      alt: "Torri Tapovan Villa — living and dining render",
+      eyebrow: "Torri Tapovan Villa",
+      eyebrowHref: `/${cityId}/projects/torri-tapovan-villa`,
+      headline: "Villa-scale living, bar, and suites",
+      lead: "Full-home renders for Torri Tapovan—open entertaining volumes, modular kitchen, and bespoke bedrooms signed off before site mobilisation.",
+      statBadge: "Villa · photoreal renders",
     },
     {
       kind: "image",

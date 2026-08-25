@@ -1,4 +1,5 @@
 import type { StudioLocationId } from "@/lib/locations";
+import { torriTapovanCoverImage } from "@/lib/torri-tapovan-gallery";
 import { vividGalleryCoverImageByProjectSlug, vividGalleryPageIntro } from "@/lib/vivid-reference";
 
 export type CityFaq = { question: string; answer: string };
@@ -88,6 +89,16 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         cardLabel: "Kitchen · Delhi NCR · Modular",
       },
       {
+        tag: "Torri Tapovan",
+        name: "Torri Tapovan Villa",
+        alt: "Villa interior renders — Torri Tapovan",
+        slug: "torri-tapovan-villa",
+        coverImage: vividGalleryCoverImageByProjectSlug["torri-tapovan-villa"],
+        excerpt:
+          "Full-villa visualization—living and dining with bar, modular kitchen, and suites with bespoke wardrobes, window seats, and layered lighting.",
+        cardLabel: "Villa · Tapovan · Full interior renders",
+      },
+      {
         tag: "Joseph",
         name: "Joseph Kitchen Design",
         alt: "Kitchen design perspective",
@@ -171,8 +182,8 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       {
         title: "In-studio joinery & lighting",
         subtitle: "Mock-ups and sign-off studies before materials hit your site.",
-        logoUrl: "/gallery/portfolio/living-room-sectional-circular-art.png",
-        logoAlt: "Joinery and interior craft — Vivid portfolio reference",
+        logoUrl: torriTapovanCoverImage,
+        logoAlt: "Torri Tapovan Villa living and dining render — Vivid In2erio",
       },
       {
         title: "Single accountable team",

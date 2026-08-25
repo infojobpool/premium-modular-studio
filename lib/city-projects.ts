@@ -8,6 +8,11 @@ export const PROJECT_STORY: Record<string, string[]> = {
     "We locked layout, services, and joinery in detailed drawings and visualization so stone, hardware, and lighting were approved before fabrication—reducing site improvisation.",
     "Execution followed milestone-linked procurement and QC so handover matched the signed-off palette and tolerances.",
   ],
+  "torri-tapovan-villa": [
+    "Torri Tapovan Villa called for villa-scale living, dining, and bar volumes coordinated with private suites and service zones.",
+    "Photoreal renders locked joinery, lighting layers, and material palettes—from glass wardrobe banks to U-shaped kitchens—before procurement.",
+    "The Tapovan brief balanced entertaining spaces with calm bedrooms, window seats, and study niches signed off as one finish schedule.",
+  ],
   "joseph-kitchen-design": [
     "This kitchen needed a strong identity without sacrificing storage depth or service access behind tall units.",
     "Canopy lines, appliance banks, and open shelving were balanced in 3D studies until the rhythm felt calm from both the dining and circulation sides.",
