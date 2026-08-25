@@ -115,8 +115,12 @@ export function Header() {
             className={`relative z-20 shrink-0 self-start rounded-lg ${FOCUS_RING}`}
             aria-label={logoAria}
           >
-            <VividLogo size="header" className="lg:hidden" />
-            <VividLogo size="aside" className="hidden lg:inline-flex" />
+            <span className="lg:hidden">
+              <VividLogo size="header" />
+            </span>
+            <span className="hidden lg:inline-flex">
+              <VividLogo size="aside" />
+            </span>
           </Link>
 
           <div

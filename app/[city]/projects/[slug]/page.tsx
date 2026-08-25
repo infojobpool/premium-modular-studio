@@ -65,6 +65,7 @@ export default async function CityProjectDetail({ params }: Props) {
           afterLabel={MATTHEW_EXTERIOR_BEFORE_AFTER.afterLabel}
           headline={MATTHEW_EXTERIOR_BEFORE_AFTER.headline}
           caption={MATTHEW_EXTERIOR_BEFORE_AFTER.caption}
+          padForFixedHeader
           className="border-b border-ink/8 bg-panel/15"
         />
       ) : null}

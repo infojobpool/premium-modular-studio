@@ -9,7 +9,11 @@ import type { GalleryBeforeAfterProps } from "@/lib/gallery-before-after";
 import { FOCUS_RING } from "@/lib/ui-classes";
 import { Reveal } from "./Reveal";
 
-type Props = GalleryBeforeAfterProps & { className?: string };
+type Props = GalleryBeforeAfterProps & {
+  className?: string;
+  /** Clear the fixed site header when this block is the first content on the page. */
+  padForFixedHeader?: boolean;
+};
 
 function compositeLayerStyle(src: string, side: "before" | "after"): CSSProperties {
   return {
@@ -21,7 +25,16 @@ function compositeLayerStyle(src: string, side: "before" | "after"): CSSProperti
 }
 
 export function BeforeAfterCompare(props: Props) {
-  const { headline, caption, beforeLabel, afterLabel, caseStudyHref, caseStudyLabel, className } = props;
+  const {
+    headline,
+    caption,
+    beforeLabel,
+    afterLabel,
+    caseStudyHref,
+    caseStudyLabel,
+    className,
+    padForFixedHeader = false,
+  } = props;
   const compositeSrc = "compositeSrc" in props ? props.compositeSrc : undefined;
   const beforeSrc = "beforeSrc" in props ? props.beforeSrc : undefined;
   const afterSrc = "afterSrc" in props ? props.afterSrc : undefined;
@@ -30,7 +43,10 @@ export function BeforeAfterCompare(props: Props) {
   const labelId = useId();
 
   return (
-    <section className={`py-16 ${PAGE_GUTTER_X}${className ? ` ${className}` : ""}`} aria-labelledby={labelId}>
+    <section
+      className={`${PAGE_GUTTER_X} pb-16 ${padForFixedHeader ? "pt-28 sm:pt-32" : "py-16"}${className ? ` ${className}` : ""}`}
+      aria-labelledby={labelId}
+    >
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">Proof of craft</p>
