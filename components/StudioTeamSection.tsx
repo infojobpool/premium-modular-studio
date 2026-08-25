@@ -19,7 +19,9 @@ function initialsFor(name: string): string {
 export function StudioTeamSection() {
   const { location } = useStudioLocation();
 
-  const members = [...STUDIO_TEAM].sort((a, b) => {
+  const members = [...STUDIO_TEAM]
+    .filter((m) => (location.id === "bhubaneswar" ? m.studio === "bhubaneswar" : true))
+    .sort((a, b) => {
     const score = (m: (typeof STUDIO_TEAM)[number]) => {
       if (location.id === "bhubaneswar") {
         if (m.studio === "bhubaneswar") return 0;
