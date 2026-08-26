@@ -28,7 +28,7 @@ export default async function CityGalleryPage({ params }: Props) {
   return (
     <CityPageShell>
       <CitySubpageBackLink city={city} />
-      <BeforeAfterCompare {...beforeAfter} padForFixedHeader />
+      <BeforeAfterCompare {...beforeAfter} />
       <GallerySegmented city={city} locationLabel={STUDIO_LOCATIONS[city].label} />
       <InspirationStrip />
     </CityPageShell>

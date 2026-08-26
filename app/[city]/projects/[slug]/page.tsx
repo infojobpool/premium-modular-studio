@@ -79,6 +79,7 @@ export default async function CityProjectDetail({ params }: Props) {
         heroPoolIndex={heroPoolIndex}
         projectNumber={index + 1}
         storyGallerySrcs={storyGallerySrcs.length > 0 ? storyGallerySrcs : undefined}
+        padForFixedHeader={slug !== "matthew-villa-makeover"}
       />
       <Footer />
     </main>

@@ -6,6 +6,7 @@ import type { CSSProperties } from "react";
 import { useId, useState } from "react";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import type { GalleryBeforeAfterProps } from "@/lib/gallery-before-after";
+import { FIXED_HEADER_OFFSET_CLASS } from "@/lib/fixed-header-offset";
 import { FOCUS_RING } from "@/lib/ui-classes";
 import { Reveal } from "./Reveal";
 
@@ -44,7 +45,7 @@ export function BeforeAfterCompare(props: Props) {
 
   return (
     <section
-      className={`${PAGE_GUTTER_X} pb-16 ${padForFixedHeader ? "pt-[max(9rem,env(safe-area-inset-top)+7.5rem)] sm:pt-[max(9.5rem,env(safe-area-inset-top)+8rem)]" : "py-16"}${className ? ` ${className}` : ""}`}
+      className={`${PAGE_GUTTER_X} pb-16 ${padForFixedHeader ? FIXED_HEADER_OFFSET_CLASS : "py-16"}${className ? ` ${className}` : ""}`}
       aria-labelledby={labelId}
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>

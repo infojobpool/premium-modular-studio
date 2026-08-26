@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { ProjectPageDetail } from "@/lib/project-page-details";
 import { CONTENT_MAX, interiorImages, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { FIXED_HEADER_OFFSET_CLASS } from "@/lib/fixed-header-offset";
 import { galleryImageMeta } from "@/lib/gallery-image-captions";
 import { ImageLightbox } from "./ImageLightbox";
 
@@ -40,6 +41,8 @@ type Props = {
   storyGallerySrcs?: readonly string[];
   /** 1-based case study index for editorial labelling */
   projectNumber?: number;
+  /** When false, omit header clearance (page already offset above this block). */
+  padForFixedHeader?: boolean;
 };
 
 export function ProjectCaseStudy({
@@ -52,6 +55,7 @@ export function ProjectCaseStudy({
   heroPoolIndex,
   storyGallerySrcs,
   projectNumber,
+  padForFixedHeader = true,
 }: Props) {
   const legacyStripIndices = useMemo(() => {
     const raw = detail?.galleryStripIndices ?? [0, 1, 2, 3];
@@ -80,7 +84,9 @@ export function ProjectCaseStudy({
       : "mt-8 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3";
 
   return (
-    <article className={`pb-24 pt-28 ${PAGE_GUTTER_X}`}>
+    <article
+      className={`pb-24 ${padForFixedHeader ? FIXED_HEADER_OFFSET_CLASS : "pt-10"} ${PAGE_GUTTER_X}`}
+    >
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <nav className="text-sm text-muted">
           <Link href={`/${city}/projects`} className="hover:text-ink">
