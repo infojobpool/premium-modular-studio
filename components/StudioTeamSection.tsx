@@ -20,14 +20,21 @@ export function StudioTeamSection() {
   const { location } = useStudioLocation();
 
   const members = [...STUDIO_TEAM]
-    .filter((m) => (location.id === "bhubaneswar" ? m.studio === "bhubaneswar" : true))
+    .filter((m) => {
+      if (location.id === "bhubaneswar") {
+        return m.studio === "bhubaneswar" || m.id === "ceo";
+      }
+      return true;
+    })
     .sort((a, b) => {
     const score = (m: (typeof STUDIO_TEAM)[number]) => {
       if (location.id === "bhubaneswar") {
+        if (m.id === "ceo") return -1;
         if (m.studio === "bhubaneswar") return 0;
         if (m.studio === "both") return 1;
         return 2;
       }
+      if (m.id === "ceo") return -1;
       if (m.studio === "both") return 0;
       if (m.studio === location.id) return 1;
       return 2;

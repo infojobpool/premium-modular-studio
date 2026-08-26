@@ -13,11 +13,11 @@ export type StudioTeamMember = {
 export const STUDIO_TEAM: readonly StudioTeamMember[] = [
   {
     id: "ceo",
-    name: "Soubhagyalaxmi Nayak",
-    role: "CEO",
+    name: "Soubhagya Laxmi Nayakk",
+    role: "Founder & CEO",
     studio: "both",
-    imageSrc: "/founder-soubhagya-laxmi-nayak.png",
-    imageAlt: "Soubhagyalaxmi Nayak, CEO — Vivid In2erio",
+    imageSrc: "/team/soubhagya-laxmi-nayakk.png",
+    imageAlt: "Soubhagya Laxmi Nayakk, Founder & CEO — Vivid In2erio",
   },
   {
     id: "chief-designer",
