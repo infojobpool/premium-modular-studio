@@ -96,16 +96,16 @@ export function Hero() {
 
         <div className="min-w-0 px-6 sm:px-10 md:pl-0 md:pr-4 lg:pr-6 xl:pr-8">
           <div
-            className="relative min-h-[320px] overflow-visible rounded-[2rem] border border-ink/10 bg-ink shadow-[0_30px_80px_-40px_rgba(0,0,0,0.45)] sm:min-h-[380px] md:min-h-[460px] md:rounded-none md:rounded-l-[2.4rem] lg:min-h-[500px]"
+            className="relative min-h-[320px] overflow-hidden rounded-[2rem] border border-ink/10 bg-black shadow-[0_30px_80px_-40px_rgba(0,0,0,0.45)] sm:min-h-[380px] md:min-h-[460px] md:rounded-none md:rounded-l-[2.4rem] lg:min-h-[500px]"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
             onFocusCapture={() => setPaused(true)}
             onBlurCapture={() => setPaused(false)}
           >
-            <div className="absolute inset-0 overflow-hidden rounded-[2rem] md:rounded-none md:rounded-l-[2.4rem]">
-              {current ? (
+            <div className="absolute inset-0 overflow-hidden rounded-[inherit]">
+              {list.length > 0 ? (
                 <HeroSlideStage
-                  current={current}
+                  list={list}
                   safeIndex={safeIndex}
                   reduceMotion={reduceMotion}
                   fullscreen={false}
