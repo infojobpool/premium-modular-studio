@@ -8,6 +8,11 @@ export const PROJECT_STORY: Record<string, string[]> = {
     "We locked layout, services, and joinery in detailed drawings and visualization so stone, hardware, and lighting were approved before fabrication—reducing site improvisation.",
     "Execution followed milestone-linked procurement and QC so handover matched the signed-off palette and tolerances.",
   ],
+  "torri-tapovan-villa": [
+    "Torri Tapovan Villa called for villa-scale living, dining, and bar volumes coordinated with private suites and service zones.",
+    "Photoreal renders locked joinery, lighting layers, and material palettes—from glass wardrobe banks to U-shaped kitchens—before procurement.",
+    "The Tapovan brief balanced entertaining spaces with calm bedrooms, window seats, and study niches signed off as one finish schedule.",
+  ],
   "joseph-kitchen-design": [
     "This kitchen needed a strong identity without sacrificing storage depth or service access behind tall units.",
     "Canopy lines, appliance banks, and open shelving were balanced in 3D studies until the rhythm felt calm from both the dining and circulation sides.",
@@ -27,6 +32,11 @@ export const PROJECT_STORY: Record<string, string[]> = {
     "The east lakeshore villa set emphasized generous living volume, layered daylight, and joinery that ages quietly beside natural materials.",
     "Photoreal renders and walkthroughs carried approvals for hardware, stone, and lighting before production budgets were released.",
     "Project management stayed tight through precision execution to a premium handover aligned with the studio’s twin-city standards.",
+  ],
+  "matthew-villa-makeover": [
+    "Matthew’s home needed a full makeover rework—living, dining, kitchen, bedrooms, and circulation treated as one programme rather than isolated upgrades.",
+    "We rebuilt the kitchen on an L-plan with powder-blue joinery, integrated appliances, and display cabinetry; the dining room and stairwell were opened to each other with marble floors and sculptural lighting.",
+    "Bedrooms received built-in wardrobes, window seats, and study niches; the stairwell gained a timber arch, glass guards, and cascading globe pendants. Exterior façade lighting completed the transformation.",
   ],
   "coastal-apartment-bbsr": [
     "A compact coastal apartment needed maximum storage and resilient finishes without sacrificing openness toward the bay.",

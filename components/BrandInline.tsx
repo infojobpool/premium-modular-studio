@@ -3,10 +3,10 @@ import type { ReactNode } from "react";
 /** Wraps the “2” in `.brand-in2-digit` — matches surrounding type (logo lockup) site-wide. */
 export const brandIn2DigitClass = "brand-in2-digit";
 
-const BRAND_PATTERN = /Vivid In2wrio|Vivid In2erio|Vivid In2terio|In2wrio|In2erio|In2terio/g;
+const BRAND_PATTERN = /Vivid In2erio|Vivid In2terio|In2erio|In2terio/g;
 
 /**
- * Replaces “Vivid In2wrio” / “In2wrio” (and legacy “In2erio” / “In2terio” spellings) with markup that highlights the digit 2.
+ * Replaces “Vivid In2erio” / “In2erio” (and legacy “In2terio” spellings) with markup that highlights the digit 2.
  */
 export function withBrandHighlight(text: string): ReactNode {
   const matches = [...text.matchAll(BRAND_PATTERN)];
@@ -24,7 +24,7 @@ export function withBrandHighlight(text: string): ReactNode {
       <span key={`brand-${idx}-${i}`}>
         {isFull ? "Vivid In" : "In"}
         <span className={brandIn2DigitClass}>2</span>
-        wrio
+        erio
       </span>,
     );
     last = idx + raw.length;

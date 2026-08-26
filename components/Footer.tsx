@@ -137,14 +137,14 @@ export function Footer() {
                   <Link href={`/${location.id}/about`} className={premiumLinkClass}>
                     <span className={premiumLinkUnderlineClass}>About</span>
                   </Link>
-                  <Link href={`/${location.id}/services`} className={premiumLinkClass}>
-                    <span className={premiumLinkUnderlineClass}>Services</span>
-                  </Link>
-                  <Link href={`/${location.id}/process`} className={premiumLinkClass}>
-                    <span className={premiumLinkUnderlineClass}>Process</span>
+                  <Link href={`/${location.id}/gallery`} className={premiumLinkClass}>
+                    <span className={premiumLinkUnderlineClass}>Gallery</span>
                   </Link>
                   <Link href={`/${location.id}/projects`} className={premiumLinkClass}>
                     <span className={premiumLinkUnderlineClass}>Projects</span>
+                  </Link>
+                  <Link href={`/${location.id}/contact`} className={premiumLinkClass}>
+                    <span className={premiumLinkUnderlineClass}>Book consultation</span>
                   </Link>
                   <Link href={`/${location.id}/blog`} className={premiumLinkClass}>
                     <span className={premiumLinkUnderlineClass}>Blog</span>
@@ -201,7 +201,7 @@ export function Footer() {
         }`}
       >
         © {new Date().getFullYear()}{" "}
-        {withBrandHighlight("Vivid In2wrio")}. Hyderabad & Bhubaneswar.{" "}
+        {withBrandHighlight("Vivid In2erio")}. Hyderabad & Bhubaneswar.{" "}
         <Link href="/privacy" className="group inline-flex text-ink/75 transition-colors duration-300 hover:text-ink">
           <span className={premiumLinkUnderlineClass}>Privacy</span>
         </Link>

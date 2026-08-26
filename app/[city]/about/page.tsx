@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { CityPageShell } from "@/components/CityPageShell";
 import { CitySubpageBackLink } from "@/components/CitySubpageBackLink";
 import { About } from "@/components/About";
-import { FounderSpotlight } from "@/components/FounderSpotlight";
+import { StudioTeamSection } from "@/components/StudioTeamSection";
 import { isStudioCity } from "@/lib/city-page-copy";
 import type { StudioLocationId } from "@/lib/locations";
 import { buildMetadataForPath } from "@/lib/seo/page-seo";
@@ -25,7 +25,7 @@ export default async function CityAboutPage({ params }: Props) {
     <CityPageShell>
       <CitySubpageBackLink city={city} />
       <About />
-      <FounderSpotlight />
+      <StudioTeamSection />
     </CityPageShell>
   );
 }

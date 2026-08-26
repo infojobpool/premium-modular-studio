@@ -4,19 +4,14 @@ import { CityPageShell } from "@/components/CityPageShell";
 import { DesignIdeasStrip } from "@/components/DesignIdeasStrip";
 import { FounderSpotlight } from "@/components/FounderSpotlight";
 import { Hero } from "@/components/Hero";
+import { HomeBeforeAfterStrip } from "@/components/HomeBeforeAfterStrip";
 import { HomeFaqStrip } from "@/components/HomeFaqStrip";
 import { HomeMagazineStrip } from "@/components/HomeMagazineStrip";
-import { InspirationStrip } from "@/components/InspirationStrip";
-import { IntentConversionBand } from "@/components/IntentConversionBand";
-import { OfferLeadModal } from "@/components/OfferLeadModal";
-import { PressStrip } from "@/components/PressStrip";
-import { PromoBanner } from "@/components/PromoBanner";
-import { PostHeroGuide } from "@/components/PostHeroGuide";
+import { MaterialsLibraryStrip } from "@/components/MaterialsLibraryStrip";
 import { SignatureWorkStrip } from "@/components/SignatureWorkStrip";
 import { StickyBookBar } from "@/components/StickyBookBar";
 import { StudioTrustStrip } from "@/components/StudioTrustStrip";
-import { Testimonials } from "@/components/Testimonials";
-import { WhyChoose } from "@/components/WhyChoose";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 
 /**
  * City landing `/[city]` — hero, promos, calculator, and supporting sections.
@@ -24,23 +19,18 @@ import { WhyChoose } from "@/components/WhyChoose";
 export function CityHomePage() {
   return (
     <CityPageShell stickyBar={<StickyBookBar />}>
-      <OfferLeadModal />
       <Hero />
-      <PostHeroGuide />
       <StudioTrustStrip />
       <DesignIdeasStrip />
+      <MaterialsLibraryStrip />
       <CityAwardsStrip />
-      <PromoBanner />
-      <WhyChoose />
-      <FounderSpotlight variant="compact" />
       <SignatureWorkStrip />
-      <InspirationStrip />
+      <HomeBeforeAfterStrip />
+      <FounderSpotlight variant="compact" />
       <BudgetCalculator />
       <HomeMagazineStrip />
-      <PressStrip />
-      <Testimonials />
+      <TestimonialsSection />
       <HomeFaqStrip />
-      <IntentConversionBand />
     </CityPageShell>
   );
 }

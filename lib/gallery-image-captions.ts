@@ -1,0 +1,98 @@
+/** Craft tags and captions keyed by portfolio filename fragments. */
+const CAPTION_ENTRIES: ReadonlyArray<{ match: string; tags: string[]; caption: string }> = [
+  {
+    match: "modular-kitchen-wood-beige",
+    tags: ["Walnut veneer", "Quartz top", "Under-cabinet LED"],
+    caption: "Modular kitchen — wood canopy, integrated appliances, task lighting",
+  },
+  {
+    match: "galley-kitchen-samsung-fridge",
+    tags: ["Galley layout", "Soft-close", "Appliance tower"],
+    caption: "Galley kitchen with tall storage and integrated refrigeration",
+  },
+  {
+    match: "living-room-kitchenette",
+    tags: ["Open plan", "Subway tile", "Integrated storage"],
+    caption: "Open living with kitchenette joinery and layered ambient light",
+  },
+  {
+    match: "modern-dining-room",
+    tags: ["Forest green upholstery", "Oak table", "Statement pendant"],
+    caption: "Dining room — sculptural pendant, green chairs, warm neutral palette",
+  },
+  {
+    match: "living-room-sectional",
+    tags: ["Botanical art", "Nested tables", "Cove lighting"],
+    caption: "Living volume with circular wall art and nested bronze tables",
+  },
+  {
+    match: "living-room-tv-feature",
+    tags: ["Fluted panel", "Backlit TV wall", "Hidden LED"],
+    caption: "Feature wall — timber panel, integrated AV, profile lighting",
+  },
+  {
+    match: "living-room-red-bird",
+    tags: ["Open plan", "Studio layout", "Accent art"],
+    caption: "Compact living — open kitchen sightline and statement artwork",
+  },
+  {
+    match: "master-bedroom-geometric",
+    tags: ["Wood panel", "Cove LED", "Channel headboard"],
+    caption: "Master suite — geometric feature wall and warm ambient cove",
+  },
+  {
+    match: "bedroom-wardrobe-tinted",
+    tags: ["Tinted glass", "Sliding wardrobe", "Integrated lighting"],
+    caption: "Bedroom wardrobe — bronze glass doors and full-height storage",
+  },
+  {
+    match: "bedroom-tan-headboard",
+    tags: ["Pattern wallpaper", "Roman blinds", "Floating nightstand"],
+    caption: "Guest bedroom — textured wallcovering and tailored wardrobe bank",
+  },
+  {
+    match: "matthew-makeover/exterior-night",
+    tags: ["Façade lighting", "Exterior rework", "Night presentation"],
+    caption: "Matthew residence — exterior makeover with layered architectural lighting",
+  },
+  {
+    match: "matthew-makeover/kitchen-l-shape",
+    tags: ["Powder-blue joinery", "Marble backsplash", "Integrated appliances"],
+    caption: "Modular L-kitchen — powder-blue cabinets, marble splash, under-cabinet LED",
+  },
+  {
+    match: "matthew-makeover/stairwell-spiral",
+    tags: ["Globe pendants", "Glass railing", "Sculptural lighting"],
+    caption: "Stairwell — cascading globe pendants and glass guard rework",
+  },
+  {
+    match: "matthew-makeover/living-tv-feature",
+    tags: ["Marble panel", "Wood slats", "Cove LED"],
+    caption: "Living feature wall — marble TV panel with timber slats and cove lighting",
+  },
+  {
+    match: "torri-tapovan-villa/living-dining-partition",
+    tags: ["Living & dining", "Bar volume", "Timber partition"],
+    caption: "Torri Tapovan Villa — open living, dining, and bar with arched partition",
+  },
+  {
+    match: "torri-tapovan-villa/modular-kitchen",
+    tags: ["U-kitchen", "Display cabinets", "Breakfast bar"],
+    caption: "Modular U-kitchen — glass uppers, task LED, and breakfast bar",
+  },
+  {
+    match: "torri-tapovan-villa/master-bedroom-glass",
+    tags: ["Tinted glass", "Boiserie", "Cove lighting"],
+    caption: "Master suite — glass wardrobes and scalloped headboard wall",
+  },
+];
+
+export function galleryImageMeta(src: string): { tags: string[]; caption: string } | null {
+  const lower = src.toLowerCase();
+  for (const entry of CAPTION_ENTRIES) {
+    if (lower.includes(entry.match)) {
+      return { tags: [...entry.tags], caption: entry.caption };
+    }
+  }
+  return null;
+}

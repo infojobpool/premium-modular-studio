@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { CTA } from "@/components/CTA";
 import { CityPageShell } from "@/components/CityPageShell";
 import { CitySubpageBackLink } from "@/components/CitySubpageBackLink";
+import { StudioMapSection } from "@/components/StudioMapSection";
 import { isStudioCity } from "@/lib/city-page-copy";
 import type { StudioLocationId } from "@/lib/locations";
 import { buildMetadataForPath } from "@/lib/seo/page-seo";
@@ -24,6 +25,7 @@ export default async function CityContactPage({ params }: Props) {
     <CityPageShell>
       <CitySubpageBackLink city={city} />
       <CTA />
+      <StudioMapSection />
     </CityPageShell>
   );
 }

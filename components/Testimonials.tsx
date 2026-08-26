@@ -5,10 +5,12 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { FOCUS_RING_DARK } from "@/lib/ui-classes";
-import { vividCopy, vividTestimonials } from "@/lib/vivid-reference";
+import { vividCopy } from "@/lib/vivid-reference";
+import type { TestimonialItem } from "@/lib/reviews/types";
 import { Reveal } from "./Reveal";
 
 const AUTO_ADVANCE_MS = 5500;
+const AUTO_ADVANCE_VIDEO_MS = 14000;
 
 function getInitials(name: string): string {
   return name
@@ -19,23 +21,25 @@ function getInitials(name: string): string {
     .join("");
 }
 
-export function Testimonials() {
+export function Testimonials({ items }: { items: readonly TestimonialItem[] }) {
   const reduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [failedPhotos, setFailedPhotos] = useState<Record<number, boolean>>({});
-  const total = vividTestimonials.length;
-  const current = vividTestimonials[index]!;
-  const showFallbackAvatar = failedPhotos[index];
+  const total = items.length;
+  const current = items[index]!;
+  const hasVideo = Boolean(current.videoUrl);
+  const slideMs = hasVideo ? AUTO_ADVANCE_VIDEO_MS : AUTO_ADVANCE_MS;
+  const showFallbackAvatar = failedPhotos[index] && !hasVideo;
   const initials = getInitials(current.name);
 
   useEffect(() => {
     if (paused || reduceMotion) return;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % total);
-    }, AUTO_ADVANCE_MS);
+    }, slideMs);
     return () => window.clearInterval(id);
-  }, [paused, reduceMotion, total]);
+  }, [paused, reduceMotion, total, slideMs]);
 
   const slideTransition = reduceMotion
     ? { duration: 0 }
@@ -72,25 +76,41 @@ export function Testimonials() {
               aria-live={reduceMotion ? "off" : "polite"}
               className="relative rounded-[1.4rem] border border-canvas/16 bg-canvas/96 p-6 shadow-[0_16px_34px_-26px_rgba(0,0,0,0.7)] sm:p-8"
             >
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
-                <div className="relative mx-auto h-20 w-20 shrink-0 overflow-hidden rounded-full border border-ink/10 bg-panel shadow-inner sm:mx-0 sm:h-24 sm:w-24">
-                  {showFallbackAvatar ? (
-                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#b89a6f] to-[#8a7050] font-semibold text-canvas">
-                      {initials}
-                    </div>
-                  ) : (
-                    <Image
-                      src={current.photo}
-                      alt={current.photoAlt}
-                      fill
-                      sizes="96px"
-                      className="object-cover"
-                      loading="eager"
-                      onError={() => setFailedPhotos((prev) => ({ ...prev, [index]: true }))}
+              <div className={`flex flex-col gap-6 ${hasVideo ? "" : "sm:flex-row sm:items-start sm:gap-8"}`}>
+                {hasVideo ? (
+                  <div className="overflow-hidden rounded-[1.1rem] border border-ink/10 bg-ink shadow-inner">
+                    <video
+                      key={current.videoUrl}
+                      src={current.videoUrl}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="aspect-video w-full bg-ink object-cover"
+                      onPlay={() => setPaused(true)}
+                      onPause={() => setPaused(false)}
+                      onEnded={() => setPaused(false)}
                     />
-                  )}
-                </div>
-                <div className="min-w-0 flex-1 text-center sm:text-left">
+                  </div>
+                ) : (
+                  <div className="relative mx-auto h-20 w-20 shrink-0 overflow-hidden rounded-full border border-ink/10 bg-panel shadow-inner sm:mx-0 sm:h-24 sm:w-24">
+                    {showFallbackAvatar ? (
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#b89a6f] to-[#8a7050] font-semibold text-canvas">
+                        {initials}
+                      </div>
+                    ) : (
+                      <Image
+                        src={current.photo}
+                        alt={current.photoAlt}
+                        fill
+                        sizes="96px"
+                        className="object-cover"
+                        loading="eager"
+                        onError={() => setFailedPhotos((prev) => ({ ...prev, [index]: true }))}
+                      />
+                    )}
+                  </div>
+                )}
+                <div className={`min-w-0 flex-1 ${hasVideo ? "" : "text-center sm:text-left"}`}>
                   <span className="font-display text-5xl leading-none text-accent-strong/40 sm:text-6xl" aria-hidden>
                     “
                   </span>
@@ -112,7 +132,7 @@ export function Testimonials() {
             role="tablist"
             aria-label="Choose testimonial"
           >
-            {vividTestimonials.map((_, i) => (
+            {items.map((_, i) => (
               <button
                 key={i}
                 type="button"

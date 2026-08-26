@@ -11,7 +11,7 @@ const githubRepo = process.env.KEYSTATIC_GITHUB_REPO as `${string}/${string}` | 
 export default config({
   storage: githubRepo ? { kind: "github", repo: githubRepo } : { kind: "local" },
   ui: {
-    brand: { name: "Vivid In2wrio SEO" },
+    brand: { name: "Vivid In2erio SEO" },
     navigation: {
       "Page SEO": ["pageSeo"],
     },

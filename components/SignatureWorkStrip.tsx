@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
+import { EditorialSectionHeader } from "@/components/EditorialSectionHeader";
 import { CONTENT_MAX, PAGE_GUTTER_X, resolveGalleryTileSrc } from "@/lib/interior-images";
 import { FOCUS_RING } from "@/lib/ui-classes";
 import { ImageLightbox } from "./ImageLightbox";
@@ -31,21 +32,22 @@ export function SignatureWorkStrip() {
   return (
     <section className={`pt-8 pb-14 sm:pt-10 sm:pb-16 ${PAGE_GUTTER_X}`} aria-labelledby="signature-work-heading">
       <div className={`mx-auto ${CONTENT_MAX}`}>
-        <Reveal key={location.id} className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
-              Signature work · {location.label}
-            </p>
-            <h2 id="signature-work-heading" className="mt-4 font-display text-3xl tracking-tight text-ink sm:text-4xl md:text-5xl">
-              Recent case studies
-            </h2>
-          </div>
-          <Link
-            href={`/${location.id}/gallery#work`}
-            className={`text-sm font-semibold uppercase tracking-[0.2em] text-ink underline-offset-4 hover:underline md:text-right ${FOCUS_RING}`}
-          >
-            Open full gallery →
-          </Link>
+        <Reveal key={location.id}>
+          <EditorialSectionHeader
+            number="03"
+            eyebrow={`Signature work · ${location.label}`}
+            title="Recent case studies"
+            id="signature-work-heading"
+            align="between"
+            trailing={
+              <Link
+                href={`/${location.id}/gallery#work`}
+                className={`text-sm font-semibold uppercase tracking-[0.2em] text-ink underline-offset-4 hover:underline md:text-right ${FOCUS_RING}`}
+              >
+                Open full gallery →
+              </Link>
+            }
+          />
         </Reveal>
         <p className="mt-2 text-[11px] font-medium uppercase tracking-[0.16em] text-ink/45">
           <span className="lg:hidden">Tap a card to zoom · open case study below</span>

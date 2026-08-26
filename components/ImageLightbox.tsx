@@ -9,12 +9,23 @@ const emptySubscribe = () => () => {};
 type Props = {
   images: readonly string[];
   altForIndex: (index: number) => string;
+  captionForIndex?: (index: number) => string | undefined;
   index: number | null;
   onClose: () => void;
   onIndexChange: (index: number) => void;
+  /** Full-viewport cinema presentation for portfolio stills */
+  cinema?: boolean;
 };
 
-export function ImageLightbox({ images, altForIndex, index, onClose, onIndexChange }: Props) {
+export function ImageLightbox({
+  images,
+  altForIndex,
+  captionForIndex,
+  index,
+  onClose,
+  onIndexChange,
+  cinema = false,
+}: Props) {
   const titleId = useId();
   /** True on client immediately — avoids one frame where the dialog never mounts after first click. */
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
@@ -60,31 +71,36 @@ export function ImageLightbox({ images, altForIndex, index, onClose, onIndexChan
   if (!mounted || !open || index === null || count === 0) return null;
 
   const src = images[index]!;
+  const caption = captionForIndex?.(index);
 
   const panel = (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6"
+      className={`fixed inset-0 z-[9999] flex items-center justify-center ${cinema ? "p-0" : "p-3 sm:p-6"}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
     >
       <button
         type="button"
-        className="absolute inset-0 bg-ink/85 backdrop-blur-sm transition-opacity"
+        className={`absolute inset-0 backdrop-blur-sm transition-opacity ${cinema ? "bg-black/92" : "bg-ink/85"}`}
         aria-label="Close gallery"
         onClick={onClose}
       />
       <div
-        className="relative z-[1] flex w-full max-w-6xl flex-col items-stretch gap-4"
+        className={`relative z-[1] flex w-full flex-col items-stretch gap-4 ${cinema ? "h-full max-w-none" : "max-w-6xl"}`}
         onClick={(e) => e.stopPropagation()}
       >
         <p id={titleId} className="sr-only">
           Image {index + 1} of {count}. Swipe or use arrow keys or side buttons to navigate.
         </p>
 
-        <div className="relative mx-auto w-full">
+        <div className={`relative mx-auto w-full ${cinema ? "flex flex-1 flex-col justify-center px-2 sm:px-6" : ""}`}>
           <div
-            className="relative mx-auto aspect-[4/3] w-full max-h-[min(85dvh,920px)] min-h-[200px] overflow-hidden rounded-2xl border border-white/20 bg-ink/50 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.75)] ring-1 ring-white/10 sm:rounded-3xl"
+            className={
+              cinema
+                ? "relative mx-auto aspect-[16/10] w-full max-h-[min(88dvh,960px)] min-h-[200px] overflow-hidden rounded-lg border border-white/10 bg-black/40 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)] sm:rounded-xl"
+                : "relative mx-auto aspect-[4/3] w-full max-h-[min(85dvh,920px)] min-h-[200px] overflow-hidden rounded-2xl border border-white/20 bg-ink/50 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.75)] ring-1 ring-white/10 sm:rounded-3xl"
+            }
             onTouchStart={(e) => {
               touchStartX.current = e.changedTouches[0]?.clientX ?? null;
             }}
@@ -135,6 +151,11 @@ export function ImageLightbox({ images, altForIndex, index, onClose, onIndexChan
               </>
             ) : null}
           </div>
+          {caption ? (
+            <p className="mx-auto mt-4 max-w-2xl text-center font-display text-base leading-snug text-canvas/90 sm:text-lg">
+              {caption}
+            </p>
+          ) : null}
         </div>
 
         <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">

@@ -3,17 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { BLOG_POSTS, blogPostHref } from "@/lib/blog-posts";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { FOCUS_RING } from "@/lib/ui-classes";
-import { vividBlogPosts, vividGalleryImagePool } from "@/lib/vivid-reference";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
-
-const BLOG_IMAGES = [
-  vividGalleryImagePool[3]!,
-  vividGalleryImagePool[4]!,
-  vividGalleryImagePool[5]!,
-] as const;
 
 export function HomeMagazineStrip() {
   const { location } = useStudioLocation();
@@ -42,24 +36,22 @@ export function HomeMagazineStrip() {
         </Reveal>
 
         <ul className="mt-8 grid gap-4 sm:grid-cols-3 sm:gap-5">
-          {vividBlogPosts.map((post, i) => (
+          {BLOG_POSTS.map((post, i) => (
             <motion.li
-              key={post.href}
+              key={post.slug}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
             >
-              <a
-                href={post.href}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href={blogPostHref(location.id, post.slug)}
                 className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-canvas shadow-sm transition hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-md ${FOCUS_RING}`}
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-ink/5">
                   <Image
-                    src={BLOG_IMAGES[i]!}
-                    alt={post.title}
+                    src={post.image}
+                    alt={post.imageAlt}
                     fill
                     sizes="(max-width: 640px) 100vw, 33vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.03]"
@@ -74,7 +66,7 @@ export function HomeMagazineStrip() {
                     Read article →
                   </span>
                 </div>
-              </a>
+              </Link>
             </motion.li>
           ))}
         </ul>

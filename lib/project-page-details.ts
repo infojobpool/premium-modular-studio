@@ -53,6 +53,40 @@ export const PROJECT_PAGE_DETAILS: Record<string, ProjectPageDetail> = {
       },
     ],
   },
+  "torri-tapovan-villa": {
+    typology: "Villa · Full interior renders",
+    contextLine: "Torri Tapovan · villa living, bar, kitchen, and suites",
+    lead:
+      "Torri Tapovan is a full-villa interior study: open living and dining anchored by a bar and timber partition, a U-shaped kitchen with breakfast bar, and suites with glass wardrobes, window seats, and integrated study niches—all composed in one warm neutral palette.",
+    scope: [
+      "Living, dining, and bar volumes with layered ceiling and pendant lighting",
+      "Modular U-kitchen with display cabinets, task LED, and breakfast bar",
+      "Master suites with scalloped headboards, boiserie, and tinted-glass wardrobes",
+      "Secondary bedrooms with window seats, gallery walls, and desk-vanity joinery",
+      "Feature partitions integrating pooja, storage, and arched glass panels",
+      "Photoreal renders and finish schedules for client sign-off before site",
+    ],
+    facts: [
+      { label: "Programme", value: "Full villa interior" },
+      { label: "Deliverable", value: "Photoreal renders" },
+      { label: "Focus", value: "Living · kitchen · suites" },
+    ],
+    galleryStripIndices: [0, 1, 14, 16],
+    sections: [
+      {
+        heading: "Entertaining volume",
+        paragraphs: [
+          "Living and dining open to a bar with floating shelves, grandfather-clock joinery, and sculptural pendants—materials stay warm (walnut, marble, taupe upholstery) so the space reads cohesive from day to evening settings.",
+        ],
+      },
+      {
+        heading: "Private wings",
+        paragraphs: [
+          "Bedrooms pair glass-front wardrobes with window seats and study niches; cove and profile lighting is drawn into the documentation so installers know exactly where channels and drivers land before gypsum closes.",
+        ],
+      },
+    ],
+  },
   "joseph-kitchen-design": {
     typology: "Kitchen · Custom residence",
     contextLine: "Joseph residence · open kitchen to dining axis",
@@ -259,6 +293,42 @@ export const PROJECT_PAGE_DETAILS: Record<string, ProjectPageDetail> = {
         heading: "Small room discipline",
         paragraphs: [
           "Every millimetre is documented: track positions, reveal lines, and switch heights so the room feels composed even when luggage and laptops share the same afternoon.",
+        ],
+      },
+    ],
+  },
+  "matthew-villa-makeover": {
+    typology: "Villa · Full-home makeover",
+    contextLine: "Matthew residence · complete interior rework",
+    lead:
+      "Matthew’s brief was a full-home rework—not a room-by-room refresh. We reimagined the living and dining volumes, rebuilt the kitchen around a new L-plan, upgraded bedrooms and wardrobes, and introduced a sculptural stairwell with layered lighting from façade to false ceiling.",
+    scope: [
+      "Living, dining, and circulation replanned with new furniture rhythm and TV feature wall",
+      "Modular L-shaped kitchen with integrated appliances, display cabinetry, and task lighting",
+      "Primary and secondary bedrooms with built-in wardrobes, window seats, and study niches",
+      "Dressing vanity with full-height mirror and powder-blue joinery",
+      "Staircase rework — wood arch frame, glass railing, and cascading globe pendants",
+      "False ceiling with cove lighting and home-theatre projector integration",
+      "Exterior façade lighting and entry presentation",
+    ],
+    facts: [
+      { label: "Programme", value: "Full villa interior" },
+      { label: "Approach", value: "Makeover rework" },
+      { label: "Rooms", value: "Living · kitchen · beds · stair" },
+    ],
+    galleryStripIndices: [0, 1, 4, 8],
+    sections: [
+      {
+        heading: "Makeover strategy",
+        paragraphs: [
+          "Rather than patch individual rooms, we treated the home as one connected envelope—aligning floor finishes, ceiling language, and joinery tones so the rework reads as a single, intentional design.",
+          "Kitchen and dining were opened to each other while the stairwell became a focal moment: timber portal, glass guards, and pendant globes that carry light through both levels.",
+        ],
+      },
+      {
+        heading: "Outcome",
+        paragraphs: [
+          "A calm, contemporary home where every room shares the same premium standard—from the marble-floored dining table to the powder-blue kitchen and the night-lit exterior facade.",
         ],
       },
     ],

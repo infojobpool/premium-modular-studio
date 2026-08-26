@@ -1,5 +1,6 @@
 import type { GalleryTypology } from "@/lib/gallery-typology";
-import { vividGalleryCoverImageByProjectSlug, vividGalleryImagePool } from "@/lib/vivid-reference";
+import { torriTapovanCoverImage, TORRI_TAPOVAN_GALLERY } from "@/lib/torri-tapovan-gallery";
+import { vividGalleryCoverImageByProjectSlug, PORTFOLIO_GALLERY } from "@/lib/vivid-reference";
 
 export type DesignIdeaRoom = {
   label: string;
@@ -19,31 +20,31 @@ export const DESIGN_IDEA_ROOMS: readonly DesignIdeaRoom[] = [
   {
     label: "Living & dining",
     typology: "villa",
-    image: vividGalleryImagePool[1]!,
-    alt: "Living and dining interior perspective",
+    image: torriTapovanCoverImage,
+    alt: "Torri Tapovan Villa living and dining render",
   },
   {
     label: "Wardrobe & storage",
     typology: "apartment",
-    image: vividGalleryImagePool[2]!,
+    image: `${PORTFOLIO_GALLERY}/bedroom-wardrobe-tinted-glass.png`,
     alt: "Wardrobe and storage interior",
   },
   {
     label: "Villa",
     typology: "villa",
-    image: vividGalleryCoverImageByProjectSlug["sheeba-villa-157-indukuri"],
-    alt: "Villa interior render",
+    image: `${TORRI_TAPOVAN_GALLERY}/living-dining-hero.png`,
+    alt: "Torri Tapovan Villa interior render",
   },
   {
     label: "Apartment",
     typology: "apartment",
-    image: vividGalleryImagePool[4]!,
+    image: `${PORTFOLIO_GALLERY}/living-room-red-bird-art.png`,
     alt: "Apartment interior perspective",
   },
   {
     label: "Full home",
     typology: "all",
-    image: vividGalleryImagePool[0]!,
+    image: `${PORTFOLIO_GALLERY}/living-room-tv-feature-wall.png`,
     alt: "Full home interior composition",
   },
 ] as const;

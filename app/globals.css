@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Vivid In2wrio brand: forest, gold, cream */
+/* Vivid In2erio brand: forest, gold, cream */
 @theme {
   --color-canvas: #eae1c8;
   --color-ink: #1b3f2e;
@@ -79,7 +79,7 @@
   }
 
   /**
-   * “In2wrio” digit: matches surrounding type. Cormorant often uses old-style figures
+   * “In2erio” digit: matches surrounding type. Cormorant often uses old-style figures
    * (smaller “2”); lining-nums aligns digit height with caps like N / E.
    */
   .brand-in2-digit {
@@ -95,6 +95,27 @@
     margin-inline: 0;
     color: inherit;
     text-shadow: none;
+  }
+
+  /** Thin gold accent under editorial section titles */
+  .editorial-gold-rule {
+    display: block;
+    height: 1px;
+    width: 3.5rem;
+    background: linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--color-accent) 85%, var(--color-ink)),
+      transparent
+    );
+  }
+
+  .editorial-pull-quote {
+    border-left: 2px solid color-mix(in oklab, var(--color-accent) 70%, transparent);
+    padding-left: 1.25rem;
+    font-family: var(--font-family-display);
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: color-mix(in oklab, var(--color-ink) 88%, transparent);
   }
 }
 

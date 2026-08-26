@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { FIXED_HEADER_OFFSET_CLASS } from "@/lib/fixed-header-offset";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { STUDIO_LOCATIONS, type StudioLocationId } from "@/lib/locations";
 
 export function CitySubpageBackLink({ city }: { city: StudioLocationId }) {
   const label = STUDIO_LOCATIONS[city].label;
   return (
-    <div className={`border-b border-ink/8 bg-canvas/50 pb-5 pt-[max(7.75rem,env(safe-area-inset-top)+6.5rem)] sm:pt-[max(8.25rem,env(safe-area-inset-top)+6.75rem)] lg:pt-28 ${PAGE_GUTTER_X}`}>
+    <div className={`border-b border-ink/8 bg-canvas/50 pb-6 ${FIXED_HEADER_OFFSET_CLASS} ${PAGE_GUTTER_X}`}>
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Link
           href={`/${city}`}

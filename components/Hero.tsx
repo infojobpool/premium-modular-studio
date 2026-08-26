@@ -69,9 +69,9 @@ export function Hero() {
                         href={`/${location.id}/contact`}
                         className="inline-flex w-full max-w-xl min-w-0 items-center justify-center rounded-full bg-accent px-5 py-4 text-center text-sm font-semibold uppercase leading-snug tracking-[0.14em] text-ink text-balance shadow-[0_20px_60px_-20px_rgba(217,162,41,0.55)] transition-shadow hover:shadow-[0_24px_70px_-18px_rgba(217,162,41,0.65)] sm:px-8 sm:tracking-[0.18em]"
                       >
-                        <span className="sm:hidden">Book design consultation · {location.label}</span>
+                        <span className="sm:hidden">Book free consultation · {location.label}</span>
                         <span className="hidden sm:inline">
-                          Schedule a private design consultation · {location.label}
+                          Book free consultation · {location.label}
                         </span>
                       </Link>
                     </motion.div>
@@ -96,16 +96,16 @@ export function Hero() {
 
         <div className="min-w-0 px-6 sm:px-10 md:pl-0 md:pr-4 lg:pr-6 xl:pr-8">
           <div
-            className="relative min-h-[320px] overflow-visible rounded-[2rem] border border-ink/10 bg-ink shadow-[0_30px_80px_-40px_rgba(0,0,0,0.45)] sm:min-h-[380px] md:min-h-[460px] md:rounded-none md:rounded-l-[2.4rem] lg:min-h-[500px]"
+            className="relative min-h-[320px] overflow-hidden rounded-[2rem] border border-ink/10 bg-black shadow-[0_30px_80px_-40px_rgba(0,0,0,0.45)] sm:min-h-[380px] md:min-h-[460px] md:rounded-none md:rounded-l-[2.4rem] lg:min-h-[500px]"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
             onFocusCapture={() => setPaused(true)}
             onBlurCapture={() => setPaused(false)}
           >
-            <div className="absolute inset-0 overflow-hidden rounded-[2rem] md:rounded-none md:rounded-l-[2.4rem]">
-              {current ? (
+            <div className="absolute inset-0 overflow-hidden rounded-[inherit]">
+              {list.length > 0 ? (
                 <HeroSlideStage
-                  current={current}
+                  list={list}
                   safeIndex={safeIndex}
                   reduceMotion={reduceMotion}
                   fullscreen={false}

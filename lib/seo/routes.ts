@@ -1,15 +1,13 @@
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
+import { BLOG_POSTS } from "@/lib/blog-posts";
 import type { StudioLocationId } from "@/lib/locations";
 
 /** City sub-routes included in sitemap and future SEO admin. */
 export const CITY_SUBPAGES = [
   "about",
-  "services",
-  "process",
   "gallery",
   "projects",
   "contact",
-  "visit",
   "faq",
   "blog",
   "careers",
@@ -40,7 +38,15 @@ export function getPublicSitemapEntries(): SitemapEntry[] {
       entries.push({
         path: `/${city}/${sub}`,
         changeFrequency: "monthly",
-        priority: sub === "contact" || sub === "services" ? 0.8 : 0.7,
+        priority: sub === "contact" ? 0.85 : 0.7,
+      });
+    }
+
+    for (const post of BLOG_POSTS) {
+      entries.push({
+        path: `/${city}/blog/${post.slug}`,
+        changeFrequency: "monthly",
+        priority: 0.6,
       });
     }
 

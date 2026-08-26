@@ -1,8 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import type { HeroSlide } from "@/lib/hero-media";
+
+const HERO_CROSSFADE_MS = 550;
 
 const AMBIENT_INTERVAL_MS = 8500;
 const AMBIENT_FADE_MS = 1400;
@@ -105,54 +107,101 @@ function Chevron({ dir }: { dir: "left" | "right" }) {
   );
 }
 
+function HeroSlideVideo({
+  slide,
+  isActive,
+  fadeMs,
+  reduceMotion,
+}: {
+  slide: Extract<HeroSlide, { kind: "video" }>;
+  isActive: boolean;
+  fadeMs: number;
+  reduceMotion: boolean | null;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    if (isActive && !reduceMotion) {
+      void video.play().catch(() => undefined);
+    } else {
+      video.pause();
+    }
+  }, [isActive, reduceMotion]);
+
+  return (
+    <video
+      ref={ref}
+      className={`absolute inset-0 block size-full object-cover transition-opacity ease-in-out ${
+        isActive ? "z-[2] opacity-100" : "z-[1] opacity-0"
+      }`}
+      style={{ transitionDuration: `${fadeMs}ms` }}
+      src={slide.src}
+      poster={slide.poster}
+      muted
+      loop
+      playsInline
+      autoPlay={isActive && !reduceMotion}
+      aria-hidden={!isActive}
+      aria-label={isActive ? slide.alt : undefined}
+    />
+  );
+}
+
+/** Crossfades stacked slides so the frame never empties (avoids green fallback flashing through). */
 export function HeroSlideStage({
-  current,
+  list,
   safeIndex,
   reduceMotion,
   fullscreen,
 }: {
-  current: HeroSlide;
+  list: HeroSlide[];
   safeIndex: number;
   reduceMotion: boolean | null;
   fullscreen: boolean;
 }) {
+  const fadeMs = reduceMotion ? 0 : HERO_CROSSFADE_MS;
+
+  if (list.length === 0) return null;
+
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={`${current.kind}-${safeIndex}-${current.src}`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: reduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] }}
-        className="hero-slide-stage absolute inset-0 min-h-full min-w-full overflow-hidden"
-      >
-        {current.kind === "video" ? (
-          <video
-            className="h-full min-h-full w-full min-w-full object-cover"
-            src={current.src}
-            poster={current.poster}
-            muted
-            loop
-            playsInline
-            autoPlay={!reduceMotion}
-            aria-label={current.alt}
-          />
-        ) : (
+    <div className="hero-slide-stage absolute inset-0 min-h-full min-w-full overflow-hidden bg-black">
+      {list.map((slide, i) => {
+        const isActive = i === safeIndex;
+        if (slide.kind === "video") {
+          return (
+            <HeroSlideVideo
+              key={`video-${slide.src}`}
+              slide={slide}
+              isActive={isActive}
+              fadeMs={fadeMs}
+              reduceMotion={reduceMotion}
+            />
+          );
+        }
+        return (
           // eslint-disable-next-line @next/next/no-img-element -- Hero must bypass Next/Image+preflight `height:auto` so slides truly fill the viewport.
           <img
-            src={current.src}
-            alt={current.alt}
+            key={`image-${slide.src}`}
+            src={slide.src}
+            alt={isActive ? slide.alt : ""}
             sizes={fullscreen ? "100vw" : "(max-width: 1024px) 100vw, 55vw"}
             decoding="async"
-            fetchPriority={safeIndex === 0 ? "high" : "low"}
-            className="absolute inset-0 block size-full object-cover"
+            fetchPriority={i === 0 ? "high" : "low"}
+            loading={i === 0 ? "eager" : "lazy"}
+            aria-hidden={!isActive}
+            className={`absolute inset-0 block size-full object-cover transition-opacity ease-in-out ${
+              isActive ? "z-[2] opacity-100" : "z-[1] opacity-0"
+            }`}
+            style={{ transitionDuration: `${fadeMs}ms` }}
           />
-        )}
-        {!fullscreen ? (
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/18 via-transparent to-ink/5" />
-        ) : null}
-      </motion.div>
-    </AnimatePresence>
+        );
+      })}
+      {!fullscreen ? (
+        <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-ink/18 via-transparent to-ink/5" />
+      ) : null}
+    </div>
   );
 }
 
