@@ -112,15 +112,10 @@ export function Header() {
         <div className="flex min-w-0 flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
           <Link
             href={logoHref}
-            className={`relative z-20 shrink-0 self-start rounded-lg ${FOCUS_RING}`}
+            className={`relative z-20 block shrink-0 self-start rounded-lg ${FOCUS_RING}`}
             aria-label={logoAria}
           >
-            <span className="lg:hidden">
-              <VividLogo size="header" />
-            </span>
-            <span className="hidden lg:inline-flex">
-              <VividLogo size="aside" />
-            </span>
+            <VividLogo size="nav" />
           </Link>
 
           <div

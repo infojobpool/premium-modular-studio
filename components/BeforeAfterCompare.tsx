@@ -44,7 +44,7 @@ export function BeforeAfterCompare(props: Props) {
 
   return (
     <section
-      className={`${PAGE_GUTTER_X} pb-16 ${padForFixedHeader ? "pt-28 sm:pt-32" : "py-16"}${className ? ` ${className}` : ""}`}
+      className={`${PAGE_GUTTER_X} pb-16 ${padForFixedHeader ? "pt-[max(9rem,env(safe-area-inset-top)+7.5rem)] sm:pt-[max(9.5rem,env(safe-area-inset-top)+8rem)]" : "py-16"}${className ? ` ${className}` : ""}`}
       aria-labelledby={labelId}
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>
