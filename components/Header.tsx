@@ -104,7 +104,7 @@ export function Header() {
         duration: hidden ? 0.28 : 0.9,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className={`fixed inset-x-0 top-0 z-40 pt-2 sm:pt-3 ${PAGE_GUTTER_X} ${
+      className={`fixed inset-x-0 top-0 z-40 pt-[max(0.5rem,env(safe-area-inset-top))] sm:pt-[max(0.75rem,env(safe-area-inset-top))] ${PAGE_GUTTER_X} ${
         hidden ? "pointer-events-none" : ""
       }`}
     >

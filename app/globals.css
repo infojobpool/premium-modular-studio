@@ -23,6 +23,23 @@
 }
 
 @layer base {
+  :root {
+    /** Clears stacked mobile header (logo row + nav pill). Keep in sync with Header.tsx. */
+    --site-header-offset: max(11.5rem, env(safe-area-inset-top) + 9.25rem);
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --site-header-offset: max(11.75rem, env(safe-area-inset-top) + 9.5rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --site-header-offset: max(9rem, env(safe-area-inset-top) + 7.75rem);
+    }
+  }
+
   html {
     scroll-behavior: auto;
     scrollbar-width: thin;

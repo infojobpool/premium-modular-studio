@@ -6,7 +6,9 @@ import { STUDIO_LOCATIONS, type StudioLocationId } from "@/lib/locations";
 export function CitySubpageBackLink({ city }: { city: StudioLocationId }) {
   const label = STUDIO_LOCATIONS[city].label;
   return (
-    <div className={`border-b border-ink/8 bg-canvas/50 pb-6 ${FIXED_HEADER_OFFSET_CLASS} ${PAGE_GUTTER_X}`}>
+    <div
+      className={`relative z-10 border-b border-ink/8 bg-canvas/50 pb-6 ${FIXED_HEADER_OFFSET_CLASS} ${PAGE_GUTTER_X}`}
+    >
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Link
           href={`/${city}`}
