@@ -6,10 +6,10 @@ import {
   josephKitchenSegmentedGallery,
   matthewVillaMakeoverSegmentedGallery,
   portfolioSegmentedGallery,
-  sheebaVilla157SegmentedGallery,
   villa173WestSegmentedGallery,
   villa193EastSegmentedGallery,
 } from "@/lib/vivid-gallery-segmented";
+import { sheebaVilla157SegmentedGallery } from "@/lib/sheeba-villa-157-gallery";
 import { torriTapovanSegmentedGallery } from "@/lib/torri-tapovan-gallery";
 
 const HYDERABAD_SEGMENTED_BY_SLUG: Record<string, readonly string[]> = {

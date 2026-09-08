@@ -5,6 +5,7 @@ import { DesignIdeasStrip } from "@/components/DesignIdeasStrip";
 import { FounderSpotlight } from "@/components/FounderSpotlight";
 import { Hero } from "@/components/Hero";
 import { HomeBeforeAfterStrip } from "@/components/HomeBeforeAfterStrip";
+import { HomeSheebaVillaStrip } from "@/components/HomeSheebaVillaStrip";
 import { HomeFaqStrip } from "@/components/HomeFaqStrip";
 import { HomeMagazineStrip } from "@/components/HomeMagazineStrip";
 import { MaterialsLibraryStrip } from "@/components/MaterialsLibraryStrip";
@@ -22,6 +23,7 @@ export function CityHomePage() {
       <Hero />
       <StudioTrustStrip />
       <DesignIdeasStrip />
+      <HomeSheebaVillaStrip />
       <MaterialsLibraryStrip />
       <CityAwardsStrip />
       <SignatureWorkStrip />

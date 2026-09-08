@@ -1,5 +1,6 @@
 import { interiorImages } from "@/lib/interior-images";
 import type { StudioLocationId } from "@/lib/locations";
+import { sheebaVilla157CoverImage } from "@/lib/sheeba-villa-157-gallery";
 import { torriTapovanCoverImage } from "@/lib/torri-tapovan-gallery";
 
 /** One hero frame: full-bleed media + overlay copy (Asian Paints–style rotating headlines). */
@@ -68,6 +69,16 @@ export function buildHeroSlides(
       eyebrowHref: `/${cityId}/contact`,
       headline: `Premium & luxury interiors in ${cityLabel}`,
       lead: "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
+    },
+    {
+      kind: "image",
+      src: sheebaVilla157CoverImage,
+      alt: "Sheeba Villa 157 — living and dining render",
+      eyebrow: "Sheeba Villa 157 · Indukuri",
+      eyebrowHref: `/${cityId}/projects/sheeba-villa-157-indukuri`,
+      headline: "Indukuri villa — living, suites, and study",
+      lead: "Forty-seven photoreal stills across open entertaining volumes, master and guest wings, study, and service cores—one coordinated envelope signed off before site.",
+      statBadge: "Villa · Indukuri corridor",
     },
     {
       kind: "image",

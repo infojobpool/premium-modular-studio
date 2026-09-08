@@ -85,6 +85,31 @@ const CAPTION_ENTRIES: ReadonlyArray<{ match: string; tags: string[]; caption: s
     tags: ["Tinted glass", "Boiserie", "Cove lighting"],
     caption: "Master suite — glass wardrobes and scalloped headboard wall",
   },
+  {
+    match: "sheeba-villa-157/living-dining",
+    tags: ["Living & dining", "Circular rug", "Layered lighting"],
+    caption: "Sheeba Villa 157 — open living and dining with organic rug and cove lighting",
+  },
+  {
+    match: "sheeba-villa-157/master-bedroom",
+    tags: ["Marble panel", "Wood slats", "Cove LED"],
+    caption: "Master suite — marble feature wall with integrated wardrobe bank",
+  },
+  {
+    match: "sheeba-villa-157/study-workspace",
+    tags: ["Home office", "Navy shelf", "Floating desk"],
+    caption: "Study — floating desk with navy open shelving and integrated storage",
+  },
+  {
+    match: "sheeba-villa-157/secondary-bedroom",
+    tags: ["Guest suite", "Integrated wardrobe", "Window seat"],
+    caption: "Guest bedroom — built-in wardrobe and window seat with layered textiles",
+  },
+  {
+    match: "sheeba-villa-157/interior-17",
+    tags: ["Marble TV wall", "Open shelving", "Fluted band"],
+    caption: "Living feature wall — marble panels, recessed TV niche, and display shelving",
+  },
 ];
 
 export function galleryImageMeta(src: string): { tags: string[]; caption: string } | null {

@@ -99,6 +99,16 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         cardLabel: "Villa · Tapovan · Full interior renders",
       },
       {
+        tag: "Indukuri · Hyderabad",
+        name: "Sheeba Villa 157 Indukuri Renders",
+        alt: "Villa interior — Indukuri corridor",
+        slug: "sheeba-villa-157-indukuri",
+        coverImage: vividGalleryCoverImageByProjectSlug["sheeba-villa-157-indukuri"],
+        excerpt:
+          "Full-villa photoreal study—living and dining, master and guest suites, study, and service cores as one signed-off envelope along the Indukuri corridor.",
+        cardLabel: "Villa · Indukuri · 47 renders",
+      },
+      {
         tag: "Joseph",
         name: "Joseph Kitchen Design",
         alt: "Kitchen design perspective",
@@ -107,16 +117,6 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         excerpt:
           "Custom kitchen layout and joinery rhythm—signed off in visualization before procurement and site fit-out.",
         cardLabel: "Kitchen · Custom residence · Contemporary",
-      },
-      {
-        tag: "Indukuri · Hyderabad",
-        name: "Sheeba Villa 157 Indukuri Renders",
-        alt: "Villa interior — Indukuri",
-        slug: "sheeba-villa-157-indukuri",
-        coverImage: vividGalleryCoverImageByProjectSlug["sheeba-villa-157-indukuri"],
-        excerpt:
-          "Villa-scale interiors with clarity from planning through advanced visualization—Indukuri corridor portfolio work.",
-        cardLabel: "Villa · Indukuri · Full interior",
       },
       {
         tag: "Indukuri Lakeshore",

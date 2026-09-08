@@ -3,6 +3,7 @@
  * https://waytowebs.in/vivid/ (WordPress media API).
  * Replace with self-hosted /public assets when you migrate off Waytowebs CDN.
  */
+import { sheebaVilla157CoverImage } from "@/lib/sheeba-villa-157-gallery";
 import { torriTapovanCoverImage } from "@/lib/torri-tapovan-gallery";
 
 export const VIVID_WP_MEDIA =
@@ -213,7 +214,7 @@ export const vividCareerOpenings = [
 export const vividGalleryCoverImageByProjectSlug = {
   "delhi-kitchen-design": `${PORTFOLIO_GALLERY}/modular-kitchen-wood-beige.png`,
   "joseph-kitchen-design": `${PORTFOLIO_GALLERY}/galley-kitchen-samsung-fridge.png`,
-  "sheeba-villa-157-indukuri": `${PORTFOLIO_GALLERY}/master-bedroom-geometric-panel.png`,
+  "sheeba-villa-157-indukuri": sheebaVilla157CoverImage,
   "villa-173-west-indukuri-lakeshore": `${PORTFOLIO_GALLERY}/living-room-tv-feature-wall.png`,
   "villa-193-east-indukuri-lakeshore": `${PORTFOLIO_GALLERY}/living-room-sectional-circular-art.png`,
   "coastal-apartment-bbsr": `${PORTFOLIO_GALLERY}/living-room-red-bird-art.png`,

@@ -1,13 +1,18 @@
 const PORTFOLIO = "/gallery/portfolio";
+const SHEEBA = "/gallery/sheeba-villa-157";
 
 export type BlogPostSection =
   | { type: "paragraph"; text: string }
   | { type: "heading"; text: string }
-  | { type: "list"; items: string[] };
+  | { type: "list"; items: string[] }
+  | { type: "callout"; eyebrow: string; title: string; text: string }
+  | { type: "image"; src: string; alt: string; caption?: string };
 
 export type BlogPost = {
   slug: string;
   title: string;
+  /** Optional deck line under the headline */
+  subtitle?: string;
   summary: string;
   publishedAt: string;
   image: string;
@@ -15,11 +20,105 @@ export type BlogPost = {
   lead: string;
   sections: BlogPostSection[];
   keywords?: string[];
+  /** Editorial label in the article kicker, e.g. "Studio edition" */
+  category?: string;
   /** Self-hosted PDF for download or in-browser viewing */
   pdfPath?: string;
 };
 
 export const BLOG_POSTS: readonly BlogPost[] = [
+  {
+    slug: "art-of-designing-smarter-spaces",
+    title: "The Art of Designing Smarter Spaces",
+    subtitle: "Intelligent layouts that look spacious and maximize utility",
+    summary:
+      "Reflective finishes, smart storage, and modular kitchens — how thoughtful planning unlocks hidden square footage in modern Hyderabad homes.",
+    publishedAt: "2026-09-08",
+    category: "Studio edition",
+    image: `${SHEEBA}/living-dining.png`,
+    imageAlt: "Open living and dining with layered lighting — Sheeba Villa 157",
+    pdfPath: "/blog/art-of-designing-smarter-spaces.pdf",
+    lead:
+      "Modern home interiors are no longer just about filling rooms with furniture. Today, homeowners want spaces that feel wide, breathing, organized, and structurally optimized around the way they actually live. At Vivid In2erio, we believe good interior design unlocks hidden square footage through thoughtful material choices and high-density storage modules.",
+    sections: [
+      {
+        type: "heading",
+        text: "Reflective textures",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Selecting structural surfaces continues to be a massive factor for urban flats, but the direction is moving past flat matte textures. Integrating polished acrylics, tinted mirror paneling, and metallic glass finishes helps bounce light across tighter corridors. These finishes provide seamless aesthetic continuity, allowing interior spaces to feel significantly larger, cleaner, and visually uninterrupted.",
+      },
+      {
+        type: "image",
+        src: `${SHEEBA}/interior-17-20250505-065527.png`,
+        alt: "Marble TV feature wall with integrated shelving",
+        caption: "Reflective marble panels and recessed niches expand visual depth in compact living zones.",
+      },
+      {
+        type: "heading",
+        text: "Smart storage layout",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Hidden square footage is rarely about adding rooms — it is about designing every vertical surface to work harder. Floor-to-ceiling wardrobes, under-stair modules, integrated TV consoles, and corridor-width storage banks keep daily essentials out of sight while preserving clean sightlines through open plans.",
+      },
+      {
+        type: "list",
+        items: [
+          "Full-height wardrobe banks with internal organizers and soft-close hardware",
+          "Floating desks and study nooks integrated into bedroom and corridor joinery",
+          "Dedicated luggage, shoe, and accessory zones to reduce surface clutter",
+          "Service cores planned early so storage does not compete with plumbing and electrical runs",
+        ],
+      },
+      {
+        type: "image",
+        src: `${SHEEBA}/study-workspace.png`,
+        alt: "Home office with navy open shelving and floating desk",
+        caption: "Study and workspace zones built into the joinery envelope — storage without sacrificing floor area.",
+      },
+      {
+        type: "heading",
+        text: "Modern modular kitchens",
+      },
+      {
+        type: "paragraph",
+        text:
+          "The kitchen has become one of the most high-use zones in contemporary layouts. Homeowners are looking for systems that combine high structural load capacity with ergonomic daily comfort.",
+      },
+      {
+        type: "list",
+        items: [
+          "Customized pull-out pantry towers and corner carousels",
+          "Deep under-sink drawer organization bins",
+          "Dedicated built-in electronic appliance housings",
+          "Easy-to-clean premium quartz counter options",
+        ],
+      },
+      {
+        type: "image",
+        src: `${PORTFOLIO}/modular-kitchen-wood-beige.png`,
+        alt: "Modular kitchen with wood upper cabinets and integrated appliances",
+        caption: "Modular kitchen layouts signed off in 3D before fabrication — workflow, storage, and finishes locked together.",
+      },
+      {
+        type: "callout",
+        eyebrow: "Vivid In2erio advantage",
+        title: "Premium residential transformations across Hyderabad",
+        text:
+          "Vivid In2erio is widely recognized as a leading home interior design firm in Hyderabad, offering premium, end-to-end residential transformations. We specialize in creating spaces that seamlessly blend modern aesthetics with functional luxury — bespoke modular kitchens, space-saving wardrobes, and living room compositions tailored to your lifestyle. From contemporary luxury apartments in high-tech city hubs to expansive villas, our Hyderabad studio handles every project phase with scientific precision and complete transparency. We prioritize durable materials, optimized storage, and strict adherence to timelines so your home makeover is stress-free, deeply personalized, and executed to international standards.",
+      },
+    ],
+    keywords: [
+      "smart storage design",
+      "modular kitchen Hyderabad",
+      "space-saving interiors",
+      "reflective finishes",
+    ],
+  },
   {
     slug: "top-interior-design-trends-modern-homes",
     title: "Top Interior Design Trends for Modern Homes",

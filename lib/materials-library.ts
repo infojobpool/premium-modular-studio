@@ -1,5 +1,5 @@
 const P = "/gallery/portfolio";
-const TORRI = "/gallery/torri-tapovan-villa";
+const SHEEBA = "/gallery/sheeba-villa-157";
 
 export type MaterialSample = {
   name: string;
@@ -25,25 +25,25 @@ export const MATERIALS_LIBRARY: readonly MaterialSample[] = [
   {
     name: "Fluted panel",
     category: "Feature walls",
-    image: `${P}/living-room-tv-feature-wall.png`,
-    alt: "Fluted wood TV feature wall",
+    image: `${SHEEBA}/interior-17-20250505-065527.png`,
+    alt: "Marble TV feature wall — Sheeba Villa 157",
   },
   {
     name: "Tinted glass",
     category: "Wardrobes",
-    image: `${TORRI}/master-bedroom-glass-wardrobe.png`,
-    alt: "Tinted glass wardrobe doors — Torri Tapovan Villa",
+    image: `${SHEEBA}/master-bedroom-2-20250505-072915.png`,
+    alt: "Walk-in wardrobe and vanity — Sheeba Villa 157",
   },
   {
     name: "Geometric wood",
     category: "Bedrooms",
-    image: `${P}/master-bedroom-geometric-panel.png`,
-    alt: "Geometric wood bedroom panel",
+    image: `${SHEEBA}/master-bedroom.png`,
+    alt: "Master suite marble and wood panel — Sheeba Villa 157",
   },
   {
     name: "Layered lighting",
     category: "Ambience",
-    image: `${P}/living-room-sectional-circular-art.png`,
-    alt: "Layered living room lighting",
+    image: `${SHEEBA}/living-dining.png`,
+    alt: "Layered living and dining lighting — Sheeba Villa 157",
   },
 ] as const;
