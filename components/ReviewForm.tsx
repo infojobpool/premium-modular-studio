@@ -65,11 +65,20 @@ export function ReviewForm() {
     const name = String(fd.get("name") ?? "").trim();
     const videoInput = form.elements.namedItem("video") as HTMLInputElement | null;
     const videoFile = videoInput?.files?.[0];
+    const instagramUrl = String(fd.get("instagramUrl") ?? "").trim();
 
     let videoUrl: string | undefined;
 
     try {
-      if (videoFile && videoFile.size > 0) {
+      if (videoFile && videoFile.size > 0 && instagramUrl) {
+        setSubmitState("error");
+        setErrorText("Please add either a video file or a YouTube link — not both.");
+        return;
+      }
+
+      if (instagramUrl) {
+        videoUrl = instagramUrl;
+      } else if (videoFile && videoFile.size > 0) {
         if (videoFile.size > REVIEW_VIDEO_MAX_BYTES) {
           setSubmitState("error");
           setErrorText("Video is too large. Please use a clip under 25 MB.");
@@ -233,7 +242,7 @@ export function ReviewForm() {
             className="mt-2 block w-full cursor-pointer rounded-2xl border border-dashed border-ink/15 bg-panel/20 px-4 py-4 text-sm text-muted file:mr-4 file:rounded-full file:border-0 file:bg-ink file:px-4 file:py-2 file:text-sm file:font-semibold file:text-canvas hover:border-accent/35"
           />
           <p className="mt-1 text-xs text-muted">
-            MP4, MOV, or WebM · up to {REVIEW_VIDEO_MAX_SECONDS} seconds · max 25 MB · shown on our website
+            MP4, MOV, or WebM · up to {REVIEW_VIDEO_MAX_SECONDS} seconds · max 25 MB · or paste a YouTube link below
           </p>
           {selectedVideoName ? (
             <p className="mt-2 text-sm text-ink">
@@ -251,6 +260,22 @@ export function ReviewForm() {
               <p className="mt-1 text-xs text-muted">Uploading video… {uploadProgress}%</p>
             </div>
           ) : null}
+        </div>
+
+        <div>
+          <label htmlFor="instagramUrl" className="text-sm font-semibold text-ink">
+            YouTube link (optional)
+          </label>
+          <input
+            id="instagramUrl"
+            name="instagramUrl"
+            type="url"
+            inputMode="url"
+            placeholder="https://youtu.be/…"
+            disabled={busy}
+            className="mt-2 w-full rounded-2xl border border-ink/12 bg-panel/30 px-4 py-3 text-ink outline-none ring-accent/30 transition focus:border-accent/50 focus:ring-2"
+          />
+          <p className="mt-1 text-xs text-muted">Public YouTube video · plays in Stories</p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
@@ -328,8 +353,8 @@ export function ReviewPageContent({ shareUrl }: { shareUrl: string }) {
             Share your Vivid In2erio experience
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            Thank you for working with us. Add a written review and, if you like, a short video clip of
-            your space — it goes live on our website as soon as you submit.
+            Thank you for working with us. Add a written review and, if you like, a short video clip or
+            a public YouTube link — it goes live on Stories as soon as you submit.
           </p>
         </Reveal>
 

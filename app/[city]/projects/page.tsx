@@ -4,6 +4,7 @@ import { CityPageShell } from "@/components/CityPageShell";
 import { CityProjectsIndexContent } from "@/components/CityProjectsIndexContent";
 import { isStudioCity } from "@/lib/city-page-copy";
 import type { StudioLocationId } from "@/lib/locations";
+import { getCustomerStories } from "@/lib/reviews/customer-stories";
 import { buildMetadataForPath } from "@/lib/seo/page-seo";
 
 type Props = { params: Promise<{ city: string }> };
@@ -18,10 +19,11 @@ export default async function CityProjectsIndex({ params }: Props) {
   const { city: raw } = await params;
   if (!isStudioCity(raw)) notFound();
   const city = raw as StudioLocationId;
+  const stories = await getCustomerStories();
 
   return (
     <CityPageShell>
-      <CityProjectsIndexContent city={city} />
+      <CityProjectsIndexContent city={city} stories={stories} />
     </CityPageShell>
   );
 }

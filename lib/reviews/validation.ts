@@ -1,5 +1,6 @@
 import type { StudioLocationId } from "@/lib/locations";
 import type { CustomerReviewInput } from "./types";
+import { youtubeWatchUrl } from "./youtube";
 
 export type ParsedReviewInput =
   | { ok: true; data: Omit<CustomerReviewInput, "company"> }
@@ -51,17 +52,22 @@ export function parseReviewInput(body: unknown): ParsedReviewInput {
 
   let videoUrl: string | undefined;
   if (videoRaw) {
-    try {
-      const url = new URL(videoRaw);
-      if (url.protocol !== "https:") {
-        return { ok: false, error: "Video link must start with https://." };
+    const youtube = youtubeWatchUrl(videoRaw);
+    if (youtube) {
+      videoUrl = youtube;
+    } else {
+      try {
+        const url = new URL(videoRaw);
+        if (url.protocol !== "https:") {
+          return { ok: false, error: "Video link must start with https://." };
+        }
+        if (!url.hostname.endsWith(".blob.vercel-storage.com")) {
+          return { ok: false, error: "Please paste a YouTube link, or upload a video file." };
+        }
+        videoUrl = url.toString();
+      } catch {
+        return { ok: false, error: "Please paste a valid YouTube link." };
       }
-      if (!url.hostname.endsWith(".blob.vercel-storage.com")) {
-        return { ok: false, error: "Invalid review video." };
-      }
-      videoUrl = url.toString();
-    } catch {
-      return { ok: false, error: "Invalid video upload. Please try again." };
     }
   }
 

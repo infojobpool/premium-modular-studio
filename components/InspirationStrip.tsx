@@ -34,7 +34,7 @@ const cards: Array<{
     path: "gallery",
     hash: "work",
   },
-  { title: "Explore shade stories", cta: "Explore shade", views: "1.7K", imageIndex: 1, path: "gallery" },
+  { title: "Explore shade palettes", cta: "Explore shade", views: "1.7K", imageIndex: 1, path: "gallery" },
   {
     title: "Lighting catalog ideas",
     cta: "Explore catalogue",
@@ -65,7 +65,7 @@ export function InspirationStrip() {
         <div className="mb-8 flex items-end justify-between gap-6">
           <h2 className="font-display text-3xl sm:text-4xl">Inspiring ideas for you</h2>
           <Link
-            href={`/${location.id}/projects`}
+            href={`/${location.id}/projects#stories`}
             className="text-xs font-semibold uppercase tracking-[0.2em] text-accent hover:text-accent-soft"
           >
             View all stories →

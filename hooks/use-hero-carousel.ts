@@ -4,7 +4,7 @@ import { useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { HeroSlide } from "@/lib/hero-media";
 
-const INTERVAL_MS = 6500;
+const INTERVAL_MS = 5000;
 
 export function useHeroCarousel(slides: HeroSlide[]) {
   const reduceMotion = useReducedMotion();

@@ -1,6 +1,5 @@
 import { interiorImages } from "@/lib/interior-images";
 import type { StudioLocationId } from "@/lib/locations";
-import { sheebaVilla157CoverImage } from "@/lib/sheeba-villa-157-gallery";
 import { torriTapovanCoverImage } from "@/lib/torri-tapovan-gallery";
 
 /** One hero frame: full-bleed media + overlay copy (Asian Paints–style rotating headlines). */
@@ -32,16 +31,20 @@ export type HeroSlide =
 export const HERO_VIDEO_URL =
   typeof process !== "undefined" ? process.env.NEXT_PUBLIC_HERO_VIDEO_URL?.trim() ?? "" : "";
 
+const LANDSCAPE_GARDEN =
+  "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1920&q=80";
+const LANDSCAPE_COURTYARD =
+  "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1920&q=80";
+const ARCHITECTURE_VILLA =
+  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80";
+
 /**
- * Builds distinct interior frames from the Waytowebs media set, each with its own hero headline
- * so the carousel reads like a premium décor brand reel.
+ * Auto-swiper frames: interiors, landscaping, and architecture designing.
  */
 export function buildHeroSlides(
   cityLabel: string,
   cityId: StudioLocationId = "hyderabad",
 ): HeroSlide[] {
-  const g = interiorImages.gallery;
-  const s = interiorImages.services;
   const slides: HeroSlide[] = [];
 
   if (HERO_VIDEO_URL) {
@@ -60,160 +63,126 @@ export function buildHeroSlides(
     });
   }
 
-  const frames: HeroSlide[] = [
+  const hyderabadFrames: HeroSlide[] = [
     {
       kind: "image",
       src: interiorImages.hero,
-      alt: `Villa living render — ${cityLabel}`,
-      eyebrow: "Contact us",
-      eyebrowHref: `/${cityId}/contact`,
+      alt: `Living interior render — ${cityLabel}`,
+      eyebrow: "Interiors",
+      eyebrowHref: `/${cityId}/gallery`,
       headline: `Premium & luxury interiors in ${cityLabel}`,
-      lead: "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
-    },
-    {
-      kind: "image",
-      src: sheebaVilla157CoverImage,
-      alt: "Sheeba Villa 157 — living and dining render",
-      eyebrow: "Sheeba Villa 157 · Indukuri",
-      eyebrowHref: `/${cityId}/projects/sheeba-villa-157-indukuri`,
-      headline: "Indukuri villa — living, suites, and study",
-      lead: "Forty-seven photoreal stills across open entertaining volumes, master and guest wings, study, and service cores—one coordinated envelope signed off before site.",
-      statBadge: "Villa · Indukuri corridor",
+      lead: "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. Layered palettes, artisan joinery, and lighting signed off before site.",
+      statBadge: "Living · kitchens · suites",
     },
     {
       kind: "image",
       src: torriTapovanCoverImage,
-      alt: "Torri Tapovan Villa — living and dining render",
-      eyebrow: "Torri Tapovan Villa",
-      eyebrowHref: `/${cityId}/projects/torri-tapovan-villa`,
-      headline: "Villa-scale living, bar, and suites",
-      lead: "Full-home renders for Torri Tapovan—open entertaining volumes, modular kitchen, and bespoke bedrooms signed off before site mobilisation.",
-      statBadge: "Villa · photoreal renders",
+      alt: "Open-plan living and dining interior",
+      eyebrow: "Interiors",
+      eyebrowHref: `/${cityId}/gallery`,
+      headline: "Rooms composed as one envelope",
+      lead: "Living, dining, and kitchens coordinated in one palette—photoreal stills so every joinery line is agreed before procurement.",
+      statBadge: "Full-home interiors",
     },
     {
       kind: "image",
-      src: g[0]!,
-      alt: "Open living and dining perspective",
-      eyebrow: "Signature composition",
-      headline: "Light, proportion, and quiet drama",
-      lead: "Layered ceilings, circulation, and views—frozen in drawings before site mobilisation so surprises stay off your timeline.",
-      statBadge: "Lakeshore & corridor projects",
+      src: LANDSCAPE_GARDEN,
+      alt: "Formal garden and landscaping",
+      eyebrow: "Landscaping",
+      headline: "Gardens that complete the architecture",
+      lead: "Planting, paths, and outdoor rooms composed with the façade—so the approach, lawn, and threshold read as one designed landscape.",
+      statBadge: "Gardens · courtyards",
     },
     {
       kind: "image",
-      src: g[1]!,
-      alt: "Interior perspective — warm materials",
-      eyebrow: "Kitchens & living",
-      headline: "Gather, cook, and reset in one breath",
-      lead: "Modular cores, appliance integration, and resilient finishes tuned for heat, humidity, and everyday wear.",
-      statBadge: "Modular + bespoke",
+      src: LANDSCAPE_COURTYARD,
+      alt: "Courtyard and outdoor living landscape",
+      eyebrow: "Landscaping",
+      headline: "Outdoor living, planned with the house",
+      lead: "Terraces, water, and shade studies locked with interior floor levels—so decks and gardens feel like rooms you step into.",
+      statBadge: "Terraces · outdoor rooms",
     },
     {
       kind: "image",
-      src: g[2]!,
-      alt: "Interior vignette — joinery detail",
-      eyebrow: "Detail that survives Monday",
-      headline: "Joinery mocked up before it hits your site",
-      lead: "Shop drawings, samples, and lighting studies signed off in-studio—then executed to agreed tolerances on site.",
-      statBadge: "Mock-ups · QC",
-    },
-    {
-      kind: "image",
-      src: s[0]!,
-      alt: "Residential render — architectural volume",
-      eyebrow: "Architecture & shell",
-      headline: "Plans that respect structure and sun",
-      lead: "Spatial clarity first—then interiors, services, and façade decisions lock into one accountable roadmap.",
+      src: ARCHITECTURE_VILLA,
+      alt: "Architectural villa façade",
+      eyebrow: "Architecture designing",
+      headline: "Form, sun, and structure first",
+      lead: "Concept-led façades and spatial planning—shell, services, and massing documented so interiors lock to a single architectural roadmap.",
       statBadge: "Shell to styling",
     },
     {
       kind: "image",
-      src: s[1]!,
-      alt: "Interior still — materials",
-      eyebrow: "Materials library",
-      headline: "Finishes you can touch before you commit",
-      lead: "Stone, timber, metal, and textiles curated for your climate band—documented in schedules, not left to last-minute swaps.",
-      statBadge: "Samples on site",
-    },
-    {
-      kind: "image",
-      src: s[2]!,
-      alt: "Interior perspective — bedroom",
-      eyebrow: "3D & approvals",
-      headline: "Photoreal sign-off before procurement",
-      lead: "Walkthroughs and stills that freeze decisions—so budgets, lead times, and trades stay aligned to what you approved.",
-      statBadge: "Renders · revisions",
+      src: "/gallery/matthew-makeover/exterior-after-day.png",
+      alt: "Completed villa architecture — daytime façade",
+      eyebrow: "Architecture designing",
+      eyebrowHref: `/${cityId}/projects/matthew-villa-makeover`,
+      headline: "Façades you can walk up to",
+      lead: "Massing, balcony lines, and entry composition executed on a live villa—architecture designed and delivered with the interior.",
+      statBadge: "Built architecture",
     },
   ];
 
-  /** Bhubaneswar: same imagery, copy tuned to Odisha climate + local studio (not a reorder of Hyderabad lines). */
   const bhubaneswarFrames: HeroSlide[] = [
     {
       kind: "image",
       src: interiorImages.hero,
-      alt: `Premium residence living — ${cityLabel}`,
-      eyebrow: `${cityLabel} · Odisha`,
+      alt: `Premium residence interior — ${cityLabel}`,
+      eyebrow: "Interiors",
+      eyebrowHref: `/${cityId}/gallery`,
       headline: `Premium & luxury interiors in ${cityLabel}`,
-      lead: "From the Puri Bypass studio we shape homes and workspaces for Odisha's light, monsoon cycles, and coastal humidity—layered interiors, modular kitchens and wardrobes, and English-led documentation with Hyderabad fabrication when your scope needs it.",
-      statBadge: "Studio by appointment",
+      lead: "From the Puri Bypass studio we shape homes for Odisha’s light, monsoon, and humidity—layered interiors, modular kitchens, and English-led documentation.",
+      statBadge: "Living · kitchens · suites",
     },
     {
       kind: "image",
-      src: g[0]!,
-      alt: "Living and dining — Bhubaneswar residence",
-      eyebrow: "Living & dining",
+      src: torriTapovanCoverImage,
+      alt: "Open-plan living and dining interior",
+      eyebrow: "Interiors",
+      eyebrowHref: `/${cityId}/gallery`,
       headline: "Rooms that breathe through the humid months",
-      lead: "Cross-ventilation, ceiling rhythm, and finishes chosen for eastern light and heavy rain—so living and dining stay composed year-round.",
-      statBadge: "Patia · corridor homes",
+      lead: "Cross-ventilation, ceiling rhythm, and finishes chosen for eastern light—living, dining, and kitchens composed as one envelope.",
+      statBadge: "Full-home interiors",
     },
     {
       kind: "image",
-      src: g[1]!,
-      alt: "Kitchen interior — warm materials",
-      eyebrow: "Kitchens & dining",
-      headline: "Kitchens built for heat, steam, and daily rhythm",
-      lead: "Modular cores, appliance integration, and surfaces that tolerate Odisha's kitchen load—signed off before procurement so site days stay predictable.",
-      statBadge: "Modular + bespoke",
+      src: LANDSCAPE_GARDEN,
+      alt: "Formal garden and landscaping",
+      eyebrow: "Landscaping",
+      headline: "Planting that holds through monsoon",
+      lead: "Gardens, lawns, and approach sequences specified for Odisha rain and heat—outdoor rooms that stay composed year-round.",
+      statBadge: "Gardens · courtyards",
     },
     {
       kind: "image",
-      src: g[2]!,
-      alt: "Joinery and interior detail",
-      eyebrow: "Craft & detail",
-      headline: "Joinery you approve before it ships to site",
-      lead: "Mock-ups, samples, and lighting studies at the Bhubaneswar studio—then execution to agreed tolerances with one accountable team through handover.",
-      statBadge: "Mock-ups · QC",
+      src: LANDSCAPE_COURTYARD,
+      alt: "Courtyard and outdoor living landscape",
+      eyebrow: "Landscaping",
+      headline: "Courtyards and decks as living space",
+      lead: "Shade, water, and landscape-facing decks planned with interior floor levels so outdoor rooms feel continuous with the house.",
+      statBadge: "Terraces · outdoor rooms",
     },
     {
       kind: "image",
-      src: s[0]!,
-      alt: "Residential volume — architecture",
-      eyebrow: "Architecture & shell",
+      src: ARCHITECTURE_VILLA,
+      alt: "Architectural villa façade",
+      eyebrow: "Architecture designing",
       headline: "Plans that respect structure, sun, and monsoon",
-      lead: "Spatial clarity first—shell, services, and façade decisions documented together so interiors lock to a single roadmap for Bhubaneswar sites.",
+      lead: "Spatial clarity first—shell, services, and façade decisions documented together so interiors lock to one Bhubaneswar roadmap.",
       statBadge: "Shell to styling",
     },
     {
       kind: "image",
-      src: s[1]!,
-      alt: "Materials and finishes",
-      eyebrow: "Materials palette",
-      headline: "Finishes chosen for your climate, not a catalogue default",
-      lead: "Stone, timber, metal, and textiles selected for coastal heat and wet seasons—scheduled and sampled so swaps do not happen on the day of installation.",
-      statBadge: "Samples in studio",
-    },
-    {
-      kind: "image",
-      src: s[2]!,
-      alt: "Bedroom interior perspective",
-      eyebrow: "Visualisation",
-      headline: "Walk the interior before walls are wet",
-      lead: "Photoreal walkthroughs and stills that freeze choices—budgets, lead times, and trades stay aligned to what you signed off in Bhubaneswar.",
-      statBadge: "Renders · revisions",
+      src: "/gallery/matthew-makeover/exterior-after-day.png",
+      alt: "Completed villa architecture — daytime façade",
+      eyebrow: "Architecture designing",
+      headline: "Elevations you can sign off before site",
+      lead: "Massing, balcony lines, and entry composition drawn with the interior—so the built house matches the visual you approved.",
+      statBadge: "Built architecture",
     },
   ];
 
-  const imageFrames = cityId === "bhubaneswar" ? bhubaneswarFrames : frames;
+  const imageFrames = cityId === "bhubaneswar" ? bhubaneswarFrames : hyderabadFrames;
 
   return [...slides, ...imageFrames];
 }

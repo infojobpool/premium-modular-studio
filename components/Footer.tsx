@@ -140,8 +140,8 @@ export function Footer() {
                   <Link href={`/${location.id}/gallery`} className={premiumLinkClass}>
                     <span className={premiumLinkUnderlineClass}>Gallery</span>
                   </Link>
-                  <Link href={`/${location.id}/projects`} className={premiumLinkClass}>
-                    <span className={premiumLinkUnderlineClass}>Projects</span>
+                  <Link href={`/${location.id}/projects#stories`} className={premiumLinkClass}>
+                    <span className={premiumLinkUnderlineClass}>Stories</span>
                   </Link>
                   <Link href={`/${location.id}/contact`} className={premiumLinkClass}>
                     <span className={premiumLinkUnderlineClass}>Book consultation</span>

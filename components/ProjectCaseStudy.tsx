@@ -246,7 +246,7 @@ export function ProjectCaseStudy({
             href={`/${city}/projects`}
             className="inline-flex rounded-full border border-ink/15 px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink hover:border-accent/40"
           >
-            All stories
+            All projects
           </Link>
           {storyGallerySrcs && storyGallerySrcs.length > 0 ? (
             <Link

@@ -16,7 +16,7 @@ export const STUDIO_TEAM: readonly StudioTeamMember[] = [
     name: "Soubhagya Laxmi Nayakk",
     role: "Founder & CEO",
     studio: "both",
-    imageSrc: "/team/soubhagya-laxmi-nayakk.png",
+    imageSrc: "/team/soubhagya-laxmi-nayakk.jpg",
     imageAlt: "Soubhagya Laxmi Nayakk, Founder & CEO — Vivid In2erio",
   },
   {

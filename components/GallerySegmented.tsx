@@ -249,7 +249,7 @@ export function GallerySegmented({ city, locationLabel }: Props) {
             href={`/${city}/projects`}
             className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-canvas/80 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-ink shadow-sm transition hover:border-accent/40 hover:bg-accent/12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
-            View all project stories
+            View all projects
             <span aria-hidden>→</span>
           </Link>
         </div>
