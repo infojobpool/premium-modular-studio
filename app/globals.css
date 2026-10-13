@@ -246,3 +246,22 @@
     color-mix(in oklab, #1a3550 14%, transparent)
   );
 }
+
+@keyframes hero-slide-ken {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.hero-slide-ken {
+  animation: hero-slide-ken 8s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide-ken {
+    animation: none;
+  }
+}

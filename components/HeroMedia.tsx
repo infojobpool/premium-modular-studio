@@ -193,7 +193,7 @@ export function HeroSlideStage({
             aria-hidden={!isActive}
             className={`absolute inset-0 block size-full object-cover transition-opacity ease-in-out ${
               isActive ? "z-[2] opacity-100" : "z-[1] opacity-0"
-            }`}
+            } ${isActive && fullscreen && !reduceMotion ? "hero-slide-ken" : ""}`}
             style={{ transitionDuration: `${fadeMs}ms` }}
           />
         );
@@ -223,34 +223,46 @@ export function HeroCarouselToolbar({
 
   return (
     <div
-      className={`pointer-events-auto absolute z-[25] flex px-4 ${
+      className={`pointer-events-auto z-[25] flex ${
         fullscreen
-          ? "inset-x-0 bottom-8 justify-center sm:bottom-10"
-          : "bottom-5 left-3 justify-start sm:bottom-6 sm:left-4 lg:bottom-5 lg:left-5"
+          ? "relative mt-8 justify-start"
+          : "absolute bottom-5 left-3 justify-start sm:bottom-6 sm:left-4 lg:bottom-5 lg:left-5 px-4"
       }`}
     >
-      <div className="flex items-center gap-1 rounded-full border border-black/8 bg-canvas/98 px-1.5 py-1.5 shadow-[0_10px_40px_-8px_rgba(0,0,0,0.35)] ring-1 ring-white/60 backdrop-blur-sm sm:gap-2 sm:px-2 sm:py-2">
+      <div
+        className={`flex items-center gap-1 rounded-full px-1.5 py-1.5 shadow-[0_10px_40px_-8px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:gap-2 sm:px-2 sm:py-2 ${
+          fullscreen
+            ? "border border-canvas/20 bg-ink/45 ring-1 ring-white/10"
+            : "border border-black/8 bg-canvas/98 ring-1 ring-white/60"
+        }`}
+      >
         <button
           type="button"
           aria-label="Previous slide"
           onClick={() => go(-1)}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-ink transition hover:bg-ink/[0.06] active:scale-95"
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition active:scale-95 ${
+            fullscreen ? "text-canvas hover:bg-canvas/10" : "text-ink hover:bg-ink/[0.06]"
+          }`}
         >
           <span className="sr-only">Previous</span>
           <Chevron dir="left" />
         </button>
         <div className="mx-1 flex items-center gap-1.5 px-1 sm:mx-2 sm:gap-2 sm:px-2">
-          {list.map((_, i) => (
+          {list.map((slide, i) => (
             <button
               key={i}
               type="button"
-              aria-label={`Slide ${i + 1}`}
+              aria-label={slide.eyebrow}
               aria-current={i === safeIndex}
               onClick={() => setIndex(i)}
               className={
                 i === safeIndex
-                  ? "h-[5px] w-8 rounded-full bg-ink transition-[width,background-color] duration-300 sm:w-10"
-                  : "h-[5px] w-[5px] rounded-full bg-ink/25 transition hover:bg-ink/45"
+                  ? `h-[5px] w-8 rounded-full transition-[width,background-color] duration-300 sm:w-10 ${
+                      fullscreen ? "bg-accent" : "bg-ink"
+                    }`
+                  : `h-[5px] w-[5px] rounded-full transition ${
+                      fullscreen ? "bg-canvas/35 hover:bg-canvas/60" : "bg-ink/25 hover:bg-ink/45"
+                    }`
               }
             />
           ))}
@@ -259,7 +271,9 @@ export function HeroCarouselToolbar({
           type="button"
           aria-label="Next slide"
           onClick={() => go(1)}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-ink transition hover:bg-ink/[0.06] active:scale-95"
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition active:scale-95 ${
+            fullscreen ? "text-canvas hover:bg-canvas/10" : "text-ink hover:bg-ink/[0.06]"
+          }`}
         >
           <span className="sr-only">Next</span>
           <Chevron dir="right" />

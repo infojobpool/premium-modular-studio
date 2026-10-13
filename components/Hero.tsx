@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { useHeroCarousel } from "@/hooks/use-hero-carousel";
 import { buildHeroSlides } from "@/lib/hero-media";
+import { PAGE_GUTTER_X } from "@/lib/interior-images";
 import { HeroCarouselToolbar, HeroSlideStage } from "./HeroMedia";
-import { HeroQuickLinksCard } from "./HeroQuickLinksCard";
 import { withBrandHighlight } from "./BrandInline";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -20,113 +20,110 @@ export function Hero() {
     useHeroCarousel(slides);
 
   return (
-    <section className="relative isolate min-h-[82dvh] w-full overflow-x-clip bg-transparent sm:min-h-[85dvh] lg:min-h-[88dvh]">
-      <div className="relative z-10 mx-auto grid min-h-[82dvh] w-full max-w-none grid-cols-1 items-end gap-8 px-0 pb-10 pt-[max(9.25rem,env(safe-area-inset-top)+7.25rem)] sm:min-h-[85dvh] sm:pb-12 sm:pt-[max(9.5rem,env(safe-area-inset-top)+7.5rem)] md:grid-cols-2 md:items-center md:gap-6 md:pb-14 md:pt-[max(9.75rem,env(safe-area-inset-top)+7.5rem)] lg:min-h-[88dvh] lg:gap-10 lg:pb-16 lg:pt-[max(9.5rem,env(safe-area-inset-top)+5.75rem)]">
-        <div className="min-w-0 px-6 sm:px-10 md:pl-16 md:pr-10 xl:pl-24 2xl:pl-32 2xl:pr-14">
-          <div className="max-w-xl">
-            <AnimatePresence mode="wait">
-              {current ? (
-                <motion.div
-                  key={`${current.kind}-${safeIndex}-${current.headline}`}
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <div className="mb-6 space-y-3">
-                    {current.eyebrowHref ? (
-                      <Link
-                        href={current.eyebrowHref}
-                        className="inline-flex max-w-full flex-wrap rounded-lg border border-ink/14 bg-accent/[0.14] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-ink shadow-sm break-words transition hover:border-ink/25 hover:bg-accent/[0.22]"
-                      >
-                        {current.eyebrow}
-                      </Link>
-                    ) : (
-                      <p className="inline-flex max-w-full flex-wrap rounded-lg border border-ink/14 bg-accent/[0.14] px-3 py-1.5 text-xs font-bold uppercase leading-snug tracking-[0.28em] text-ink shadow-sm break-words">
-                        {current.eyebrow}
-                      </p>
-                    )}
-                    {current.statBadge ? (
-                      <p className="inline-flex max-w-full flex-wrap rounded-full border border-ink/20 bg-canvas/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/90 shadow-sm break-words">
-                        {current.statBadge}
-                      </p>
-                    ) : null}
-                  </div>
-                  <h1 className="font-display text-balance text-4xl leading-[1.05] tracking-tight text-ink sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl">
-                    {current.headline}
-                  </h1>
-                  <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
-                    {withBrandHighlight(current.lead)}
-                  </p>
-                  <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="mt-10 flex flex-wrap items-center gap-4"
+    <section
+      className="relative isolate min-h-[100dvh] w-full overflow-hidden bg-ink"
+      aria-label="Studio practices"
+    >
+      <div className="absolute inset-0">
+        {list.length > 0 ? (
+          <HeroSlideStage
+            list={list}
+            safeIndex={safeIndex}
+            reduceMotion={reduceMotion}
+            fullscreen
+          />
+        ) : null}
+        <div
+          className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-r from-ink/88 via-ink/45 to-ink/20"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-t from-ink/80 via-ink/15 to-ink/40"
+          aria-hidden
+        />
+      </div>
+
+      <div
+        className={`relative z-10 mx-auto flex min-h-[100dvh] w-full max-w-[92rem] flex-col justify-end pb-10 sm:pb-12 lg:pb-14 ${PAGE_GUTTER_X}`}
+        style={{ paddingTop: "var(--site-header-offset)" }}
+      >
+        <div className="max-w-3xl pb-4 sm:pb-6">
+          {list.length > 1 ? (
+            <div
+              className="mb-6 flex flex-wrap gap-2"
+              role="tablist"
+              aria-label="Practice"
+            >
+              {list.map((slide, i) => {
+                const active = i === safeIndex;
+                return (
+                  <button
+                    key={`${slide.eyebrow}-${i}`}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setIndex(i)}
+                    className={`rounded-full px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] transition sm:text-[11px] ${
+                      active
+                        ? "bg-accent text-ink shadow-[0_10px_30px_-12px_rgba(217,162,41,0.7)]"
+                        : "border border-canvas/25 bg-ink/25 text-canvas/85 backdrop-blur-sm hover:border-canvas/50 hover:bg-ink/40"
+                    }`}
                   >
-                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="max-w-full min-w-0">
-                      <Link
-                        href={`/${location.id}/contact`}
-                        className="inline-flex w-full max-w-xl min-w-0 items-center justify-center rounded-full bg-accent px-5 py-4 text-center text-sm font-semibold uppercase leading-snug tracking-[0.14em] text-ink text-balance shadow-[0_20px_60px_-20px_rgba(217,162,41,0.55)] transition-shadow hover:shadow-[0_24px_70px_-18px_rgba(217,162,41,0.65)] sm:px-8 sm:tracking-[0.18em]"
-                      >
-                        <span className="sm:hidden">Book free consultation · {location.label}</span>
-                        <span className="hidden sm:inline">
-                          Book free consultation · {location.label}
-                        </span>
-                      </Link>
-                    </motion.div>
-                    <motion.div whileHover={{ x: 4 }}>
-                      <Link
-                        href={`/${location.id}/gallery`}
-                        className="inline-flex items-center gap-2 rounded-full border border-ink/20 bg-canvas/70 px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition hover:border-ink/40"
-                      >
-                        <span className="sm:hidden">View work</span>
-                        <span className="hidden sm:inline">View signature work</span>
-                        <span aria-hidden className="inline-block transition-transform">
-                          →
-                        </span>
-                      </Link>
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              ) : null}
-            </AnimatePresence>
-          </div>
+                    {slide.eyebrow}
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
+
+          <AnimatePresence mode="wait">
+            {current ? (
+              <motion.div
+                key={`${current.kind}-${safeIndex}-${current.headline}`}
+                initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: -12 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {current.statBadge ? (
+                  <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-accent-soft">
+                    {current.statBadge}
+                  </p>
+                ) : null}
+                <h1 className="font-display text-balance text-4xl leading-[1.05] tracking-tight text-canvas sm:text-5xl md:text-6xl lg:text-7xl">
+                  {current.headline}
+                </h1>
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-canvas/80 sm:mt-6 sm:text-lg">
+                  {withBrandHighlight(current.lead)}
+                </p>
+                <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
+                  <Link
+                    href={`/${location.id}/contact`}
+                    className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 text-center text-xs font-semibold uppercase tracking-[0.16em] text-ink shadow-[0_20px_60px_-20px_rgba(217,162,41,0.65)] transition hover:shadow-[0_24px_70px_-18px_rgba(217,162,41,0.75)] sm:px-8 sm:text-sm sm:tracking-[0.18em]"
+                  >
+                    Book free consultation
+                  </Link>
+                  <Link
+                    href={`/${location.id}/gallery`}
+                    className="inline-flex items-center gap-2 rounded-full border border-canvas/35 bg-ink/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-canvas backdrop-blur-sm transition hover:border-canvas/60 sm:text-sm"
+                  >
+                    View work
+                    <span aria-hidden>→</span>
+                  </Link>
+                </div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
         </div>
 
-        <div className="min-w-0 px-6 sm:px-10 md:pl-0 md:pr-4 lg:pr-6 xl:pr-8">
-          <div
-            className="relative min-h-[320px] overflow-hidden rounded-[2rem] border border-ink/10 bg-black shadow-[0_30px_80px_-40px_rgba(0,0,0,0.45)] sm:min-h-[380px] md:min-h-[460px] md:rounded-none md:rounded-l-[2.4rem] lg:min-h-[500px]"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-            onFocusCapture={() => setPaused(true)}
-            onBlurCapture={() => setPaused(false)}
-          >
-            <div className="absolute inset-0 overflow-hidden rounded-[inherit]">
-              {list.length > 0 ? (
-                <HeroSlideStage
-                  list={list}
-                  safeIndex={safeIndex}
-                  reduceMotion={reduceMotion}
-                  fullscreen={false}
-                />
-              ) : null}
-              <div
-                className={`pointer-events-none absolute inset-0 z-[5] hero-media-scrim--${location.id}`}
-                aria-hidden
-              />
-              <HeroCarouselToolbar
-                list={list}
-                safeIndex={safeIndex}
-                setIndex={setIndex}
-                go={go}
-                fullscreen={false}
-              />
-            </div>
-            <div className="pointer-events-none absolute inset-x-3 bottom-3 z-30 hidden justify-end lg:flex sm:inset-x-4 sm:bottom-4">
-              <HeroQuickLinksCard />
-            </div>
-          </div>
+        <div onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+          <HeroCarouselToolbar
+            list={list}
+            safeIndex={safeIndex}
+            setIndex={setIndex}
+            go={go}
+            fullscreen
+          />
         </div>
       </div>
     </section>
