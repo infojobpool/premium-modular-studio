@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { CITY_PAGE_COPY, isStudioCity } from "@/lib/city-page-copy";
 import { loadOgShareAssets, OG_IMAGE_SIZE } from "@/lib/og-image-assets";
 import { OgShareLayout } from "@/lib/og-share-layout";
-import { STUDIO_LOCATIONS, type StudioLocationId } from "@/lib/locations";
+import { cityVenueLine, type StudioLocationId } from "@/lib/locations";
 
 export const runtime = "nodejs";
 
@@ -25,7 +25,6 @@ function clip(text: string, max = 132): string {
 export default async function CityOpenGraphImage({ params }: Props) {
   const { city: raw } = await params;
   const city = isStudioCity(raw) ? (raw as StudioLocationId) : "hyderabad";
-  const label = STUDIO_LOCATIONS[city].label;
   const copy = CITY_PAGE_COPY[city];
 
   const { fonts, heroSrc, logoSrc } = await loadOgShareAssets(city);
@@ -35,10 +34,10 @@ export default async function CityOpenGraphImage({ params }: Props) {
       <OgShareLayout
         heroSrc={heroSrc}
         logoSrc={logoSrc}
-        locationLine={`${label} studio`}
+        locationLine={cityVenueLine(city)}
         headline="Premium & luxury interiors"
         subline={clip(copy.heroLead)}
-        cta="Book a studio consultation"
+        cta={city === "hyderabad" ? "Book an office consultation" : "Book a studio consultation"}
       />
     ),
     {

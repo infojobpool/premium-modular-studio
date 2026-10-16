@@ -24,7 +24,8 @@ export function HomeMagazineStrip() {
               Ideas & planning
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
-              Kitchens, architecture, and luxury residential trends from the {location.label} studio.
+              Kitchens, architecture, and luxury residential trends from the{" "}
+              {location.id === "hyderabad" ? "Hyderabad office" : `${location.label} studio`}.
             </p>
           </div>
           <Link

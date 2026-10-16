@@ -83,7 +83,8 @@ export function HeroQuickLinksCard() {
     <aside className="pointer-events-auto w-full max-w-[20rem] rounded-2xl border border-white/55 bg-canvas/72 p-4 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] ring-1 ring-white/40 backdrop-blur-xl sm:rounded-2xl sm:p-5 lg:mb-1">
       <p className="font-display text-xl tracking-tight text-ink sm:text-[1.35rem]">Transform your space</p>
       <p className="mt-1.5 max-w-full text-pretty text-xs leading-snug text-muted break-words sm:text-[13px]">
-        Jump to gallery, case studies, or book a free consultation at the {location.label} studio.
+        Jump to gallery, case studies, or book a free consultation at the{" "}
+        {location.id === "hyderabad" ? "Hyderabad office" : `${location.label} studio`}.
       </p>
       <nav
         aria-label="Quick links"

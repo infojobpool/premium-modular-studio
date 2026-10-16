@@ -67,15 +67,15 @@ export const GLOBAL_PAGE_SEO: Record<"/" | "/projects" | "/privacy", PageSeoFiel
 /** City home `/hyderabad`, `/bhubaneswar`. */
 export const CITY_HOME_SEO: Record<StudioLocationId, PageSeoFields> = {
   hyderabad: {
-    title: "Hyderabad studio",
+    title: "Hyderabad office",
     description:
-      "Premium & luxury interiors in Hyderabad — bespoke residential and commercial design, modular kitchens, 3D sign-off, and studio-led execution from Secunderabad.",
+      "Premium & luxury interiors in Hyderabad — bespoke residential and commercial design, modular kitchens, 3D sign-off, and office-led execution from Secunderabad.",
     focusKeyword: "interior design Hyderabad",
     keywords: [
       "luxury interiors Hyderabad",
       "modular kitchen Hyderabad",
       "interior designer Secunderabad",
-      "Telangana interior studio",
+      "Telangana interior office",
     ],
   },
   bhubaneswar: {
@@ -97,27 +97,39 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "hyderabad/about": {
     title: "About · Hyderabad",
     description:
-      "Meet the Vivid In2erio Hyderabad studio — luxury residential and commercial interiors, founder-led design, and execution from Sainikpuri, Secunderabad.",
+      "Meet the Vivid In2erio Hyderabad office — luxury residential and commercial interiors, founder-led design, and execution from Sainikpuri, Secunderabad.",
     focusKeyword: "about Vivid In2erio Hyderabad",
     keywords: ["Hyderabad interior design studio", "luxury residential interiors"],
   },
   "hyderabad/services": {
     title: "Services · Hyderabad",
     description:
-      "Modular kitchens, full-home interiors, architecture, 3D visualization, and turnkey execution — Hyderabad studio services from consultation to handover.",
+      "Modular kitchens, full-home interiors, architecture, 3D visualization, and turnkey execution — Hyderabad office services from consultation to handover.",
     focusKeyword: "interior design services Hyderabad",
     keywords: ["modular kitchen Hyderabad", "turnkey interiors", "3D interior visualization"],
   },
   "hyderabad/process": {
     title: "Process · Hyderabad",
     description:
-      "Our Hyderabad design process — consultation, planning, 3D sign-off, procurement, and precision execution with clear milestones and studio accountability.",
+      "Our Hyderabad design process — consultation, planning, 3D sign-off, procurement, and precision execution with clear milestones and office accountability.",
     focusKeyword: "interior design process Hyderabad",
+  },
+  "hyderabad/architecture": {
+    title: "Architecture · Hyderabad",
+    description:
+      "Architecture from Vivid In2erio Hyderabad — floor plans, façades, and walkthroughs so structure and interiors lock to one roadmap.",
+    focusKeyword: "residential architecture Hyderabad",
+  },
+  "hyderabad/landscaping": {
+    title: "Landscaping · Hyderabad",
+    description:
+      "Landscaping from Vivid In2erio Hyderabad — gardens, lawns, courtyards, and outdoor rooms planned with the house.",
+    focusKeyword: "landscape design Hyderabad",
   },
   "hyderabad/gallery": {
     title: "Gallery · Hyderabad",
     description:
-      "Hyderabad project gallery — kitchens, villas, and apartments with renders, joinery detail, and design-to-delivery outcomes from our Telangana studio.",
+      "Hyderabad project gallery — kitchens, villas, and apartments with renders, joinery detail, and design-to-delivery outcomes from our Telangana office.",
     focusKeyword: "interior design gallery Hyderabad",
   },
   "hyderabad/projects": {
@@ -129,7 +141,7 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "hyderabad/contact": {
     title: "Book Free Consultation · Hyderabad",
     description:
-      "Book a free design consultation and plan your studio visit — phone, WhatsApp, email, enquiry form, and map for our Hyderabad studio in Sainikpuri.",
+      "Book a free design consultation and plan your office visit — phone, WhatsApp, email, enquiry form, and map for our Hyderabad office in Sainikpuri.",
     focusKeyword: "book interior consultation Hyderabad",
     keywords: ["book interior consultation Hyderabad", "Vivid In2erio contact", "studio visit Hyderabad"],
   },
@@ -142,13 +154,13 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "hyderabad/faq": {
     title: "FAQ · Hyderabad",
     description:
-      "Hyderabad studio FAQs — service areas, first consultation prep, parking, and typical timelines for modular kitchens and full-home interiors.",
+      "Hyderabad office FAQs — service areas, first consultation prep, parking, and typical timelines for modular kitchens and full-home interiors.",
     focusKeyword: "interior design FAQ Hyderabad",
   },
   "hyderabad/blog": {
     title: "Blog · Hyderabad",
     description:
-      "Editorial insights from Vivid In2erio Hyderabad on planning, kitchens, luxury residential trends, and studio-led interior design.",
+      "Editorial insights from Vivid In2erio Hyderabad on planning, kitchens, luxury residential trends, and office-led interior design.",
     focusKeyword: "interior design blog Hyderabad",
   },
   "hyderabad/careers": {
@@ -174,6 +186,18 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
     description:
       "Our Bhubaneswar design process — consultation, drawings, 3D approvals, procurement, and site leadership tuned for Odisha climate and pace.",
     focusKeyword: "interior design process Bhubaneswar",
+  },
+  "bhubaneswar/architecture": {
+    title: "Architecture · Bhubaneswar",
+    description:
+      "Architecture from Vivid In2erio Bhubaneswar — floor plans, façades, and walkthroughs tuned for Odisha sun and monsoon.",
+    focusKeyword: "residential architecture Bhubaneswar",
+  },
+  "bhubaneswar/landscaping": {
+    title: "Landscaping · Bhubaneswar",
+    description:
+      "Landscaping from Vivid In2erio Bhubaneswar — gardens, courts, and planting specified for Odisha rain and heat.",
+    focusKeyword: "landscape design Bhubaneswar",
   },
   "bhubaneswar/gallery": {
     title: "Gallery · Bhubaneswar",

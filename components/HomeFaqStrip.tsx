@@ -31,7 +31,7 @@ export function HomeFaqStrip() {
               Before you visit
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
-              Straight answers on coverage, timelines, and how we work — specific to this studio.
+              Straight answers on coverage, timelines, and how we work — specific to this office.
             </p>
           </div>
           <Link

@@ -69,7 +69,7 @@ export function StudioMapSection() {
                 </div>
               ) : null}
               <motion.iframe
-                title={`Map — ${location.label} studio`}
+                title={`Map — ${location.id === "hyderabad" ? "Hyderabad Office" : `${location.label} studio`}`}
                 className="absolute inset-0 h-full w-full border-0 grayscale-[20%] contrast-[1.02]"
                 src={mapEmbedSrc(location.mapQuery)}
                 loading="lazy"

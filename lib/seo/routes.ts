@@ -6,6 +6,8 @@ import type { StudioLocationId } from "@/lib/locations";
 export const CITY_SUBPAGES = [
   "about",
   "gallery",
+  "architecture",
+  "landscaping",
   "projects",
   "contact",
   "faq",

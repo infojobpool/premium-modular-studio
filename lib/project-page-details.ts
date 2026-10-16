@@ -19,6 +19,34 @@ export type ProjectPageDetail = {
 };
 
 export const PROJECT_PAGE_DETAILS: Record<string, ProjectPageDetail> = {
+  skypark: {
+    typology: "Apartment · Skypark",
+    contextLine: "Skypark · full-apartment interior renders",
+    lead:
+      "Sixteen photoreal stills across living, dining, galley kitchen, powder room, and bedrooms—joinery, lighting, and palettes signed off as one coordinated envelope.",
+    scope: [
+      "Galley kitchen with gloss shutters, granite tops, and integrated refrigeration",
+      "Living and dining with TV feature wall, sectional seating, and statement dining",
+      "Kitchenette joinery adjacent to living for daily hospitality",
+      "Powder room with stone basin ledge and sculptural lighting",
+      "Bedrooms with sliding wardrobes, feature walls, and layered lighting",
+    ],
+    facts: [
+      { label: "Programme", value: "Full apartment interior" },
+      { label: "Stills", value: "16 photoreal renders" },
+      { label: "Sign-off", value: "3D before procurement" },
+    ],
+    galleryStripIndices: [0, 1, 2, 3],
+    sections: [
+      {
+        heading: "One envelope",
+        paragraphs: [
+          "Kitchen gloss, living timber, and bedroom wardrobes share one hardware and lighting language so circulation from entry to suites stays visually quiet.",
+          "Approvals were frozen in stills before fabrication, so site days follow the signed-off set rather than last-minute swaps.",
+        ],
+      },
+    ],
+  },
   "delhi-kitchen-design": {
     typology: "Kitchen · Delhi NCR",
     contextLine: "Delhi NCR · full kitchen replacement with services upgrade",

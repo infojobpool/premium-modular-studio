@@ -73,7 +73,15 @@ export function GallerySegmented({ city, locationLabel }: Props) {
         >
           <div className="min-w-0">
             <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-accent-strong sm:text-xs">
-              Portfolio · {locationLabel}
+              Interiors · {locationLabel}
+            </p>
+            <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[10px] font-bold uppercase tracking-[0.16em] text-ink/55">
+              <Link href={`/${city}/architecture`} className="hover:text-ink">
+                Architecture
+              </Link>
+              <Link href={`/${city}/landscaping`} className="hover:text-ink">
+                Landscaping
+              </Link>
             </p>
             <h1 className="mt-3 text-balance font-display text-[clamp(2.1rem,4.8vw+0.6rem,3.65rem)] font-semibold leading-[1.06] tracking-tight text-ink">
               {copy.galleryHeading}

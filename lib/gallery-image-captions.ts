@@ -110,6 +110,26 @@ const CAPTION_ENTRIES: ReadonlyArray<{ match: string; tags: string[]; caption: s
     tags: ["Marble TV wall", "Open shelving", "Fluted band"],
     caption: "Living feature wall — marble panels, recessed TV niche, and display shelving",
   },
+  {
+    match: "skypark/living-tv-feature",
+    tags: ["TV wall", "Backlit timber", "Living"],
+    caption: "Skypark living — timber TV wall with profile lighting",
+  },
+  {
+    match: "skypark/kitchen-galley",
+    tags: ["Galley kitchen", "Gloss shutters", "Task lighting"],
+    caption: "Skypark kitchen — gloss galley with granite worktop",
+  },
+  {
+    match: "skypark/bedroom",
+    tags: ["Sliding wardrobe", "Suite", "Cove lighting"],
+    caption: "Skypark bedroom — sliding wardrobe and layered lighting",
+  },
+  {
+    match: "skypark/powder-room",
+    tags: ["Powder room", "Stone ledge", "Pendant lighting"],
+    caption: "Skypark powder room — stone basin ledge and sculptural pendants",
+  },
 ];
 
 export function galleryImageMeta(src: string): { tags: string[]; caption: string } | null {

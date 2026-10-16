@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { BlogPost, BlogPostSection } from "@/lib/blog-posts";
 import { BLOG_POSTS, blogPostHref } from "@/lib/blog-posts";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { cityVenueLine, type StudioLocationId } from "@/lib/locations";
 import { FOCUS_RING } from "@/lib/ui-classes";
 import { Reveal } from "./Reveal";
 
@@ -112,6 +113,7 @@ type Props = {
 };
 
 export function BlogArticle({ city, cityLabel, post }: Props) {
+  const venueNoun = city === "hyderabad" ? "office" : "studio";
   const headings = sectionHeadings(post.sections);
   let headingCounter = -1;
 
@@ -131,7 +133,7 @@ export function BlogArticle({ city, cityLabel, post }: Props) {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">
-              {post.category ?? `${cityLabel} studio`} · {formatDate(post.publishedAt)}
+              {post.category ?? cityVenueLine(city as StudioLocationId)} · {formatDate(post.publishedAt)}
             </p>
             {post.pdfPath ? (
               <span className="rounded-full border border-ink/15 bg-panel/50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-ink/70">
@@ -280,7 +282,7 @@ export function BlogArticle({ city, cityLabel, post }: Props) {
             <a href="tel:+919121821616" className="font-semibold text-ink hover:text-accent-strong">
               +91 91218 21616
             </a>
-            . Book a studio visit and claim your free quotation.
+            . Book {venueNoun === "office" ? "an office" : "a studio"} visit and claim your free quotation.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
@@ -293,7 +295,7 @@ export function BlogArticle({ city, cityLabel, post }: Props) {
               href={`/${city}/visit`}
               className={`inline-flex rounded-full border border-ink/15 bg-canvas px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-ink transition hover:border-accent/45 ${FOCUS_RING}`}
             >
-              Visit studio
+              Visit {venueNoun}
             </Link>
           </div>
         </div>

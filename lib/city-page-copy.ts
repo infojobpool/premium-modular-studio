@@ -69,15 +69,25 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
     heroLead:
       "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
     heroStudio:
-      "Vivid In2erio is a Hyderabad-based luxury interior and architectural design studio, known for creating bespoke residential and commercial spaces. Every project we craft is a balance of elegance, functionality, and enduring value — designed to elevate the way you live and work.",
-    aboutHeading: "Luxury interior & architectural studio in Hyderabad",
+      "Vivid In2erio is a Hyderabad-based luxury interior and architectural design office, known for creating bespoke residential and commercial spaces. Every project we craft is a balance of elegance, functionality, and enduring value — designed to elevate the way you live and work.",
+    aboutHeading: "Luxury interior & architectural office in Hyderabad",
     aboutLead:
-      "Walk the studio in Phase II, Valluvar Nagar (Sainikpuri): review materials, joinery mock-ups, and lighting studies in person, then follow one accountable team from detailed design through precision execution to luxury handover.",
+      "Walk the office in Phase II, Valluvar Nagar (Sainikpuri): review materials, joinery mock-ups, and lighting studies in person, then follow one accountable team from detailed design through precision execution to luxury handover.",
     aboutSecond:
-      "The same design-to-delivery standard extends to our Bhubaneswar atelier when your project needs a second India studio on the same documentation and quality bar.",
+      "The same design-to-delivery standard extends to our Bhubaneswar atelier when your project needs a second India office on the same documentation and quality bar.",
     galleryHeading: "Our projects",
     galleryIntro: vividGalleryPageIntro,
     galleryProjects: [
+      {
+        tag: "Skypark",
+        name: "Skypark",
+        alt: "Skypark apartment interiors — living, kitchen, and bedrooms",
+        slug: "skypark",
+        coverImage: vividGalleryCoverImageByProjectSlug.skypark,
+        excerpt:
+          "Full-apartment photoreal set—galley kitchen, living and dining, powder room, and bedrooms with sliding wardrobes signed off as one envelope.",
+        cardLabel: "Apartment · Skypark · 16 renders",
+      },
       {
         tag: "Delhi",
         name: "Delhi Kitchen Design",
@@ -155,7 +165,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       name: "Soubhagya Laxmi Nayakk",
       designation: "Founder & CEO",
       roleLine: "Vivid In2erio",
-      bio: "Recognised for design leadership that balances aesthetics, functionality, and execution discipline across luxury residential projects. Her studio direction has shaped a premium, client-first interior practice across Telangana and Odisha.",
+      bio: "Recognised for design leadership that balances aesthetics, functionality, and execution discipline across luxury residential projects. Her design direction has shaped a premium, client-first interior practice across Telangana and Odisha.",
       imageSrc: "/founder-soubhagya-laxmi-nayak.jpg",
       imageAlt: "Soubhagya Laxmi Nayakk, Founder and CEO — Vivid In2erio Hyderabad",
       highlights: [
@@ -180,7 +190,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         subtitle: "Villas, premium apartments & workplaces across the twin cities.",
       },
       {
-        title: "In-studio joinery & lighting",
+        title: "Joinery & lighting in the office",
         subtitle: "Mock-ups and sign-off studies before materials hit your site.",
         logoUrl: torriTapovanCoverImage,
         logoAlt: "Torri Tapovan Villa living and dining render — Vivid In2erio",
@@ -194,7 +204,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       {
         question: "Do you work outside the immediate Hyderabad area?",
         answer:
-          "Yes—our site teams regularly cover the wider twin cities and select outstation projects when scope and timelines align. The Secunderabad studio stays the hub for approvals, samples, and fabrication sign-off.",
+          "Yes—our site teams regularly cover the wider twin cities and select outstation projects when scope and timelines align. The Secunderabad office stays the hub for approvals, samples, and fabrication sign-off.",
       },
       {
         question: "What should I bring to the first consultation?",
@@ -202,7 +212,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
           "Floor plans (even builder PDFs), inspiration images, a rough budget band, and your move-in or festival dates if any. If the site exists, photos or a short video walk-through help us respond faster.",
       },
       {
-        question: "Is parking available at the Sainikpuri studio?",
+        question: "Is parking available at the Sainikpuri office?",
         answer:
           "Visitor parking is limited; we share precise gate instructions and a WhatsApp pin when your appointment is confirmed so your driver can stage nearby without blocking lanes.",
       },

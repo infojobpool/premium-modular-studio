@@ -25,7 +25,8 @@ export function CityFAQ() {
             Before you visit
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-muted">
-            Straight answers on coverage, timelines, and how we work—specific to this studio.
+            Straight answers on coverage, timelines, and how we work—specific to this{" "}
+            {location.id === "hyderabad" ? "office" : "studio"}.
           </p>
         </Reveal>
 

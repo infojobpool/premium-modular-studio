@@ -45,6 +45,7 @@ export const josephKitchenSegmentedGallery = [
 ] as const;
 
 export { sheebaVilla157SegmentedGallery } from "@/lib/sheeba-villa-157-gallery";
+export { skyparkSegmentedGallery } from "@/lib/skypark-gallery";
 
 export const villa173WestSegmentedGallery = [
   `${P}/living-room-tv-feature-wall.png`,

@@ -9,6 +9,7 @@ import {
   STUDIO_EMAIL,
   STUDIO_EMAIL_HREF,
   STUDIO_SOCIAL,
+  cityVenueLine,
   getStudioWhatsAppHref,
 } from "@/lib/locations";
 import { withBrandHighlight } from "./BrandInline";
@@ -69,7 +70,7 @@ export function Footer() {
   const { location } = useStudioLocation();
   const peerCity = location.id === "hyderabad" ? STUDIO_LOCATIONS.bhubaneswar : STUDIO_LOCATIONS.hyderabad;
   const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
-    `Hello — enquiry from ${location.label} studio page.`,
+    `Hello — enquiry from ${cityVenueLine(location.id)} page.`,
   )}`;
   const premiumLinkClass =
     "group inline-flex items-center gap-1 text-[0.98rem] text-ink/88 transition-all duration-300 hover:-translate-y-0.5 hover:text-ink";
@@ -98,7 +99,7 @@ export function Footer() {
             >
               <VividLogo size="footer" variant="brand" />
               <p className="mt-4 max-w-md text-[1.02rem] leading-relaxed text-ink/85">
-                Premium & luxury interiors led from our {location.label} studio, with parallel practice in{" "}
+                Premium & luxury interiors led from our {cityVenueLine(location.id)}, with parallel practice in{" "}
                 {peerCity.label}. Complete design-to-delivery for elegant homes, refined workspaces, and
                 high-end commercial environments.
               </p>
@@ -140,6 +141,12 @@ export function Footer() {
                   <Link href={`/${location.id}/gallery`} className={premiumLinkClass}>
                     <span className={premiumLinkUnderlineClass}>Gallery</span>
                   </Link>
+                  <Link href={`/${location.id}/architecture`} className={premiumLinkClass}>
+                    <span className={premiumLinkUnderlineClass}>Architecture</span>
+                  </Link>
+                  <Link href={`/${location.id}/landscaping`} className={premiumLinkClass}>
+                    <span className={premiumLinkUnderlineClass}>Landscaping</span>
+                  </Link>
                   <Link href={`/${location.id}/projects#stories`} className={premiumLinkClass}>
                     <span className={premiumLinkUnderlineClass}>Stories</span>
                   </Link>
@@ -158,7 +165,7 @@ export function Footer() {
               <div className="space-y-6 rounded-2xl border border-ink/10 bg-gradient-to-b from-canvas/70 to-panel/35 p-5 max-sm:pr-16 sm:border-l-0 sm:p-6 lg:border-l lg:border-ink/10 lg:pl-8">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
-                    {location.label} studio
+                    {cityVenueLine(location.id)}
                   </p>
                   <p className="mt-2 text-[0.98rem] leading-relaxed text-ink/84">
                     {location.addressLines.map((line) => (

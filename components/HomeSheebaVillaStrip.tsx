@@ -34,8 +34,7 @@ export function HomeSheebaVillaStrip() {
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
           <EditorialSectionHeader
-            number="02"
-            eyebrow="Indukuri corridor · Villa 157"
+            eyebrow="Featured work"
             title="Sheeba Villa — room by room"
             id="sheeba-villa-heading"
             align="between"

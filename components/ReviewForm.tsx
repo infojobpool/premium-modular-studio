@@ -148,7 +148,7 @@ export function ReviewForm() {
         <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">Thank you</p>
         <h2 className="mt-4 font-display text-3xl text-ink sm:text-4xl">Your review is live</h2>
         <p className="mx-auto mt-4 max-w-md text-muted">
-          It now appears in our Reviews &amp; feedback section on the studio home page. We appreciate you
+          It now appears in our Reviews &amp; feedback section on the office home page. We appreciate you
           taking the time.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -156,7 +156,7 @@ export function ReviewForm() {
             href="/hyderabad"
             className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-canvas transition hover:bg-ink/90"
           >
-            View Hyderabad studio
+            View Hyderabad Office
           </Link>
           <Link
             href="/review"

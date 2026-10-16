@@ -13,11 +13,11 @@ const cards = [
   {
     city: "hyderabad" as const,
     title: "Hyderabad",
-    studio: "Flagship studio",
+    studio: "Flagship office",
     area: "Secunderabad / Sainikpuri",
     href: "/hyderabad",
     image: "/gallery/portfolio/living-room-tv-feature-wall.png",
-    imageAlt: "Hyderabad studio — luxury bedroom interior",
+    imageAlt: "Hyderabad office — luxury bedroom interior",
     imagePosition: "object-[center_42%]" as const,
     hours: "10:00–19:00 IST",
   },
@@ -216,7 +216,7 @@ export function HubLanding() {
                     </div>
 
                     <span className="mt-auto inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full border border-ink/14 bg-canvas/85 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink shadow-sm transition duration-300 group-hover:border-accent/45 group-hover:bg-accent/12 sm:text-[11px]">
-                      Enter studio
+                      {c.city === "hyderabad" ? "Enter office" : "Enter studio"}
                       <span
                         className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/12 bg-canvas text-sm transition duration-300 group-hover:translate-x-0.5 group-hover:border-accent/45 group-hover:bg-accent/20"
                         aria-hidden

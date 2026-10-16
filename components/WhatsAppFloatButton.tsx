@@ -3,7 +3,7 @@
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getStudioWhatsAppHref } from "@/lib/locations";
+import { cityVenueLine, getStudioWhatsAppHref } from "@/lib/locations";
 import { FOCUS_RING } from "@/lib/ui-classes";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -47,7 +47,7 @@ export function WhatsAppFloatButton() {
   }, [isCityHome, pathname]);
 
   const href = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
-    `Hello — I'd like to speak with the ${location.label} studio on WhatsApp.`,
+    `Hello — I'd like to speak with the ${cityVenueLine(location.id)} on WhatsApp.`,
   )}`;
 
   if (!isCityRoute) return null;
@@ -65,7 +65,7 @@ export function WhatsAppFloatButton() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Contact on WhatsApp — ${location.label} studio`}
+      aria-label={`Contact on WhatsApp — ${cityVenueLine(location.id)}`}
       className={`fixed z-[42] flex max-w-[calc(100vw-1.5rem)] flex-row items-center gap-2 transition hover:scale-[1.02] active:scale-[0.99] ${position} right-[max(0.75rem,env(safe-area-inset-right))] ${
         nearBottom ? "pointer-events-none translate-y-4 opacity-0" : "opacity-100"
       } ${FOCUS_RING}`}

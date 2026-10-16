@@ -9,6 +9,8 @@ import { FOCUS_RING } from "@/lib/ui-classes";
 const navItems = [
   { segment: "about", label: "About" },
   { segment: "gallery", label: "Gallery" },
+  { segment: "architecture", label: "Architecture" },
+  { segment: "landscaping", label: "Landscaping" },
   { segment: "projects", label: "Stories" },
   { segment: "blog", label: "Blog" },
   { segment: "careers", label: "Careers" },
@@ -17,7 +19,7 @@ const navItems = [
 
 const navGroups = [
   { eyebrow: "Studio", segments: ["about"] as const },
-  { eyebrow: "Work", segments: ["gallery", "projects"] as const },
+  { eyebrow: "Work", segments: ["gallery", "architecture", "landscaping", "projects"] as const },
   { eyebrow: "More", segments: ["blog", "careers", "faq"] as const },
 ];
 
@@ -84,7 +86,7 @@ export function MobileNavMenu({
                   Menu
                 </p>
                 <p className="mt-1 font-display text-2xl tracking-tight text-ink">
-                  {cityLabel} studio
+                  {cityBase === "/hyderabad" ? `${cityLabel} Office` : `${cityLabel} studio`}
                 </p>
                 <p className="mt-1.5 text-sm text-muted">Premium interiors · design to delivery</p>
               </div>

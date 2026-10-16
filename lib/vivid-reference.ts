@@ -4,6 +4,7 @@
  * Replace with self-hosted /public assets when you migrate off Waytowebs CDN.
  */
 import { sheebaVilla157CoverImage } from "@/lib/sheeba-villa-157-gallery";
+import { skyparkCoverImage } from "@/lib/skypark-gallery";
 import { torriTapovanCoverImage } from "@/lib/torri-tapovan-gallery";
 
 export const VIVID_WP_MEDIA =
@@ -172,6 +173,25 @@ export const vividTestimonials = [
 ] as const;
 
 
+export const vividCareerBenefits = [
+  {
+    title: "Career growth",
+    body: "Clear responsibility as you grow — from supporting a room to owning a full apartment, villa, or site — with two studios to learn across.",
+  },
+  {
+    title: "Live luxury projects",
+    body: "Work on signed-off 3D, joinery, and execution for premium homes — not sample boards alone. Your drawings reach site.",
+  },
+  {
+    title: "Learn the full process",
+    body: "Consultation, design, visualisation, procurement, and handover sit in one studio. You see how a project actually gets built.",
+  },
+  {
+    title: "Mentorship on the floor",
+    body: "Direct feedback from design leads, project managers, and site supervisors — so craft, coordination, and client manner all improve.",
+  },
+] as const;
+
 export const vividCareerOpenings = [
   {
     role: "Interior Designer",
@@ -212,6 +232,7 @@ export const vividCareerOpenings = [
  * (the live WP gallery mis-links those columns to the wrong media).
  */
 export const vividGalleryCoverImageByProjectSlug = {
+  skypark: skyparkCoverImage,
   "delhi-kitchen-design": `${PORTFOLIO_GALLERY}/modular-kitchen-wood-beige.png`,
   "joseph-kitchen-design": `${PORTFOLIO_GALLERY}/galley-kitchen-samsung-fridge.png`,
   "sheeba-villa-157-indukuri": sheebaVilla157CoverImage,

@@ -9,6 +9,7 @@ export type HeroSlide =
       alt: string;
       eyebrow: string;
       eyebrowHref?: string;
+      workHref?: string;
       headline: string;
       lead: string;
       statBadge?: string;
@@ -20,6 +21,7 @@ export type HeroSlide =
       poster?: string;
       eyebrow: string;
       eyebrowHref?: string;
+      workHref?: string;
       headline: string;
       lead: string;
       statBadge?: string;
@@ -30,10 +32,8 @@ export const HERO_VIDEO_URL =
   typeof process !== "undefined" ? process.env.NEXT_PUBLIC_HERO_VIDEO_URL?.trim() ?? "" : "";
 
 const INTERIORS_HERO = "/gallery/portfolio/living-room-tv-feature-wall.png";
-const LANDSCAPE_GARDEN =
-  "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1920&q=80";
-const ARCHITECTURE_VILLA =
-  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80";
+const LANDSCAPE_GARDEN = "/gallery/landscaping/garden-estate.jpg";
+const ARCHITECTURE_VILLA = "/gallery/architecture/walkthrough-villa.jpg";
 
 /** Three practice frames: interiors, landscaping, architecture designing. */
 export function buildHeroSlides(
@@ -53,7 +53,7 @@ export function buildHeroSlides(
       headline: isBhub ? "Walk the Bhubaneswar studio and live sites" : "Walk the space before the walls speak",
       lead: isBhub
         ? "Silent loop of the Odisha studio and sites—pause on hover, then explore still frames for materials, joinery, and finish intent tuned to local climate."
-        : "Silent loop of the studio and live sites—pause on hover, then explore still frames for detail and finish.",
+        : "Silent loop of the office and live sites—pause on hover, then explore still frames for detail and finish.",
       statBadge: "Film · stills · sign-off",
     });
   }
@@ -65,6 +65,7 @@ export function buildHeroSlides(
       alt: `Living interior — ${cityLabel}`,
       eyebrow: "Interiors",
       eyebrowHref: `/${cityId}/gallery`,
+      workHref: `/${cityId}/gallery`,
       headline: `Premium interiors in ${cityLabel}`,
       lead: "Living, kitchens, and suites composed as one envelope — palettes, joinery, and light signed off before site.",
       statBadge: "Full-home interiors",
@@ -74,6 +75,8 @@ export function buildHeroSlides(
       src: LANDSCAPE_GARDEN,
       alt: "Garden landscaping and outdoor rooms",
       eyebrow: "Landscaping",
+      eyebrowHref: `/${cityId}/landscaping`,
+      workHref: `/${cityId}/landscaping`,
       headline: "Landscapes that complete the house",
       lead: "Gardens, paths, and outdoor rooms planned with the façade — so the approach and threshold feel designed, not added later.",
       statBadge: "Gardens · courtyards",
@@ -83,6 +86,8 @@ export function buildHeroSlides(
       src: ARCHITECTURE_VILLA,
       alt: "Architectural villa façade",
       eyebrow: "Architecture",
+      eyebrowHref: `/${cityId}/architecture`,
+      workHref: `/${cityId}/architecture`,
       headline: "Architecture designed with the interior",
       lead: "Form, sun, and structure first — façades and massing documented so interiors lock to a single roadmap.",
       statBadge: "Architecture designing",
@@ -96,6 +101,7 @@ export function buildHeroSlides(
       alt: `Living interior — ${cityLabel}`,
       eyebrow: "Interiors",
       eyebrowHref: `/${cityId}/gallery`,
+      workHref: `/${cityId}/gallery`,
       headline: `Premium interiors in ${cityLabel}`,
       lead: "Homes shaped for Odisha light, monsoon, and humidity — layered interiors and modular kitchens with English-led documentation.",
       statBadge: "Full-home interiors",
@@ -105,6 +111,8 @@ export function buildHeroSlides(
       src: LANDSCAPE_GARDEN,
       alt: "Garden landscaping and outdoor rooms",
       eyebrow: "Landscaping",
+      eyebrowHref: `/${cityId}/landscaping`,
+      workHref: `/${cityId}/landscaping`,
       headline: "Planting that holds through monsoon",
       lead: "Gardens, lawns, and courtyards specified for Odisha rain and heat — outdoor rooms that stay composed year-round.",
       statBadge: "Gardens · courtyards",
@@ -114,6 +122,8 @@ export function buildHeroSlides(
       src: ARCHITECTURE_VILLA,
       alt: "Architectural villa façade",
       eyebrow: "Architecture",
+      eyebrowHref: `/${cityId}/architecture`,
+      workHref: `/${cityId}/architecture`,
       headline: "Plans that respect sun and monsoon",
       lead: "Shell, services, and façade decisions documented together so interiors lock to one Bhubaneswar roadmap.",
       statBadge: "Architecture designing",

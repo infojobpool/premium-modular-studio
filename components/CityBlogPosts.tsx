@@ -27,7 +27,7 @@ export function CityBlogPosts() {
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">Blog</p>
           <h1 className="mt-4 font-display text-4xl tracking-tight text-ink sm:text-5xl">
-            Insights from the {location.label} studio
+            Insights from the {location.label} {location.id === "hyderabad" ? "office" : "studio"}
           </h1>
           <p className="mt-4 max-w-2xl text-muted">
             {withBrandHighlight(

@@ -22,7 +22,7 @@ export function StudioTeamSection() {
   const members = [...STUDIO_TEAM]
     .filter((m) => {
       if (location.id === "bhubaneswar") {
-        return m.studio === "bhubaneswar" || m.id === "ceo";
+        return m.studio === "bhubaneswar" || m.studio === "both";
       }
       return true;
     })
@@ -96,11 +96,13 @@ export function StudioTeamSection() {
 
                 <div className="flex flex-1 flex-col px-5 pb-6 pt-5 text-center">
                   <h3 className="font-display text-2xl tracking-tight text-ink">{member.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{member.role}</p>
+                  {member.role ? (
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{member.role}</p>
+                  ) : null}
 
                   {member.studio !== "both" ? (
                     <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
-                      {member.studio === "bhubaneswar" ? "Bhubaneswar studio" : "Hyderabad studio"}
+                      {member.studio === "bhubaneswar" ? "Bhubaneswar Office" : "Hyderabad Office"}
                     </p>
                   ) : (
                     <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/45">

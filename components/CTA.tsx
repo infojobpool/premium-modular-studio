@@ -5,7 +5,7 @@ import { useState, type FormEvent } from "react";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { buildContactMailto } from "@/lib/contact-mailto";
 import { getCalendlyUrl } from "@/lib/calendly";
-import { STUDIO_EMAIL, STUDIO_EMAIL_HREF, getStudioWhatsAppHref } from "@/lib/locations";
+import { STUDIO_EMAIL, STUDIO_EMAIL_HREF, cityVenueLine, cityVenueNoun, getStudioWhatsAppHref } from "@/lib/locations";
 import { vividCopy } from "@/lib/vivid-reference";
 import { LocationSwitcher } from "./LocationSwitcher";
 import { Reveal } from "./Reveal";
@@ -17,7 +17,7 @@ export function CTA() {
   const { location } = useStudioLocation();
   const calendlyUrl = getCalendlyUrl();
   const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
-    `Hello Vivid In2erio — I'd like to discuss a project (${location.label} studio page).`,
+    `Hello Vivid In2erio — I'd like to discuss a project (${cityVenueLine(location.id)} page).`,
   )}`;
 
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
@@ -99,7 +99,7 @@ export function CTA() {
           <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
             <div>
               <p className="inline-flex rounded-full border border-accent/50 bg-accent/20 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.28em] text-canvas shadow-sm">
-                Consultation & studio visit
+                Consultation & {cityVenueNoun(location.id)} visit
               </p>
               <h1 className="mt-5 max-w-[22ch] font-display text-4xl leading-[1.08] text-canvas sm:text-5xl md:text-[3.15rem] md:leading-[1.06] [text-shadow:0_0_40px_rgba(228,184,74,0.35),0_2px_0_rgba(27,63,46,0.2)]">
                 Book Free Consultation
@@ -107,9 +107,9 @@ export function CTA() {
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-canvas/80">
                 {vividCopy.ctaBody}
               </p>
-              <h3 className="mt-8 font-display text-2xl text-canvas">{location.label} studio</h3>
+              <h3 className="mt-8 font-display text-2xl text-canvas">{cityVenueLine(location.id)}</h3>
               <p className="mt-4 text-xs font-semibold uppercase tracking-[0.28em] text-canvas/50">
-                Switch studio
+                Switch city
               </p>
               <div className="mt-3">
                 <LocationSwitcher layoutGroup="cta" />

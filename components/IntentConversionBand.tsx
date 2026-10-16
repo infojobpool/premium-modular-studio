@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
-import { STUDIO_EMAIL_HREF, getStudioWhatsAppHref } from "@/lib/locations";
+import { STUDIO_EMAIL_HREF, cityVenueLine, getStudioWhatsAppHref } from "@/lib/locations";
 import { trackEvent } from "@/lib/analytics";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
@@ -58,7 +58,7 @@ function IntentCardIcon({ index }: { index: number }) {
 export function IntentConversionBand() {
   const { location } = useStudioLocation();
   const whatsappHref = `${getStudioWhatsAppHref(location.id)}?text=${encodeURIComponent(
-    `Hello — I'd like guidance on where to start (${location.label} studio).`,
+    `Hello — I'd like guidance on where to start (${cityVenueLine(location.id)}).`,
   )}`;
 
   const cards: Array<{
@@ -113,7 +113,7 @@ export function IntentConversionBand() {
               <p className="mt-5 text-sm leading-relaxed text-canvas/76">
                 Prefer email?{" "}
                 <a href={STUDIO_EMAIL_HREF} className="font-semibold text-canvas underline underline-offset-4">
-                  Write the studio
+                  Write the {location.id === "hyderabad" ? "office" : "studio"}
                 </a>{" "}
                 or use{" "}
                 <Link href={`/${location.id}/contact`} className="font-semibold text-canvas underline underline-offset-4">

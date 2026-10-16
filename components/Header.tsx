@@ -14,6 +14,8 @@ import { VividLogo } from "./VividLogo";
 const navItems = [
   { segment: "about", label: "About" },
   { segment: "gallery", label: "Gallery" },
+  { segment: "architecture", label: "Architecture" },
+  { segment: "landscaping", label: "Landscaping" },
   { segment: "projects", label: "Stories" },
   { segment: "blog", label: "Blog" },
   { segment: "careers", label: "Careers" },
@@ -36,7 +38,7 @@ export function Header() {
     pathname.startsWith("/bhubaneswar/");
   const logoHref = onCitySite ? cityBase : "/";
   const logoAria = onCitySite
-    ? `Vivid In2erio — ${cityBase === "/hyderabad" ? "Hyderabad" : "Bhubaneswar"} studio home`
+    ? `Vivid In2erio — ${cityBase === "/hyderabad" ? "Hyderabad" : "Bhubaneswar"} Office`
     : "Vivid In2erio — studio hub";
 
   const contactActive = pathname === `${cityBase}/contact`;

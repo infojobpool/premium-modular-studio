@@ -3,6 +3,11 @@ import type { StudioLocationId } from "@/lib/locations";
 
 /** Long-form case study copy keyed by `galleryProjects[].slug` (unique across cities). */
 export const PROJECT_STORY: Record<string, string[]> = {
+  skypark: [
+    "Skypark is a compact apartment programme: galley kitchen, open living and dining, powder room, and bedrooms treated as one finish schedule.",
+    "Photoreal stills locked joinery, lighting, and material palettes—from gloss kitchen shutters to sliding wardrobes—before procurement.",
+    "Living volumes share a warm timber and stone language with the kitchenette and dining, so the home reads as one envelope rather than room-by-room packages.",
+  ],
   "delhi-kitchen-design": [
     "A Delhi-region kitchen brief asked for clear work triangles, integrated appliances, and finishes that stay legible under mixed daylight and evening lighting.",
     "We locked layout, services, and joinery in detailed drawings and visualization so stone, hardware, and lighting were approved before fabrication—reducing site improvisation.",

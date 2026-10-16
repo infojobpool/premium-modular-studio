@@ -104,7 +104,7 @@ export function Hero() {
                     Book free consultation
                   </Link>
                   <Link
-                    href={`/${location.id}/gallery`}
+                    href={current.workHref ?? `/${location.id}/gallery`}
                     className="inline-flex items-center gap-2 rounded-full border border-canvas/35 bg-ink/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-canvas backdrop-blur-sm transition hover:border-canvas/60 sm:text-sm"
                   >
                     View work

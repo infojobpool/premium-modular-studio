@@ -18,7 +18,7 @@ export function CitySubpageBackLink({ city }: { city: StudioLocationId }) {
             ←
           </span>
           <span className="tracking-tight">
-            {label} studio home
+            {label} Office
           </span>
         </Link>
       </div>

@@ -109,7 +109,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
         eyebrow: "Vivid In2erio advantage",
         title: "Premium residential transformations across Hyderabad",
         text:
-          "Vivid In2erio is widely recognized as a leading home interior design firm in Hyderabad, offering premium, end-to-end residential transformations. We specialize in creating spaces that seamlessly blend modern aesthetics with functional luxury — bespoke modular kitchens, space-saving wardrobes, and living room compositions tailored to your lifestyle. From contemporary luxury apartments in high-tech city hubs to expansive villas, our Hyderabad studio handles every project phase with scientific precision and complete transparency. We prioritize durable materials, optimized storage, and strict adherence to timelines so your home makeover is stress-free, deeply personalized, and executed to international standards.",
+          "Vivid In2erio is widely recognized as a leading home interior design firm in Hyderabad, offering premium, end-to-end residential transformations. We specialize in creating spaces that seamlessly blend modern aesthetics with functional luxury — bespoke modular kitchens, space-saving wardrobes, and living room compositions tailored to your lifestyle. From contemporary luxury apartments in high-tech city hubs to expansive villas, our Hyderabad office handles every project phase with scientific precision and complete transparency. We prioritize durable materials, optimized storage, and strict adherence to timelines so your home makeover is stress-free, deeply personalized, and executed to international standards.",
       },
     ],
     keywords: [
