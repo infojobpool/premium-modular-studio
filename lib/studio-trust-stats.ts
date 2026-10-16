@@ -2,7 +2,7 @@
 export const STUDIO_TRUST_STATS = [
   {
     countTarget: 2,
-    label: "Premium studios",
+    label: "Premium offices",
     detail: "Hyderabad & Bhubaneswar",
   },
   {

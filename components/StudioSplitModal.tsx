@@ -137,7 +137,7 @@ export function StudioSplitModal() {
                     </p>
                     <p className="mt-2 max-w-sm text-base text-canvas/85 sm:text-lg">
                       Bespoke residential and commercial spaces—design-to-delivery from our
-                      Sainikpuri–Secunderabad studio across Telangana.
+                      Sainikpuri–Secunderabad office across Telangana.
                     </p>
                     <Link
                       href="/hyderabad"

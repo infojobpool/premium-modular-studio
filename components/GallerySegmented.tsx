@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { getGalleryImagesForProject } from "@/lib/gallery-segmented";
+import { galleryImageMeta } from "@/lib/gallery-image-captions";
 import {
   GALLERY_TYPOLOGY_FILTERS,
   parseGalleryTypology,
@@ -72,7 +73,15 @@ export function GallerySegmented({ city, locationLabel }: Props) {
         >
           <div className="min-w-0">
             <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-accent-strong sm:text-xs">
-              Portfolio · {locationLabel}
+              Interiors · {locationLabel}
+            </p>
+            <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[10px] font-bold uppercase tracking-[0.16em] text-ink/55">
+              <Link href={`/${city}/architecture`} className="hover:text-ink">
+                Architecture
+              </Link>
+              <Link href={`/${city}/landscaping`} className="hover:text-ink">
+                Landscaping
+              </Link>
             </p>
             <h1 className="mt-3 text-balance font-display text-[clamp(2.1rem,4.8vw+0.6rem,3.65rem)] font-semibold leading-[1.06] tracking-tight text-ink">
               {copy.galleryHeading}
@@ -190,6 +199,7 @@ export function GallerySegmented({ city, locationLabel }: Props) {
           >
             {images.map((src, idx) => {
               const isFeatured = idx === 0;
+              const meta = galleryImageMeta(src);
               return (
                 <button
                   key={`${project.slug}-${idx}-${src}`}
@@ -224,6 +234,18 @@ export function GallerySegmented({ city, locationLabel }: Props) {
                       Featured
                     </span>
                   ) : null}
+                  {meta?.tags.length ? (
+                    <span className="pointer-events-none absolute bottom-3 right-3 left-3 flex flex-wrap justify-end gap-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                      {meta.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/20 bg-ink/60 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-canvas/95 backdrop-blur-sm"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </span>
+                  ) : null}
                 </button>
               );
             })}
@@ -235,7 +257,7 @@ export function GallerySegmented({ city, locationLabel }: Props) {
             href={`/${city}/projects`}
             className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-canvas/80 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-ink shadow-sm transition hover:border-accent/40 hover:bg-accent/12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
-            View all project stories
+            View all projects
             <span aria-hidden>→</span>
           </Link>
         </div>
@@ -247,7 +269,12 @@ export function GallerySegmented({ city, locationLabel }: Props) {
         index={lightboxIndex}
         onClose={() => setLightboxIndex(null)}
         onIndexChange={setLightboxIndex}
+        cinema
         altForIndex={(i) => `${project?.alt ?? "Gallery"} — still ${i + 1}`}
+        captionForIndex={(i) => {
+          const src = images[i];
+          return src ? galleryImageMeta(src)?.caption : undefined;
+        }}
       />
     </section>
   );

@@ -15,7 +15,7 @@ export function StudioTrustStrip() {
     <section
       ref={sectionRef}
       className={`border-b border-ink/10 bg-ink py-8 sm:py-9 ${PAGE_GUTTER_X}`}
-      aria-label="Why clients trust Vivid In2wrio"
+      aria-label="Why clients trust Vivid In2erio"
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>

@@ -8,12 +8,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed:seo": "tsx scripts/seed-keystatic-seo.ts"
+    "seed:seo": "tsx scripts/seed-keystatic-seo.ts",
+    "export:seo": "tsx scripts/export-seo-csv.ts"
   },
   "dependencies": {
     "@keystatic/core": "^0.5.50",
     "@keystatic/next": "^5.0.4",
     "@markdoc/markdoc": "^0.5.7",
+    "@vercel/blob": "^2.6.1",
     "framer-motion": "^11.18.0",
     "lenis": "^1.2.3",
     "next": "^15.5.7",

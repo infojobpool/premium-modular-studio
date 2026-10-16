@@ -1,4 +1,5 @@
 import type { StudioLocationId } from "@/lib/locations";
+import { torriTapovanCoverImage } from "@/lib/torri-tapovan-gallery";
 import { vividGalleryCoverImageByProjectSlug, vividGalleryPageIntro } from "@/lib/vivid-reference";
 
 export type CityFaq = { question: string; answer: string };
@@ -66,17 +67,27 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
   hyderabad: {
     heroTitle: "Premium & luxury interiors in Hyderabad",
     heroLead:
-      "At Vivid In2wrio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
+      "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
     heroStudio:
-      "Vivid In2wrio is a Hyderabad-based luxury interior and architectural design studio, known for creating bespoke residential and commercial spaces. Every project we craft is a balance of elegance, functionality, and enduring value — designed to elevate the way you live and work.",
-    aboutHeading: "Luxury interior & architectural studio in Hyderabad",
+      "Vivid In2erio is a Hyderabad-based luxury interior and architectural design office, known for creating bespoke residential and commercial spaces. Every project we craft is a balance of elegance, functionality, and enduring value — designed to elevate the way you live and work.",
+    aboutHeading: "Luxury interior & architectural office in Hyderabad",
     aboutLead:
-      "Walk the studio in Phase II, Valluvar Nagar (Sainikpuri): review materials, joinery mock-ups, and lighting studies in person, then follow one accountable team from detailed design through precision execution to luxury handover.",
+      "Walk the office in Phase II, Valluvar Nagar (Sainikpuri): review materials, joinery mock-ups, and lighting studies in person, then follow one accountable team from detailed design through precision execution to luxury handover.",
     aboutSecond:
-      "The same design-to-delivery standard extends to our Bhubaneswar atelier when your project needs a second India studio on the same documentation and quality bar.",
+      "The same design-to-delivery standard extends to our Bhubaneswar atelier when your project needs a second India office on the same documentation and quality bar.",
     galleryHeading: "Our projects",
     galleryIntro: vividGalleryPageIntro,
     galleryProjects: [
+      {
+        tag: "Skypark",
+        name: "Skypark",
+        alt: "Skypark apartment interiors — living, kitchen, and bedrooms",
+        slug: "skypark",
+        coverImage: vividGalleryCoverImageByProjectSlug.skypark,
+        excerpt:
+          "Full-apartment photoreal set—galley kitchen, living and dining, powder room, and bedrooms with sliding wardrobes signed off as one envelope.",
+        cardLabel: "Apartment · Skypark · 16 renders",
+      },
       {
         tag: "Delhi",
         name: "Delhi Kitchen Design",
@@ -88,6 +99,26 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         cardLabel: "Kitchen · Delhi NCR · Modular",
       },
       {
+        tag: "Torri Tapovan",
+        name: "Torri Tapovan Villa",
+        alt: "Villa interior renders — Torri Tapovan",
+        slug: "torri-tapovan-villa",
+        coverImage: vividGalleryCoverImageByProjectSlug["torri-tapovan-villa"],
+        excerpt:
+          "Full-villa visualization—living and dining with bar, modular kitchen, and suites with bespoke wardrobes, window seats, and layered lighting.",
+        cardLabel: "Villa · Tapovan · Full interior renders",
+      },
+      {
+        tag: "Indukuri · Hyderabad",
+        name: "Sheeba Villa 157 Indukuri Renders",
+        alt: "Villa interior — Indukuri corridor",
+        slug: "sheeba-villa-157-indukuri",
+        coverImage: vividGalleryCoverImageByProjectSlug["sheeba-villa-157-indukuri"],
+        excerpt:
+          "Full-villa photoreal study—living and dining, master and guest suites, study, and service cores as one signed-off envelope along the Indukuri corridor.",
+        cardLabel: "Villa · Indukuri · 47 renders",
+      },
+      {
         tag: "Joseph",
         name: "Joseph Kitchen Design",
         alt: "Kitchen design perspective",
@@ -96,16 +127,6 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         excerpt:
           "Custom kitchen layout and joinery rhythm—signed off in visualization before procurement and site fit-out.",
         cardLabel: "Kitchen · Custom residence · Contemporary",
-      },
-      {
-        tag: "Indukuri · Hyderabad",
-        name: "Sheeba Villa 157 Indukuri Renders",
-        alt: "Villa interior — Indukuri",
-        slug: "sheeba-villa-157-indukuri",
-        coverImage: vividGalleryCoverImageByProjectSlug["sheeba-villa-157-indukuri"],
-        excerpt:
-          "Villa-scale interiors with clarity from planning through advanced visualization—Indukuri corridor portfolio work.",
-        cardLabel: "Villa · Indukuri · Full interior",
       },
       {
         tag: "Indukuri Lakeshore",
@@ -127,16 +148,26 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
           "East lakeshore composition—premium standards from detailed planning through smart integrations and handover.",
         cardLabel: "Villa · Lakeshore · East wing",
       },
+      {
+        tag: "Matthew",
+        name: "Matthew Villa Makeover",
+        alt: "Full-home interior makeover — Matthew residence",
+        slug: "matthew-villa-makeover",
+        coverImage: vividGalleryCoverImageByProjectSlug["matthew-villa-makeover"],
+        excerpt:
+          "Complete home rework—from exterior lighting and living volumes through modular kitchens, bedrooms, and a sculptural stairwell.",
+        cardLabel: "Villa · Full home · Makeover rework",
+      },
     ],
     leadershipSpotlight: {
       eyebrow: "Founder spotlight",
       sectionAriaLabel: "Founder spotlight",
       name: "Soubhagya Laxmi Nayakk",
       designation: "Founder & CEO",
-      roleLine: "Vivid In2wrio",
-      bio: "Recognised for design leadership that balances aesthetics, functionality, and execution discipline across luxury residential projects. Her studio direction has shaped a premium, client-first interior practice across Telangana and Odisha.",
-      imageSrc: "/founder-soubhagya-laxmi-nayak.png",
-      imageAlt: "Soubhagya Laxmi Nayakk, Founder and CEO — Vivid In2wrio Hyderabad",
+      roleLine: "Vivid In2erio",
+      bio: "Recognised for design leadership that balances aesthetics, functionality, and execution discipline across luxury residential projects. Her design direction has shaped a premium, client-first interior practice across Telangana and Odisha.",
+      imageSrc: "/founder-soubhagya-laxmi-nayak.jpg",
+      imageAlt: "Soubhagya Laxmi Nayakk, Founder and CEO — Vivid In2erio Hyderabad",
       highlights: [
         {
           title: "India Design Awards 2023:",
@@ -159,11 +190,10 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         subtitle: "Villas, premium apartments & workplaces across the twin cities.",
       },
       {
-        title: "In-studio joinery & lighting",
+        title: "Joinery & lighting in the office",
         subtitle: "Mock-ups and sign-off studies before materials hit your site.",
-        logoUrl:
-          "https://waytowebs.in/vivid/wp-content/uploads/2026/04/41-768x720.jpg",
-        logoAlt: "Joinery and interior craft — Vivid portfolio reference",
+        logoUrl: torriTapovanCoverImage,
+        logoAlt: "Torri Tapovan Villa living and dining render — Vivid In2erio",
       },
       {
         title: "Single accountable team",
@@ -174,7 +204,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       {
         question: "Do you work outside the immediate Hyderabad area?",
         answer:
-          "Yes—our site teams regularly cover the wider twin cities and select outstation projects when scope and timelines align. The Secunderabad studio stays the hub for approvals, samples, and fabrication sign-off.",
+          "Yes—our site teams regularly cover the wider twin cities and select outstation projects when scope and timelines align. The Secunderabad office stays the hub for approvals, samples, and fabrication sign-off.",
       },
       {
         question: "What should I bring to the first consultation?",
@@ -182,7 +212,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
           "Floor plans (even builder PDFs), inspiration images, a rough budget band, and your move-in or festival dates if any. If the site exists, photos or a short video walk-through help us respond faster.",
       },
       {
-        question: "Is parking available at the Sainikpuri studio?",
+        question: "Is parking available at the Sainikpuri office?",
         answer:
           "Visitor parking is limited; we share precise gate instructions and a WhatsApp pin when your appointment is confirmed so your driver can stage nearby without blocking lanes.",
       },
@@ -196,7 +226,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
   bhubaneswar: {
     heroTitle: "Premium & luxury interiors in Bhubaneswar",
     heroLead:
-      "At Vivid In2wrio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
+      "At Vivid In2erio, we design more than spaces — we curate refined lifestyles. By blending timeless aesthetics, intelligent planning, and flawless execution, we deliver premium interiors and architectural solutions tailored for discerning homeowners and forward-thinking businesses.",
     heroStudio:
       "The Bhubaneswar studio brings the same bespoke residential and commercial rigor to Odisha—elegant, functional spaces with enduring value, coordinated with Hyderabad when specialist fabrication or documentation calls for it.",
     aboutHeading: "Luxury interior & architectural studio · Bhubaneswar",
@@ -213,9 +243,9 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         name: "Coastal apartment living",
         alt: "Living room interior render",
         slug: "coastal-apartment-bbsr",
+        coverImage: vividGalleryCoverImageByProjectSlug["coastal-apartment-bbsr"],
         excerpt:
           "Compact coastal plan with resilient transitions, service core efficiency, and views preserved toward the bay.",
-        imageIndex: 5,
         cardLabel: "Apartment · Coastal · 2–3 BHK",
       },
       {
@@ -223,9 +253,9 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         name: "Modular kitchen & dining",
         alt: "Kitchen perspective",
         slug: "modular-kitchen-odisha",
+        coverImage: vividGalleryCoverImageByProjectSlug["modular-kitchen-odisha"],
         excerpt:
           "Open kitchen anchored with a deep canopy, appliance integration, and milestone-linked Hyderabad fabrication.",
-        imageIndex: 6,
         cardLabel: "Kitchen · Open plan · Odisha",
       },
       {
@@ -233,21 +263,21 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
         name: "Wardrobe & study",
         alt: "Wardrobe interior vignette",
         slug: "wardrobe-study-patia",
+        coverImage: vividGalleryCoverImageByProjectSlug["wardrobe-study-patia"],
         excerpt:
           "Wardrobe and study in one disciplined volume—sliding screens, desk lighting, and tones tuned to monsoon daylight.",
-        imageIndex: 7,
         cardLabel: "Wardrobe · Patia · Study nook",
       },
     ],
     leadershipSpotlight: {
-      eyebrow: "Co-founder spotlight",
-      sectionAriaLabel: "Co-founder spotlight",
+      eyebrow: "Studio leadership",
+      sectionAriaLabel: "Bhubaneswar studio leadership",
       name: "Gargi Panda",
-      designation: "Co-founder",
-      roleLine: "Vivid In2wrio",
-      bio: "Leads client experience and on-ground delivery for the Bhubaneswar studio—aligning local site teams, documentation, and handover with the same premium standards as our Telangana atelier, tuned for Odisha’s light, humidity, and pace.",
-      imageSrc: "/partner-gargi-panda-bhubaneswar.png",
-      imageAlt: "Gargi Panda, Co-founder — Vivid In2wrio Bhubaneswar",
+      designation: "CEO",
+      roleLine: "Bhubaneswar studio",
+      bio: "Leads the Bhubaneswar studio — client experience, on-ground delivery, and handover with the same premium standards as our Telangana atelier, tuned for Odisha’s light, humidity, and pace.",
+      imageSrc: "/team/gargi-panda-bhubaneswar.png",
+      imageAlt: "Gargi Panda, CEO — Vivid In2erio Bhubaneswar",
       highlights: [
         {
           title: "Odisha studio leadership:",
@@ -262,7 +292,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
           body: "When specialist CNC, veneers, or large-format stone route through Sainikpuri, she keeps one accountable thread for Bhubaneswar clients.",
         },
       ],
-      compactCtaLabel: "Read co-founder story",
+      compactCtaLabel: "Meet the Bhubaneswar team",
     },
     trustHighlights: [
       {

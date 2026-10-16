@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Vivid In2wrio brand: forest, gold, cream */
+/* Vivid In2erio brand: forest, gold, cream */
 @theme {
   --color-canvas: #eae1c8;
   --color-ink: #1b3f2e;
@@ -23,6 +23,23 @@
 }
 
 @layer base {
+  :root {
+    /** Clears stacked mobile header (logo row + nav pill). Keep in sync with Header.tsx. */
+    --site-header-offset: max(11.5rem, env(safe-area-inset-top) + 9.25rem);
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --site-header-offset: max(11.75rem, env(safe-area-inset-top) + 9.5rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --site-header-offset: max(9rem, env(safe-area-inset-top) + 7.75rem);
+    }
+  }
+
   html {
     scroll-behavior: auto;
     scrollbar-width: thin;
@@ -79,7 +96,7 @@
   }
 
   /**
-   * “In2wrio” digit: matches surrounding type. Cormorant often uses old-style figures
+   * “In2erio” digit: matches surrounding type. Cormorant often uses old-style figures
    * (smaller “2”); lining-nums aligns digit height with caps like N / E.
    */
   .brand-in2-digit {
@@ -95,6 +112,27 @@
     margin-inline: 0;
     color: inherit;
     text-shadow: none;
+  }
+
+  /** Thin gold accent under editorial section titles */
+  .editorial-gold-rule {
+    display: block;
+    height: 1px;
+    width: 3.5rem;
+    background: linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--color-accent) 85%, var(--color-ink)),
+      transparent
+    );
+  }
+
+  .editorial-pull-quote {
+    border-left: 2px solid color-mix(in oklab, var(--color-accent) 70%, transparent);
+    padding-left: 1.25rem;
+    font-family: var(--font-family-display);
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: color-mix(in oklab, var(--color-ink) 88%, transparent);
   }
 }
 
@@ -207,4 +245,23 @@
     transparent 52%,
     color-mix(in oklab, #1a3550 14%, transparent)
   );
+}
+
+@keyframes hero-slide-ken {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.hero-slide-ken {
+  animation: hero-slide-ken 8s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide-ken {
+    animation: none;
+  }
 }

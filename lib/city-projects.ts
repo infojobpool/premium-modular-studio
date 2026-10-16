@@ -3,10 +3,20 @@ import type { StudioLocationId } from "@/lib/locations";
 
 /** Long-form case study copy keyed by `galleryProjects[].slug` (unique across cities). */
 export const PROJECT_STORY: Record<string, string[]> = {
+  skypark: [
+    "Skypark is a compact apartment programme: galley kitchen, open living and dining, powder room, and bedrooms treated as one finish schedule.",
+    "Photoreal stills locked joinery, lighting, and material palettes—from gloss kitchen shutters to sliding wardrobes—before procurement.",
+    "Living volumes share a warm timber and stone language with the kitchenette and dining, so the home reads as one envelope rather than room-by-room packages.",
+  ],
   "delhi-kitchen-design": [
     "A Delhi-region kitchen brief asked for clear work triangles, integrated appliances, and finishes that stay legible under mixed daylight and evening lighting.",
     "We locked layout, services, and joinery in detailed drawings and visualization so stone, hardware, and lighting were approved before fabrication—reducing site improvisation.",
     "Execution followed milestone-linked procurement and QC so handover matched the signed-off palette and tolerances.",
+  ],
+  "torri-tapovan-villa": [
+    "Torri Tapovan Villa called for villa-scale living, dining, and bar volumes coordinated with private suites and service zones.",
+    "Photoreal renders locked joinery, lighting layers, and material palettes—from glass wardrobe banks to U-shaped kitchens—before procurement.",
+    "The Tapovan brief balanced entertaining spaces with calm bedrooms, window seats, and study niches signed off as one finish schedule.",
   ],
   "joseph-kitchen-design": [
     "This kitchen needed a strong identity without sacrificing storage depth or service access behind tall units.",
@@ -27,6 +37,11 @@ export const PROJECT_STORY: Record<string, string[]> = {
     "The east lakeshore villa set emphasized generous living volume, layered daylight, and joinery that ages quietly beside natural materials.",
     "Photoreal renders and walkthroughs carried approvals for hardware, stone, and lighting before production budgets were released.",
     "Project management stayed tight through precision execution to a premium handover aligned with the studio’s twin-city standards.",
+  ],
+  "matthew-villa-makeover": [
+    "Matthew’s home needed a full makeover rework—living, dining, kitchen, bedrooms, and circulation treated as one programme rather than isolated upgrades.",
+    "We rebuilt the kitchen on an L-plan with powder-blue joinery, integrated appliances, and display cabinetry; the dining room and stairwell were opened to each other with marble floors and sculptural lighting.",
+    "Bedrooms received built-in wardrobes, window seats, and study niches; the stairwell gained a timber arch, glass guards, and cascading globe pendants. Exterior façade lighting completed the transformation.",
   ],
   "coastal-apartment-bbsr": [
     "A compact coastal apartment needed maximum storage and resilient finishes without sacrificing openness toward the bay.",

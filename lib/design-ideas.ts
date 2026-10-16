@@ -1,5 +1,9 @@
 import type { GalleryTypology } from "@/lib/gallery-typology";
-import { vividGalleryCoverImageByProjectSlug, vividGalleryImagePool } from "@/lib/vivid-reference";
+import {
+  sheebaVilla157CoverImage,
+  SHEEBA_VILLA_157_GALLERY,
+} from "@/lib/sheeba-villa-157-gallery";
+import { vividGalleryCoverImageByProjectSlug, PORTFOLIO_GALLERY } from "@/lib/vivid-reference";
 
 export type DesignIdeaRoom = {
   label: string;
@@ -19,32 +23,32 @@ export const DESIGN_IDEA_ROOMS: readonly DesignIdeaRoom[] = [
   {
     label: "Living & dining",
     typology: "villa",
-    image: vividGalleryImagePool[1]!,
-    alt: "Living and dining interior perspective",
+    image: sheebaVilla157CoverImage,
+    alt: "Sheeba Villa 157 — living and dining render",
   },
   {
     label: "Wardrobe & storage",
     typology: "apartment",
-    image: vividGalleryImagePool[2]!,
-    alt: "Wardrobe and storage interior",
+    image: `${SHEEBA_VILLA_157_GALLERY}/master-bedroom-2-20250505-072915.png`,
+    alt: "Sheeba Villa 157 — integrated wardrobe and vanity",
   },
   {
     label: "Villa",
     typology: "villa",
-    image: vividGalleryCoverImageByProjectSlug["sheeba-villa-157-indukuri"],
-    alt: "Villa interior render",
+    image: `${SHEEBA_VILLA_157_GALLERY}/living-room-2-20250525-231150.png`,
+    alt: "Sheeba Villa 157 — open-plan living lounge",
   },
   {
     label: "Apartment",
     typology: "apartment",
-    image: vividGalleryImagePool[4]!,
+    image: `${PORTFOLIO_GALLERY}/living-room-red-bird-art.png`,
     alt: "Apartment interior perspective",
   },
   {
     label: "Full home",
     typology: "all",
-    image: vividGalleryImagePool[0]!,
-    alt: "Full home interior composition",
+    image: `${SHEEBA_VILLA_157_GALLERY}/study-workspace.png`,
+    alt: "Sheeba Villa 157 — study and full-home coordination",
   },
 ] as const;
 

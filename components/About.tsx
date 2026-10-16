@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
-import { vividCopy, vividImages } from "@/lib/vivid-reference";
+import { vividCopy } from "@/lib/vivid-reference";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -51,8 +51,8 @@ export function About() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element -- Fill layout: native img avoids preflight breaking absolute cover. */}
             <img
-              src={vividImages.about}
-              alt="Vivid In2wrio interior visualization"
+              src="/about/hall.jpg"
+              alt="Living hall with hanging swing, patterned floor, and peacock wardrobe — Vivid In2erio interior"
               sizes="(max-width: 1024px) 100vw, 50vw"
               decoding="async"
               className="absolute inset-0 block size-full object-cover"

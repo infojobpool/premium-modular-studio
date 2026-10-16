@@ -14,11 +14,11 @@ export const SERVICE_ENTRIES = [
   {
     label: "Luxury & turnkey",
     hint: "Tailored villas · premium finishes",
-    href: (city: string) => `/${city}/services`,
+    href: (city: string) => `/${city}/gallery`,
   },
   {
     label: "Renovation",
     hint: "Live-in upgrades · phased execution",
-    href: (city: string) => `/${city}/process`,
+    href: (city: string) => `/${city}/projects`,
   },
 ] as const;

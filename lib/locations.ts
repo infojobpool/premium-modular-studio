@@ -16,14 +16,14 @@ export type StudioLocation = {
 };
 
 /**
- * Hyderabad: matches public Waytowebs demo listing for Vivid In2wrio.
+ * Hyderabad: matches public Waytowebs demo listing for Vivid In2erio.
  * Bhubaneswar: studio address at Puri Bypass, Mangaraj Point.
  */
 export const STUDIO_LOCATIONS: Record<StudioLocationId, StudioLocation> = {
   hyderabad: {
     id: "hyderabad",
     label: "Hyderabad",
-    regionLine: "Telangana · Secunderabad studio",
+    regionLine: "Telangana · Secunderabad office",
     addressLines: [
       "Phase II, Valluvar Nagar, Laxmipuri, Sainikpuri",
       "Secunderabad, Telangana 500094",
@@ -64,6 +64,16 @@ export function getStudioWhatsAppHref(city: StudioLocationId): string {
 }
 
 export const DEFAULT_STUDIO_LOCATION: StudioLocationId = "hyderabad";
+
+/** Visitor-facing place line — Hyderabad is an office, Bhubaneswar stays a studio. */
+export function cityVenueLine(city: StudioLocationId): string {
+  const { label } = STUDIO_LOCATIONS[city];
+  return city === "hyderabad" ? `${label} Office` : `${label} studio`;
+}
+
+export function cityVenueNoun(city: StudioLocationId): "office" | "studio" {
+  return city === "hyderabad" ? "office" : "studio";
+}
 
 /** Matches public listing on https://waytowebs.in/vivid/ */
 export const STUDIO_EMAIL = "info@vividin2erio.com";

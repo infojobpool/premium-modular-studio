@@ -52,7 +52,7 @@ export function FounderSpotlight({ variant = "full" }: FounderSpotlightProps) {
                 alt={s.imageAlt}
                 fill
                 sizes={isCompact ? "200px" : "220px"}
-                className="object-cover object-top"
+                className="object-cover object-[center_18%]"
                 priority
               />
             </div>

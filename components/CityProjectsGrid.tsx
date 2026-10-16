@@ -64,7 +64,7 @@ export function CityProjectsGrid({ city, projects }: Props) {
                   {p.excerpt}
                 </p>
                 <p className="mt-5 inline-flex text-xs font-bold uppercase tracking-[0.2em] text-accent-strong">
-                  Read story →
+                  Case study →
                 </p>
               </Link>
             </div>

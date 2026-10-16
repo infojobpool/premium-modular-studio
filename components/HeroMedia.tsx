@@ -1,8 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import type { HeroSlide } from "@/lib/hero-media";
+
+const HERO_CROSSFADE_MS = 550;
 
 const AMBIENT_INTERVAL_MS = 8500;
 const AMBIENT_FADE_MS = 1400;
@@ -105,54 +107,101 @@ function Chevron({ dir }: { dir: "left" | "right" }) {
   );
 }
 
+function HeroSlideVideo({
+  slide,
+  isActive,
+  fadeMs,
+  reduceMotion,
+}: {
+  slide: Extract<HeroSlide, { kind: "video" }>;
+  isActive: boolean;
+  fadeMs: number;
+  reduceMotion: boolean | null;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    if (isActive && !reduceMotion) {
+      void video.play().catch(() => undefined);
+    } else {
+      video.pause();
+    }
+  }, [isActive, reduceMotion]);
+
+  return (
+    <video
+      ref={ref}
+      className={`absolute inset-0 block size-full object-cover transition-opacity ease-in-out ${
+        isActive ? "z-[2] opacity-100" : "z-[1] opacity-0"
+      }`}
+      style={{ transitionDuration: `${fadeMs}ms` }}
+      src={slide.src}
+      poster={slide.poster}
+      muted
+      loop
+      playsInline
+      autoPlay={isActive && !reduceMotion}
+      aria-hidden={!isActive}
+      aria-label={isActive ? slide.alt : undefined}
+    />
+  );
+}
+
+/** Crossfades stacked slides so the frame never empties (avoids green fallback flashing through). */
 export function HeroSlideStage({
-  current,
+  list,
   safeIndex,
   reduceMotion,
   fullscreen,
 }: {
-  current: HeroSlide;
+  list: HeroSlide[];
   safeIndex: number;
   reduceMotion: boolean | null;
   fullscreen: boolean;
 }) {
+  const fadeMs = reduceMotion ? 0 : HERO_CROSSFADE_MS;
+
+  if (list.length === 0) return null;
+
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={`${current.kind}-${safeIndex}-${current.src}`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: reduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] }}
-        className="hero-slide-stage absolute inset-0 min-h-full min-w-full overflow-hidden"
-      >
-        {current.kind === "video" ? (
-          <video
-            className="h-full min-h-full w-full min-w-full object-cover"
-            src={current.src}
-            poster={current.poster}
-            muted
-            loop
-            playsInline
-            autoPlay={!reduceMotion}
-            aria-label={current.alt}
-          />
-        ) : (
+    <div className="hero-slide-stage absolute inset-0 min-h-full min-w-full overflow-hidden bg-black">
+      {list.map((slide, i) => {
+        const isActive = i === safeIndex;
+        if (slide.kind === "video") {
+          return (
+            <HeroSlideVideo
+              key={`video-${slide.src}`}
+              slide={slide}
+              isActive={isActive}
+              fadeMs={fadeMs}
+              reduceMotion={reduceMotion}
+            />
+          );
+        }
+        return (
           // eslint-disable-next-line @next/next/no-img-element -- Hero must bypass Next/Image+preflight `height:auto` so slides truly fill the viewport.
           <img
-            src={current.src}
-            alt={current.alt}
+            key={`image-${slide.src}`}
+            src={slide.src}
+            alt={isActive ? slide.alt : ""}
             sizes={fullscreen ? "100vw" : "(max-width: 1024px) 100vw, 55vw"}
             decoding="async"
-            fetchPriority={safeIndex === 0 ? "high" : "low"}
-            className="absolute inset-0 block size-full object-cover"
+            fetchPriority={i === 0 ? "high" : "low"}
+            loading={i === 0 ? "eager" : "lazy"}
+            aria-hidden={!isActive}
+            className={`absolute inset-0 block size-full object-cover transition-opacity ease-in-out ${
+              isActive ? "z-[2] opacity-100" : "z-[1] opacity-0"
+            } ${isActive && fullscreen && !reduceMotion ? "hero-slide-ken" : ""}`}
+            style={{ transitionDuration: `${fadeMs}ms` }}
           />
-        )}
-        {!fullscreen ? (
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/18 via-transparent to-ink/5" />
-        ) : null}
-      </motion.div>
-    </AnimatePresence>
+        );
+      })}
+      {!fullscreen ? (
+        <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-ink/18 via-transparent to-ink/5" />
+      ) : null}
+    </div>
   );
 }
 
@@ -174,34 +223,46 @@ export function HeroCarouselToolbar({
 
   return (
     <div
-      className={`pointer-events-auto absolute z-[25] flex px-4 ${
+      className={`pointer-events-auto z-[25] flex ${
         fullscreen
-          ? "inset-x-0 bottom-8 justify-center sm:bottom-10"
-          : "bottom-5 left-3 justify-start sm:bottom-6 sm:left-4 lg:bottom-5 lg:left-5"
+          ? "relative mt-8 justify-start"
+          : "absolute bottom-5 left-3 justify-start sm:bottom-6 sm:left-4 lg:bottom-5 lg:left-5 px-4"
       }`}
     >
-      <div className="flex items-center gap-1 rounded-full border border-black/8 bg-canvas/98 px-1.5 py-1.5 shadow-[0_10px_40px_-8px_rgba(0,0,0,0.35)] ring-1 ring-white/60 backdrop-blur-sm sm:gap-2 sm:px-2 sm:py-2">
+      <div
+        className={`flex items-center gap-1 rounded-full px-1.5 py-1.5 shadow-[0_10px_40px_-8px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:gap-2 sm:px-2 sm:py-2 ${
+          fullscreen
+            ? "border border-canvas/20 bg-ink/45 ring-1 ring-white/10"
+            : "border border-black/8 bg-canvas/98 ring-1 ring-white/60"
+        }`}
+      >
         <button
           type="button"
           aria-label="Previous slide"
           onClick={() => go(-1)}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-ink transition hover:bg-ink/[0.06] active:scale-95"
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition active:scale-95 ${
+            fullscreen ? "text-canvas hover:bg-canvas/10" : "text-ink hover:bg-ink/[0.06]"
+          }`}
         >
           <span className="sr-only">Previous</span>
           <Chevron dir="left" />
         </button>
         <div className="mx-1 flex items-center gap-1.5 px-1 sm:mx-2 sm:gap-2 sm:px-2">
-          {list.map((_, i) => (
+          {list.map((slide, i) => (
             <button
               key={i}
               type="button"
-              aria-label={`Slide ${i + 1}`}
+              aria-label={slide.eyebrow}
               aria-current={i === safeIndex}
               onClick={() => setIndex(i)}
               className={
                 i === safeIndex
-                  ? "h-[5px] w-8 rounded-full bg-ink transition-[width,background-color] duration-300 sm:w-10"
-                  : "h-[5px] w-[5px] rounded-full bg-ink/25 transition hover:bg-ink/45"
+                  ? `h-[5px] w-8 rounded-full transition-[width,background-color] duration-300 sm:w-10 ${
+                      fullscreen ? "bg-accent" : "bg-ink"
+                    }`
+                  : `h-[5px] w-[5px] rounded-full transition ${
+                      fullscreen ? "bg-canvas/35 hover:bg-canvas/60" : "bg-ink/25 hover:bg-ink/45"
+                    }`
               }
             />
           ))}
@@ -210,7 +271,9 @@ export function HeroCarouselToolbar({
           type="button"
           aria-label="Next slide"
           onClick={() => go(1)}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-ink transition hover:bg-ink/[0.06] active:scale-95"
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition active:scale-95 ${
+            fullscreen ? "text-canvas hover:bg-canvas/10" : "text-ink hover:bg-ink/[0.06]"
+          }`}
         >
           <span className="sr-only">Next</span>
           <Chevron dir="right" />

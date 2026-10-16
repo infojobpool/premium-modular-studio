@@ -1,42 +1,36 @@
 "use client";
 
-import Link from "next/link";
-import { CITY_PAGE_COPY } from "@/lib/city-page-copy";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import type { StudioLocationId } from "@/lib/locations";
 import { STUDIO_LOCATIONS } from "@/lib/locations";
-import { CityProjectsGrid } from "@/components/CityProjectsGrid";
+import type { TestimonialItem } from "@/lib/reviews/types";
+import { CustomerStoriesRail } from "@/components/CustomerStoriesRail";
 import { Reveal } from "@/components/Reveal";
 
 type Props = {
   city: StudioLocationId;
+  stories: readonly TestimonialItem[];
 };
 
-export function CityProjectsIndexContent({ city }: Props) {
-  const copy = CITY_PAGE_COPY[city];
-
+export function CityProjectsIndexContent({ city, stories }: Props) {
   return (
     <div className={`pb-24 pt-32 ${PAGE_GUTTER_X}`}>
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
           <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-accent-strong sm:text-xs">
-            Case studies · {STUDIO_LOCATIONS[city].label}
+            Stories · {STUDIO_LOCATIONS[city].label}
           </p>
-          <h1 className="mt-3 text-balance font-display text-[clamp(2rem,4.5vw+0.5rem,3.5rem)] font-semibold leading-[1.06] tracking-tight text-ink">
-            Projects
+          <h1
+            id="stories"
+            className="mt-3 scroll-mt-28 font-display text-4xl tracking-tight text-ink sm:text-5xl"
+          >
+            Customer stories
           </h1>
-          <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
-            {copy.galleryIntro}
-          </p>
         </Reveal>
 
-        <CityProjectsGrid city={city} projects={copy.galleryProjects} />
-
-        <Reveal className="mt-16 text-center text-sm text-muted">
-          <Link href={`/${city}/gallery`} className="text-ink underline-offset-4 hover:underline">
-            ← Back to gallery
-          </Link>
-        </Reveal>
+        <div className="mt-10">
+          <CustomerStoriesRail stories={stories} />
+        </div>
       </div>
     </div>
   );

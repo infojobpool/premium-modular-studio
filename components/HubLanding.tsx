@@ -13,11 +13,11 @@ const cards = [
   {
     city: "hyderabad" as const,
     title: "Hyderabad",
-    studio: "Flagship studio",
+    studio: "Flagship office",
     area: "Secunderabad / Sainikpuri",
     href: "/hyderabad",
-    image: "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised442.png",
-    imageAlt: "Hyderabad studio — luxury bedroom interior",
+    image: "/gallery/portfolio/living-room-tv-feature-wall.png",
+    imageAlt: "Hyderabad office — luxury bedroom interior",
     imagePosition: "object-[center_42%]" as const,
     hours: "10:00–19:00 IST",
   },
@@ -105,7 +105,7 @@ export function HubLanding() {
               <Link
                 href="/"
                 className="inline-flex min-w-0 rounded-2xl border border-ink/12 bg-canvas/65 px-3 py-2 shadow-[0_14px_44px_-22px_rgba(27,63,46,0.4)] ring-1 ring-white/55 backdrop-blur-md transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-[0_22px_56px_-24px_rgba(27,63,46,0.38)] active:scale-[0.98] sm:px-3.5 sm:py-2.5"
-                aria-label="Vivid In2wrio home"
+                aria-label="Vivid In2erio home"
               >
                 <VividLogo size="home" />
               </Link>
@@ -216,7 +216,7 @@ export function HubLanding() {
                     </div>
 
                     <span className="mt-auto inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full border border-ink/14 bg-canvas/85 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink shadow-sm transition duration-300 group-hover:border-accent/45 group-hover:bg-accent/12 sm:text-[11px]">
-                      Enter studio
+                      {c.city === "hyderabad" ? "Enter office" : "Enter studio"}
                       <span
                         className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/12 bg-canvas text-sm transition duration-300 group-hover:translate-x-0.5 group-hover:border-accent/45 group-hover:bg-accent/20"
                         aria-hidden
@@ -239,7 +239,7 @@ export function HubLanding() {
           >
             <p className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2 text-[11px] leading-snug text-muted sm:text-xs sm:leading-normal">
               <span className="inline-flex flex-wrap items-center justify-center gap-x-1.5">
-                © {new Date().getFullYear()} {withBrandHighlight("Vivid In2wrio")}
+                © {new Date().getFullYear()} {withBrandHighlight("Vivid In2erio")}
               </span>
               <span className="hidden text-ink/25 sm:inline" aria-hidden>
                 ·

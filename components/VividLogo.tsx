@@ -4,7 +4,7 @@ import { BRAND_LOGO_ALT, BRAND_LOGO_HEIGHT, BRAND_LOGO_SRC, BRAND_LOGO_WIDTH } f
 type VividLogoProps = {
   className?: string;
   /** Lockup beside the nav pill (not inside it). */
-  size?: "header" | "home" | "footer" | "aside";
+  size?: "header" | "home" | "footer" | "aside" | "nav";
   /** Visual treatment around the asset (PNG already includes brand background). */
   variant?: "default" | "light" | "brand";
 };
@@ -17,11 +17,14 @@ export function VividLogo({
   const isFooter = size === "footer";
   const isHome = size === "home";
   const isAside = size === "aside";
+  const isNav = size === "nav";
   const brand = variant === "brand";
   const light = variant === "light";
 
   const imgClass = isFooter
     ? "h-[6.75rem] w-auto max-w-[min(100%,360px)] object-contain object-left sm:h-[7.5rem] sm:max-w-[380px]"
+    : isNav
+      ? "h-[3.25rem] w-auto max-w-[min(100%,10.5rem)] object-contain object-left sm:h-[3.875rem] sm:max-w-[13.5rem] lg:h-[6.875rem] lg:max-w-[460px]"
     : isAside
       ? "h-[5.75rem] w-auto max-w-[min(100%,380px)] object-contain object-left sm:h-[6.375rem] sm:max-w-[430px] lg:h-[6.875rem] lg:max-w-[460px]"
     : isHome
@@ -46,13 +49,15 @@ export function VividLogo({
           sizes={
             isFooter
               ? "(max-width: 640px) 360px, 380px"
+              : isNav
+                ? "(max-width: 1024px) 272px, 460px"
               : isAside
                 ? "(max-width: 640px) 380px, 460px"
               : isHome
                 ? "(max-width: 640px) 340px, 380px"
                 : "(max-width: 640px) 272px, 300px"
           }
-          priority={size === "header" || size === "home" || size === "aside"}
+          priority={size === "header" || size === "home" || size === "aside" || size === "nav"}
         />
       </span>
     </span>

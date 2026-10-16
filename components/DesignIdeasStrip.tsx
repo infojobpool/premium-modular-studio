@@ -18,13 +18,13 @@ export function DesignIdeasStrip() {
         <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-accent-strong">
-              Design ideas
+              Work
             </p>
             <h2 className="mt-2 font-display text-2xl tracking-tight text-ink sm:text-3xl md:text-4xl">
-              Inspiration by room
+              Browse by room
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
-              Browse kitchens, wardrobes, villas, and full-home compositions from our studio portfolio.
+              Kitchens, living, villas, and apartments — tap a room to open the gallery.
             </p>
           </div>
           <Link
