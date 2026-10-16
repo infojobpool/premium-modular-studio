@@ -28,11 +28,59 @@ const MATTHEW = "/gallery/matthew-makeover";
 export const ARCHITECTURE_PAGE: PracticePageCopy = {
   slug: "architecture",
   eyebrow: "Architecture",
-  title: "Floor plans and walkthroughs",
+  title: "2D drawings, 3D plans, and walkthroughs",
   lead:
-    "Plans first — then façades and spatial walkthroughs — so the house, services, and interiors lock to one roadmap before site.",
+    "Plans first — then 3D volumes and façades — so villa and apartment layouts lock before site.",
   sibling: { hrefSuffix: "landscaping", label: "Landscaping" },
   sections: [
+    {
+      id: "plans-3d",
+      eyebrow: "Volume",
+      title: "3D plans",
+      lead: "Axonometric floor plans and room volumes for villas and apartments — how the 2D drawing lifts into space.",
+      stills: [
+        {
+          src: `${ARCH}/plan-3d-villa-ground.jpg`,
+          alt: "3D axonometric villa ground-floor plan",
+          caption: "Villa 3D · ground floor",
+        },
+        {
+          src: `${ARCH}/plan-3d-villa-first.jpg`,
+          alt: "3D axonometric villa first-floor plan",
+          caption: "Villa 3D · first floor",
+        },
+        {
+          src: `${ARCH}/plan-3d-apartment-3bhk.jpg`,
+          alt: "3D axonometric 3 BHK apartment plan with terrace",
+          caption: "Apartment 3D · 3 BHK",
+        },
+        {
+          src: `${ARCH}/plan-3d-apartment-2bhk.jpg`,
+          alt: "3D axonometric 2 BHK apartment plan with balcony",
+          caption: "Apartment 3D · 2 BHK",
+        },
+        {
+          src: `${ARCH}/iso-living.jpg`,
+          alt: "Isometric 3D living-room volume",
+          caption: "3D room · living",
+        },
+        {
+          src: `${ARCH}/iso-living-2.jpg`,
+          alt: "Isometric 3D living-room volume in a cooler palette",
+          caption: "3D room · living (alt)",
+        },
+        {
+          src: `${ARCH}/iso-bedroom.jpg`,
+          alt: "Isometric 3D bedroom volume",
+          caption: "3D room · bedroom",
+        },
+        {
+          src: `${ARCH}/model-stair.jpg`,
+          alt: "Physical 3D architectural model with stair cutaway",
+          caption: "3D model · stair cutaway",
+        },
+      ],
+    },
     {
       id: "floor-plans",
       eyebrow: "Drawings",
@@ -63,7 +111,7 @@ export const ARCHITECTURE_PAGE: PracticePageCopy = {
     },
     {
       id: "walkthroughs",
-      eyebrow: "Volume",
+      eyebrow: "Façade",
       title: "Walkthroughs",
       lead: "Façades, entries, and interior volumes — how the plan feels when you walk it.",
       stills: [
@@ -103,6 +151,11 @@ export const ARCHITECTURE_PAGE: PracticePageCopy = {
           caption: "Stair and living volume",
         },
         {
+          src: `${ARCH}/plan-3d-house.jpg`,
+          alt: "Contemporary villa massing with terraces and planting",
+          caption: "Villa massing · terraces",
+        },
+        {
           src: `${MATTHEW}/exterior-after-day.png`,
           alt: "Matthew villa façade after makeover — day",
           caption: "Studio project · façade by day",
@@ -120,17 +173,57 @@ export const ARCHITECTURE_PAGE: PracticePageCopy = {
 export const LANDSCAPING_PAGE: PracticePageCopy = {
   slug: "landscaping",
   eyebrow: "Landscaping",
-  title: "Gardens, courts, and planting",
+  title: "Villa gardens and apartment landscapes",
   lead:
-    "Lawns, paths, and outdoor rooms planned with the façade — so the approach and threshold feel designed, not added later.",
+    "Private lawns and pool courts for houses — terraces, balconies, and podium planting for apartments — planned with the façade.",
   sibling: { hrefSuffix: "architecture", label: "Architecture" },
   sections: [
     {
-      id: "gardens",
-      eyebrow: "Outdoors",
-      title: "Landscaping",
-      lead: "Estate lawns, formal walks, tropical planting, and water courts.",
+      id: "villa",
+      eyebrow: "House",
+      title: "Villa landscaping",
+      lead: "Lawns, drives, pool courts, and tropical planting for independent houses.",
       stills: [
+        {
+          src: `${LAND}/villa-pool-lawn.jpg`,
+          alt: "Villa lawn, stepping stones, and pool court",
+          caption: "Villa lawn and pool",
+        },
+        {
+          src: `${LAND}/villa-pool-patio.jpg`,
+          alt: "Villa pool deck, pergola, and lawn",
+          caption: "Pool deck and pergola",
+        },
+        {
+          src: `${LAND}/villa-tropical-pool.jpg`,
+          alt: "Tropical villa pool court with dense planting",
+          caption: "Tropical pool court",
+        },
+        {
+          src: `${LAND}/villa-garden-pool.jpg`,
+          alt: "Villa garden with pool and olive planting",
+          caption: "Garden and pool",
+        },
+        {
+          src: `${LAND}/villa-modern-yard.jpg`,
+          alt: "House lawn, terrace, and foundation planting",
+          caption: "Lawn and terrace",
+        },
+        {
+          src: `${LAND}/villa-front-lawn.jpg`,
+          alt: "Villa front lawn, drive, and entry planting",
+          caption: "Front lawn and drive",
+        },
+        {
+          src: `${LAND}/estate-lawn.jpg`,
+          alt: "Residence with curved drive, lawn, and foundation planting",
+          caption: "Drive, lawn, and planting",
+        },
+        {
+          src: `${LAND}/courtyard-pool.jpg`,
+          alt: "Pool court with deck and planting edge",
+          caption: "Pool court",
+        },
         {
           src: `${LAND}/garden-estate.jpg`,
           alt: "Estate garden path with flowering beds and lawn",
@@ -141,15 +234,38 @@ export const LANDSCAPING_PAGE: PracticePageCopy = {
           alt: "Formal garden path between flowering hedges",
           caption: "Formal hedge walk",
         },
+      ],
+    },
+    {
+      id: "apartment",
+      eyebrow: "High-rise",
+      title: "Apartment landscaping",
+      lead: "Balcony gardens, planted terraces, rooftop courts, and vertical greenery at the building.",
+      stills: [
         {
-          src: `${LAND}/estate-lawn.jpg`,
-          alt: "Residence with curved drive, lawn, and foundation planting",
-          caption: "Drive, lawn, and planting",
+          src: `${LAND}/apartment-green-balconies.jpg`,
+          alt: "Apartment balconies planted as a vertical garden",
+          caption: "Vertical balcony gardens",
         },
         {
-          src: `${LAND}/tulip-garden.jpg`,
-          alt: "Garden pond with trees and layered planting",
-          caption: "Pond and layered beds",
+          src: `${LAND}/apartment-terrace-plants.jpg`,
+          alt: "Apartment corridor balcony with potted planting",
+          caption: "Balcony planting",
+        },
+        {
+          src: `${LAND}/apartment-terrace-nyc.jpg`,
+          alt: "Apartment terrace garden above the city",
+          caption: "High terrace garden",
+        },
+        {
+          src: `${LAND}/apartment-sky-garden.jpg`,
+          alt: "Apartment podium sky garden with planters and lawn",
+          caption: "Podium sky garden",
+        },
+        {
+          src: `${LAND}/apartment-roof-pots.jpg`,
+          alt: "Rooftop terrace with potted trees and seating",
+          caption: "Roof terrace pots",
         },
         {
           src: `${LAND}/tropical-planting.jpg`,
@@ -157,19 +273,14 @@ export const LANDSCAPING_PAGE: PracticePageCopy = {
           caption: "Tropical understorey",
         },
         {
-          src: `${LAND}/garden-path.jpg`,
-          alt: "Moss garden path with specimen planting",
-          caption: "Moss court and specimens",
-        },
-        {
           src: `${LAND}/park-path.jpg`,
           alt: "Tree-lined garden path with lawn and seating",
-          caption: "Tree walk and lawn",
+          caption: "Community walk and lawn",
         },
         {
-          src: `${LAND}/courtyard-pool.jpg`,
-          alt: "Pool court with deck and planting edge",
-          caption: "Pool court",
+          src: `${LAND}/tulip-garden.jpg`,
+          alt: "Garden pond with trees and layered planting",
+          caption: "Pond and layered beds",
         },
       ],
     },
