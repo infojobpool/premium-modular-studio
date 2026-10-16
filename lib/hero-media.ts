@@ -72,17 +72,6 @@ export function buildHeroSlides(
     },
     {
       kind: "image",
-      src: LANDSCAPE_GARDEN,
-      alt: "Garden landscaping and outdoor rooms",
-      eyebrow: "Landscaping",
-      eyebrowHref: `/${cityId}/landscaping`,
-      workHref: `/${cityId}/landscaping`,
-      headline: "Landscapes that complete the house",
-      lead: "Gardens, paths, and outdoor rooms planned with the façade — so the approach and threshold feel designed, not added later.",
-      statBadge: "Gardens · courtyards",
-    },
-    {
-      kind: "image",
       src: ARCHITECTURE_VILLA,
       alt: "Architectural villa façade",
       eyebrow: "Architecture",
@@ -91,6 +80,17 @@ export function buildHeroSlides(
       headline: "Architecture designed with the interior",
       lead: "Form, sun, and structure first — façades and massing documented so interiors lock to a single roadmap.",
       statBadge: "Architecture designing",
+    },
+    {
+      kind: "image",
+      src: LANDSCAPE_GARDEN,
+      alt: "Garden landscaping and outdoor rooms",
+      eyebrow: "Landscaping",
+      eyebrowHref: `/${cityId}/landscaping`,
+      workHref: `/${cityId}/landscaping`,
+      headline: "Landscapes that complete the house",
+      lead: "Gardens, paths, and outdoor rooms planned with the façade — so the approach and threshold feel designed, not added later.",
+      statBadge: "Gardens · courtyards",
     },
   ];
 
@@ -108,17 +108,6 @@ export function buildHeroSlides(
     },
     {
       kind: "image",
-      src: LANDSCAPE_GARDEN,
-      alt: "Garden landscaping and outdoor rooms",
-      eyebrow: "Landscaping",
-      eyebrowHref: `/${cityId}/landscaping`,
-      workHref: `/${cityId}/landscaping`,
-      headline: "Planting that holds through monsoon",
-      lead: "Gardens, lawns, and courtyards specified for Odisha rain and heat — outdoor rooms that stay composed year-round.",
-      statBadge: "Gardens · courtyards",
-    },
-    {
-      kind: "image",
       src: ARCHITECTURE_VILLA,
       alt: "Architectural villa façade",
       eyebrow: "Architecture",
@@ -127,6 +116,17 @@ export function buildHeroSlides(
       headline: "Plans that respect sun and monsoon",
       lead: "Shell, services, and façade decisions documented together so interiors lock to one Bhubaneswar roadmap.",
       statBadge: "Architecture designing",
+    },
+    {
+      kind: "image",
+      src: LANDSCAPE_GARDEN,
+      alt: "Garden landscaping and outdoor rooms",
+      eyebrow: "Landscaping",
+      eyebrowHref: `/${cityId}/landscaping`,
+      workHref: `/${cityId}/landscaping`,
+      headline: "Planting that holds through monsoon",
+      lead: "Gardens, lawns, and courtyards specified for Odisha rain and heat — outdoor rooms that stay composed year-round.",
+      statBadge: "Gardens · courtyards",
     },
   ];
 

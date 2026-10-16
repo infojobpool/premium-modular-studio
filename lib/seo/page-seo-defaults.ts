@@ -117,13 +117,13 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "hyderabad/architecture": {
     title: "Architecture · Hyderabad",
     description:
-      "Architecture from Vivid In2erio Hyderabad — floor plans, façades, and walkthroughs so structure and interiors lock to one roadmap.",
+      "Architecture from Vivid In2erio Hyderabad — 2D floor plans, 3D plans, façades, and walkthroughs so villa and apartment layouts lock to one roadmap.",
     focusKeyword: "residential architecture Hyderabad",
   },
   "hyderabad/landscaping": {
     title: "Landscaping · Hyderabad",
     description:
-      "Landscaping from Vivid In2erio Hyderabad — gardens, lawns, courtyards, and outdoor rooms planned with the house.",
+      "Landscaping from Vivid In2erio Hyderabad — villa lawns and pool courts, plus apartment terraces, balconies, and podium gardens.",
     focusKeyword: "landscape design Hyderabad",
   },
   "hyderabad/gallery": {
@@ -190,13 +190,13 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "bhubaneswar/architecture": {
     title: "Architecture · Bhubaneswar",
     description:
-      "Architecture from Vivid In2erio Bhubaneswar — floor plans, façades, and walkthroughs tuned for Odisha sun and monsoon.",
+      "Architecture from Vivid In2erio Bhubaneswar — 2D floor plans, 3D plans, façades, and walkthroughs tuned for Odisha sun and monsoon.",
     focusKeyword: "residential architecture Bhubaneswar",
   },
   "bhubaneswar/landscaping": {
     title: "Landscaping · Bhubaneswar",
     description:
-      "Landscaping from Vivid In2erio Bhubaneswar — gardens, courts, and planting specified for Odisha rain and heat.",
+      "Landscaping from Vivid In2erio Bhubaneswar — villa gardens and apartment terraces specified for Odisha rain and heat.",
     focusKeyword: "landscape design Bhubaneswar",
   },
   "bhubaneswar/gallery": {

@@ -35,8 +35,8 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       "Reflective finishes, smart storage, and modular kitchens — how thoughtful planning unlocks hidden square footage in modern Hyderabad homes.",
     publishedAt: "2026-09-08",
     category: "Studio edition",
-    image: `${SHEEBA}/living-dining.png`,
-    imageAlt: "Open living and dining with layered lighting — Sheeba Villa 157",
+    image: `${SHEEBA}/living-room.png`,
+    imageAlt: "Living room with curved sofa, joinery, and layered lighting — Sheeba Villa 157",
     pdfPath: "/blog/art-of-designing-smarter-spaces.pdf",
     lead:
       "Modern home interiors are no longer just about filling rooms with furniture. Today, homeowners want spaces that feel wide, breathing, organized, and structurally optimized around the way they actually live. At Vivid In2erio, we believe good interior design unlocks hidden square footage through thoughtful material choices and high-density storage modules.",

@@ -48,11 +48,14 @@ export function Hero() {
         style={{ paddingTop: "var(--site-header-offset)" }}
       >
         <div className="max-w-3xl pb-4 sm:pb-6">
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-canvas/70">
+            Interiors · Architecture · Landscaping
+          </p>
           {list.length > 1 ? (
             <div
               className="mb-6 flex flex-wrap gap-2"
               role="tablist"
-              aria-label="Practice"
+              aria-label="Interiors, architecture, and landscaping"
             >
               {list.map((slide, i) => {
                 const active = i === safeIndex;
