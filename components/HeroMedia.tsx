@@ -205,7 +205,7 @@ export function HeroSlideStage({
   );
 }
 
-/** Asian Paints–style: light pill, dark chevrons, pill + dot track. */
+/** Full-bleed hero: centered dots. Compact hero: chevron pill. */
 export function HeroCarouselToolbar({
   list,
   safeIndex,
@@ -221,14 +221,32 @@ export function HeroCarouselToolbar({
 }) {
   if (list.length < 2) return null;
 
+  if (fullscreen) {
+    return (
+      <div className="pointer-events-auto absolute inset-x-0 bottom-6 z-[25] flex justify-center sm:bottom-8">
+        <div className="flex items-center gap-2.5" role="tablist" aria-label="Hero slides">
+          {list.map((slide, i) => (
+            <button
+              key={i}
+              type="button"
+              role="tab"
+              aria-label={slide.eyebrow}
+              aria-selected={i === safeIndex}
+              onClick={() => setIndex(i)}
+              className={`rounded-full transition ${
+                i === safeIndex
+                  ? "h-2.5 w-2.5 bg-accent"
+                  : "h-2 w-2 bg-white/55 hover:bg-white/85"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={`pointer-events-auto z-[25] flex ${
-        fullscreen
-          ? "relative mt-8 justify-start"
-          : "absolute bottom-5 left-3 justify-start sm:bottom-6 sm:left-4 lg:bottom-5 lg:left-5 px-4"
-      }`}
-    >
+    <div className="pointer-events-auto z-[25] flex absolute bottom-5 left-3 justify-start sm:bottom-6 sm:left-4 lg:bottom-5 lg:left-5 px-4">
       <div
         className={`flex items-center gap-1 rounded-full px-1.5 py-1.5 shadow-[0_10px_40px_-8px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:gap-2 sm:px-2 sm:py-2 ${
           fullscreen
