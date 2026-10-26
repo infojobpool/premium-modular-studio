@@ -1,49 +1,70 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { STUDIO_TRUST_STATS } from "@/lib/studio-trust-stats";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
-import { CountUp } from "./CountUp";
 import { Reveal } from "./Reveal";
+import { useStudioLocation } from "./LocationProvider";
 
 export function StudioTrustStrip() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-40px" });
+  const { location } = useStudioLocation();
 
   return (
     <section
-      ref={sectionRef}
-      className={`border-b border-ink/10 bg-ink py-8 sm:py-9 ${PAGE_GUTTER_X}`}
+      className={`border-b border-ink/10 bg-canvas py-12 sm:py-16 ${PAGE_GUTTER_X}`}
       aria-label="Why clients trust Vivid In2erio"
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
-          <ul className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-4">
-            {STUDIO_TRUST_STATS.map((stat, i) => (
+          <h2 className="text-center font-body text-[0.95rem] font-bold uppercase tracking-[0.18em] text-ink sm:text-xl sm:tracking-[0.2em]">
+            Interiors · architecture · landscaping
+          </h2>
+        </Reveal>
+
+        <ul className="mt-10 flex flex-wrap items-start justify-center gap-5 sm:gap-6 lg:gap-8">
+          {STUDIO_TRUST_STATS.map((stat, i) => {
+            const isVisit = stat.kicker === "Visit";
+            const label = isVisit
+              ? location.id === "hyderabad"
+                ? "The office"
+                : "The studio"
+              : stat.label;
+            const featured = Boolean(stat.featured);
+
+            return (
               <motion.li
                 key={stat.label}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.55, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                className="text-center sm:text-left"
+                transition={{ duration: 0.5, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
               >
-                <p className="font-display text-3xl font-semibold tracking-tight text-accent sm:text-4xl">
-                  {"staticValue" in stat ? (
-                    stat.staticValue
-                  ) : (
-                    <CountUp target={stat.countTarget} start={inView} />
-                  )}
-                </p>
-                <p className="mt-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-canvas/90">
-                  {stat.label}
-                </p>
-                <p className="mt-1 text-xs leading-relaxed text-canvas/60">{stat.detail}</p>
+                <div
+                  className={`flex h-[7.75rem] w-[7.75rem] flex-col items-center justify-center rounded-full px-3 text-center sm:h-[8.75rem] sm:w-[8.75rem] ${
+                    featured
+                      ? "bg-ink text-canvas shadow-[0_16px_36px_-16px_rgba(27,63,46,0.7)]"
+                      : "border border-ink/22 bg-canvas text-ink"
+                  }`}
+                >
+                  <p
+                    className={`font-body text-[10px] font-bold uppercase tracking-[0.16em] sm:text-[11px] ${
+                      featured ? "text-accent-soft" : "text-ink"
+                    }`}
+                  >
+                    {stat.kicker}
+                  </p>
+                  <p
+                    className={`mt-1 max-w-[6.5rem] font-body text-xs font-semibold leading-snug sm:text-sm ${
+                      featured ? "text-canvas" : "text-ink"
+                    }`}
+                  >
+                    {label}
+                  </p>
+                </div>
               </motion.li>
-            ))}
-          </ul>
-        </Reveal>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );
