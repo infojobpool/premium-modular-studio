@@ -1,4 +1,4 @@
-/** Home proof row — boutique facts, not factory volume. */
+/** Home proof row — warranty and service, not factory volume. */
 export type StudioTrustStat = {
   kicker: string;
   label: string;
@@ -6,10 +6,10 @@ export type StudioTrustStat = {
 };
 
 export const STUDIO_TRUST_STATS: readonly StudioTrustStat[] = [
+  { kicker: "Since", label: "2010" },
+  { kicker: "Premium", label: "Materials" },
+  { kicker: "10 Years", label: "Warranty", featured: true },
+  { kicker: "3D", label: "Sign-off first" },
   { kicker: "Two", label: "Cities" },
-  { kicker: "Three", label: "Practices" },
-  { kicker: "3D", label: "Sign-off first", featured: true },
-  { kicker: "Six", label: "Steps" },
-  { kicker: "One", label: "Team" },
-  { kicker: "Visit", label: "The studio" },
+  { kicker: "Lifelong", label: "Service Support" },
 ] as const;

@@ -4,11 +4,8 @@ import { motion } from "framer-motion";
 import { STUDIO_TRUST_STATS } from "@/lib/studio-trust-stats";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { Reveal } from "./Reveal";
-import { useStudioLocation } from "./LocationProvider";
 
 export function StudioTrustStrip() {
-  const { location } = useStudioLocation();
-
   return (
     <section
       className={`border-b border-ink/10 bg-canvas py-12 sm:py-16 ${PAGE_GUTTER_X}`}
@@ -16,24 +13,17 @@ export function StudioTrustStrip() {
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
-          <h2 className="text-center font-body text-[0.95rem] font-bold uppercase tracking-[0.18em] text-ink sm:text-xl sm:tracking-[0.2em]">
-            Interiors · architecture · landscaping
+          <h2 className="text-center font-body text-xl font-bold uppercase tracking-[0.06em] text-ink sm:text-2xl md:text-[1.65rem] md:tracking-[0.08em]">
+            Professional home interior design company
           </h2>
         </Reveal>
 
-        <ul className="mt-10 flex flex-wrap items-start justify-center gap-5 sm:gap-6 lg:gap-8">
+        <ul className="mt-10 flex flex-wrap items-start justify-center gap-4 sm:mt-12 sm:gap-5 lg:gap-7">
           {STUDIO_TRUST_STATS.map((stat, i) => {
-            const isVisit = stat.kicker === "Visit";
-            const label = isVisit
-              ? location.id === "hyderabad"
-                ? "The office"
-                : "The studio"
-              : stat.label;
             const featured = Boolean(stat.featured);
-
             return (
               <motion.li
-                key={stat.label}
+                key={`${stat.kicker}-${stat.label}`}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
@@ -47,18 +37,18 @@ export function StudioTrustStrip() {
                   }`}
                 >
                   <p
-                    className={`font-body text-[10px] font-bold uppercase tracking-[0.16em] sm:text-[11px] ${
+                    className={`font-body text-[10px] font-bold uppercase tracking-[0.14em] sm:text-[11px] ${
                       featured ? "text-accent-soft" : "text-ink"
                     }`}
                   >
                     {stat.kicker}
                   </p>
                   <p
-                    className={`mt-1 max-w-[6.5rem] font-body text-xs font-semibold leading-snug sm:text-sm ${
+                    className={`mt-1 max-w-[6.75rem] font-body text-xs font-medium leading-snug sm:text-sm ${
                       featured ? "text-canvas" : "text-ink"
                     }`}
                   >
-                    {label}
+                    {stat.label}
                   </p>
                 </div>
               </motion.li>
