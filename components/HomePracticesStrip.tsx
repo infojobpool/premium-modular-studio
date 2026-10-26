@@ -91,7 +91,7 @@ export function HomePracticesStrip() {
                   </p>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
-                  <p className="text-sm leading-relaxed text-muted">{practice.lead}</p>
+                  <p className="text-sm leading-relaxed text-ink/80">{practice.lead}</p>
                   <span className="mt-4 text-xs font-bold uppercase tracking-[0.18em] text-accent-strong">
                     {practice.cta} →
                   </span>
