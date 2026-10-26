@@ -99,6 +99,11 @@ export function Hero() {
                 <p className="mt-5 max-w-xl text-base leading-relaxed text-canvas/80 sm:mt-6 sm:text-lg">
                   {withBrandHighlight(current.lead)}
                 </p>
+                <p className="mt-4 max-w-xl text-sm font-medium text-canvas/90 sm:text-[0.95rem]">
+                  {location.id === "hyderabad"
+                    ? "3D sign-off before site — then visit the Hyderabad office."
+                    : "3D sign-off before site — then visit the Bhubaneswar studio."}
+                </p>
                 <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
                   <Link
                     href={`/${location.id}/contact`}

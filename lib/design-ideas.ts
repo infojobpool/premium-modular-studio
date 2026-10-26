@@ -1,9 +1,6 @@
 import type { GalleryTypology } from "@/lib/gallery-typology";
-import {
-  sheebaVilla157CoverImage,
-  SHEEBA_VILLA_157_GALLERY,
-} from "@/lib/sheeba-villa-157-gallery";
-import { vividGalleryCoverImageByProjectSlug, PORTFOLIO_GALLERY } from "@/lib/vivid-reference";
+import { SHEEBA_VILLA_157_GALLERY } from "@/lib/sheeba-villa-157-gallery";
+import { PORTFOLIO_GALLERY } from "@/lib/vivid-reference";
 
 export type DesignIdeaRoom = {
   label: string;
@@ -12,43 +9,31 @@ export type DesignIdeaRoom = {
   alt: string;
 };
 
-/** Room-led inspiration cards — links to `/[city]/gallery?type=…`. */
+/** Four-room mosaic on city home — kitchen, bedroom, living, dining. */
 export const DESIGN_IDEA_ROOMS: readonly DesignIdeaRoom[] = [
   {
     label: "Kitchen",
     typology: "kitchen",
-    image: vividGalleryCoverImageByProjectSlug["delhi-kitchen-design"],
-    alt: "Modular kitchen interior render",
+    image: `${PORTFOLIO_GALLERY}/modular-kitchen-wood-beige.png`,
+    alt: "Wood and beige modular kitchen",
   },
   {
-    label: "Living & dining",
-    typology: "villa",
-    image: sheebaVilla157CoverImage,
-    alt: "Sheeba Villa 157 — living and dining render",
-  },
-  {
-    label: "Wardrobe & storage",
+    label: "Dining",
     typology: "apartment",
-    image: `${SHEEBA_VILLA_157_GALLERY}/master-bedroom-2-20250505-072915.png`,
-    alt: "Sheeba Villa 157 — integrated wardrobe and vanity",
+    image: `${PORTFOLIO_GALLERY}/modern-dining-room-green-chairs.png`,
+    alt: "Dining room with green chairs",
   },
   {
-    label: "Villa",
+    label: "Bedroom",
     typology: "villa",
-    image: `${SHEEBA_VILLA_157_GALLERY}/living-room-2-20250525-231150.png`,
-    alt: "Sheeba Villa 157 — open-plan living lounge",
+    image: `${SHEEBA_VILLA_157_GALLERY}/master-bedroom.png`,
+    alt: "Master bedroom interior",
   },
   {
-    label: "Apartment",
-    typology: "apartment",
-    image: `${PORTFOLIO_GALLERY}/living-room-red-bird-art.png`,
-    alt: "Apartment interior perspective",
-  },
-  {
-    label: "Full home",
-    typology: "all",
-    image: `${SHEEBA_VILLA_157_GALLERY}/study-workspace.png`,
-    alt: "Sheeba Villa 157 — study and full-home coordination",
+    label: "Living",
+    typology: "villa",
+    image: `${SHEEBA_VILLA_157_GALLERY}/living-room.png`,
+    alt: "Living room with seating and feature wall",
   },
 ] as const;
 
