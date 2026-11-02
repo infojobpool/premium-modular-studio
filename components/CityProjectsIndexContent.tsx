@@ -38,7 +38,7 @@ export function CityProjectsIndexContent({ city, stories }: Props) {
           </p>
         </Reveal>
 
-        <div className="mt-12 sm:mt-14">
+        <div className="mt-14 sm:mt-16">
           <CustomerStoriesRail stories={stories} variant="page" />
         </div>
 
