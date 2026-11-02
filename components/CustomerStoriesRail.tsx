@@ -67,37 +67,38 @@ function StoriesPagePlayer({ videos }: { videos: TestimonialItem[] }) {
 
   return (
     <div>
-      <ul className="flex flex-wrap items-start gap-x-5 gap-y-4 sm:gap-x-7">
-        {videos.map((story, i) => {
-          const thumb = youtubeThumbnailUrl(story.videoUrl!) ?? story.photo;
-          const active = i === index;
-          return (
-            <li key={story.videoUrl} className="w-[4.5rem] sm:w-[5.25rem]">
+      {videos.length > 1 ? (
+        <div
+          className="flex flex-wrap gap-x-8 gap-y-2 border-b border-ink/10"
+          role="tablist"
+          aria-label="Customer films"
+        >
+          {videos.map((story, i) => {
+            const active = i === index;
+            return (
               <button
+                key={story.videoUrl}
                 type="button"
+                role="tab"
+                aria-selected={active}
                 onClick={() => setIndex(i)}
-                aria-pressed={active}
-                className={`group mx-auto flex w-full flex-col items-center ${FOCUS_RING} rounded-full`}
+                className={`${FOCUS_RING} -mb-px border-b-2 pb-3 font-body text-sm sm:text-base ${
+                  active
+                    ? "border-ink text-ink"
+                    : "border-transparent text-ink/45 hover:text-ink/75"
+                }`}
               >
-                <span
-                  className={`relative block aspect-square w-full overflow-hidden rounded-full ${
-                    active ? "ring-2 ring-ink ring-offset-2 ring-offset-canvas" : "ring-1 ring-ink/15"
-                  }`}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element -- YouTube stills */}
-                  <img src={thumb} alt="" className="size-full object-cover" />
-                </span>
-                <span className="mt-2 line-clamp-2 text-center font-body text-[11px] font-semibold leading-snug text-ink sm:text-xs">
-                  {story.name}
-                </span>
+                {story.name}
               </button>
-            </li>
-          );
-        })}
-      </ul>
+            );
+          })}
+        </div>
+      ) : null}
 
       {embed ? (
-        <div className="relative left-1/2 right-1/2 mt-8 w-screen -translate-x-1/2 overflow-hidden bg-ink sm:mt-10">
+        <div
+          className={`${videos.length > 1 ? "mt-8" : ""} overflow-hidden rounded-2xl bg-ink sm:rounded-[1.35rem]`}
+        >
           <iframe
             src={embed}
             title={current.name}
@@ -108,15 +109,17 @@ function StoriesPagePlayer({ videos }: { videos: TestimonialItem[] }) {
           />
         </div>
       ) : still ? (
-        <div className="relative left-1/2 right-1/2 mt-8 w-screen -translate-x-1/2 overflow-hidden bg-ink sm:mt-10">
+        <div
+          className={`${videos.length > 1 ? "mt-8" : ""} overflow-hidden rounded-2xl bg-ink sm:rounded-[1.35rem]`}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element -- YouTube stills */}
           <img src={still} alt={current.name} className="aspect-video w-full object-cover" />
         </div>
       ) : null}
 
-      <p className="mt-4 font-display text-xl text-ink sm:text-2xl">{current.name}</p>
+      <p className="mt-5 font-display text-2xl tracking-tight text-ink">{current.name}</p>
       {current.role ? (
-        <p className="mt-1.5 max-w-2xl font-body text-sm font-medium leading-relaxed text-ink/80 sm:text-base">
+        <p className="mt-1.5 max-w-2xl font-body text-sm leading-relaxed text-ink/70 sm:text-base">
           {current.role}
         </p>
       ) : null}
