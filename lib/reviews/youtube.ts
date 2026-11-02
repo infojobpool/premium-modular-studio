@@ -56,13 +56,13 @@ export const CURATED_YOUTUBE_STORIES: readonly {
   {
     url: "https://youtu.be/MIF2QN0twlE",
     name: "Mr. Partha & Mrs. Beena",
-    role: "Customer testimonial · Vivid In2erio Interiors",
+    role: "Om Shree Pritvi D901 · Rtd. Air Force Officer",
     quote: "Customer Testimonial | Mr. Partha & Mrs. Beena | Vivid In2erio Interiors",
   },
   {
     url: "https://youtu.be/ABPxzBWizI8",
-    name: "A Home Built on Trust",
-    role: "Customer testimonial · Vivid In2erio Interiors",
+    name: "Asim Mohanty",
+    role: "RNR Residency, Kowkoor",
     quote: "A Home Built on Trust — every dream home begins with trust.",
   },
 ];
