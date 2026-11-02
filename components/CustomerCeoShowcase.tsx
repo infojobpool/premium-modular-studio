@@ -6,33 +6,33 @@ import { Reveal } from "./Reveal";
 
 export function CustomerCeoShowcase() {
   return (
-    <section className="mt-20 border-t border-ink/10 pt-14 sm:mt-24 sm:pt-16" aria-labelledby="ceo-showcase-heading">
+    <section className="mt-16 border-t border-ink/10 pt-14 sm:mt-20 sm:pt-16" aria-labelledby="ceo-showcase-heading">
       <Reveal>
-        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">Handover</p>
         <h2
           id="ceo-showcase-heading"
-          className="mt-4 font-display text-3xl tracking-tight text-ink sm:text-4xl"
+          className="font-display text-3xl tracking-tight text-ink sm:text-4xl"
         >
-          With the CEO
+          Photos
         </h2>
+        <p className="mt-2 text-sm text-ink/70 sm:text-base">With the CEO</p>
       </Reveal>
 
-      <ul className="mt-8 grid gap-10 sm:mt-10 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12">
+      <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-8 sm:mt-10 sm:gap-x-6">
         {CEO_SHOWCASE_PORTRAITS.map((portrait) => (
-          <li key={portrait.image}>
+          <li key={portrait.image} className="w-[9.5rem] sm:w-[11rem]">
             <figure>
-              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-ink/5">
+              <div className="relative aspect-square overflow-hidden rounded-xl bg-ink/5">
                 <Image
                   src={portrait.image}
                   alt={portrait.alt}
                   fill
-                  sizes="(max-width: 640px) 100vw, 50vw"
+                  sizes="176px"
                   className="object-cover"
                 />
               </div>
-              <figcaption className="mt-4">
-                <p className="font-display text-xl tracking-tight text-ink">{portrait.name}</p>
-                <p className="mt-1 text-sm leading-relaxed text-ink/70">{portrait.detail}</p>
+              <figcaption className="mt-3">
+                <p className="font-display text-base leading-snug tracking-tight text-ink">{portrait.name}</p>
+                <p className="mt-1 text-xs leading-snug text-ink/70">{portrait.detail}</p>
               </figcaption>
             </figure>
           </li>
