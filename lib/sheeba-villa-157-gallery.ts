@@ -3,9 +3,19 @@ export const SHEEBA_VILLA_157_GALLERY = "/gallery/sheeba-villa-157" as const;
 
 const G = SHEEBA_VILLA_157_GALLERY;
 
-export const sheebaVilla157CoverImage = `${G}/living-dining.png`;
+export const sheebaVilla157CoverImage = `${G}/dining-from-kitchen.jpg`;
 
 export const sheebaVilla157SegmentedGallery = [
+  `${G}/kitchen-l-grey-1.jpg`,
+  `${G}/kitchen-l-grey-2.jpg`,
+  `${G}/kitchen-window-worktop.jpg`,
+  `${G}/dining-island-center.jpg`,
+  `${G}/dining-from-kitchen.jpg`,
+  `${G}/dining-table-set.jpg`,
+  `${G}/living-curved-sofa.jpg`,
+  `${G}/living-curved-sofa-partition.jpg`,
+  `${G}/living-sofa-aquarium.jpg`,
+  `${G}/living-sofa-screen.jpg`,
   `${G}/living-dining.png`,
   `${G}/living-dining-2-20250319-223146.png`,
   `${G}/living-dining-3-20250319-231819.png`,
@@ -66,12 +76,12 @@ export const sheebaVilla157HomeShowcase: readonly SheebaHomeRoom[] = [
   {
     label: "Living & dining",
     image: sheebaVilla157CoverImage,
-    alt: "Sheeba Villa 157 — open living and dining with layered lighting",
+    alt: "Sheeba Villa 157 — dining island opening to the grey modular kitchen",
   },
   {
     label: "Living lounge",
-    image: `${G}/living-room-2-20250525-231150.png`,
-    alt: "Sheeba Villa 157 — living lounge with art gallery and recreation zone",
+    image: `${G}/living-curved-sofa.jpg`,
+    alt: "Sheeba Villa 157 — curved sofa living with aquarium niche",
   },
   {
     label: "Master suite",
@@ -90,13 +100,13 @@ export const sheebaVilla157HomeShowcase: readonly SheebaHomeRoom[] = [
   },
   {
     label: "Dining vignette",
-    image: `${G}/living-dining-8-20250505-084034.png`,
-    alt: "Sheeba Villa 157 — dining area with marble table and amber chairs",
+    image: `${G}/dining-table-set.jpg`,
+    alt: "Sheeba Villa 157 — dining table set with kitchen beyond",
   },
   {
-    label: "TV feature wall",
-    image: `${G}/interior-17-20250505-065527.png`,
-    alt: "Sheeba Villa 157 — marble TV feature wall with integrated shelving",
+    label: "Kitchen",
+    image: `${G}/kitchen-l-grey-2.jpg`,
+    alt: "Sheeba Villa 157 — grey L-kitchen with tall refrigeration",
   },
   {
     label: "Second floor",

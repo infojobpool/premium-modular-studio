@@ -1,6 +1,5 @@
 import type { GalleryTypology } from "@/lib/gallery-typology";
 import { SHEEBA_VILLA_157_GALLERY } from "@/lib/sheeba-villa-157-gallery";
-import { PORTFOLIO_GALLERY } from "@/lib/vivid-reference";
 
 export type DesignIdeaRoom = {
   label: string;
@@ -14,14 +13,14 @@ export const DESIGN_IDEA_ROOMS: readonly DesignIdeaRoom[] = [
   {
     label: "Kitchen",
     typology: "kitchen",
-    image: "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.11.png",
-    alt: "Beige L-shaped modular kitchen with integrated refrigerator",
+    image: `${SHEEBA_VILLA_157_GALLERY}/kitchen-l-grey-2.jpg`,
+    alt: "Grey L-shaped modular kitchen with tall storage and window worktop",
   },
   {
     label: "Dining",
     typology: "apartment",
-    image: `${PORTFOLIO_GALLERY}/modern-dining-room-green-chairs.png`,
-    alt: "Dining room with green chairs",
+    image: `${SHEEBA_VILLA_157_GALLERY}/dining-from-kitchen.jpg`,
+    alt: "Dining table and marble island opening to the kitchen",
   },
   {
     label: "Bedroom",
@@ -32,8 +31,8 @@ export const DESIGN_IDEA_ROOMS: readonly DesignIdeaRoom[] = [
   {
     label: "Living",
     typology: "villa",
-    image: `${SHEEBA_VILLA_157_GALLERY}/living-room.png`,
-    alt: "Living room with seating and feature wall",
+    image: `${SHEEBA_VILLA_157_GALLERY}/living-curved-sofa-partition.jpg`,
+    alt: "Living room with curved sofa and glass partition",
   },
 ] as const;
 

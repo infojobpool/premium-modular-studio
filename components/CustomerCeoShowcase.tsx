@@ -25,7 +25,7 @@ export function CustomerCeoShowcase() {
         <p className="mt-3 max-w-xl text-base leading-relaxed text-ink/75">With the CEO</p>
       </Reveal>
 
-      <ul className="mt-8 grid max-w-[38rem] grid-cols-2 gap-4 sm:mt-10 sm:gap-5">
+      <ul className="mt-8 grid max-w-[58rem] grid-cols-2 gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-3">
         {CEO_SHOWCASE_PORTRAITS.map((portrait, i) => (
           <li key={portrait.image}>
             <button
@@ -40,8 +40,9 @@ export function CustomerCeoShowcase() {
                   src={portrait.image}
                   alt={portrait.alt}
                   fill
-                  sizes="(max-width: 640px) 45vw, 304px"
+                  sizes="(max-width: 1024px) 45vw, 300px"
                   className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                  style={portrait.objectPosition ? { objectPosition: portrait.objectPosition } : undefined}
                 />
                 <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
                 <span className="absolute inset-x-0 bottom-0 px-3 py-2.5 sm:px-4 sm:py-3">
