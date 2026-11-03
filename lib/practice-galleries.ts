@@ -28,59 +28,11 @@ const MATTHEW = "/gallery/matthew-makeover";
 export const ARCHITECTURE_PAGE: PracticePageCopy = {
   slug: "architecture",
   eyebrow: "Architecture",
-  title: "2D drawings, 3D plans, and walkthroughs",
+  title: "Façades and walkthroughs",
   lead:
-    "Plans first — then 3D volumes and façades — so villa and apartment layouts lock before site.",
+    "Villa and apartment massing, entries, and interior volumes — how the house feels when you walk it.",
   sibling: { hrefSuffix: "landscaping", label: "Landscaping" },
   sections: [
-    {
-      id: "plans-3d",
-      eyebrow: "Volume",
-      title: "3D plans",
-      lead: "Axonometric floor plans and room volumes for villas and apartments — how the 2D drawing lifts into space.",
-      stills: [
-        {
-          src: `${ARCH}/plan-3d-villa-ground.jpg`,
-          alt: "3D axonometric villa ground-floor plan",
-          caption: "Villa 3D · ground floor",
-        },
-        {
-          src: `${ARCH}/plan-3d-villa-first.jpg`,
-          alt: "3D axonometric villa first-floor plan",
-          caption: "Villa 3D · first floor",
-        },
-        {
-          src: `${ARCH}/plan-3d-apartment-3bhk.jpg`,
-          alt: "3D axonometric 3 BHK apartment plan with terrace",
-          caption: "Apartment 3D · 3 BHK",
-        },
-        {
-          src: `${ARCH}/plan-3d-apartment-2bhk.jpg`,
-          alt: "3D axonometric 2 BHK apartment plan with balcony",
-          caption: "Apartment 3D · 2 BHK",
-        },
-        {
-          src: `${ARCH}/iso-living.jpg`,
-          alt: "Isometric 3D living-room volume",
-          caption: "3D room · living",
-        },
-        {
-          src: `${ARCH}/iso-living-2.jpg`,
-          alt: "Isometric 3D living-room volume in a cooler palette",
-          caption: "3D room · living (alt)",
-        },
-        {
-          src: `${ARCH}/iso-bedroom.jpg`,
-          alt: "Isometric 3D bedroom volume",
-          caption: "3D room · bedroom",
-        },
-        {
-          src: `${ARCH}/model-stair.jpg`,
-          alt: "Physical 3D architectural model with stair cutaway",
-          caption: "3D model · stair cutaway",
-        },
-      ],
-    },
     {
       id: "walkthroughs",
       eyebrow: "Façade",
