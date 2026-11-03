@@ -20,35 +20,47 @@ export function StudioTrustStrip() {
           </h2>
         </Reveal>
 
-        <ul className="mt-8 flex flex-wrap items-start justify-center gap-3 sm:mt-10 sm:gap-4 lg:gap-5">
+        <ul className="mt-8 flex flex-wrap items-start justify-center gap-4 sm:mt-10 sm:gap-5 lg:gap-6">
           {STUDIO_TRUST_STATS.map((stat, i) => {
             const featured = Boolean(stat.featured);
             return (
               <motion.li
                 key={`${stat.kicker}-${stat.label}`}
-                className="[perspective:800px]"
+                className="[perspective:900px]"
                 initial={{ opacity: 0, y: 16, rotateX: 28, scale: 0.92 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-                whileHover={{ rotateY: 12, rotateX: -6, scale: 1.06, z: 12 }}
+                whileHover={{ rotateY: 10, rotateX: -6, scale: 1.05, z: 12 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.55, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div
-                  className={`flex h-[5.5rem] w-[5.5rem] flex-col items-center justify-center rounded-full px-2 text-center sm:h-[6.5rem] sm:w-[6.5rem] ${
+                  className={`relative flex h-[7rem] w-[7rem] flex-col items-center justify-center rounded-full px-3 text-center sm:h-[8.25rem] sm:w-[8.25rem] ${
                     featured
-                      ? "bg-ink text-canvas shadow-[0_16px_36px_-16px_rgba(27,63,46,0.7)]"
-                      : "border border-ink/22 bg-canvas text-ink"
+                      ? "border-[1.75px] border-accent bg-ink text-canvas shadow-[0_18px_36px_-16px_rgba(27,63,46,0.5),inset_0_1px_0_rgba(228,184,74,0.4)]"
+                      : "border-[1.75px] border-accent bg-[linear-gradient(165deg,#f8f5f0_0%,#f0ece7_58%,#e8e2d8_100%)] text-ink shadow-[0_12px_28px_-18px_rgba(27,63,46,0.28),inset_0_1px_0_rgba(255,255,255,0.85)]"
                   }`}
                 >
-                  <p
-                    className={`font-body text-[10px] font-bold uppercase tracking-[0.14em] sm:text-[11px] ${
-                      featured ? "text-accent-soft" : "text-ink"
+                  <span
+                    aria-hidden
+                    className={`pointer-events-none absolute inset-[6px] rounded-full sm:inset-[7px] ${
+                      featured ? "border border-accent/40" : "border border-accent/45"
                     }`}
+                  />
+                  <p
+                    className={`relative font-display text-[12px] font-semibold uppercase sm:text-[13px] ${
+                      stat.kicker.length <= 3 ? "tracking-[0.08em]" : "tracking-[0.2em]"
+                    } ${featured ? "text-accent-soft" : "text-accent-strong"}`}
                   >
                     {stat.kicker}
                   </p>
+                  <span
+                    aria-hidden
+                    className={`relative mt-1.5 block h-px w-7 ${
+                      featured ? "bg-accent" : "bg-accent"
+                    }`}
+                  />
                   <p
-                    className={`mt-1 max-w-[6.75rem] font-body text-xs font-medium leading-snug sm:text-sm ${
+                    className={`relative mt-1.5 max-w-[6.75rem] font-display text-[1.15rem] font-semibold leading-[1.12] tracking-[-0.02em] sm:text-[1.28rem] ${
                       featured ? "text-canvas" : "text-ink"
                     }`}
                   >

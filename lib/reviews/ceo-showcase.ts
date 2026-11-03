@@ -36,13 +36,6 @@ export const CEO_SHOWCASE_PORTRAITS: readonly CeoShowcasePortrait[] = [
   },
   {
     name: "Home handover",
-    detail: "Portrait · with the CEO",
-    image: "/stories/handover-portrait-ceo-2.jpg",
-    alt: "Client with Vivid In2erio founder and CEO Soubhagya Laxmi Nayakk in the living room",
-    objectPosition: "center 12%",
-  },
-  {
-    name: "Home handover",
     detail: "Bar · with the CEO",
     image: "/stories/handover-bar-ceo.jpg",
     alt: "Client and Vivid In2erio founder and CEO Soubhagya Laxmi Nayakk at the home bar",

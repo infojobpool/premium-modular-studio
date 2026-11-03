@@ -22,7 +22,7 @@ const PRACTICES = [
   {
     slug: "architecture",
     title: "Architecture",
-    lead: "2D drawings, 3D plans, and walkthroughs so the house and interiors lock together.",
+    lead: "Façades and walkthroughs so the house and interiors lock together.",
     image: "/gallery/architecture/walkthrough-villa.jpg",
     alt: "Villa architecture and pool court",
     href: (city: string) => `/${city}/architecture`,

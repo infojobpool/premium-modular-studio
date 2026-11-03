@@ -117,7 +117,7 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "hyderabad/architecture": {
     title: "Architecture · Hyderabad",
     description:
-      "Architecture from Vivid In2erio Hyderabad — 2D floor plans, 3D plans, façades, and walkthroughs so villa and apartment layouts lock to one roadmap.",
+      "Architecture from Vivid In2erio Hyderabad — façades and walkthroughs so villa and apartment layouts lock to one roadmap.",
     focusKeyword: "residential architecture Hyderabad",
   },
   "hyderabad/landscaping": {
@@ -190,7 +190,7 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "bhubaneswar/architecture": {
     title: "Architecture · Bhubaneswar",
     description:
-      "Architecture from Vivid In2erio Bhubaneswar — 2D floor plans, 3D plans, façades, and walkthroughs tuned for Odisha sun and monsoon.",
+      "Architecture from Vivid In2erio Bhubaneswar — façades and walkthroughs tuned for Odisha sun and monsoon.",
     focusKeyword: "residential architecture Bhubaneswar",
   },
   "bhubaneswar/landscaping": {
