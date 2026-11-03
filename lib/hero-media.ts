@@ -31,7 +31,8 @@ export type HeroSlide =
 export const HERO_VIDEO_URL =
   typeof process !== "undefined" ? process.env.NEXT_PUBLIC_HERO_VIDEO_URL?.trim() ?? "" : "";
 
-const INTERIORS_HERO = "/gallery/portfolio/living-room-tv-feature-wall.png";
+const HYDERABAD_INTERIORS_HERO = "/gallery/sheeba-villa-157/interior.png";
+const BHUBANESWAR_INTERIORS_HERO = "/welcome-bhubaneswar-living.png";
 const LANDSCAPE_GARDEN = "/gallery/landscaping/garden-estate.jpg";
 const ARCHITECTURE_VILLA = "/gallery/architecture/walkthrough-villa.jpg";
 
@@ -61,8 +62,8 @@ export function buildHeroSlides(
   const hyderabadFrames: HeroSlide[] = [
     {
       kind: "image",
-      src: INTERIORS_HERO,
-      alt: `Living interior — ${cityLabel}`,
+      src: HYDERABAD_INTERIORS_HERO,
+      alt: `Dining and living interior — ${cityLabel}`,
       eyebrow: "Interiors",
       eyebrowHref: `/${cityId}/gallery`,
       workHref: `/${cityId}/gallery`,
@@ -97,7 +98,7 @@ export function buildHeroSlides(
   const bhubaneswarFrames: HeroSlide[] = [
     {
       kind: "image",
-      src: INTERIORS_HERO,
+      src: BHUBANESWAR_INTERIORS_HERO,
       alt: `Living interior — ${cityLabel}`,
       eyebrow: "Interiors",
       eyebrowHref: `/${cityId}/gallery`,

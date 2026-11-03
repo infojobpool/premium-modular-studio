@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { useHeroCarousel } from "@/hooks/use-hero-carousel";
 import { buildHeroSlides } from "@/lib/hero-media";
 import { PAGE_GUTTER_X } from "@/lib/interior-images";
+import { Hero3DHeadline } from "./Hero3DHeadline";
 import { HeroCarouselToolbar, HeroSlideStage } from "./HeroMedia";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -58,19 +59,34 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="[perspective:1200px]"
               >
-                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/75">
+                <motion.p
+                  className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/75"
+                  initial={reduceMotion ? false : { opacity: 0, y: 10, rotateX: 40 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                >
                   {current.eyebrow}
-                </p>
-                <h1 className="font-body whitespace-pre-line text-[2.35rem] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.35rem]">
-                  {current.headline}
-                </h1>
+                </motion.p>
+                <Hero3DHeadline
+                  text={current.headline}
+                  className="font-body text-[2.35rem] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.35rem]"
+                />
+                <motion.div
+                  className="inline-flex [transform-style:preserve-3d]"
+                  initial={reduceMotion ? false : { opacity: 0, y: 14, rotateX: 28 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                  transition={{ duration: 0.55, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={reduceMotion ? undefined : { scale: 1.04, rotateX: -8, z: 18 }}
+                >
                 <Link
                   href={`/${location.id}/contact`}
                   className="mt-6 inline-flex items-center rounded-md bg-accent px-4 py-2.5 text-sm font-bold text-ink shadow-[0_12px_32px_-12px_rgba(217,162,41,0.85)] transition hover:bg-accent-soft sm:mt-7 sm:px-5 sm:text-base"
                 >
                   Book a visit
                 </Link>
+                </motion.div>
                 <p className="mt-3 text-[11px] font-medium text-white/70">
                   3D sign-off before site · {location.label} {venue}
                 </p>

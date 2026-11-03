@@ -7,6 +7,7 @@ import { DESIGN_IDEA_ROOMS, galleryHref } from "@/lib/design-ideas";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { FOCUS_RING } from "@/lib/ui-classes";
 import { Reveal } from "./Reveal";
+import { Tilt3D } from "./Tilt3D";
 import { useStudioLocation } from "./LocationProvider";
 
 const TILE_CLASS: Record<string, string> = {
@@ -46,15 +47,16 @@ export function DesignIdeasStrip() {
           {DESIGN_IDEA_ROOMS.map((room, i) => (
             <motion.li
               key={room.label}
-              className={TILE_CLASS[room.label] ?? "min-h-[200px]"}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className={`${TILE_CLASS[room.label] ?? "min-h-[200px]"} [perspective:1100px]`}
+              initial={{ opacity: 0, y: 18, rotateX: 14 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
             >
+              <Tilt3D className="h-full min-h-[inherit]" intensity={7}>
               <Link
                 href={galleryHref(location.id, room.typology)}
-                className={`group relative block h-full overflow-hidden rounded-2xl border border-ink/10 bg-ink/5 shadow-sm transition hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-md ${FOCUS_RING}`}
+                className={`group relative block h-full overflow-hidden rounded-2xl border border-ink/10 bg-ink/5 shadow-sm transition hover:border-accent/35 hover:shadow-[0_22px_48px_-22px_rgba(27,63,46,0.45)] ${FOCUS_RING}`}
               >
                 <Image
                   src={room.image}
@@ -69,6 +71,7 @@ export function DesignIdeasStrip() {
                   {room.label}
                 </p>
               </Link>
+              </Tilt3D>
             </motion.li>
           ))}
         </ul>

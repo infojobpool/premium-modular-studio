@@ -14,8 +14,8 @@ export const DESIGN_IDEA_ROOMS: readonly DesignIdeaRoom[] = [
   {
     label: "Kitchen",
     typology: "kitchen",
-    image: `${PORTFOLIO_GALLERY}/modular-kitchen-wood-beige.png`,
-    alt: "Wood and beige modular kitchen",
+    image: "/gallery/delhi-kitchen/Villa-193-East-Indukuri-Lakeshore-Rnders-revised1.11.png",
+    alt: "Beige L-shaped modular kitchen with integrated refrigerator",
   },
   {
     label: "Dining",

@@ -24,10 +24,12 @@ export function StudioTrustStrip() {
             return (
               <motion.li
                 key={`${stat.kicker}-${stat.label}`}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="[perspective:800px]"
+                initial={{ opacity: 0, y: 16, rotateX: 28, scale: 0.92 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                whileHover={{ rotateY: 12, rotateX: -6, scale: 1.06, z: 12 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.55, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div
                   className={`flex h-[5.5rem] w-[5.5rem] flex-col items-center justify-center rounded-full px-2 text-center sm:h-[6.5rem] sm:w-[6.5rem] ${

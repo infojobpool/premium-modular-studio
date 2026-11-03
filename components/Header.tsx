@@ -123,8 +123,8 @@ export function Header() {
           <div
             className={`relative isolate flex w-full min-w-0 flex-1 flex-nowrap items-center gap-2 overflow-hidden rounded-2xl border px-3 py-2 transition-[background,box-shadow,border-color] duration-500 sm:gap-3 sm:px-4 sm:py-2.5 lg:rounded-full lg:px-5 lg:py-2.5 xl:gap-4 xl:px-6 ${
               solid
-                ? "border-ink/16 bg-canvas/90 shadow-[0_14px_48px_-18px_rgba(27,63,46,0.3)] backdrop-blur-xl"
-                : "border-ink/10 bg-canvas/75 shadow-[0_10px_36px_-20px_rgba(27,63,46,0.2)] backdrop-blur-md"
+                ? "border-accent/60 bg-canvas shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_16px_44px_-12px_rgba(27,63,46,0.48)] ring-1 ring-ink/10"
+                : "border-accent/50 bg-canvas shadow-[0_1px_0_rgba(255,255,255,0.95)_inset,0_14px_40px_-10px_rgba(27,63,46,0.42)] ring-1 ring-ink/8"
             }`}
           >
             <span
@@ -137,7 +137,7 @@ export function Header() {
             </div>
 
             <span
-              className="order-2 hidden h-5 w-px shrink-0 bg-ink/10 lg:block"
+              className="order-2 hidden h-5 w-px shrink-0 bg-ink/20 lg:block"
               aria-hidden
             />
 
@@ -182,10 +182,10 @@ export function Header() {
                   <Link
                     key={item.segment}
                     href={href}
-                    className={`relative shrink-0 rounded-full px-3 py-1.5 text-[13px] font-medium tracking-[0.01em] transition-colors duration-300 xl:px-3.5 xl:text-sm ${FOCUS_RING} ${
+                    className={`relative shrink-0 rounded-full px-3 py-1.5 text-[13px] font-semibold tracking-[0.01em] transition-colors duration-300 xl:px-3.5 xl:text-sm ${FOCUS_RING} ${
                       active
-                        ? "text-ink"
-                        : "text-ink/65 hover:bg-ink/[0.04] hover:text-ink"
+                        ? "bg-ink/[0.06] text-ink"
+                        : "text-ink/80 hover:bg-ink/[0.05] hover:text-ink"
                     }`}
                     aria-current={active ? "page" : undefined}
                   >
@@ -204,7 +204,7 @@ export function Header() {
             </nav>
 
             <span
-              className="order-5 hidden h-5 w-px shrink-0 bg-ink/10 lg:block"
+              className="order-5 hidden h-5 w-px shrink-0 bg-ink/20 lg:block"
               aria-hidden
             />
 
