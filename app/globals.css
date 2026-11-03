@@ -2,14 +2,14 @@
 
 /* Vivid In2erio brand: forest, gold, cream */
 @theme {
-  --color-canvas: #eae1c8;
+  --color-canvas: #f0ece7;
   --color-ink: #1b3f2e;
   --color-muted: #3d5a4d;
   --color-accent: #d9a229;
   /** Darker gold for type on cream / panel — keeps brand hue, improves WCAG on light surfaces. */
   --color-accent-strong: #5c4510;
   --color-accent-soft: #e4b84a;
-  --color-panel: #ded8c4;
+  --color-panel: #e7e3dc;
   --font-family-display: var(--font-cormorant), ui-serif, Georgia, serif;
   --font-family-body: var(--font-dm), ui-sans-serif, system-ui, sans-serif;
 }
