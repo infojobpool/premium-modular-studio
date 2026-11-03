@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { useHeroCarousel } from "@/hooks/use-hero-carousel";
 import { buildHeroSlides } from "@/lib/hero-media";
 import { PAGE_GUTTER_X } from "@/lib/interior-images";
+import { BrandTagline } from "./BrandTagline";
 import { Hero3DHeadline } from "./Hero3DHeadline";
 import { HeroCarouselToolbar, HeroSlideStage } from "./HeroMedia";
 import { useStudioLocation } from "./LocationProvider";
@@ -51,6 +52,7 @@ export function Hero() {
         style={{ paddingTop: "var(--site-header-offset)" }}
       >
         <div className="max-w-3xl pb-16 sm:pb-20">
+          <BrandTagline variant="onDark" size="md" className="mb-5" />
           <AnimatePresence mode="wait">
             {current ? (
               <motion.div

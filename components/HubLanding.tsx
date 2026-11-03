@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { interiorImages, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { BrandTagline } from "./BrandTagline";
 import { withBrandHighlight } from "./BrandInline";
 import { VividLogo } from "./VividLogo";
 
@@ -127,9 +128,7 @@ export function HubLanding() {
             }}
           >
             <motion.div variants={heroItem} className="flex justify-center">
-              <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/[0.09] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.32em] text-accent-strong shadow-[0_1px_0_rgba(255,255,255,0.45)_inset] sm:px-3.5 sm:text-[11px]">
-                Premium & luxury interiors
-              </span>
+              <BrandTagline className="inline-flex items-center rounded-full border border-accent/35 bg-accent/[0.09] px-4 py-1.5 shadow-[0_1px_0_rgba(255,255,255,0.45)_inset]" />
             </motion.div>
             <motion.div
               variants={heroLine}

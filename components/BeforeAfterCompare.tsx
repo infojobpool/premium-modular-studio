@@ -14,6 +14,8 @@ type Props = GalleryBeforeAfterProps & {
   className?: string;
   /** Clear the fixed site header when this block is the first content on the page. */
   padForFixedHeader?: boolean;
+  /** Narrower slider under a project grid. */
+  compact?: boolean;
 };
 
 function compositeLayerStyle(src: string, side: "before" | "after"): CSSProperties {
@@ -35,6 +37,7 @@ export function BeforeAfterCompare(props: Props) {
     caseStudyLabel,
     className,
     padForFixedHeader = false,
+    compact = false,
   } = props;
   const compositeSrc = "compositeSrc" in props ? props.compositeSrc : undefined;
   const beforeSrc = "beforeSrc" in props ? props.beforeSrc : undefined;
@@ -45,16 +48,19 @@ export function BeforeAfterCompare(props: Props) {
 
   return (
     <section
-      className={`${PAGE_GUTTER_X} pb-16 ${padForFixedHeader ? FIXED_HEADER_OFFSET_CLASS : "py-16"}${className ? ` ${className}` : ""}`}
+      className={`${PAGE_GUTTER_X} ${compact ? "pb-10" : "pb-16"} ${padForFixedHeader ? FIXED_HEADER_OFFSET_CLASS : compact ? "py-10 sm:py-12" : "py-16"}${className ? ` ${className}` : ""}`}
       aria-labelledby={labelId}
     >
-      <div className={`mx-auto ${CONTENT_MAX}`}>
+      <div className={`mx-auto ${compact ? "max-w-3xl" : CONTENT_MAX}`}>
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-strong">Proof of craft</p>
-          <h2 id={labelId} className="mt-3 font-display text-3xl tracking-tight text-ink sm:text-4xl">
+          <h2
+            id={labelId}
+            className={`mt-3 font-display tracking-tight text-ink ${compact ? "text-2xl sm:text-3xl" : "text-3xl sm:text-4xl"}`}
+          >
             {headline}
           </h2>
-          <p className="mt-3 max-w-2xl text-muted">{caption}</p>
+          <p className={`mt-3 max-w-2xl text-muted ${compact ? "text-sm" : ""}`}>{caption}</p>
           {caseStudyHref ? (
             <Link
               href={caseStudyHref}
@@ -65,8 +71,8 @@ export function BeforeAfterCompare(props: Props) {
           ) : null}
         </Reveal>
 
-        <div className="relative mt-10 overflow-hidden rounded-3xl border border-ink/10 bg-ink/5 shadow-sm">
-          <div className="relative aspect-[16/10] w-full max-w-full touch-none select-none">
+        <div className={`relative overflow-hidden rounded-2xl border border-ink/10 bg-ink/5 shadow-sm ${compact ? "mt-6" : "mt-10 rounded-3xl"}`}>
+          <div className={`relative w-full max-w-full touch-none select-none ${compact ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
             {compositeSrc ? (
               <>
                 <div className="absolute inset-0" style={compositeLayerStyle(compositeSrc, "after")} aria-hidden />
@@ -119,7 +125,7 @@ export function BeforeAfterCompare(props: Props) {
               aria-hidden
             />
             <div
-              className="pointer-events-none absolute top-1/2 h-11 w-11 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-canvas bg-ink/75 shadow-lg"
+              className={`pointer-events-none absolute top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-canvas bg-ink/75 shadow-lg ${compact ? "h-8 w-8" : "h-11 w-11"}`}
               style={{ left: `${pos}%` }}
               aria-hidden
             />
