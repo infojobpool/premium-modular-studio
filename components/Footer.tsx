@@ -12,6 +12,7 @@ import {
   cityVenueLine,
   getStudioWhatsAppHref,
 } from "@/lib/locations";
+import { BrandTagline } from "./BrandTagline";
 import { withBrandHighlight } from "./BrandInline";
 import { VividLogo } from "./VividLogo";
 import { useStudioLocation } from "./LocationProvider";
@@ -98,6 +99,7 @@ export function Footer() {
               className="flex flex-col"
             >
               <VividLogo size="footer" variant="brand" />
+              <BrandTagline className="mt-3" />
               <p className="mt-4 max-w-md text-[1.02rem] leading-relaxed text-ink/85">
                 Premium & luxury interiors led from our {cityVenueLine(location.id)}, with parallel practice in{" "}
                 {peerCity.label}. Complete design-to-delivery for elegant homes, refined workspaces, and

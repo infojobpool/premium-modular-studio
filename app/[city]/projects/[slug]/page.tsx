@@ -57,18 +57,6 @@ export default async function CityProjectDetail({ params }: Props) {
   return (
     <main>
       <Header />
-      {slug === "matthew-villa-makeover" ? (
-        <BeforeAfterCompare
-          beforeSrc={MATTHEW_EXTERIOR_BEFORE_AFTER.beforeSrc}
-          afterSrc={MATTHEW_EXTERIOR_BEFORE_AFTER.afterSrc}
-          beforeLabel={MATTHEW_EXTERIOR_BEFORE_AFTER.beforeLabel}
-          afterLabel={MATTHEW_EXTERIOR_BEFORE_AFTER.afterLabel}
-          headline={MATTHEW_EXTERIOR_BEFORE_AFTER.headline}
-          caption={MATTHEW_EXTERIOR_BEFORE_AFTER.caption}
-          padForFixedHeader
-          className="border-b border-ink/8 bg-panel/15"
-        />
-      ) : null}
       <ProjectCaseStudy
         city={city}
         cityLabel={cityLabel}
@@ -79,8 +67,20 @@ export default async function CityProjectDetail({ params }: Props) {
         heroPoolIndex={heroPoolIndex}
         projectNumber={index + 1}
         storyGallerySrcs={storyGallerySrcs.length > 0 ? storyGallerySrcs : undefined}
-        padForFixedHeader={slug !== "matthew-villa-makeover"}
+        padForFixedHeader
       />
+      {slug === "matthew-villa-makeover" ? (
+        <BeforeAfterCompare
+          beforeSrc={MATTHEW_EXTERIOR_BEFORE_AFTER.beforeSrc}
+          afterSrc={MATTHEW_EXTERIOR_BEFORE_AFTER.afterSrc}
+          beforeLabel={MATTHEW_EXTERIOR_BEFORE_AFTER.beforeLabel}
+          afterLabel={MATTHEW_EXTERIOR_BEFORE_AFTER.afterLabel}
+          headline={MATTHEW_EXTERIOR_BEFORE_AFTER.headline}
+          caption={MATTHEW_EXTERIOR_BEFORE_AFTER.caption}
+          compact
+          className="border-t border-ink/8 bg-panel/15"
+        />
+      ) : null}
       <Footer />
     </main>
   );

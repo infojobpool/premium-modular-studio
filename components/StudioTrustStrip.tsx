@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { STUDIO_TRUST_STATS } from "@/lib/studio-trust-stats";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { BrandTagline } from "./BrandTagline";
 import { Reveal } from "./Reveal";
 
 export function StudioTrustStrip() {
@@ -13,7 +14,8 @@ export function StudioTrustStrip() {
     >
       <div className={`mx-auto ${CONTENT_MAX}`}>
         <Reveal>
-          <h2 className="text-center font-body text-xl font-bold uppercase tracking-[0.06em] text-ink sm:text-2xl md:text-[1.65rem] md:tracking-[0.08em]">
+          <BrandTagline className="text-center" size="md" />
+          <h2 className="mt-3 text-center font-body text-xl font-bold uppercase tracking-[0.06em] text-ink sm:text-2xl md:text-[1.65rem] md:tracking-[0.08em]">
             Professional home interior design company
           </h2>
         </Reveal>
