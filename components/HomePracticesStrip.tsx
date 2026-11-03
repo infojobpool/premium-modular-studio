@@ -6,6 +6,7 @@ import Link from "next/link";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { FOCUS_RING } from "@/lib/ui-classes";
 import { Reveal } from "./Reveal";
+import { Tilt3D } from "./Tilt3D";
 import { useStudioLocation } from "./LocationProvider";
 
 const PRACTICES = [
@@ -67,14 +68,16 @@ export function HomePracticesStrip() {
           {PRACTICES.map((practice, i) => (
             <motion.li
               key={practice.slug}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="[perspective:1100px]"
+              initial={{ opacity: 0, y: 22, rotateX: 12 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.65, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
+              <Tilt3D intensity={8}>
               <Link
                 href={practice.href(location.id)}
-                className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-panel/30 shadow-sm transition hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-md ${FOCUS_RING}`}
+                className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-panel/30 shadow-sm transition hover:border-accent/35 hover:shadow-[0_22px_48px_-22px_rgba(27,63,46,0.45)] ${FOCUS_RING}`}
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-ink/5">
                   <Image
@@ -97,6 +100,7 @@ export function HomePracticesStrip() {
                   </span>
                 </div>
               </Link>
+              </Tilt3D>
             </motion.li>
           ))}
         </ul>

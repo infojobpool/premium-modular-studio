@@ -16,9 +16,9 @@ const cards = [
     studio: "Flagship office",
     area: "Secunderabad / Sainikpuri",
     href: "/hyderabad",
-    image: "/gallery/portfolio/living-room-tv-feature-wall.png",
-    imageAlt: "Hyderabad office — luxury bedroom interior",
-    imagePosition: "object-[center_42%]" as const,
+    image: "/welcome-hyderabad-skyline.png",
+    imageAlt: "Hyderabad skyline at dusk with Charminar — Vivid In2erio office city",
+    imagePosition: "object-[center_40%]" as const,
     hours: "10:00–19:00 IST",
   },
   {
@@ -149,9 +149,14 @@ export function HubLanding() {
               className="mx-auto mt-1.5 max-w-md text-xs font-medium leading-snug text-muted sm:text-sm"
             >
               Select{" "}
-              <span className="font-semibold text-ink">Hyderabad</span> or{" "}
-              <span className="font-semibold text-ink">Bhubaneswar</span> for local projects and
-              consultations.
+              <span className="font-semibold text-accent-strong underline decoration-accent/55 decoration-2 underline-offset-4">
+                Hyderabad
+              </span>{" "}
+              or{" "}
+              <span className="font-semibold text-accent-strong underline decoration-accent/55 decoration-2 underline-offset-4">
+                Bhubaneswar
+              </span>{" "}
+              for local projects and consultations.
             </motion.p>
             <motion.p
               variants={{
@@ -192,15 +197,17 @@ export function HubLanding() {
                       className={`object-cover saturate-[1.06] contrast-[1.02] transition duration-700 group-hover:scale-[1.03] ${c.imagePosition}`}
                     />
                     <div
-                      className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent opacity-80"
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"
                       aria-hidden
                     />
                     <span
                       className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-accent to-transparent"
                       aria-hidden
                     />
-                    <span className="absolute bottom-3 left-4 font-display text-[clamp(1.25rem,3vw,1.5rem)] uppercase leading-none tracking-[0.1em] text-canvas drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:left-5">
-                      {c.title}
+                    <span className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4">
+                      <span className="inline-flex max-w-full items-center rounded-full border border-accent/45 bg-ink/55 px-3.5 py-1.5 font-display text-[clamp(1.15rem,2.6vw,1.55rem)] uppercase leading-none tracking-[0.16em] text-accent-soft shadow-[0_8px_24px_-8px_rgba(0,0,0,0.55)] backdrop-blur-[2px]">
+                        {c.title}
+                      </span>
                     </span>
                   </div>
 
@@ -247,14 +254,14 @@ export function HubLanding() {
               <span className="flex w-full basis-full flex-wrap items-center justify-center gap-x-2 gap-y-1.5 sm:w-auto sm:basis-auto">
                 <Link
                   href="/hyderabad"
-                  className="rounded-md px-1.5 py-1 font-medium text-ink/85 underline-offset-4 transition hover:text-accent-strong hover:underline"
+                  className="rounded-md px-1.5 py-1 font-semibold text-accent-strong underline decoration-accent/50 underline-offset-4 transition hover:text-ink"
                 >
                   Hyderabad
                 </Link>
                 <span className="text-ink/25">·</span>
                 <Link
                   href="/bhubaneswar"
-                  className="rounded-md px-1.5 py-1 font-medium text-ink/85 underline-offset-4 transition hover:text-accent-strong hover:underline"
+                  className="rounded-md px-1.5 py-1 font-semibold text-accent-strong underline decoration-accent/50 underline-offset-4 transition hover:text-ink"
                 >
                   Bhubaneswar
                 </Link>

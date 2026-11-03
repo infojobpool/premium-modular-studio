@@ -247,16 +247,22 @@
   );
 }
 
+.hero-slide-stage {
+  perspective: 1600px;
+  transform-style: preserve-3d;
+}
+
 @keyframes hero-slide-ken {
   from {
-    transform: scale(1);
+    transform: scale(1) translate3d(0, 0, 0) rotateX(0deg);
   }
   to {
-    transform: scale(1.06);
+    transform: scale(1.08) translate3d(-1.4%, 0.9%, 28px) rotateX(1.4deg);
   }
 }
 
 .hero-slide-ken {
+  transform-origin: 50% 55%;
   animation: hero-slide-ken 8s ease-out forwards;
 }
 

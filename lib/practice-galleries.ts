@@ -82,34 +82,6 @@ export const ARCHITECTURE_PAGE: PracticePageCopy = {
       ],
     },
     {
-      id: "floor-plans",
-      eyebrow: "Drawings",
-      title: "Architects’ floor plans",
-      lead: "Ground, first floor, and site — rooms, stairs, and outdoor rooms drawn as one set.",
-      stills: [
-        {
-          src: `${ARCH}/floor-plan-ground.jpg`,
-          alt: "Ground-floor villa plan — living, kitchen, courtyard",
-          caption: "Ground floor · living, kitchen, courtyard",
-        },
-        {
-          src: `${ARCH}/floor-plan-first.jpg`,
-          alt: "First-floor villa plan — suites, study, lounge",
-          caption: "First floor · suites and study",
-        },
-        {
-          src: `${ARCH}/floor-plan-site.jpg`,
-          alt: "Site plan — built form, drive, lawn, and pool court",
-          caption: "Site plan · approach and outdoor rooms",
-        },
-        {
-          src: `${ARCH}/floor-plan-blueprint.jpg`,
-          alt: "Architect marking a floor plan on the drawing table",
-          caption: "Plan review on the board",
-        },
-      ],
-    },
-    {
       id: "walkthroughs",
       eyebrow: "Façade",
       title: "Walkthroughs",

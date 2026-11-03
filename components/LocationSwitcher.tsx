@@ -22,9 +22,9 @@ export function LocationSwitcher({
 
   const rootClass = compact
     ? wide
-      ? "flex w-full min-w-0 rounded-full border border-ink/10 bg-canvas/60 p-0.5 shadow-inner backdrop-blur-sm sm:inline-flex sm:w-auto"
-      : "inline-flex min-w-0 rounded-full border border-ink/10 bg-canvas/60 p-0.5 shadow-inner backdrop-blur-sm"
-    : "inline-flex rounded-full border border-ink/10 bg-canvas/70 p-1 shadow-inner backdrop-blur-md";
+      ? "flex w-full min-w-0 rounded-full border border-ink/18 bg-panel p-0.5 shadow-inner sm:inline-flex sm:w-auto"
+      : "inline-flex min-w-0 rounded-full border border-ink/18 bg-panel p-0.5 shadow-inner"
+    : "inline-flex rounded-full border border-ink/16 bg-panel p-1 shadow-inner";
 
   return (
     <div role="navigation" aria-label="Studio location" className={rootClass}>

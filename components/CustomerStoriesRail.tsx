@@ -53,7 +53,9 @@ export function CustomerStoriesRail({ stories, variant = "grid" }: Props) {
                 allowFullScreen
               />
             </div>
-            <p className="mt-3 font-display text-lg text-ink">{story.name}</p>
+            <p className="mt-3 font-display text-lg font-semibold tracking-tight text-accent-strong underline decoration-accent/55 decoration-2 underline-offset-[6px]">
+              {story.name}
+            </p>
             {story.role ? (
               <p className="mt-1 text-sm font-medium leading-snug text-ink/75">{story.role}</p>
             ) : null}
@@ -117,7 +119,9 @@ function StoriesPageTiles({ videos }: { videos: TestimonialItem[] }) {
                   </button>
                 )}
               </div>
-              <p className="mt-4 font-display text-xl tracking-tight text-ink sm:text-2xl">{story.name}</p>
+              <p className="mt-4 font-display text-xl font-semibold tracking-tight text-accent-strong underline decoration-accent/55 decoration-2 underline-offset-[7px] sm:text-2xl">
+                {story.name}
+              </p>
               {story.role ? (
                 <p className="mt-1.5 font-body text-sm leading-relaxed text-ink/70">{story.role}</p>
               ) : null}
