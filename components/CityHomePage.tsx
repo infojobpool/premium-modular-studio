@@ -10,18 +10,18 @@ import { StudioTrustStrip } from "@/components/StudioTrustStrip";
 import { HomeCustomerStoriesStrip } from "@/components/HomeCustomerStoriesStrip";
 
 /**
- * City landing `/[city]` — hero, work, stories, then visit.
+ * City landing `/[city]` — hero, founder, work, stories, then visit.
  */
 export function CityHomePage() {
   return (
     <CityPageShell stickyBar={<StickyBookBar />}>
       <Hero />
       <StudioTrustStrip />
+      <FounderSpotlight variant="compact" />
       <HomePracticesStrip />
       <DesignIdeasStrip />
       <HomeSheebaVillaStrip />
       <HomeCustomerStoriesStrip />
-      <FounderSpotlight variant="compact" />
       <HomeFaqStrip />
     </CityPageShell>
   );
