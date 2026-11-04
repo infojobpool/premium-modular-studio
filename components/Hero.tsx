@@ -42,7 +42,11 @@ export function Hero() {
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-t from-black/55 via-transparent to-black/20"
+          className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-t from-black/55 via-transparent to-transparent"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 z-[5] h-[40%] bg-[linear-gradient(180deg,color-mix(in_oklab,var(--color-ink)_76%,transparent)_0%,color-mix(in_oklab,var(--color-ink)_38%,transparent)_42%,transparent_100%)]"
           aria-hidden
         />
       </div>

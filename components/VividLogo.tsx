@@ -3,63 +3,49 @@ import { BRAND_LOGO_ALT, BRAND_LOGO_HEIGHT, BRAND_LOGO_SRC, BRAND_LOGO_WIDTH } f
 
 type VividLogoProps = {
   className?: string;
-  /** Lockup beside the nav pill (not inside it). */
+  /** Square gold-edged lockup — same treatment on header, hub, footer, and modals. */
   size?: "header" | "home" | "footer" | "aside" | "nav";
   /** Visual treatment around the asset (PNG already includes brand background). */
   variant?: "default" | "light" | "brand";
+  /** Gold ring on cream; off when the lockup sits in a forest well. */
+  framed?: boolean;
 };
 
 export function VividLogo({
   className = "",
   size = "header",
   variant = "default",
+  framed = true,
 }: VividLogoProps) {
   const isFooter = size === "footer";
   const isHome = size === "home";
   const isAside = size === "aside";
   const isNav = size === "nav";
-  const brand = variant === "brand";
   const light = variant === "light";
 
   const imgClass = isFooter
-    ? "h-[6.75rem] w-auto max-w-[min(100%,360px)] object-contain object-left sm:h-[7.5rem] sm:max-w-[380px]"
+    ? "h-[6.5rem] w-[6.5rem] object-contain sm:h-[7.25rem] sm:w-[7.25rem]"
     : isNav
-      ? "h-[3.25rem] w-auto max-w-[min(100%,10.5rem)] object-contain object-left sm:h-[3.875rem] sm:max-w-[13.5rem] lg:h-[6.875rem] lg:max-w-[460px]"
-    : isAside
-      ? "h-[5.75rem] w-auto max-w-[min(100%,380px)] object-contain object-left sm:h-[6.375rem] sm:max-w-[430px] lg:h-[6.875rem] lg:max-w-[460px]"
-    : isHome
-      ? "h-[5.75rem] w-auto max-w-[min(100%,340px)] object-contain object-left sm:h-[6.25rem] sm:max-w-[380px]"
-      : "h-[3.25rem] w-auto max-w-[min(100%,10.5rem)] object-contain object-left sm:h-[3.875rem] sm:max-w-[13.5rem] md:max-w-[17rem] lg:h-[4.375rem] lg:max-w-[300px]";
+      ? "h-[5.5rem] w-[5.5rem] object-contain sm:h-[6.1rem] sm:w-[6.1rem] lg:h-[6.5rem] lg:w-[6.5rem]"
+    : isAside || isHome
+      ? "h-[5.75rem] w-[5.75rem] object-contain sm:h-[6.5rem] sm:w-[6.5rem]"
+      : "h-[4.25rem] w-[4.25rem] object-contain sm:h-[4.75rem] sm:w-[4.75rem]";
 
   return (
     <span
-      className={`inline-flex shrink-0 items-center ${className}`.trim()}
+      className={`inline-flex shrink-0 items-center overflow-hidden bg-ink ${
+        framed ? "rounded-2xl ring-1 ring-accent/60" : "rounded-none"
+      } ${light ? "opacity-[0.98]" : ""} ${className}`.trim()}
     >
-      <span
-        className={`inline-block overflow-hidden rounded-lg ${
-          brand ? "rounded-xl ring-1 ring-ink/12 shadow-sm" : ""
-        } ${light ? "opacity-[0.98]" : ""}`}
-      >
-        <Image
-          src={BRAND_LOGO_SRC}
-          alt={BRAND_LOGO_ALT}
-          width={BRAND_LOGO_WIDTH}
-          height={BRAND_LOGO_HEIGHT}
-          className={imgClass}
-          sizes={
-            isFooter
-              ? "(max-width: 640px) 360px, 380px"
-              : isNav
-                ? "(max-width: 1024px) 272px, 460px"
-              : isAside
-                ? "(max-width: 640px) 380px, 460px"
-              : isHome
-                ? "(max-width: 640px) 340px, 380px"
-                : "(max-width: 640px) 272px, 300px"
-          }
-          priority={size === "header" || size === "home" || size === "aside" || size === "nav"}
-        />
-      </span>
+      <Image
+        src={BRAND_LOGO_SRC}
+        alt={BRAND_LOGO_ALT}
+        width={BRAND_LOGO_WIDTH}
+        height={BRAND_LOGO_HEIGHT}
+        className={imgClass}
+        sizes={isNav || isFooter || isHome || isAside ? "160px" : "96px"}
+        priority={size === "header" || size === "home" || size === "aside" || size === "nav"}
+      />
     </span>
   );
 }
