@@ -81,59 +81,54 @@ export function Footer() {
   return (
     <footer className={`scroll-mt-24 border-t border-ink/10 bg-gradient-to-b from-canvas via-canvas to-panel/40 pt-10 sm:pt-12 ${PAGE_GUTTER_X}`}>
       <div className={`mx-auto ${CONTENT_MAX}`}>
-        <div className="group relative overflow-hidden rounded-[2rem] border border-ink/12 bg-gradient-to-br from-canvas/98 via-canvas/90 to-panel/55 px-6 py-8 shadow-[0_28px_70px_-40px_rgba(27,63,46,0.5)] sm:px-10 sm:py-10">
-          <span
-            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/75 to-transparent"
-            aria-hidden
-          />
-          <span
-            className="pointer-events-none absolute -left-1/3 top-0 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-0 transition-all duration-1000 group-hover:left-[120%] group-hover:opacity-100"
-            aria-hidden
-          />
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_1fr] lg:gap-14">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col"
-            >
-              <VividLogo size="footer" variant="brand" />
-              <BrandTagline className="mt-3" />
-              <p className="mt-4 max-w-md text-[1.02rem] leading-relaxed text-ink/85">
-                Premium & luxury interiors led from our {cityVenueLine(location.id)}, with parallel practice in{" "}
-                {peerCity.label}. Complete design-to-delivery for elegant homes, refined workspaces, and
-                high-end commercial environments.
+        <div className="overflow-hidden rounded-[2rem] border border-accent/55 shadow-[0_28px_70px_-40px_rgba(27,63,46,0.5)] lg:grid lg:grid-cols-[minmax(17rem,0.92fr)_1.18fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="relative flex flex-col bg-ink px-7 py-8 sm:px-9 sm:py-10"
+          >
+            <span
+              className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent"
+              aria-hidden
+            />
+            <VividLogo size="footer" className="self-start" />
+            <BrandTagline variant="onDark" className="mt-4" />
+            <p className="mt-4 max-w-md text-[1.02rem] leading-relaxed text-canvas/82">
+              Premium & luxury interiors led from our {cityVenueLine(location.id)}, with parallel practice in{" "}
+              {peerCity.label}. Complete design-to-delivery for elegant homes, refined workspaces, and
+              high-end commercial environments.
+            </p>
+
+            <div className="mt-8">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-soft">
+                Connect
               </p>
-
-              <div className="mt-8">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-strong">
-                  Connect
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2.5">
-                  {socialItems.map(({ key, label, href, Icon }) => (
-                    <a
-                      key={key}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/14 bg-canvas/85 text-ink shadow-[0_8px_22px_-14px_rgba(27,63,46,0.35)] transition-[transform,border-color,box-shadow,color] duration-300 hover:-translate-y-0.5 hover:border-accent/45 hover:text-ink hover:shadow-[0_14px_28px_-12px_rgba(27,63,46,0.38)]"
-                    >
-                      <Icon className="h-5 w-5" />
-                    </a>
-                  ))}
-                </div>
+              <div className="mt-3 flex flex-wrap gap-2.5">
+                {socialItems.map(({ key, label, href, Icon }) => (
+                  <a
+                    key={key}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/18 bg-white/8 text-canvas transition duration-300 hover:-translate-y-0.5 hover:border-accent/55 hover:text-accent-soft"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                ))}
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="grid gap-10 sm:grid-cols-2 sm:gap-12 lg:gap-10"
-            >
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            className="grid gap-8 bg-canvas px-6 py-8 sm:grid-cols-2 sm:gap-10 sm:px-8 sm:py-10"
+          >
               <div className="rounded-2xl border border-ink/10 bg-canvas/50 p-5 max-sm:pr-14 sm:p-6">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-strong">Quick links</p>
                 <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-[0.98rem]">
@@ -197,7 +192,6 @@ export function Footer() {
                 </div>
               </div>
             </motion.div>
-          </div>
         </div>
       </div>
       <p

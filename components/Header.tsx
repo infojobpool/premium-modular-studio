@@ -106,45 +106,52 @@ export function Header() {
         duration: hidden ? 0.28 : 0.9,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className={`fixed inset-x-0 top-0 z-40 pt-[max(0.5rem,env(safe-area-inset-top))] sm:pt-[max(0.75rem,env(safe-area-inset-top))] ${PAGE_GUTTER_X} ${
-        hidden ? "pointer-events-none" : ""
-      }`}
+      className={`fixed inset-x-0 top-0 z-40 ${hidden ? "pointer-events-none" : ""}`}
     >
-      <div className="mx-auto flex w-full max-w-[92rem] flex-col gap-2">
-        <div className="flex min-w-0 flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[11rem] sm:h-[12.25rem]"
+        aria-hidden
+      >
+        <div className="h-full bg-[linear-gradient(180deg,color-mix(in_oklab,var(--color-ink)_84%,transparent)_0%,color-mix(in_oklab,var(--color-ink)_48%,transparent)_44%,color-mix(in_oklab,var(--color-ink)_16%,transparent)_76%,transparent_100%)]" />
+      </div>
+
+      <div
+        className={`relative mx-auto flex w-full max-w-[92rem] flex-col gap-2 pt-[max(0.5rem,env(safe-area-inset-top))] sm:pt-[max(0.75rem,env(safe-area-inset-top))] ${PAGE_GUTTER_X}`}
+      >
+        <div
+          className={`relative isolate flex min-w-0 items-stretch overflow-hidden rounded-2xl border-[1.5px] border-accent transition-[box-shadow] duration-500 ${
+            solid
+              ? "shadow-[0_1px_0_rgba(255,255,255,0.55)_inset,0_16px_44px_-12px_rgba(27,63,46,0.48)]"
+              : "shadow-[0_1px_0_rgba(255,255,255,0.4)_inset,0_14px_40px_-10px_rgba(27,63,46,0.42)]"
+          }`}
+        >
           <Link
             href={logoHref}
-            className={`relative z-20 block shrink-0 self-start rounded-lg ${FOCUS_RING}`}
+            className={`relative z-20 flex shrink-0 items-center bg-ink px-1.5 py-1 sm:px-2 ${FOCUS_RING}`}
             aria-label={logoAria}
           >
-            <VividLogo size="nav" />
+            <VividLogo size="nav" framed={false} />
           </Link>
 
-          <div
-            className={`relative isolate flex w-full min-w-0 flex-1 flex-nowrap items-center gap-2 overflow-hidden rounded-2xl border px-3 py-2 transition-[background,box-shadow,border-color] duration-500 sm:gap-3 sm:px-4 sm:py-2.5 lg:rounded-full lg:px-5 lg:py-2.5 xl:gap-4 xl:px-6 ${
-              solid
-                ? "border-accent/60 bg-canvas shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_16px_44px_-12px_rgba(27,63,46,0.48)] ring-1 ring-ink/10"
-                : "border-accent/50 bg-canvas shadow-[0_1px_0_rgba(255,255,255,0.95)_inset,0_14px_40px_-10px_rgba(27,63,46,0.42)] ring-1 ring-ink/8"
-            }`}
-          >
+          <div className="relative flex min-w-0 flex-1 flex-nowrap items-center gap-2 overflow-hidden bg-canvas px-3 py-2 sm:gap-2.5 sm:px-3.5 sm:py-2.5 lg:px-3.5 lg:py-2 xl:gap-2.5 xl:px-4">
             <span
-              className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent/55 to-transparent"
+              className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/45 to-transparent"
               aria-hidden
             />
 
-            <div className="order-1 flex shrink-0 items-center">
+            <div className="relative z-10 order-1 flex shrink-0 items-center">
               <LocationSwitcher compact wide layoutGroup="hdr" />
             </div>
 
             <span
-              className="order-2 hidden h-5 w-px shrink-0 bg-ink/20 lg:block"
+              className="order-2 hidden h-5 w-px shrink-0 bg-ink/20 xl:block"
               aria-hidden
             />
 
             <button
               type="button"
               onClick={() => setMobileMenuOpen((v) => !v)}
-              className={`order-3 ml-auto inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border text-ink transition duration-300 lg:hidden ${FOCUS_RING} ${
+              className={`order-3 ml-auto inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border text-ink transition duration-300 xl:hidden ${FOCUS_RING} ${
                 mobileMenuOpen
                   ? "border-accent/45 bg-accent/15 shadow-sm"
                   : "border-ink/12 bg-canvas/60"
@@ -173,7 +180,7 @@ export function Header() {
 
             <nav
               aria-label="Main"
-              className="order-4 hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex xl:gap-1.5"
+              className="order-4 hidden min-w-0 flex-1 items-center justify-center gap-0 xl:flex"
             >
               {navItems.map((item) => {
                 const href = `${cityBase}/${item.segment}`;
@@ -182,7 +189,7 @@ export function Header() {
                   <Link
                     key={item.segment}
                     href={href}
-                    className={`relative shrink-0 rounded-full px-3 py-1.5 text-[13px] font-semibold tracking-[0.01em] transition-colors duration-300 xl:px-3.5 xl:text-sm ${FOCUS_RING} ${
+                    className={`relative shrink-0 rounded-full px-1.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition-colors duration-300 2xl:px-2.5 ${FOCUS_RING} ${
                       active
                         ? "bg-ink/[0.06] text-ink"
                         : "text-ink/80 hover:bg-ink/[0.05] hover:text-ink"
@@ -204,14 +211,14 @@ export function Header() {
             </nav>
 
             <span
-              className="order-5 hidden h-5 w-px shrink-0 bg-ink/20 lg:block"
+              className="order-5 hidden h-5 w-px shrink-0 bg-ink/20 xl:block"
               aria-hidden
             />
 
             <Link
               href={`${cityBase}/contact`}
               aria-current={contactActive ? "page" : undefined}
-              className={`order-6 hidden shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-canvas shadow-[0_10px_28px_-10px_rgba(27,63,46,0.55)] ring-1 ring-white/10 transition duration-300 hover:bg-ink/92 hover:shadow-[0_14px_32px_-10px_rgba(27,63,46,0.5)] lg:inline-flex xl:px-5 xl:py-2.5 xl:text-[11px] ${FOCUS_RING}`}
+              className={`relative z-10 order-6 hidden shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-ink px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-canvas shadow-[0_10px_28px_-10px_rgba(27,63,46,0.55)] ring-1 ring-white/10 transition duration-300 hover:bg-ink/92 xl:inline-flex xl:px-4 xl:py-2 xl:text-xs ${FOCUS_RING}`}
             >
               Book Free Consultation
             </Link>

@@ -130,7 +130,7 @@ export function StudioSplitModal() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/15" />
                 <div className="absolute inset-0 flex flex-col items-stretch justify-between gap-6 p-8 pb-9 pt-14 sm:p-10 sm:pb-10 sm:pt-16">
-                  <VividLogo variant="light" className="max-w-[min(100%,280px)] shrink-0 self-start" />
+                  <VividLogo size="home" variant="light" className="shrink-0 self-start" />
                   <div className="min-w-0 shrink">
                     <p className="font-display text-3xl leading-[1.1] tracking-tight text-canvas sm:text-4xl">
                       Premium & luxury interiors · Hyderabad
@@ -154,7 +154,7 @@ export function StudioSplitModal() {
               {/* Right — Bhubaneswar (solid + circular image) */}
               <div className="relative flex min-h-[300px] flex-col bg-[#4a3229] md:min-h-[460px]">
                 <div className="absolute left-8 top-14 shrink-0 sm:left-10 sm:top-16">
-                  <VividLogo variant="light" className="max-w-[min(100%,280px)] opacity-95" />
+                  <VividLogo size="home" variant="light" />
                 </div>
 
                 <div className="flex flex-1 flex-col items-center justify-center px-8 pb-10 pt-24 sm:px-10 sm:pb-12 sm:pt-28">

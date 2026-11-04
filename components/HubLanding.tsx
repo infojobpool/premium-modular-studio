@@ -93,6 +93,10 @@ export function HubLanding() {
           className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_-18%,color-mix(in_oklab,var(--color-accent)_16%,transparent),transparent_58%)]"
           aria-hidden
         />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[12.5rem] sm:h-[14rem] bg-[linear-gradient(180deg,color-mix(in_oklab,var(--color-ink)_84%,transparent)_0%,color-mix(in_oklab,var(--color-ink)_48%,transparent)_44%,color-mix(in_oklab,var(--color-ink)_16%,transparent)_76%,transparent_100%)]"
+          aria-hidden
+        />
 
         <div className={`relative z-[1] mx-auto flex ${HUB_MAX} flex-col gap-3 sm:gap-4`}>
           <header className="flex shrink-0 justify-center">
@@ -102,14 +106,18 @@ export function HubLanding() {
               transition={{ duration: reduce ? 0 : 0.65, ease: easeOut }}
               whileHover={reduce ? undefined : { scale: 1.02 }}
               whileTap={reduce ? undefined : { scale: 0.98 }}
+              className="relative isolate flex min-w-0 items-stretch overflow-hidden rounded-2xl border-[1.5px] border-accent shadow-[0_1px_0_rgba(255,255,255,0.4)_inset,0_14px_40px_-10px_rgba(27,63,46,0.42)]"
             >
               <Link
                 href="/"
-                className="inline-flex min-w-0 rounded-2xl border border-ink/12 bg-canvas/65 px-3 py-2 shadow-[0_14px_44px_-22px_rgba(27,63,46,0.4)] ring-1 ring-white/55 backdrop-blur-md transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-[0_22px_56px_-24px_rgba(27,63,46,0.38)] active:scale-[0.98] sm:px-3.5 sm:py-2.5"
+                className="inline-flex shrink-0 items-center bg-ink px-1 py-1 transition duration-300 hover:brightness-[1.04] active:scale-[0.98]"
                 aria-label="Vivid In2erio home"
               >
-                <VividLogo size="home" />
+                <VividLogo size="home" framed={false} />
               </Link>
+              <div className="flex items-center bg-canvas px-4 sm:px-5">
+                <BrandTagline />
+              </div>
             </motion.div>
           </header>
 
@@ -127,12 +135,9 @@ export function HubLanding() {
               },
             }}
           >
-            <motion.div variants={heroItem} className="flex justify-center">
-              <BrandTagline className="inline-flex items-center rounded-full border border-accent/35 bg-accent/[0.09] px-4 py-1.5 shadow-[0_1px_0_rgba(255,255,255,0.45)_inset]" />
-            </motion.div>
             <motion.div
               variants={heroLine}
-              className="mx-auto mt-1.5 h-px w-12 origin-center bg-gradient-to-r from-transparent via-accent to-transparent sm:w-16"
+              className="mx-auto h-px w-12 origin-center bg-gradient-to-r from-transparent via-accent to-transparent sm:w-16"
             />
             <motion.h1
               variants={{
