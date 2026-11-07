@@ -7,8 +7,10 @@ export type StudioLocation = {
   addressLines: string[];
   phoneDisplay: string;
   phoneHref: string;
-  /** Google Maps search query for links and embeds */
+  /** Google Maps search query for embeds and fallback links */
   mapQuery: string;
+  /** Official share link for the Maps button when we have a pinned place */
+  mapsUrl?: string;
   /** Shown next to map and in JSON-LD */
   hoursSummary: string;
   /** ISO-like times for schema.org `openingHoursSpecification` */
@@ -31,6 +33,7 @@ export const STUDIO_LOCATIONS: Record<StudioLocationId, StudioLocation> = {
     phoneDisplay: "+91 91218 21616",
     phoneHref: "tel:+919121821616",
     mapQuery: "Phase II Valluvar Nagar Laxmipuri Sainikpuri Secunderabad 500094",
+    mapsUrl: "https://maps.app.goo.gl/cVpyzbvRyfwRnmQ3A",
     hoursSummary: "Mon–Sat · 10:00–19:00 IST (by appointment)",
     schemaHours: { opens: "10:00", closes: "19:00" },
   },
@@ -63,6 +66,12 @@ export function getStudioWhatsAppHref(city: StudioLocationId): string {
   return `https://wa.me/${getStudioWhatsAppE164(city)}`;
 }
 
+export function getStudioMapsHref(city: StudioLocationId): string {
+  const loc = STUDIO_LOCATIONS[city];
+  if (loc.mapsUrl) return loc.mapsUrl;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${loc.mapQuery} India`)}`;
+}
+
 export const DEFAULT_STUDIO_LOCATION: StudioLocationId = "hyderabad";
 
 /** Visitor-facing place line — Hyderabad is an office, Bhubaneswar stays a studio. */
@@ -81,7 +90,7 @@ export const STUDIO_EMAIL_HREF = "mailto:info@vividin2erio.com";
 
 /** Public social profiles — update hrefs when official accounts are confirmed. */
 export const STUDIO_SOCIAL = {
-  instagram: "https://www.instagram.com/",
+  instagram: "https://www.instagram.com/vivid_in2erio/",
   facebook: "https://www.facebook.com/",
   linkedIn: "https://www.linkedin.com/",
 } as const;
