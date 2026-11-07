@@ -5,7 +5,7 @@ import { useState, type FormEvent } from "react";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { buildContactMailto } from "@/lib/contact-mailto";
 import { getCalendlyUrl } from "@/lib/calendly";
-import { STUDIO_EMAIL, STUDIO_EMAIL_HREF, cityVenueLine, cityVenueNoun, getStudioWhatsAppHref } from "@/lib/locations";
+import { STUDIO_EMAIL, STUDIO_EMAIL_HREF, cityVenueLine, cityVenueNoun, getStudioMapsHref, getStudioWhatsAppHref } from "@/lib/locations";
 import { vividCopy } from "@/lib/vivid-reference";
 import { LocationSwitcher } from "./LocationSwitcher";
 import { Reveal } from "./Reveal";
@@ -161,9 +161,7 @@ export function CTA() {
                   </a>
                 ) : null}
                 <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                    `${location.mapQuery} India`,
-                  )}`}
+                  href={getStudioMapsHref(location.id)}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-full border border-canvas/20 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-canvas/90 transition hover:border-canvas/40"

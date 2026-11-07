@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
+import { getStudioMapsHref } from "@/lib/locations";
 import { Reveal } from "./Reveal";
 import { useStudioLocation } from "./LocationProvider";
 
@@ -17,9 +18,7 @@ export function StudioMapSection() {
   const inView = useInView(wrapRef, { once: true, margin: "120px" });
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
-  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${location.mapQuery} India`,
-  )}`;
+  const mapsLink = getStudioMapsHref(location.id);
 
   return (
     <section
