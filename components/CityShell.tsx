@@ -1,7 +1,6 @@
 "use client";
 
 import type { StudioLocationId } from "@/lib/locations";
-import { CityWelcomeModal } from "./CityWelcomeModal";
 import { LocationProvider } from "./LocationProvider";
 import { WhatsAppFloatButton } from "./WhatsAppFloatButton";
 
@@ -18,7 +17,6 @@ export function CityShell({
         data-studio-city={city}
         className={`studio-atmosphere studio-atmosphere--${city} min-h-dvh transition-[background] duration-700 ease-out`}
       >
-        <CityWelcomeModal city={city} />
         <WhatsAppFloatButton />
         {children}
       </div>

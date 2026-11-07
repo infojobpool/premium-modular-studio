@@ -32,7 +32,7 @@ export const STUDIO_LOCATIONS: Record<StudioLocationId, StudioLocation> = {
     ],
     phoneDisplay: "+91 91218 21616",
     phoneHref: "tel:+919121821616",
-    mapQuery: "Phase II Valluvar Nagar Laxmipuri Sainikpuri Secunderabad 500094",
+    mapQuery: "VIVID IN2ERIO Sainikpuri Secunderabad",
     mapsUrl: "https://maps.app.goo.gl/cVpyzbvRyfwRnmQ3A",
     hoursSummary: "Mon–Sat · 10:00–19:00 IST (by appointment)",
     schemaHours: { opens: "10:00", closes: "19:00" },
