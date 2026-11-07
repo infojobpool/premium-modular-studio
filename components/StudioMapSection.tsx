@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CONTENT_MAX, PAGE_GUTTER_X } from "@/lib/interior-images";
 import { getStudioMapsHref } from "@/lib/locations";
 import { Reveal } from "./Reveal";
@@ -19,6 +19,10 @@ export function StudioMapSection() {
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
   const mapsLink = getStudioMapsHref(location.id);
+
+  useEffect(() => {
+    setIframeLoaded(false);
+  }, [location.id]);
 
   return (
     <section
@@ -68,6 +72,7 @@ export function StudioMapSection() {
                 </div>
               ) : null}
               <motion.iframe
+                key={location.id}
                 title={`Map — ${location.id === "hyderabad" ? "Hyderabad Office" : `${location.label} studio`}`}
                 className="absolute inset-0 h-full w-full border-0 grayscale-[20%] contrast-[1.02]"
                 src={mapEmbedSrc(location.mapQuery)}
