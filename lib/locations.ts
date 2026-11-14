@@ -27,7 +27,7 @@ export const STUDIO_LOCATIONS: Record<StudioLocationId, StudioLocation> = {
     label: "Hyderabad",
     regionLine: "Telangana · Secunderabad office",
     addressLines: [
-      "Phase II, Valluvar Nagar, Laxmipuri, Sainikpuri",
+      "SRK Plaza, Second Floor, Heightension Road, Sainikpuri",
       "Secunderabad, Telangana 500094",
     ],
     phoneDisplay: "+91 91218 21616",

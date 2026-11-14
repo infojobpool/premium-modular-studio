@@ -15,7 +15,7 @@ const cards = [
     city: "hyderabad" as const,
     title: "Hyderabad",
     studio: "Flagship office",
-    area: "Secunderabad / Sainikpuri",
+    area: "SRK Plaza · Heightension Road",
     href: "/hyderabad",
     image: "/welcome-hyderabad-skyline.png",
     imageAlt: "Hyderabad skyline at dusk with Charminar — Vivid In2erio office city",

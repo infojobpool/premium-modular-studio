@@ -243,14 +243,6 @@ export function CTA() {
               {submitState === "error" ? (
                 <p className="text-sm text-red-300/90">{errorText}</p>
               ) : null}
-
-              <p className="text-[11px] text-canvas/45">
-                Add <code className="text-canvas/55">RESEND_API_KEY</code>,{" "}
-                <code className="text-canvas/55">RESEND_FROM</code>, and{" "}
-                <code className="text-canvas/55">CONTACT_EMAIL_TO</code> in{" "}
-                <code className="text-canvas/55">.env</code> to deliver silently; otherwise we open
-                your mail client (see <code className="text-canvas/55">.env.example</code>).
-              </p>
             </motion.form>
           </div>
         </div>

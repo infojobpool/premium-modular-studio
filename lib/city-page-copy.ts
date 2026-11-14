@@ -72,7 +72,7 @@ export const CITY_PAGE_COPY: Record<StudioLocationId, CityPageCopy> = {
       "Vivid In2erio is a Hyderabad-based luxury interior and architectural design office, known for creating bespoke residential and commercial spaces. Every project we craft is a balance of elegance, functionality, and enduring value — designed to elevate the way you live and work.",
     aboutHeading: "Luxury interior & architectural office in Hyderabad",
     aboutLead:
-      "Walk the office in Phase II, Valluvar Nagar (Sainikpuri): review materials, joinery mock-ups, and lighting studies in person, then follow one accountable team from detailed design through precision execution to luxury handover.",
+      "Walk the office at SRK Plaza, Second Floor, Heightension Road (Sainikpuri): review materials, joinery mock-ups, and lighting studies in person, then follow one accountable team from detailed design through precision execution to luxury handover.",
     aboutSecond:
       "The same design-to-delivery standard extends to our Bhubaneswar atelier when your project needs a second India office on the same documentation and quality bar.",
     galleryHeading: "Our projects",
