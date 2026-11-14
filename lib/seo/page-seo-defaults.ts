@@ -148,7 +148,7 @@ export const CITY_SUBPAGE_SEO: Record<string, PageSeoFields> = {
   "hyderabad/visit": {
     title: "Visit · Hyderabad",
     description:
-      "Visit Vivid In2erio Hyderabad — Phase II, Valluvar Nagar, Laxmipuri, Sainikpuri, Secunderabad 500094. Mon–Sat by appointment.",
+      "Visit Vivid In2erio Hyderabad — SRK Plaza, Second Floor, Heightension Road, Sainikpuri, Secunderabad 500094. Mon–Sat by appointment.",
     focusKeyword: "interior design studio Secunderabad",
   },
   "hyderabad/faq": {
